@@ -1,0 +1,14 @@
+c:\users\alex\Source\Repos\e-Folio\e-Folio\obj\Debug\netcoreapp2.1\e-Folio.csprojAssemblyReference.cache
+c:\users\alex\Source\Repos\e-Folio\e-Folio\obj\Debug\netcoreapp2.1\e-Folio.csproj.CoreCompileInputs.cache
+c:\users\alex\Source\Repos\e-Folio\e-Folio\obj\Debug\netcoreapp2.1\e-Folio.RazorAssemblyInfo.cache
+c:\users\alex\Source\Repos\e-Folio\e-Folio\bin\Debug\netcoreapp2.1\e-Folio.deps.json
+c:\users\alex\Source\Repos\e-Folio\e-Folio\bin\Debug\netcoreapp2.1\e-Folio.runtimeconfig.json
+c:\users\alex\Source\Repos\e-Folio\e-Folio\bin\Debug\netcoreapp2.1\e-Folio.runtimeconfig.dev.json
+c:\users\alex\Source\Repos\e-Folio\e-Folio\bin\Debug\netcoreapp2.1\e-Folio.dll
+c:\users\alex\Source\Repos\e-Folio\e-Folio\bin\Debug\netcoreapp2.1\e-Folio.pdb
+c:\users\alex\Source\Repos\e-Folio\e-Folio\obj\Debug\netcoreapp2.1\e-Folio.RazorAssemblyInfo.cs
+c:\users\alex\Source\Repos\e-Folio\e-Folio\obj\Debug\netcoreapp2.1\e-Folio.AssemblyInfoInputs.cache
+c:\users\alex\Source\Repos\e-Folio\e-Folio\obj\Debug\netcoreapp2.1\e-Folio.AssemblyInfo.cs
+c:\users\alex\Source\Repos\e-Folio\e-Folio\obj\Debug\netcoreapp2.1\e-Folio.RazorTargetAssemblyInfo.cache
+c:\users\alex\Source\Repos\e-Folio\e-Folio\obj\Debug\netcoreapp2.1\e-Folio.dll
+c:\users\alex\Source\Repos\e-Folio\e-Folio\obj\Debug\netcoreapp2.1\e-Folio.pdb
