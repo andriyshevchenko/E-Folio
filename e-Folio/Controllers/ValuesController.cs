@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using e_folio.core.Entities;
+using e_folio.data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace e_Folio.Controllers
@@ -14,7 +16,10 @@ namespace e_Folio.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            var ctx = new eFolioDBContext();
+            ctx.Projects.Add(new Project("efolio", "Pavlo"));
+            ctx.SaveChanges();
+            return Ok();
         }
 
         // GET api/values/5

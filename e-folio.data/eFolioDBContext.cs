@@ -9,9 +9,11 @@ namespace e_folio.data
 {
     public class eFolioDBContext : DbContext
     {
-        public eFolioDBContext() : base(new DbContextOptionsBuilder().UseSqlServer("Data Source=.;Initial Catalog=eFolio;").Options)
+        public eFolioDBContext() : base(new DbContextOptionsBuilder()
+            .UseSqlServer("Data Source=.,1434; Initial Catalog=eFolio; User ID = sa; Password = Sasha020297Burko")
+            .Options)
         {
-                
+            
         }
 
         public DbSet<Project> Projects { get; set; }   
