@@ -13,7 +13,7 @@ namespace e_folio.data
             .UseSqlServer("Data Source=.,1434; Initial Catalog=eFolio; User ID = sa; Password = Sasha020297Burko")
             .Options)
         {
-            
+            Database.EnsureCreated();
         }
 
         public DbSet<Project> Projects { get; set; }   

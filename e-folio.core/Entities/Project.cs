@@ -16,7 +16,7 @@ namespace e_folio.core.Entities
             NameOrder = nameOrder;
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string NameProject { get; set; }
         public string NameOrder { get; set; }
     }
