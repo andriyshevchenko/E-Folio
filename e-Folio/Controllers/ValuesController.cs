@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using e_folio.core.Entities;
 using e_folio.data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace e_Folio.Controllers
 {
@@ -12,11 +10,18 @@ namespace e_Folio.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly eFolioDBContext dbContext;
+
+        public ValuesController(eFolioDBContext dBContext)
+        {
+            this.dbContext = dBContext;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            var ctx = new eFolioDBContext();
+            var ctx = new eFolioDBContext(new DbContextOptions<eFolioDBContext>());
             ctx.Projects.Add(new Project("efolio", "Pavlo"));
             ctx.SaveChanges();
             return Ok();
