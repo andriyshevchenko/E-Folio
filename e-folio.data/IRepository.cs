@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 namespace e_folio.data
 {
-    interface IRepository : IDisposable
+    interface IRepository<T> : IDisposable where T : class
     {
-        IEnumerable<Project> GetProjectList();
-        IEnumerable<Project> Search(string request);
-        Project GetProject(int id);
-        void Create(Project project);
-        void Update(Project project);
+        IEnumerable<T> GetItemsList();
+        IEnumerable<T> Search(string request);
+        T GetItem(int id);
+        void Create(T item);
+        void Update(T item);
         void Delete(int id);
         void Save();
     }
