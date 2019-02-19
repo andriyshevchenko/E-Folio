@@ -6,6 +6,6 @@ namespace eFolio
     {
         public string FullName { get; set; }
         public string CVLink { get; set; }
-        
+        public IList<Project> Projects { get; set; }
     }
 }
