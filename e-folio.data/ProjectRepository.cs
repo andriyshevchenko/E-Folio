@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace e_folio.data
 {
-    public class ProjectRepository : IRepository<Project>
+    public class ProjectRepository : IRepository<ProjectEntity>
     {
         private eFolioDBContext db;
 
@@ -18,26 +18,26 @@ namespace e_folio.data
             this.db = new eFolioDBContext(options);
         }
 
-        public void Create(Project item)
+        public void Create(ProjectEntity item)
         {
             db.Projects.Add(item);
         }
 
         public void Delete(int id)
         {
-            Project project = db.Projects.Find(id);
+            ProjectEntity project = db.Projects.Find(id);
 
             db.Projects.Remove(project);
         }
 
-        public Project GetItem(int id)
+        public ProjectEntity GetItem(int id)
         {
-            Project project = db.Projects.Find(id);
+            ProjectEntity project = db.Projects.Find(id);
 
             return project;
         }
 
-        public IEnumerable<Project> GetItemsList()
+        public IEnumerable<ProjectEntity> GetItemsList()
         {
             return db.Projects.ToListAsync().Result;
         }
@@ -47,12 +47,12 @@ namespace e_folio.data
             db.SaveChanges();
         }
 
-        public IEnumerable<Project> Search(string request)
+        public IEnumerable<ProjectEntity> Search(string request)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Project item)
+        public void Update(ProjectEntity item)
         {
             db.Projects.Update(item);
         }

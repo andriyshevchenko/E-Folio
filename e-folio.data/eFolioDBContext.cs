@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using e_folio.core.Entities;
-using eFolio;
 
 namespace e_folio.data
 {
@@ -11,7 +10,11 @@ namespace e_folio.data
             Database.EnsureCreated();
         }
 
-        public DbSet<Project> Projects { get; set; }
-        public DbSet<Developer> Developers { get; set; }
+        public DbSet<ProjectEntity> Projects { get; set; } 
+        public DbSet<DeveloperEntity> Developers { get; set; }
+        public DbSet<ContextEntity> Contexsts { get; set; }
+        public DbSet<FolioFileEntity> FolioFiles { get; set; }
+        public DbSet<ClientEntity> Clients { get; set; }
+        public DbSet<ContactPersonEntity> ContactPersons { get; set; }
     }
 }

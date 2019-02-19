@@ -1,11 +1,11 @@
-﻿using eFolio;
+﻿using e_folio.core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 
 namespace e_folio.data
 {
-    public class DeveloperRepository : IRepository<Developer>
+    public class DeveloperRepository : IRepository<DeveloperEntity>
     {
         private eFolioDBContext db;
 
@@ -18,26 +18,26 @@ namespace e_folio.data
             this.db = new eFolioDBContext(options);
         }
 
-        public void Create(Developer item)
+        public void Create(DeveloperEntity item)
         {
             db.Developers.Add(item);
         }
 
         public void Delete(int id)
         {
-            Developer developer = db.Developers.Find(id);
+            DeveloperEntity developer = db.Developers.Find(id);
 
             db.Developers.Remove(developer);
         }
 
-        public Developer GetItem(int id)
+        public DeveloperEntity GetItem(int id)
         {
-            Developer developer = db.Developers.Find(id);
+            DeveloperEntity developer = db.Developers.Find(id);
 
             return developer;
         }
 
-        public IEnumerable<Developer> GetItemsList()
+        public IEnumerable<DeveloperEntity> GetItemsList()
         {
             return db.Developers.ToListAsync().Result;
         }
@@ -47,12 +47,12 @@ namespace e_folio.data
             db.SaveChanges();
         }
 
-        public IEnumerable<Developer> Search(string request)
+        public IEnumerable<DeveloperEntity> Search(string request)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Developer item)
+        public void Update(DeveloperEntity item)
         {
             db.Developers.Update(item);
         }

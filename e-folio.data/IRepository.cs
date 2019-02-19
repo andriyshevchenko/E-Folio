@@ -1,5 +1,4 @@
-﻿using e_folio.core.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace e_folio.data
