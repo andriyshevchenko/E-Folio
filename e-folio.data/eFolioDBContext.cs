@@ -12,4 +12,5 @@ namespace e_folio.data
 
         public DbSet<Project> Projects { get; set; } 
     }
+   
 }
