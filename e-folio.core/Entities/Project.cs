@@ -2,18 +2,19 @@
 {
     public class Project
     {
+        public int ProjectID { get; set; }
+        public string NameProject { get; set; }
+        public string NameClient { get; set; }
+
         public Project()
         {
+
         }
 
-        public Project(string nameProject, string nameOrder)
+        public Project(string nameProject, string nameClient)
         {
             NameProject = nameProject;
-            NameOrder = nameOrder;
+            NameClient = nameClient;
         }
-
-        public int Id { get; set; }
-        public string NameProject { get; set; }
-        public string NameOrder { get; set; }
     }
 }
