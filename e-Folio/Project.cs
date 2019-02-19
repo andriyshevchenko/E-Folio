@@ -4,9 +4,11 @@ namespace eFolio
 {
     public class Project
     {
-        public string NameProject { get; set; }
-        public string NameOrder { get; set; }
-        public Description description { get; set; }
+        public string Name { get; set; }
+        public Context Context { get; set; }
         public List<Developer> Developers { get; set; }
+
+        public string InternalDescription { get; set; }
+        public string ExternalDescription { get; set; }
     }
 }
