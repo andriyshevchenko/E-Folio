@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore;
+﻿using e_folio.core.Entities;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using System.Collections.Generic;
+using System.Xml;
 
 namespace e_Folio
 {
