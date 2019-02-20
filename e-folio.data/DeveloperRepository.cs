@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace e_folio.data
 {
-    public class ProjectRepository : IRepository<ProjectEntity>
+    public class DeveloperRepository : IRepository<DeveloperEntity>
     {
         private eFolioDBContext db;
 
-        public ProjectRepository()
+        public DeveloperRepository()
         {
             var optionsBuilder = new DbContextOptionsBuilder<eFolioDBContext>();
 
@@ -18,28 +18,28 @@ namespace e_folio.data
             this.db = new eFolioDBContext(options);
         }
 
-        public void Create(ProjectEntity item)
+        public void Create(DeveloperEntity item)
         {
-            db.Projects.Add(item);
+            db.Developers.Add(item);
         }
 
         public void Delete(int id)
         {
-            ProjectEntity project = db.Projects.Find(id);
+            DeveloperEntity developer = db.Developers.Find(id);
 
-            db.Projects.Remove(project);
+            db.Developers.Remove(developer);
         }
 
-        public ProjectEntity GetItem(int id)
+        public DeveloperEntity GetItem(int id)
         {
-            ProjectEntity project = db.Projects.Find(id);
+            DeveloperEntity developer = db.Developers.Find(id);
 
-            return project;
+            return developer;
         }
 
-        public IEnumerable<ProjectEntity> GetItemsList()
+        public IEnumerable<DeveloperEntity> GetItemsList()
         {
-            return db.Projects.ToListAsync().Result;
+            return db.Developers.ToListAsync().Result;
         }
 
         public void Save()
@@ -47,14 +47,14 @@ namespace e_folio.data
             db.SaveChanges();
         }
 
-        public IEnumerable<ProjectEntity> Search(string request)
+        public IEnumerable<DeveloperEntity> Search(string request)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(ProjectEntity item)
+        public void Update(DeveloperEntity item)
         {
-            db.Projects.Update(item);
+            db.Developers.Update(item);
         }
 
         private bool disposed = false;

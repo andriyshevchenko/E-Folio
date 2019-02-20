@@ -21,9 +21,6 @@ namespace e_Folio.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            var ctx = new eFolioDBContext(new DbContextOptions<eFolioDBContext>());
-            ctx.Projects.Add(new Project("efolio", "Pavlo"));
-            ctx.SaveChanges();
             return Ok();
         }
 
