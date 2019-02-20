@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace e_folio.data
 {
@@ -9,25 +10,28 @@ namespace e_folio.data
     {
         private eFolioDBContext db;
 
-        public ProjectRepository()
+        public ProjectRepository(string connectionString)
         {
             var optionsBuilder = new DbContextOptionsBuilder<eFolioDBContext>();
-
-            var options = optionsBuilder.UseSqlServer(@"Data source=.\SQLEXPRESS;Initial Catalog=eFolio;User Id = sa; Password = intel123").Options;
+            
+            var options = optionsBuilder.UseSqlServer(connectionString).Options;
 
             this.db = new eFolioDBContext(options);
         }
 
-        public void Create(ProjectEntity item)
+        public void Add(ProjectEntity item)
         {
             db.Projects.Add(item);
+
+            db.SaveChanges();
         }
 
         public void Delete(int id)
         {
             ProjectEntity project = db.Projects.Find(id);
-
             db.Projects.Remove(project);
+
+            db.SaveChanges();
         }
 
         public ProjectEntity GetItem(int id)
@@ -42,11 +46,6 @@ namespace e_folio.data
             return db.Projects.ToListAsync().Result;
         }
 
-        public void Save()
-        {
-            db.SaveChanges();
-        }
-
         public IEnumerable<ProjectEntity> Search(string request)
         {
             throw new NotImplementedException();
@@ -55,6 +54,8 @@ namespace e_folio.data
         public void Update(ProjectEntity item)
         {
             db.Projects.Update(item);
+
+            db.SaveChanges();
         }
 
         private bool disposed = false;

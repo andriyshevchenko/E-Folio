@@ -9,25 +9,28 @@ namespace e_folio.data
     {
         private eFolioDBContext db;
 
-        public DeveloperRepository()
+        public DeveloperRepository(string connectionString)
         {
             var optionsBuilder = new DbContextOptionsBuilder<eFolioDBContext>();
 
-            var options = optionsBuilder.UseSqlServer(@"Data source=.\SQLEXPRESS;Initial Catalog=eFolio;User Id = sa; Password = intel123").Options;
+            var options = optionsBuilder.UseSqlServer(connectionString).Options;
 
             this.db = new eFolioDBContext(options);
         }
 
-        public void Create(DeveloperEntity item)
+        public void Add(DeveloperEntity item)
         {
             db.Developers.Add(item);
+
+            db.SaveChanges();
         }
 
         public void Delete(int id)
         {
             DeveloperEntity developer = db.Developers.Find(id);
-
             db.Developers.Remove(developer);
+
+            db.SaveChanges();
         }
 
         public DeveloperEntity GetItem(int id)
@@ -42,11 +45,6 @@ namespace e_folio.data
             return db.Developers.ToListAsync().Result;
         }
 
-        public void Save()
-        {
-            db.SaveChanges();
-        }
-
         public IEnumerable<DeveloperEntity> Search(string request)
         {
             throw new NotImplementedException();
@@ -55,6 +53,8 @@ namespace e_folio.data
         public void Update(DeveloperEntity item)
         {
             db.Developers.Update(item);
+
+            db.SaveChanges();
         }
 
         private bool disposed = false;
