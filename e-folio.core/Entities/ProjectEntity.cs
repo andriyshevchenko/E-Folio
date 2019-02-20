@@ -9,6 +9,7 @@ namespace e_folio.core.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public ContextEntity Context { get; set; }
-        public List<DeveloperEntity> Developers { get; set; }
+
+        public ICollection<ProjectDeveloperEntity> Developers { get; set; }
     }
 }
