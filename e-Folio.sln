@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-folio.core", "e-folio.cor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-folio.data", "e-folio.data\e-folio.data.csproj", "{705037F6-D7BC-4D5D-85FD-0EC14FDF55E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticSeed", "ElasticSeed\ElasticSeed.csproj", "{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticSeed", "ElasticSeed\ElasticSeed.csproj", "{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

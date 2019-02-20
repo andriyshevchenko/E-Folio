@@ -19,8 +19,8 @@ public class ContextInitializer
         {
             var projects = new List<Project>
             {
-                new Project { ProjectID = 1, NameProject = "WebApp", NameClient = "jkjrmg"},
-                new Project { ProjectID = 2, NameProject = "AnyApp", NameClient = "jjbknknknknkg"}
+                new Project { ProjectID = 1, NameProject = "WebApp", NameClient = "Ivan Lisovskiy"},
+                new Project { ProjectID = 2, NameProject = "AnyApp", NameClient = "Yeyzaveta Brednyeva"}
             };
             context.Projects.AddRange(projects);
             context.SaveChanges();
@@ -30,13 +30,26 @@ public class ContextInitializer
         {
             var devs = new List<Developer>
             {
-                new Developer {FullName = "jbjksbee", CVLink = "bdjkwlan;l"},
-                new Developer {FullName = "yyyyy", CVLink = "uuuuuuuuuroel" }
+                new Developer {FullName = "Yurii Levko", CVLink = "bdjkwljfj"},
+                new Developer {FullName = "Ostap Roik", CVLink = "uuuuuuuuuroel" }
             };
             context.Developers.AddRange(devs);
             context.SaveChanges();
         }
+
+        if (!context.Descriptions.Any())
+        {
+            var descr = new List<Description>
+            {
+
+                new Description
+                    {DescriptionText = "yyeenklfdglkr", SourceCodeLinks = {"fheufhk", "adssed"}, ScreenLinks = {"fbdjkrj", "hjhewfhk"}},
+                new Description {DescriptionText = "oroeoif", SourceCodeLinks = {"kfmelew", "ghfhjh"}, ScreenLinks = {"ppeiri", "hoefkk"}}
+            };
+            context.Descriptions.AddRange(descr);
+            context.SaveChanges();
         }
+    }
    
         
 

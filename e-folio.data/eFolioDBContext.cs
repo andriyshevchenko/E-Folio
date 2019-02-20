@@ -10,7 +10,9 @@ namespace e_folio.data
             Database.EnsureCreated();
         }
 
-        public DbSet<Project> Projects { get; set; } 
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Developer> Developers { get; set; }
+        public DbSet<Description> Descriptions { get; set; }
     }
    
 }
