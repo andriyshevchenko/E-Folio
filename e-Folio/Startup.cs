@@ -1,4 +1,5 @@
-﻿using e_folio.data;
+﻿using e_folio.core.Entities;
+using e_folio.data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,13 @@ namespace e_Folio
             string connection = Configuration.GetConnectionString("EFolioConnection");
 
             services.AddDbContext<eFolioDBContext>(options => options.UseSqlServer(connection));
+
+            services.AddSingleton<IRepository<ProjectEntity>>(
+                serviceCollection => new ProjectRepository(connection)
+            );
+            services.AddSingleton<IRepository<DeveloperEntity>>(
+                serviceCollection => new DeveloperRepository(connection)
+            );
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
