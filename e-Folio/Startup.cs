@@ -1,4 +1,4 @@
-﻿using e_folio.core.Entities;
+﻿
 using e_folio.data;
 using eFolio.BL;
 using eFolio.EF;
@@ -27,9 +27,8 @@ namespace e_Folio
 
             services.AddDbContext<eFolioDBContext>(options => options.UseSqlServer(connection));
 
-            services.AddSingleton<IRepository<ProjectEntity>>(
-                serviceCollection => new ProjectRepository(connection)
-            );
+            services.AddScoped<IRepository<Project>, ProjectRepository>();
+         
             services.AddSingleton<IRepository<DeveloperEntity>>(
                 serviceCollection => new DeveloperRepository(connection)
             );

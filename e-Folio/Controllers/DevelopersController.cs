@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using e_folio.core.Entities;
+
 using e_folio.data;
+using eFolio.BL;
+using eFolio.EF;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eFolio
@@ -11,11 +13,11 @@ namespace eFolio
     [ApiController]
     public class DevelopersController : ControllerBase
     {
-        private IRepository<DeveloperEntity> developers;
-        private IRepository<ProjectEntity> projects;
+        private IRepository<Developer> developers;
+        private IRepository<Project> projects;
 
-        public DevelopersController(IRepository<DeveloperEntity> developers,
-                                    IRepository<ProjectEntity> projects)
+        public DevelopersController(IRepository<Developer> developers,
+                                    IRepository<Project> projects)
         {
             this.developers = developers;
             this.projects = projects;
@@ -31,7 +33,7 @@ namespace eFolio
         [Route("{id}")]
         public ActionResult<IEnumerable<DeveloperEntity>> GetDeveloper(int id)
         {
-            DeveloperEntity project = developers.GetItem(id);
+            var project = developers.GetItem(id);
             if (project == null)
             {
                 return NotFound(id);
@@ -40,7 +42,7 @@ namespace eFolio
         }
 
         [HttpPost]
-        public ActionResult NewDeveloper([FromBody] DeveloperEntity developer)
+        public ActionResult NewDeveloper([FromBody] Developer developer)
         {
             developers.Add(developer);
             return Ok();
@@ -55,7 +57,7 @@ namespace eFolio
         }
 
         [HttpPut]
-        public ActionResult Edit(DeveloperEntity developer)
+        public ActionResult Edit(Developer developer)
         {
             developers.Update(developer);
             return Ok();
@@ -65,20 +67,20 @@ namespace eFolio
         [Route("/api/projects/{projectId}/d/{id}")]
         public ActionResult QuitProject(int projectId, int id)
         {
-            ProjectEntity project = projects.GetItem(projectId);
+            var project = projects.GetItem(projectId);
             if (project == null)
             {
                 return NotFound("Project not found: " + projectId);
             }
 
-            DeveloperEntity developer = developers.GetItem(id);
+            var developer = developers.GetItem(id);
             if (developer == null)
             {
                 return NotFound("Developer does not exist: " + id);
             }
              
             project.Developers.Remove(
-                project.Developers.FirstOrDefault(item => item.DeveloperId == id)
+                project.Developers.FirstOrDefault(item => item.Id == id)
             );
 
             projects.Update(project);
@@ -90,18 +92,19 @@ namespace eFolio
         [Route("/api/projects/{projectId}/d/{id}")]
         public ActionResult AssignToProject(int projectId, int id)
         {
-            ProjectEntity project = projects.GetItem(projectId);
+            var project = projects.GetItem(projectId);
             if (project == null)
             {
                 return NotFound("Project not found: " + projectId);
             }
 
-            DeveloperEntity developer = developers.GetItem(id);
+            var developer = developers.GetItem(id);
             if (developer == null)
             {
                 return NotFound("Developer does not exist: " + id);
             }
 
+            /*
             if (project.Developers == null)
             {
                 project.Developers = new List<ProjectDeveloperEntity>();
@@ -115,7 +118,7 @@ namespace eFolio
                     ProjectId = project.Id
                 });
                 projects.Update(project);
-            }
+            }*/
 
             return Ok();
         }

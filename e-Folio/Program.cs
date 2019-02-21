@@ -1,4 +1,4 @@
-﻿using e_folio.core.Entities;
+﻿
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using System.Collections.Generic;
