@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace eFolio.Elastic;
+namespace eFolio.Elastic
 {
     public interface IEfolioElastic
     {
@@ -11,5 +11,6 @@ namespace eFolio.Elastic;
         List<ElasticProjectData> SearchItems(string searchString);
         void DeleteItem(int _Id);
         ElasticProjectData GetItemById(int _Id);
+        void Update(ElasticProjectData InsertData);
     }
 }
