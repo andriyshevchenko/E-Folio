@@ -10,7 +10,7 @@ namespace e_folio.data.ElasticSearch
     class ElasticSearch : IEfolioElastic
     {
         public ElasticClient client;
-        public  ConnectionSettings settings = new ConnectionSettings(new Uri("http://localhost:9200")).DefaultIndex("ElasticProjectData");
+        public ConnectionSettings settings = new ConnectionSettings(new Uri("http://localhost:9200")).DefaultIndex("ElasticProjectData");
         public ElasticSearch()
         {
             client = new ElasticClient(settings);
