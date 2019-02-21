@@ -1,5 +1,7 @@
 ﻿using e_folio.core.Entities;
 using e_folio.data;
+using eFolio.BL;
+using eFolio.EF;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
