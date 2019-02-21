@@ -35,23 +35,51 @@ public class ContextInitializer
 
         if (!context.Clients.Any())
         {
-            var clients = new List<ClientEntity>
+                var CPersons = new List<ContactPersonEntity>
             {
-                new ClientEntity
-                    {FullNameClient = "Tetyana Dovha", ContactPersons = {"hfjkkr", "fehfe"}, Comment = "hbje"},
-                new ClientEntity
-                    {FullNameClient = "Oleh Marinyak", ContactPersons = {"iiit", "ehehe"}, Comment = "mktyr"}
+                new ContactPersonEntity
+                    {FullName = "Oksana Sydorenko", eMail = "osyd@gmail.com", Phone = 201545, Comment = "fejkk"},
+                new ContactPersonEntity
+                    {FullName = "Yaryna Gopchuk", eMail = "gopchuk@gmail.com", Phone = 255478, Comment = "ejejjrjj"}
+            };
+                var clients = new List<ClientEntity>
+            {
+                new ClientEntity   {FullNameClient = "Tetyana Dovha",
+                    ContactPersons = new List<ContactPersonEntity>()
+                    { new ContactPersonEntity {FullName="Anna Albert", eMail="anna@gmail.com", Phone=22454, Comment="hfke" },
+                    new ContactPersonEntity {FullName="Oleksiy Vasyliev", eMail="vasyliev@gmail.com", Phone=8787, Comment="oerro" }
+                    } ,
+                    Comment = "hbje"},
+                new ClientEntity   {FullNameClient = "Oleh Marinyak",
+                    ContactPersons = new List<ContactPersonEntity>()
+                    { new ContactPersonEntity {FullName="Vasyl Bilyi", eMail="vbilyi@gmail.com", Phone=774, Comment="klklr" },
+                    new ContactPersonEntity {FullName="Jonas Zhukovsky", eMail="jonas@gmail.com", Phone=8997, Comment="jrlkel" }
+                    }  ,
+                    Comment = "mktyr"}
             };
                 context.AddRange(clients);
             context.SaveChanges();
         }
         if (!context.Projects.Any())
         {
-            var projects = new List<ProjectEntity>
+               var projects = new List<ProjectEntity>
             {
-                new ProjectEntity { Name = "WebApp", Context = {SourceCodeLink = "bbb", ScreenLinks = {"rr", "jj"} }},
-                new ProjectEntity {  Name = "AnyApp", Context = {SourceCodeLink = "ppp", ScreenLinks = {"ss", "tt"}}}
-            };
+                new ProjectEntity {
+                    Name = "WebApp",
+                    Context = {SourceCodeLink = "bbb",
+                    ScreenLinks =new List<FolioFileEntity>()
+                    { new FolioFileEntity {IsInternal=true, Path="ooo"},
+                   new FolioFileEntity { IsInternal = false, Path = "djnk"}
+                    } }   },
+                new ProjectEntity {
+                    Name = "AnyApp",
+                    Context = {SourceCodeLink="yyy",
+                    ScreenLinks = new List<FolioFileEntity>()
+                    {new FolioFileEntity{IsInternal = false, Path = "uuru"},
+                    new FolioFileEntity {IsInternal = true, Path = "hyrrr"}}
+                    }
+                }
+               };
             context.Projects.AddRange(projects);
             context.SaveChanges();
          }
@@ -83,8 +111,16 @@ public class ContextInitializer
         {
             var cont = new List<ContextEntity>
             {
-                new ContextEntity {SourceCodeLink = "bjcknkd", ScreenLinks = {"bcjenk", "jvjknkv"} },
-                new ContextEntity { SourceCodeLink = "hbje", ScreenLinks = { "iiirje", "mmgnd"} }
+                new ContextEntity {SourceCodeLink = "bjcknkd",
+                    ScreenLinks =  new List<FolioFileEntity>()
+                    { new FolioFileEntity {IsInternal=true, Path="ooo"},
+                   new FolioFileEntity { IsInternal = false, Path = "djnk"}
+                    }},
+                new ContextEntity { SourceCodeLink = "hbje",
+                    ScreenLinks = new List<FolioFileEntity>()
+                    { new FolioFileEntity {IsInternal=true, Path="ooo"},
+                   new FolioFileEntity { IsInternal = false, Path = "djnk"}
+                    } }
 
             };
         }
