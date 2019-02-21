@@ -46,7 +46,11 @@ namespace eFolio.BL
 
         public Project GetItem(int id)
         {
-            ProjectEntity projectEntity = db.Projects.Find(id);
+            ProjectEntity projectEntity = db.Projects
+                .Include(item => item.Developers)
+                .Include(item => item.Context)
+                .ThenInclude(context => context.ScreenLinks)
+                .SingleOrDefault(item => item.Id == id);
 
             Project project = new Project();
             project.ExternalDescription = es.GetItemById(id).ExternalDescr;
@@ -61,7 +65,12 @@ namespace eFolio.BL
 
         public IEnumerable<Project> GetItemsList()
         {
-            List<ProjectEntity> list = db.Projects.ToListAsync().Result;
+            List<ProjectEntity> list = db.Projects
+                .Include(project => project.Developers)
+                .Include(project => project.Context)
+                .ThenInclude(context => context.ScreenLinks)
+                .ToListAsync().Result;
+
             foreach (var item in list)
             {
                 yield return new Project()
