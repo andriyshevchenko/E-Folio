@@ -6,4 +6,9 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Elasticsearch.Net" Version="6.5.0" />
+    <PackageReference Include="NEST" Version="6.5.0" />
+  </ItemGroup>
+
 </Project>
