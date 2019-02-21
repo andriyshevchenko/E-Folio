@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eFolio.EF", "e-folio.core\e
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eFolio.Elastic", "e-folio.data\eFolio.Elastic.csproj", "{705037F6-D7BC-4D5D-85FD-0EC14FDF55E2}"
 EndProject
+<<<<<<< HEAD
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticSeed", "ElasticSeed\ElasticSeed.csproj", "{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}"
+=======
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eFolio.BL", "BL\eFolio.BL.csproj", "{D0C2249F-127D-4122-8C3B-B8998ADC8E59}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eFolio.DTO", "eFolio.DTO\eFolio.DTO.csproj", "{DEF3CEC3-6989-4095-98A7-17D6A863F50F}"
+>>>>>>> 2cbb08171bdb8b026c8bdb269d953709d3d9e02d
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

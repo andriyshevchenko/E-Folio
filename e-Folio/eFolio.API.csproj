@@ -1,5 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
+ <Project Sdk="Microsoft.NET.Sdk.Web"> 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <Platforms>AnyCPU;x64</Platforms>
@@ -26,8 +25,12 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+<<<<<<< HEAD:e-Folio/e-Folio.csproj
+    </PackageReference> 
+=======
     </PackageReference>
     <PackageReference Include="NEST" Version="6.5.0" />
+>>>>>>> 2cbb08171bdb8b026c8bdb269d953709d3d9e02d:e-Folio/eFolio.API.csproj
   </ItemGroup>
 
   <ItemGroup>
