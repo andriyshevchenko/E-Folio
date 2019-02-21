@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using e_folio.core.Entities;
 using e_folio.data;
-using eFolio;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace e_Folio
+namespace eFolio
 {
     [Route("api/projects")]
     [Produces("application/json")]
@@ -55,6 +50,11 @@ namespace e_Folio
             return Ok();
         }
          
-
+        [HttpPut]
+        public ActionResult Edit([FromBody] ProjectEntity project)
+        {
+            projects.Update(project);
+            return Ok();
+        }
     }
 }

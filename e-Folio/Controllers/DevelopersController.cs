@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using e_folio.core.Entities;
 using e_folio.data;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace e_Folio
+namespace eFolio
 {
     [Route("api/developers")]
     [Produces("application/json")]
@@ -64,8 +61,33 @@ namespace e_Folio
             return Ok();
         }
 
-        [HttpPut]
-        [Route("/api/projects/{projectId}/devs/{id}")]
+        [HttpDelete]
+        [Route("/api/projects/{projectId}/d/{id}")]
+        public ActionResult QuitProject(int projectId, int id)
+        {
+            ProjectEntity project = projects.GetItem(projectId);
+            if (project == null)
+            {
+                return NotFound("Project not found: " + projectId);
+            }
+
+            DeveloperEntity developer = developers.GetItem(id);
+            if (developer == null)
+            {
+                return NotFound("Developer does not exist: " + id);
+            }
+             
+            project.Developers.Remove(
+                project.Developers.FirstOrDefault(item => item.DeveloperId == id)
+            );
+
+            projects.Update(project);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("/api/projects/{projectId}/d/{id}")]
         public ActionResult AssignToProject(int projectId, int id)
         {
             ProjectEntity project = projects.GetItem(projectId);
@@ -84,13 +106,16 @@ namespace e_Folio
             {
                 project.Developers = new List<ProjectDeveloperEntity>();
             }
-            project.Developers.Add(new ProjectDeveloperEntity()
-            { 
-                DeveloperId = developer.Id,
-                ProjectId = project.Id
-            });
 
-            projects.Update(project);
+            if (!project.Developers.Any(item => item.DeveloperId == id))
+            {
+                project.Developers.Add(new ProjectDeveloperEntity()
+                {
+                    DeveloperId = developer.Id,
+                    ProjectId = project.Id
+                });
+                projects.Update(project);
+            }
 
             return Ok();
         }
