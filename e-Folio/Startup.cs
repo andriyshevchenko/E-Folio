@@ -1,4 +1,5 @@
 ﻿using e_folio.data;
+using e_Folio.Seeds;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +36,15 @@ namespace e_Folio
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = scope.ServiceProvider.GetService<eFolioDBContext>();
+                context.Database.Migrate();
+                ContextInitializer.Initialize(context);
+            }
+            app.UseMvc(/*routes=>
+                { MapRoute(name: default,  template: "{controller=Home}/{action=index}/{id?}" ); }*/
+            );
         }
     }
 }

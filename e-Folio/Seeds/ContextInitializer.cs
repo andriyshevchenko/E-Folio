@@ -10,18 +10,38 @@ using e_folio.core.Entities;
 namespace e_Folio.Seeds
 
 {
-public class ContextInitializer
-{
-    protected void CreateProjects()
-        { }
-    protected void CreateDevelopers()
-        { }
-        public static void Initialize(eFolioDBContext context)
+    public class ContextInitializer
     {
-       context.Database.EnsureCreated();
 
-        if (!context.ContactPersons.Any())
+        public static void Initialize(eFolioDBContext context)
         {
+            context.Database.EnsureCreated();
+
+            if (context.Projects.Any()) return;
+
+            var projectEntity1 = new ProjectEntity
+            {
+                Name = "WebApp",
+                Context = {SourceCodeLink = "bbb",
+                    ScreenLinks =new List<FolioFileEntity>()
+                    { new FolioFileEntity {IsInternal=true, Path="ooo"},
+                   new FolioFileEntity { IsInternal = false, Path = "djnk"}
+                    } }
+            };
+
+            var projectEntity2 = new ProjectEntity
+            {
+                Name = "AnyApp",
+                Context = {SourceCodeLink="yyy",
+                    ScreenLinks = new List<FolioFileEntity>()
+                    {new FolioFileEntity{IsInternal = false, Path = "uuru"},
+                    new FolioFileEntity {IsInternal = true, Path = "hyrrr"}}
+                    }
+            };
+
+
+
+
             var CPersons = new List<ContactPersonEntity>
             {
                 new ContactPersonEntity
@@ -29,20 +49,8 @@ public class ContextInitializer
                 new ContactPersonEntity
                     {FullName = "Yaryna Gopchuk", eMail = "gopchuk@gmail.com", Phone = 255478, Comment = "ejejjrjj"}
             };
-            context.AddRange(CPersons);
-            context.SaveChanges();
-        }
 
-        if (!context.Clients.Any())
-        {
-                var CPersons = new List<ContactPersonEntity>
-            {
-                new ContactPersonEntity
-                    {FullName = "Oksana Sydorenko", eMail = "osyd@gmail.com", Phone = 201545, Comment = "fejkk"},
-                new ContactPersonEntity
-                    {FullName = "Yaryna Gopchuk", eMail = "gopchuk@gmail.com", Phone = 255478, Comment = "ejejjrjj"}
-            };
-                var clients = new List<ClientEntity>
+            var clients = new List<ClientEntity>
             {
                 new ClientEntity   {FullNameClient = "Tetyana Dovha",
                     ContactPersons = new List<ContactPersonEntity>()
@@ -55,48 +63,34 @@ public class ContextInitializer
                     { new ContactPersonEntity {FullName="Vasyl Bilyi", eMail="vbilyi@gmail.com", Phone=774, Comment="klklr" },
                     new ContactPersonEntity {FullName="Jonas Zhukovsky", eMail="jonas@gmail.com", Phone=8997, Comment="jrlkel" }
                     }  ,
-                    Comment = "mktyr"}
-            };
-                context.AddRange(clients);
-            context.SaveChanges();
-        }
-        if (!context.Projects.Any())
-        {
-               var projects = new List<ProjectEntity>
-            {
-                new ProjectEntity {
-                    Name = "WebApp",
-                    Context = {SourceCodeLink = "bbb",
-                    ScreenLinks =new List<FolioFileEntity>()
-                    { new FolioFileEntity {IsInternal=true, Path="ooo"},
-                   new FolioFileEntity { IsInternal = false, Path = "djnk"}
-                    } }   },
-                new ProjectEntity {
-                    Name = "AnyApp",
-                    Context = {SourceCodeLink="yyy",
-                    ScreenLinks = new List<FolioFileEntity>()
-                    {new FolioFileEntity{IsInternal = false, Path = "uuru"},
-                    new FolioFileEntity {IsInternal = true, Path = "hyrrr"}}
-                    }
-                }
-               };
-            context.Projects.AddRange(projects);
-            context.SaveChanges();
-         }
+                    Comment = "mktyr"} };
 
-        if (!context.Developers.Any())
-        {
-            var devs = new List<DeveloperEntity>
+            context.AddRange(clients);
+
+            if (!context.Projects.Any())
+            {
+
+                var projects = new List<ProjectEntity>
+            {
+                projectEntity1,
+                projectEntity2
+               };
+                context.Projects.AddRange(projects);
+                context.SaveChanges();
+            }
+
+            if (!context.Developers.Any())
+            {
+                var devs = new List<DeveloperEntity>
             {
                 new DeveloperEntity {FullName = "Yurii Levko", CVLink = "bdjkwljfj"},
                 new DeveloperEntity {FullName = "Ostap Roik", CVLink = "uuuuuuuuuroel" }
             };
-            context.Developers.AddRange(devs);
-            context.SaveChanges();
-        }
+                context.Developers.AddRange(devs);
+                context.SaveChanges();
+            }
 
-        if (!context.FolioFiles.Any())
-        {
+
             var folio = new List<FolioFileEntity>
             {
 
@@ -105,11 +99,11 @@ public class ContextInitializer
             };
             context.FolioFiles.AddRange(folio);
             context.SaveChanges();
-        }
 
-        if (!context.Contexsts.Any())
-        {
-            var cont = new List<ContextEntity>
+
+            if (!context.Contexsts.Any())
+            {
+                var cont = new List<ContextEntity>
             {
                 new ContextEntity {SourceCodeLink = "bjcknkd",
                     ScreenLinks =  new List<FolioFileEntity>()
@@ -123,13 +117,11 @@ public class ContextInitializer
                     } }
 
             };
+            }
+
+            context.SaveChanges();
         }
 
     }
-   
-        
-
-
-}
 }
 
