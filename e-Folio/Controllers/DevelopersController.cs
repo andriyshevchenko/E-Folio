@@ -1,24 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using e_folio.core.Entities;
+
 using e_folio.data;
-using Microsoft.AspNetCore.Http;
+using eFolio.BL;
+using eFolio.EF;
 using Microsoft.AspNetCore.Mvc;
 
-namespace e_Folio
+namespace eFolio
 {
     [Route("api/developers")]
     [Produces("application/json")]
     [ApiController]
     public class DevelopersController : ControllerBase
     {
-        private IRepository<DeveloperEntity> developers;
-        private IRepository<ProjectEntity> projects;
+        private IRepository<Developer> developers;
+        private IRepository<Project> projects;
 
-        public DevelopersController(IRepository<DeveloperEntity> developers,
-                                    IRepository<ProjectEntity> projects)
+        public DevelopersController(IRepository<Developer> developers,
+                                    IRepository<Project> projects)
         {
             this.developers = developers;
             this.projects = projects;
@@ -34,7 +33,7 @@ namespace e_Folio
         [Route("{id}")]
         public ActionResult<IEnumerable<DeveloperEntity>> GetDeveloper(int id)
         {
-            DeveloperEntity project = developers.GetItem(id);
+            var project = developers.GetItem(id);
             if (project == null)
             {
                 return NotFound(id);
@@ -43,7 +42,7 @@ namespace e_Folio
         }
 
         [HttpPost]
-        public ActionResult NewDeveloper([FromBody] DeveloperEntity developer)
+        public ActionResult NewDeveloper([FromBody] Developer developer)
         {
             developers.Add(developer);
             return Ok();
@@ -58,39 +57,68 @@ namespace e_Folio
         }
 
         [HttpPut]
-        public ActionResult Edit(DeveloperEntity developer)
+        public ActionResult Edit(Developer developer)
         {
             developers.Update(developer);
             return Ok();
         }
 
-        [HttpPut]
-        [Route("/api/projects/{projectId}/devs/{id}")]
-        public ActionResult AssignToProject(int projectId, int id)
+        [HttpDelete]
+        [Route("/api/projects/{projectId}/d/{id}")]
+        public ActionResult QuitProject(int projectId, int id)
         {
-            ProjectEntity project = projects.GetItem(projectId);
+            var project = projects.GetItem(projectId);
             if (project == null)
             {
                 return NotFound("Project not found: " + projectId);
             }
 
-            DeveloperEntity developer = developers.GetItem(id);
+            var developer = developers.GetItem(id);
+            if (developer == null)
+            {
+                return NotFound("Developer does not exist: " + id);
+            }
+             
+            project.Developers.Remove(
+                project.Developers.FirstOrDefault(item => item.Id == id)
+            );
+
+            projects.Update(project);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("/api/projects/{projectId}/d/{id}")]
+        public ActionResult AssignToProject(int projectId, int id)
+        {
+            var project = projects.GetItem(projectId);
+            if (project == null)
+            {
+                return NotFound("Project not found: " + projectId);
+            }
+
+            var developer = developers.GetItem(id);
             if (developer == null)
             {
                 return NotFound("Developer does not exist: " + id);
             }
 
+            /*
             if (project.Developers == null)
             {
                 project.Developers = new List<ProjectDeveloperEntity>();
             }
-            project.Developers.Add(new ProjectDeveloperEntity()
-            { 
-                DeveloperId = developer.Id,
-                ProjectId = project.Id
-            });
 
-            projects.Update(project);
+            if (!project.Developers.Any(item => item.DeveloperId == id))
+            {
+                project.Developers.Add(new ProjectDeveloperEntity()
+                {
+                    DeveloperId = developer.Id,
+                    ProjectId = project.Id
+                });
+                projects.Update(project);
+            }*/
 
             return Ok();
         }

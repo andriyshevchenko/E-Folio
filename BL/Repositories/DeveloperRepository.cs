@@ -1,9 +1,10 @@
-﻿using e_folio.core.Entities;
+﻿
+using eFolio.EF;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 
-namespace e_folio.data
+namespace eFolio.BL
 {
     public class DeveloperRepository : IRepository<DeveloperEntity>
     {
@@ -11,11 +12,11 @@ namespace e_folio.data
 
         public DeveloperRepository(string connectionString)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<eFolioDBContext>();
+            //var optionsBuilder = new DbContextOptionsBuilder<eFolioDBContext>();
 
-            var options = optionsBuilder.UseSqlServer(connectionString).Options;
+            //var options = optionsBuilder.UseSqlServer(connectionString).Options;
 
-            this.db = new eFolioDBContext(options);
+            //this.db = new eFolioDBContext(options);
         }
 
         public void Add(DeveloperEntity item)

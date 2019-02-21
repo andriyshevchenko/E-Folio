@@ -1,37 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using e_folio.core.Entities;
+﻿using System.Collections.Generic;
+
 using e_folio.data;
-using Microsoft.AspNetCore.Http;
+using eFolio.BL;
+using Microsoft.AspNetCore.Http; 
 using Microsoft.AspNetCore.Mvc;
 
-namespace e_Folio
+namespace eFolio
 {
     [Route("api/projects")]
     [Produces("application/json")]
     [ApiController]
     public class ProjectController : ControllerBase
     {
-        private IRepository<ProjectEntity> projects;
+        private IRepository<Project> projects;
 
-        public ProjectController(IRepository<ProjectEntity> repository)
+        public ProjectController(IRepository<Project> repository)
         {
             projects = repository;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<ProjectEntity>> GetProjects()
+        public ActionResult<IEnumerable<Project>> GetProjects()
         {
             return Ok(projects.GetItemsList());
         }
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<IEnumerable<ProjectEntity>> GetProject(int id)
+        public ActionResult<IEnumerable<Project>> GetProject(int id)
         {
-            ProjectEntity project = projects.GetItem(id);
+            Project project = projects.GetItem(id);
             if (project == null)
             {
                 return NotFound(id);
@@ -48,12 +46,17 @@ namespace e_Folio
         }
 
         [HttpPost]
-        public ActionResult MakeNewProject([FromBody] ProjectEntity project)
+        public ActionResult MakeNewProject([FromBody] Project project)
         {
             projects.Add(project);
             return Ok();
         }
          
-
+        [HttpPut]
+        public ActionResult Edit([FromBody] Project project)
+        {
+            projects.Update(project);
+            return Ok();
+        }
     }
 }

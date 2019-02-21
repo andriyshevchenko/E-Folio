@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ArrayOfXmlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <XmlProject>
-    <Id>0</Id>
-    <Name>E-Folio</Name>
-    <InternalDescription>The e-portfolio project.</InternalDescription>
-    <ExternalDescription>The e-portfolio project.</ExternalDescription>
-  </XmlProject>
-</ArrayOfXmlProject>
