@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace eFolio
+﻿namespace e_folio.data
 {
     public class FolioFile
     {

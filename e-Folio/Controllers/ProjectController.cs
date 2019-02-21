@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using e_folio.core.Entities;
 using e_folio.data;
-using eFolio;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
