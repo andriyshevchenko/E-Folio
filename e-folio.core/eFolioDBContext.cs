@@ -9,6 +9,7 @@ namespace eFolio.EF
             Database.EnsureCreated();
         }
 
+
         public DbSet<ProjectEntity> Projects { get; set; } 
         public DbSet<DeveloperEntity> Developers { get; set; }
         public DbSet<ContextEntity> Contexsts { get; set; }
@@ -25,4 +26,5 @@ namespace eFolio.EF
         }
 
     }
+   
 }
