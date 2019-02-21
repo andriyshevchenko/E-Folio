@@ -16,19 +16,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Elasticsearch.Net" Version="6.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+<<<<<<< HEAD:e-Folio/e-Folio.csproj
     </PackageReference> 
+=======
+    </PackageReference>
+    <PackageReference Include="NEST" Version="6.5.0" />
+>>>>>>> 2cbb08171bdb8b026c8bdb269d953709d3d9e02d:e-Folio/eFolio.API.csproj
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\e-folio.core\e-folio.core.csproj" />
-    <ProjectReference Include="..\e-folio.data\e-folio.data.csproj" />
+    <ProjectReference Include="..\BL\eFolio.BL.csproj" />
+    <ProjectReference Include="..\e-folio.core\eFolio.EF.csproj" />
+    <ProjectReference Include="..\e-folio.data\eFolio.Elastic.csproj" />
   </ItemGroup>
 
 </Project>

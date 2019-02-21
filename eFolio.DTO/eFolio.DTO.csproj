@@ -2,8 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <RootNamespace>e_folio.core</RootNamespace>
-    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
 </Project>

@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-Folio", "e-Folio\e-Folio.csproj", "{FDF5D53A-8431-421A-9A55-97EF879FB50A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eFolio.API", "e-Folio\eFolio.API.csproj", "{FDF5D53A-8431-421A-9A55-97EF879FB50A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-folio.core", "e-folio.core\e-folio.core.csproj", "{0B83106D-D6DF-4AA9-9825-4E1962A18721}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eFolio.EF", "e-folio.core\eFolio.EF.csproj", "{0B83106D-D6DF-4AA9-9825-4E1962A18721}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-folio.data", "e-folio.data\e-folio.data.csproj", "{705037F6-D7BC-4D5D-85FD-0EC14FDF55E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eFolio.Elastic", "e-folio.data\eFolio.Elastic.csproj", "{705037F6-D7BC-4D5D-85FD-0EC14FDF55E2}"
 EndProject
+<<<<<<< HEAD
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticSeed", "ElasticSeed\ElasticSeed.csproj", "{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}"
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eFolio.BL", "BL\eFolio.BL.csproj", "{D0C2249F-127D-4122-8C3B-B8998ADC8E59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eFolio.DTO", "eFolio.DTO\eFolio.DTO.csproj", "{DEF3CEC3-6989-4095-98A7-17D6A863F50F}"
+>>>>>>> 2cbb08171bdb8b026c8bdb269d953709d3d9e02d
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,14 +49,22 @@ Global
 		{705037F6-D7BC-4D5D-85FD-0EC14FDF55E2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{705037F6-D7BC-4D5D-85FD-0EC14FDF55E2}.Release|x64.ActiveCfg = Release|x64
 		{705037F6-D7BC-4D5D-85FD-0EC14FDF55E2}.Release|x64.Build.0 = Release|x64
-		{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}.Debug|x64.Build.0 = Debug|Any CPU
-		{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}.Release|x64.ActiveCfg = Release|Any CPU
-		{F88AE668-B0F2-45CD-AC22-BACC7BC6A5CE}.Release|x64.Build.0 = Release|Any CPU
+		{D0C2249F-127D-4122-8C3B-B8998ADC8E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0C2249F-127D-4122-8C3B-B8998ADC8E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0C2249F-127D-4122-8C3B-B8998ADC8E59}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D0C2249F-127D-4122-8C3B-B8998ADC8E59}.Debug|x64.Build.0 = Debug|Any CPU
+		{D0C2249F-127D-4122-8C3B-B8998ADC8E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0C2249F-127D-4122-8C3B-B8998ADC8E59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0C2249F-127D-4122-8C3B-B8998ADC8E59}.Release|x64.ActiveCfg = Release|Any CPU
+		{D0C2249F-127D-4122-8C3B-B8998ADC8E59}.Release|x64.Build.0 = Release|Any CPU
+		{DEF3CEC3-6989-4095-98A7-17D6A863F50F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF3CEC3-6989-4095-98A7-17D6A863F50F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF3CEC3-6989-4095-98A7-17D6A863F50F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DEF3CEC3-6989-4095-98A7-17D6A863F50F}.Debug|x64.Build.0 = Debug|Any CPU
+		{DEF3CEC3-6989-4095-98A7-17D6A863F50F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF3CEC3-6989-4095-98A7-17D6A863F50F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF3CEC3-6989-4095-98A7-17D6A863F50F}.Release|x64.ActiveCfg = Release|Any CPU
+		{DEF3CEC3-6989-4095-98A7-17D6A863F50F}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 
-namespace eFolio
+namespace e_folio.data
 {
-    public class Project
+    public class Project 
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public Context Context { get; set; }
-        public List<Developer> Developers { get; set; }
+
+        public ICollection<Developer> Developers { get; set; }
 
         public string InternalDescription { get; set; }
         public string ExternalDescription { get; set; }
