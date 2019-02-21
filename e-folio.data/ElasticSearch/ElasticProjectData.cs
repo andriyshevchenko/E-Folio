@@ -7,8 +7,8 @@ namespace e_folio.data.ElasticSearch
     public class ElasticProjectData
     {
         public int Id { get; set; }
-        public int Name { get; set; }
-        public int InternalDescr { get; set; }
-        public int ExternalDescr { get; set; }
+        public string Name { get; set; }
+        public string InternalDescr { get; set; }
+        public string ExternalDescr { get; set; }
     }
 }
