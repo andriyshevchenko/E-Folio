@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace e_folio.data
+namespace eFolio.BL
 {
     public interface IRepository<T> : IDisposable where T : class
     {

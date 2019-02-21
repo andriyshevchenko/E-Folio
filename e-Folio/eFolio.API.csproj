@@ -31,8 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\e-folio.core\e-folio.core.csproj" />
-    <ProjectReference Include="..\e-folio.data\e-folio.data.csproj" />
+    <ProjectReference Include="..\BL\eFolio.BL.csproj" />
+    <ProjectReference Include="..\e-folio.core\eFolio.EF.csproj" />
+    <ProjectReference Include="..\e-folio.data\eFolio.Elastic.csproj" />
   </ItemGroup>
 
 </Project>

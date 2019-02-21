@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Nest;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using Nest;
-namespace e_folio.data.ElasticSearch
+
+namespace eFolio.Elastic
 {
     public class ElasticSearch : IEfolioElastic
     {
