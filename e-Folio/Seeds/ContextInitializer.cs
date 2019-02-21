@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using e_folio.data;
 using e_folio.core;
 using Microsoft.EntityFrameworkCore.Internal;
-using e_folio.core.Entities;
+using eFolio.EF;
 
 namespace e_Folio.Seeds
 

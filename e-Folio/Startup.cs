@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-﻿using e_folio.data;
-using e_Folio.Seeds;
-=======
+
 ﻿
 using e_folio.data;
+using e_Folio.Seeds;
 using eFolio.BL;
 using eFolio.EF;
->>>>>>> 2cbb08171bdb8b026c8bdb269d953709d3d9e02d
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
