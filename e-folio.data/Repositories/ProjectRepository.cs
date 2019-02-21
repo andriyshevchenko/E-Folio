@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
+using System.Linq;
 
 namespace e_folio.data
 {
@@ -48,7 +48,24 @@ namespace e_folio.data
 
         public IEnumerable<ProjectEntity> Search(string request)
         {
-            throw new NotImplementedException();
+            ElasticSearch.ElasticSearch elasticSearch = new ElasticSearch.ElasticSearch();
+            var response = elasticSearch.SearchItems(request);
+
+            List<Project> projects = new List<Project>();
+            for (int i = 0; i < response.Count; i++)
+            {
+                Project project = new Project();
+                var projectEntity = GetItem(response[i].Id);
+                project.Name = projectEntity.Name;
+                project.Developers = projectEntity.Developers;
+                project.Context = projectEntity.Context;
+                project.ExternalDescription = response[i].ExternalDescr;
+                project.InternalDescription = response[i].InternalDescr;
+
+                projects.Add(project);
+            }
+
+            return projects;
         }
 
         public void Update(ProjectEntity item)
