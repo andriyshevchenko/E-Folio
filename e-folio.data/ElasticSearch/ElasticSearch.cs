@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Xml.Serialization;
-using Elasticsearch.Net;
 using Nest;
 namespace e_folio.data.ElasticSearch
 {
-    class ElasticSearch : IEfolioElastic
+    public class ElasticSearch : IEfolioElastic
     {
         public ElasticClient client;
         public ConnectionSettings settings = new ConnectionSettings(new Uri("http://localhost:9200")).DefaultIndex("ElasticProjectData");
@@ -58,9 +56,34 @@ namespace e_folio.data.ElasticSearch
                                         );
             var resultSearchlist = new List<ElasticProjectData>();
             resultSearchlist = HitToDataConvert(searchResponse1);
+            resultSearchlist.AddRange( HitToDataConvert(searchResponse1));
 
 
             return resultSearchlist;
+        }
+
+        public void DeleteItem(int _Id)
+        {
+            client.Delete<ElasticProjectData>(_Id);
+        }
+        public ElasticProjectData GetItemById(int _Id)
+        {
+            var searchResponse1 = client.Search<ElasticProjectData>(s => s
+                      .Query(q => q
+                             .Match(m => m
+                                 .Field(f => f.Id).Query(_Id.ToString())
+                         )
+                                )
+                                        );
+            var temp = new ElasticProjectData();
+            foreach (var hit in searchResponse1.Hits)
+            {
+                temp.Name = hit.Source.Name;
+                temp.Id = hit.Source.Id;
+                temp.InternalDescr = hit.Source.InternalDescr;
+                temp.ExternalDescr = hit.Source.ExternalDescr;
+            }
+            return temp;
         }
         private List<ElasticProjectData> HitToDataConvert(ISearchResponse<ElasticProjectData> searchResponse)
         {
