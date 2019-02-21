@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using e_folio.core.Entities;
 
-namespace e_folio.data
+namespace eFolio.EF
 {
     public class eFolioDBContext : DbContext
     {
