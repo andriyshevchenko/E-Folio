@@ -1,6 +1,4 @@
-
-﻿
-using e_folio.data;
+using eFolio.DTO;
 using e_Folio.Seeds;
 using eFolio.BL;
 using eFolio.EF;
@@ -10,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
+using eFolio.API;
 
 namespace e_Folio
 {
@@ -34,6 +34,14 @@ namespace e_Folio
             services.AddSingleton<IRepository<DeveloperEntity>>(
                 serviceCollection => new DeveloperRepository(connection)
             );
+
+
+            //Automapping
+            var mappingConfig = new MapperConfiguration(mc => { mc.AddProfile(new Automapper()); });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
