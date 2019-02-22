@@ -13,23 +13,25 @@ namespace eFolio
     public class ProjectController : ControllerBase
     {
         private IRepository<Project> projects;
+        private IRepositoryService projectService;
 
-        public ProjectController(IRepository<Project> repository)
+        public ProjectController(IRepository<Project> repository, IRepositoryService projectService)
         {
             projects = repository;
+            this.projectService = projectService;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Project>> GetProjects()
         {
-            return Ok(projects.GetItemsList());
+            return Ok(projectService.GetItemsList());
         }
 
         [HttpGet]
         [Route("{id}")]
         public ActionResult<IEnumerable<Project>> GetProject(int id)
         {
-            Project project = projects.GetItem(id);
+            Project project = projectService.GetItem(id);
             if (project == null)
             {
                 return NotFound(id);
