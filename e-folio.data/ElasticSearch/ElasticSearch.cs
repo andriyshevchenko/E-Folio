@@ -1,9 +1,8 @@
-﻿using Nest;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-
+using Nest;
 namespace eFolio.Elastic
 {
     public class ElasticSearch : IEfolioElastic
@@ -99,6 +98,12 @@ namespace eFolio.Elastic
                 resultList.Add(temp);
             }
             return resultList;
+        }
+
+        public void Update(ElasticProjectData InsertData)
+        {
+            int InsertId = InsertData.Id;
+            var updateResponse = client.Update<ElasticProjectData, object>(InsertId, u => u.Doc(InsertData).RetryOnConflict(1));
         }
         
     }
