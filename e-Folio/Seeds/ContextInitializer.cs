@@ -22,21 +22,26 @@ namespace e_Folio.Seeds
             var projectEntity1 = new ProjectEntity
             {
                 Name = "WebApp",
-                Context = {SourceCodeLink = "bbb",
-                    ScreenLinks =new List<FolioFileEntity>()
+                Context = new ContextEntity
+                {
+                    SourceCodeLink = "bbb",
+                    ScreenLinks = new List<FolioFileEntity>()
                     { new FolioFileEntity {IsInternal=true, Path="ooo"},
                    new FolioFileEntity { IsInternal = false, Path = "djnk"}
-                    } }
+                    }
+                }
             };
 
             var projectEntity2 = new ProjectEntity
             {
                 Name = "AnyApp",
-                Context = {SourceCodeLink="yyy",
+                Context = new ContextEntity
+                {
+                    SourceCodeLink = "yyy",
                     ScreenLinks = new List<FolioFileEntity>()
                     {new FolioFileEntity{IsInternal = false, Path = "uuru"},
                     new FolioFileEntity {IsInternal = true, Path = "hyrrr"}}
-                    }
+                }
             };
 
 
