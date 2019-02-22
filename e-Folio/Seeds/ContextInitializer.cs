@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using e_folio.data;
-using e_folio.core;
 using Microsoft.EntityFrameworkCore.Internal;
 using eFolio.EF;
 using eFolio.Elastic;
@@ -23,22 +21,27 @@ namespace e_Folio.Seeds
             var projectEntity1 = new ProjectEntity
             { Id = 0,
                 Name = "WebApp",
-                Context = {SourceCodeLink = "bbb",
-                    ScreenLinks =new List<FolioFileEntity>()
+                Context = new ContextEntity
+                {
+                    SourceCodeLink = "bbb",
+                    ScreenLinks = new List<FolioFileEntity>()
                     { new FolioFileEntity {IsInternal=true, Path="ooo"},
                    new FolioFileEntity { IsInternal = false, Path = "djnk"}
-                    } }
+                    }
+                }
             };
 
             var projectEntity2 = new ProjectEntity
             {
                 Id =1, 
                 Name = "AnyApp",
-                Context = {SourceCodeLink="yyy",
+                Context = new ContextEntity
+                {
+                    SourceCodeLink = "yyy",
                     ScreenLinks = new List<FolioFileEntity>()
                     {new FolioFileEntity{IsInternal = false, Path = "uuru"},
                     new FolioFileEntity {IsInternal = true, Path = "hyrrr"}}
-                    }
+                }
             };
 
             var CPersons = new List<ContactPersonEntity>

@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\e-folio.core\eFolio.EF.csproj" />
     <ProjectReference Include="..\e-folio.data\eFolio.Elastic.csproj" />
     <ProjectReference Include="..\eFolio.DTO\eFolio.DTO.csproj" />
