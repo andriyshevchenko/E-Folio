@@ -1,5 +1,4 @@
 
-﻿
 using e_folio.data;
 using e_Folio.Seeds;
 using eFolio.BL;
@@ -52,9 +51,7 @@ namespace e_Folio
                 context.Database.Migrate();
                 ContextInitializer.Initialize(context);
             }
-            app.UseMvc(/*routes=>
-                { MapRoute(name: default,  template: "{controller=Home}/{action=index}/{id?}" ); }*/
-            );
+            app.UseMvc( );
         }
     }
 }
