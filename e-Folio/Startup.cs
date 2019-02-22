@@ -30,12 +30,8 @@ namespace e_Folio
 
             services.AddDbContext<eFolioDBContext>(options => options.UseSqlServer(connection));
 
-          //  services.AddScoped<IRepository<Project>, ProjectRepository>();
-         
-            services.AddSingleton<IRepository<DeveloperEntity>>(
-                serviceCollection => new DeveloperRepository(connection)
-            );
-
+            services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IDeveloperService, DeveloperService>();
 
             //Automapping
             var mappingConfig = new MapperConfiguration(mc => { mc.AddProfile(new Automapper()); });

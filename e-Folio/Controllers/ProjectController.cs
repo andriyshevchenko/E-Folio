@@ -13,9 +13,9 @@ namespace eFolio
     public class ProjectController : ControllerBase
     {
         private IRepository<Project> projects;
-        private IRepositoryService projectService;
+        private IProjectService projectService;
 
-        public ProjectController(IRepository<Project> repository, IRepositoryService projectService)
+        public ProjectController(IRepository<Project> repository, IProjectService projectService)
         {
             projects = repository;
             this.projectService = projectService;

@@ -6,12 +6,12 @@ using System.Collections.Generic;
 
 namespace eFolio.BL
 {
-    public class RepositoryService : IProjectService
+    public class ProjectService : IProjectService
     {
         private ProjectRepository projectRepository;
         private ElasticSearch elastic;
 
-        public RepositoryService(eFolioDBContext DBContext)
+        public ProjectService(eFolioDBContext DBContext)
         {
             projectRepository = new ProjectRepository(DBContext);
             elastic = new ElasticSearch();

@@ -15,25 +15,31 @@ namespace eFolio
     {
         private IRepository<Developer> developers;
         private IRepository<Project> projects;
+        private IProjectService projectService;
+        private IDeveloperService developerService;
 
         public DevelopersController(IRepository<Developer> developers,
-                                    IRepository<Project> projects)
+                                    IRepository<Project> projects,
+                                    IProjectService projectService,
+                                    IDeveloperService developerService)
         {
             this.developers = developers;
             this.projects = projects;
+            this.projectService = projectService;
+            this.developerService = developerService;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<DeveloperEntity>> GetDevelopers()
         {
-            return Ok(developers.GetItemsList());
+            return Ok(developerService.GetItemsList());
         }
 
         [HttpGet]
         [Route("{id}")]
         public ActionResult<IEnumerable<DeveloperEntity>> GetDeveloper(int id)
         {
-            var project = developers.GetItem(id);
+            var project = developerService.GetItem(id);
             if (project == null)
             {
                 return NotFound(id);
@@ -67,13 +73,13 @@ namespace eFolio
         [Route("/api/projects/{projectId}/d/{id}")]
         public ActionResult QuitProject(int projectId, int id)
         {
-            var project = projects.GetItem(projectId);
+            var project = projectService.GetItem(projectId);
             if (project == null)
             {
                 return NotFound("Project not found: " + projectId);
             }
 
-            var developer = developers.GetItem(id);
+            var developer = developerService.GetItem(id);
             if (developer == null)
             {
                 return NotFound("Developer does not exist: " + id);
@@ -92,13 +98,13 @@ namespace eFolio
         [Route("/api/projects/{projectId}/d/{id}")]
         public ActionResult AssignToProject(int projectId, int id)
         {
-            var project = projects.GetItem(projectId);
+            var project = projectService. GetItem(projectId);
             if (project == null)
             {
                 return NotFound("Project not found: " + projectId);
             }
 
-            var developer = developers.GetItem(id);
+            var developer = developerService.GetItem(id);
             if (developer == null)
             {
                 return NotFound("Developer does not exist: " + id);
@@ -109,7 +115,7 @@ namespace eFolio
             {
                 project.Developers = new List<ProjectDeveloperEntity>();
             }
-
+    
             if (!project.Developers.Any(item => item.DeveloperId == id))
             {
                 project.Developers.Add(new ProjectDeveloperEntity()
@@ -117,7 +123,7 @@ namespace eFolio
                     DeveloperId = developer.Id,
                     ProjectId = project.Id
                 });
-                projects.Update(project);
+                projectService.Update(project);
             }*/
 
             return Ok();
