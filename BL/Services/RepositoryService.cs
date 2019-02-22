@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace eFolio.BL
 {
-    public class RepositoryService : IRepositoryService
+    public class RepositoryService : IProjectService
     {
         private ProjectRepository projectRepository;
         private ElasticSearch elastic;

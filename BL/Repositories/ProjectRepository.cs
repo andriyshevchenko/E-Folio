@@ -1,12 +1,8 @@
-﻿using eFolio.DTO;
-using eFolio.EF;
-using eFolio.Elastic;
+﻿using eFolio.EF;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
-
 
 namespace eFolio.BL
 {

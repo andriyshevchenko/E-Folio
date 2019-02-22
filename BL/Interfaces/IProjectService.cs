@@ -3,7 +3,7 @@ using eFolio.DTO;
 
 namespace eFolio.BL
 {
-    interface IRepositoryService
+    interface IProjectService
     {
         Project GetItem(int id);
         IEnumerable<Project> GetItemsList();
