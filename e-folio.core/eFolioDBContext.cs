@@ -18,6 +18,11 @@ namespace eFolio.EF
         public DbSet<ContactPersonEntity> ContactPersons { get; set; }
 
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProjectDeveloperEntity>().HasKey(pd => new { pd.ProjectId, pd.DeveloperId });

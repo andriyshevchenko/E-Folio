@@ -2,19 +2,32 @@
 using eFolio.DTO;
 using eFolio.EF;
 using eFolio.Elastic;
+using System;
 using System.Collections.Generic;
 
 namespace eFolio.BL
 {
     public class ProjectService : IProjectService
     {
+        private readonly IMapper mapper;
         private ProjectRepository projectRepository;
         private ElasticSearch elastic;
 
-        public ProjectService(eFolioDBContext DBContext)
+        public ProjectService(eFolioDBContext DBContext, IMapper mapper)
         {
             projectRepository = new ProjectRepository(DBContext);
             elastic = new ElasticSearch();
+            this.mapper = mapper;
+        }
+
+        public void Add(Project item)
+        {
+            projectRepository.Add(mapper.Map<ProjectEntity>(item));
+        }
+
+        public void Delete(int id)
+        {
+            projectRepository.Delete(id);
         }
 
         public Project GetItem(int id)
@@ -51,6 +64,11 @@ namespace eFolio.BL
             }
         }
 
+        public void Update(Project item)
+        {
+            projectRepository.Update(mapper.Map<ProjectEntity>(item));
+        }
+
         private IEnumerable<ElasticProjectData> GetElasticProjects(IEnumerable<ProjectEntity> projects)
         {
             foreach (var item in projects)
@@ -69,8 +87,7 @@ namespace eFolio.BL
 
         private Project GetMergeProject(ProjectEntity projectEntity, ElasticProjectData elasticProjectData)
         {
-            var partlyProject = Mapper.Map<ProjectEntity, Project>(projectEntity);
-            var project = Mapper.Map<ElasticProjectData, Project>(elasticProjectData, partlyProject);
+            var project = mapper.Map<Project>(Tuple.Create(elasticProjectData, projectEntity));
 
             return project;
         }

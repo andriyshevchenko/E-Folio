@@ -12,12 +12,10 @@ namespace eFolio
     [ApiController]
     public class ProjectController : ControllerBase
     {
-        private IRepository<Project> projects;
         private IProjectService projectService;
 
-        public ProjectController(IRepository<Project> repository, IProjectService projectService)
+        public ProjectController(IProjectService projectService)
         {
-            projects = repository;
             this.projectService = projectService;
         }
 
@@ -43,21 +41,21 @@ namespace eFolio
         [Route("{id}")]
         public ActionResult DeleteProject(int id)
         {
-            projects.Delete(id);
+            projectService.Delete(id);
             return Ok();
         }
 
         [HttpPost]
         public ActionResult MakeNewProject([FromBody] Project project)
         {
-            projects.Add(project);
+            projectService.Add(project);
             return Ok();
         }
          
         [HttpPut]
         public ActionResult Edit([FromBody] Project project)
         {
-            projects.Update(project);
+            projectService.Update(project);
             return Ok();
         }
     }
