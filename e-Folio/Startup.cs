@@ -30,19 +30,13 @@ namespace e_Folio
 
             services.AddDbContext<eFolioDBContext>(options => options.UseSqlServer(connection));
 
-          //  services.AddScoped<IRepository<Project>, ProjectRepository>();
-         
-            services.AddSingleton<IRepository<DeveloperEntity>>(
-                serviceCollection => new DeveloperRepository(connection)
-            );
-
+            services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IDeveloperService, FakeDeveloperService>();
 
             //Automapping
             var mappingConfig = new MapperConfiguration(mc => { mc.AddProfile(new Automapper()); });
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
-
-
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -61,7 +55,7 @@ namespace e_Folio
                 context.Database.Migrate();
                 ContextInitializer.Initialize(context);
             }
-            app.UseMvc( );
+            app.UseMvc();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using eFolio.EF;
+﻿using eFolio.EF;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,13 +9,9 @@ namespace eFolio.BL
     {
         private eFolioDBContext db;
 
-        public DeveloperRepository(string connectionString)
+        public DeveloperRepository(eFolioDBContext eFolioDBContext)
         {
-            //var optionsBuilder = new DbContextOptionsBuilder<eFolioDBContext>();
-
-            //var options = optionsBuilder.UseSqlServer(connectionString).Options;
-
-            //this.db = new eFolioDBContext(options);
+            this.db = eFolioDBContext;
         }
 
         public void Add(DeveloperEntity item)
@@ -29,16 +24,10 @@ namespace eFolio.BL
         public void Delete(int id)
         {
             DeveloperEntity developer = db.Developers.Find(id);
+
             db.Developers.Remove(developer);
 
             db.SaveChanges();
-        }
-
-        public DeveloperEntity GetItem(int id)
-        {
-            DeveloperEntity developer = db.Developers.Find(id);
-
-            return developer;
         }
 
         public IEnumerable<DeveloperEntity> GetItemsList()
