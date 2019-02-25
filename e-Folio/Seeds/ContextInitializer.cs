@@ -123,8 +123,8 @@ namespace e_Folio.Seeds
 
             var Elastic = new List<ElasticProjectData>
             {
-                new ElasticProjectData {Id = 0, Name = "WebApp", InternalDescr= "1st int descr", ExternalDescr = "1st ext descr" },
-                new ElasticProjectData {Id = 1, Name ="AnyApp", InternalDescr = "2nd int descr", ExternalDescr = "2nd ext descr"}
+                new ElasticProjectData {Id = projectEntity1.Id, Name = "WebApp", InternalDescr= "1st int descr", ExternalDescr = "1st ext descr" },
+                new ElasticProjectData {Id = projectEntity2.Id, Name ="AnyApp", InternalDescr = "2nd int descr", ExternalDescr = "2nd ext descr"}
 
             };
 
