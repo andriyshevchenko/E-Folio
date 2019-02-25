@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using AutoMapper;
 using eFolio.DTO;
 using eFolio.EF;
@@ -61,7 +62,13 @@ namespace eFolio.API
             CreateMap<Project, ProjectEntity>().ForMember(pe => pe.Id, m => m.MapFrom(p => p.Id))
                                 .ForMember(pe => pe.Name, m => m.MapFrom(p => p.Context))
                                 .ForMember(pe => pe.Context, m => m.MapFrom(p => p.Context))
-                                .ForMember(pe => pe.Developers, m => m.MapFrom(p => p.Developers));
+                                .ForMember(pe => pe.Developers,
+                                           m => m.MapFrom(
+                                               p => p.Developers.Select(
+                                                   d => new ProjectDeveloperEntity(p.Id, d.Id)
+                                               ).ToList()
+                                           )
+                                        );
 
             CreateMap<Project, ElasticProjectData>().ForMember(epd => epd.Id, m => m.MapFrom(p => p.Id))
                                 .ForMember(epd => epd.Name, m => m.MapFrom(p => p.Name))
