@@ -22,32 +22,80 @@ namespace eFolio.BL
 
         public void Add(Developer item)
         {
-            throw new NotImplementedException();
+            developerRepository.Add(mapper.Map<DeveloperEntity>(item));
+
+            elastic.AddItem(mapper.Map<ElasticDeveloperData>(item));
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            developerRepository.Delete(id);
+
+            elastic.DeleteDeveloperItem(id);
         }
 
         public Developer GetItem(int id)
         {
-            throw new NotImplementedException();
+            var developerEntity = developerRepository.GetItem(id);
+            var elasticDeveloper = elastic.GetDeveloperById(id);
+
+            return GetMergeDeveloper(developerEntity, elasticDeveloper);
         }
 
         public IEnumerable<Developer> GetItemsList()
         {
-            throw new NotImplementedException();
+            var developerEntities = developerRepository.GetItemsList();
+            var elasticDevelopers = GetElasticDevelopers(developerEntities);
+
+            var e1 = developerEntities.GetEnumerator();
+            var e2 = elasticDevelopers.GetEnumerator();
+            while (e1.MoveNext() && e2.MoveNext())
+            {
+                yield return GetMergeDeveloper(e1.Current, e2.Current);
+            }
         }
 
         public IEnumerable<Developer> Search(string request, Paging paging)
         {
-            throw new NotImplementedException();
+            var elasticDevelopers = elastic.SearchItemsDeveloper(request, paging);
+            var developerEntities = GetEntityDevelopers(elasticDevelopers);
+
+            var e1 = developerEntities.GetEnumerator();
+            var e2 = elasticDevelopers.GetEnumerator();
+            while (e1.MoveNext() && e2.MoveNext())
+            {
+                yield return GetMergeDeveloper(e1.Current, e2.Current);
+            }
         }
 
         public void Update(Developer item)
         {
-            throw new NotImplementedException();
+            developerRepository.Update(mapper.Map<DeveloperEntity>(item);
+
+            elastic.UpdateDeveloperData(mapper.Map<ElasticDeveloperData>(item));
+        }
+
+        private IEnumerable<ElasticDeveloperData> GetElasticDevelopers(IEnumerable<DeveloperEntity> developers)
+        {
+            foreach (var item in developers)
+            {
+                yield return elastic.GetDeveloperById(item.Id);
+            }
+        }
+
+        private IEnumerable<DeveloperEntity> GetEntityDevelopers(IEnumerable<ElasticDeveloperData> developers)
+        {
+            foreach (var item in developers)
+            {
+                yield return developerRepository.GetItem(item.Id);
+            }
+        }
+
+        private Developer GetMergeDeveloper(DeveloperEntity developerEntity, ElasticDeveloperData elasticDeveloperData)
+        {
+            var developer = mapper.Map<Developer>(Tuple.Create(elasticDeveloperData, developerEntity));
+
+            return developer;
         }
     }
 }
