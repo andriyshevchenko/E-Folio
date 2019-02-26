@@ -23,11 +23,15 @@ namespace eFolio.BL
         public void Add(Project item)
         {
             projectRepository.Add(mapper.Map<ProjectEntity>(item));
+
+            elastic.AddItem(mapper.Map<ElasticProjectData>(item));
         }
 
         public void Delete(int id)
         {
             projectRepository.Delete(id);
+
+            elastic.DeleteProjectItem(id);
         }
 
         public Project GetItem(int id)
@@ -66,9 +70,9 @@ namespace eFolio.BL
 
         public void Update(Project item)
         {
-            ProjectEntity projectEntity = mapper.Map<ProjectEntity>(item);
+            projectRepository.Update(mapper.Map<ProjectEntity>(item));
 
-            projectRepository.Update(projectEntity);
+            elastic.UpdateProjectData(mapper.Map<ElasticProjectData>(item));
         }
 
         private IEnumerable<ElasticProjectData> GetElasticProjects(IEnumerable<ProjectEntity> projects)

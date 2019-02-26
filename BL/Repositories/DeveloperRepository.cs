@@ -35,9 +35,11 @@ namespace eFolio.BL
             return db.Developers.ToListAsync().Result;
         }
 
-        public IEnumerable<DeveloperEntity> Search(string request)
+        public DeveloperEntity GetItem(int id)
         {
-            throw new NotImplementedException();
+            var developerEntity = db.Developers.Find(id);
+
+            return developerEntity;
         }
 
         public void Update(DeveloperEntity item)
