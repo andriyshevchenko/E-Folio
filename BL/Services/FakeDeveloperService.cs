@@ -47,7 +47,7 @@ namespace eFolio.BL
             .Select(converter.Map<Developer>);
         }
 
-        public IEnumerable<Developer> Search(string request)
+        public IEnumerable<Developer> Search(string request, Paging paging)
         {
             throw new NotImplementedException();
         }

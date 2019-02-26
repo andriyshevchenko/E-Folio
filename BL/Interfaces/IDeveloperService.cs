@@ -10,6 +10,6 @@ namespace eFolio.BL
         void Delete(int id);
         Developer GetItem(int id);
         IEnumerable<Developer> GetItemsList();
-        IEnumerable<Developer> Search(string request);
+        IEnumerable<Developer> Search(string request, Paging paging);
     }
 }

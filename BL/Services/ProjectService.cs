@@ -33,7 +33,7 @@ namespace eFolio.BL
         public Project GetItem(int id)
         {
             var projectEntity = projectRepository.GetItem(id);
-            var elasticProject = elastic.GetItemById(id);
+            var elasticProject = elastic.GetProjectById(id);
 
             return GetMergeProject(projectEntity, elasticProject);
         }
@@ -51,9 +51,9 @@ namespace eFolio.BL
             }
         }
 
-        public IEnumerable<Project> Search(string request)
+        public IEnumerable<Project> Search(string request, Paging paging)
         {
-            var elasticProjects = elastic.SearchItems(request);
+            var elasticProjects = elastic.SearchItemsProject(request, paging);
             var projectEntities = GetEntityProjects(elasticProjects);
 
             var e1 = projectEntities.GetEnumerator();
@@ -75,7 +75,7 @@ namespace eFolio.BL
         {
             foreach (var item in projects)
             {
-                yield return elastic.GetItemById(item.Id);
+                yield return elastic.GetProjectById(item.Id);
             }
         }
 

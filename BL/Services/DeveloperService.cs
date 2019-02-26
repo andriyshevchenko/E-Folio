@@ -40,7 +40,7 @@ namespace eFolio.BL
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Developer> Search(string request)
+        public IEnumerable<Developer> Search(string request, Paging paging)
         {
             throw new NotImplementedException();
         }

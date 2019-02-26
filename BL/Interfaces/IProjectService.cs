@@ -10,6 +10,6 @@ namespace eFolio.BL
         void Delete(int id);
         Project GetItem(int id);
         IEnumerable<Project> GetItemsList();
-        IEnumerable<Project> Search(string request);
+        IEnumerable<Project> Search(string request, Paging paging);
     }
 }
