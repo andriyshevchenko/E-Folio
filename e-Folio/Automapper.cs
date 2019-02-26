@@ -39,7 +39,7 @@ namespace eFolio.API
             CreateMap<DeveloperEntity, Developer>().ForMember(p => p.Id, m => m.MapFrom(pe => pe.Id))
                                 .ForMember(p => p.FullName, m => m.MapFrom(pe => pe.FullName))
                                 .ForMember(p => p.CVLink, m => m.MapFrom(pe => pe.CVLink))
-                                .ForMember(p => p.Projects, m => m.MapFrom(pe => pe.Projects));
+                                .ForMember(p => p.Projects, m => m.Ignore());
 
             CreateMap<FolioFileEntity, FolioFile>().ForMember(p => p.IsInternal, m => m.MapFrom(pe => pe.IsInternal))
                                  .ForMember(p => p.Path, m => m.MapFrom(pe => pe.Path));
