@@ -39,7 +39,7 @@ namespace eFolio.BL
         {
             ProjectEntity project = db.Projects.Find(id);
             db.Projects.Remove(project);
-            es.DeleteItem(id);
+            es.DeleteProjectItem(id);
 
             db.SaveChanges();
         }
@@ -49,8 +49,8 @@ namespace eFolio.BL
             ProjectEntity projectEntity = db.Projects.Find(id);
 
             Project project = new Project();
-            project.ExternalDescription = es.GetItemById(id).ExternalDescr;
-            project.InternalDescription = es.GetItemById(id).InternalDescr;
+            project.ExternalDescription = es.GetProjectById(id).ExternalDescr;
+            project.InternalDescription = es.GetProjectById(id).InternalDescr;
             project.Id = projectEntity.Id;
             project.Name = projectEntity.Name;
             //project.Developers = projectEntity.Developers;
@@ -79,7 +79,7 @@ namespace eFolio.BL
         public IEnumerable<ProjectEntity> Search(string request)
         {
             ElasticSearch elasticSearch = new ElasticSearch();
-            var response = elasticSearch.SearchItems(request);
+            var response = elasticSearch.SearchItemsProject(request);
 
             List<Project> projects = new List<Project>();
             for (int i = 0; i < response.Count; i++)
