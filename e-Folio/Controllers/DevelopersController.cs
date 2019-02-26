@@ -88,7 +88,7 @@ namespace eFolio
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("/api/projects/{projectId}/d/{id}")]
         public ActionResult AssignToProject(int projectId, int id)
         {
