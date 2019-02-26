@@ -67,7 +67,6 @@ namespace eFolio.BL
 
         public void Update(ProjectEntity item)
         {
-            db.Attach(item);
             db.Update(item);
             db.SaveChanges();
         }
