@@ -15,7 +15,12 @@ namespace eFolio.API
             CreateMap<Tuple<ElasticProjectData, ProjectEntity>, Project>().ForMember(p => p.Id, m => m.MapFrom(pe => pe.Item2.Id))
                                 .ForMember(p => p.Name, m => m.MapFrom(pe => pe.Item2.Name))
                                 .ForMember(p => p.Context, m => m.MapFrom(pe => pe.Item2.Context))
-                                .ForMember(p => p.Developers, m => m.MapFrom(pe => pe.Item2.Developers))
+                                .ForMember(p => p.Developers,
+                                           m => m.MapFrom(
+                                               pe => pe.Item2.Developers.Select(
+                                                   pd => new Developer(pd.DeveloperId, pd.DeveloperEntity.FullName, pd.DeveloperEntity.CVLink)).ToList()
+                                               )
+                                           )
                                 .ForMember(p => p.InternalDescription, m => m.MapFrom(epd => epd.Item1.InternalDescr))
                                 .ForMember(p => p.ExternalDescription, m => m.MapFrom(epd => epd.Item1.ExternalDescr));
 

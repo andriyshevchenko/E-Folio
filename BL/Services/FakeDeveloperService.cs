@@ -37,7 +37,8 @@ namespace eFolio.BL
 
         public Developer GetItem(int id)
         {
-            return converter.Map<Developer>(dbContext.Developers.Find(id));
+            DeveloperEntity source = dbContext.Developers.Find(id);
+            return converter.Map<Developer>(source);
         }
 
         public IEnumerable<Developer> GetItemsList()

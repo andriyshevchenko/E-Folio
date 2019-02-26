@@ -66,7 +66,9 @@ namespace eFolio.BL
 
         public void Update(Project item)
         {
-            projectRepository.Update(mapper.Map<ProjectEntity>(item));
+            ProjectEntity projectEntity = mapper.Map<ProjectEntity>(item);
+
+            projectRepository.Update(projectEntity);
         }
 
         private IEnumerable<ElasticProjectData> GetElasticProjects(IEnumerable<ProjectEntity> projects)
