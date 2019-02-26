@@ -70,7 +70,7 @@ namespace eFolio.BL
 
         public void Update(Developer item)
         {
-            developerRepository.Update(mapper.Map<DeveloperEntity>(item);
+            developerRepository.Update(mapper.Map<DeveloperEntity>(item));
 
             elastic.UpdateDeveloperData(mapper.Map<ElasticDeveloperData>(item));
         }
