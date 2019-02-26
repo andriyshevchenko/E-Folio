@@ -22,7 +22,7 @@ namespace eFolio.BL
             db.SaveChanges();
         }
 
-        public void Delete(int id)  
+        public void Delete(int id)
         {
             ProjectEntity project = db.Projects.Find(id);
 
@@ -45,18 +45,30 @@ namespace eFolio.BL
         public IEnumerable<ProjectEntity> GetItemsList()
         {
             List<ProjectEntity> list = db.Projects
-                .Include(project => project.Developers)
                 .Include(project => project.Context)
                 .ThenInclude(context => context.ScreenLinks)
-                .ToListAsync().Result;
+                .ToList(); 
+
+            var developers = db.Set<ProjectDeveloperEntity>()
+                .Include(pde => pde.DeveloperEntity)
+                .GroupBy(pde => pde.ProjectId)
+                .ToDictionary(pde => pde.Key);
+             
+            foreach (var item in list)
+            {
+                if (developers.ContainsKey(item.Id))
+                {
+                    item.Developers = developers[item.Id].ToList();
+                }
+            }
 
             return list;
         }
 
         public void Update(ProjectEntity item)
         {
-            db.Projects.Update(item);
-
+            db.Attach(item);
+            db.Update(item);
             db.SaveChanges();
         }
 
