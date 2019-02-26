@@ -70,7 +70,9 @@ namespace eFolio.BL
 
         public void Update(Project item)
         {
-            projectRepository.Update(mapper.Map<ProjectEntity>(item));
+            ProjectEntity oldProjectEntity = projectRepository.GetItem(item.Id);
+            ProjectEntity projectEntity = mapper.Map<Project, ProjectEntity>(item, oldProjectEntity);
+            projectRepository.Update(projectEntity);
 
             elastic.UpdateProjectData(mapper.Map<ElasticProjectData>(item));
         }
