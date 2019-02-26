@@ -1,6 +1,5 @@
 
-﻿
-using e_folio.data;
+using eFolio.DTO;
 using e_Folio.Seeds;
 using eFolio.BL;
 using eFolio.EF;
@@ -10,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AutoMapper;
+using eFolio.API;
 
 namespace e_Folio
 {
@@ -29,11 +30,13 @@ namespace e_Folio
 
             services.AddDbContext<eFolioDBContext>(options => options.UseSqlServer(connection));
 
-            services.AddScoped<IRepository<Project>, ProjectRepository>();
-         
-            services.AddSingleton<IRepository<DeveloperEntity>>(
-                serviceCollection => new DeveloperRepository(connection)
-            );
+            services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IDeveloperService, FakeDeveloperService>();
+
+            //Automapping
+            var mappingConfig = new MapperConfiguration(mc => { mc.AddProfile(new Automapper()); });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -52,9 +55,7 @@ namespace e_Folio
                 context.Database.Migrate();
                 ContextInitializer.Initialize(context);
             }
-            app.UseMvc(/*routes=>
-                { MapRoute(name: default,  template: "{controller=Home}/{action=index}/{id?}" ); }*/
-            );
+            app.UseMvc();
         }
     }
 }

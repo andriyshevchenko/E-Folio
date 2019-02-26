@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace e_folio.data
+namespace eFolio.DTO
 {
     public class Developer
     {

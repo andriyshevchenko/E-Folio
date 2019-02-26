@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-using e_folio.data;
+using eFolio.DTO;
 using eFolio.BL;
 using Microsoft.AspNetCore.Http; 
 using Microsoft.AspNetCore.Mvc;
@@ -12,24 +12,24 @@ namespace eFolio
     [ApiController]
     public class ProjectController : ControllerBase
     {
-        private IRepository<Project> projects;
+        private IProjectService projectService;
 
-        public ProjectController(IRepository<Project> repository)
+        public ProjectController(IProjectService projectService)
         {
-            projects = repository;
+            this.projectService = projectService;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Project>> GetProjects()
         {
-            return Ok(projects.GetItemsList());
+            return Ok(projectService.GetItemsList());
         }
 
         [HttpGet]
         [Route("{id}")]
         public ActionResult<IEnumerable<Project>> GetProject(int id)
         {
-            Project project = projects.GetItem(id);
+            Project project = projectService.GetItem(id);
             if (project == null)
             {
                 return NotFound(id);
@@ -41,21 +41,21 @@ namespace eFolio
         [Route("{id}")]
         public ActionResult DeleteProject(int id)
         {
-            projects.Delete(id);
+            projectService.Delete(id);
             return Ok();
         }
 
         [HttpPost]
         public ActionResult MakeNewProject([FromBody] Project project)
         {
-            projects.Add(project);
+            projectService.Add(project);
             return Ok();
         }
          
         [HttpPut]
         public ActionResult Edit([FromBody] Project project)
         {
-            projects.Update(project);
+            projectService.Update(project);
             return Ok();
         }
     }
