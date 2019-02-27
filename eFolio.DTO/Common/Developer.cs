@@ -15,6 +15,9 @@ namespace eFolio.DTO
         public int Id { get; set; }
         public string FullName { get; set; }
         public string CVLink { get; set; }
+        public string InternalCV { get; set; }
+        public string ExternalCV { get; set; }
+
         public ICollection<Project> Projects { get; set; }
     }
 }

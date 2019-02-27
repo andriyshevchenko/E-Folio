@@ -61,6 +61,11 @@ namespace eFolio.API
                                 .ForMember(pe => pe.CVLink, m => m.MapFrom(p => p.CVLink))
                                 .ForMember(pe => pe.Projects, m => m.MapFrom(p => p.Projects));
 
+            CreateMap<Developer, ElasticDeveloperData>().ForMember(pe => pe.Name, m => m.MapFrom(p => p.FullName))
+                                .ForMember(pe => pe.Id, m => m.MapFrom(p => p.Id))
+                                .ForMember(pe => pe.InternalCV, m => m.MapFrom(p => p.InternalCV))
+                                .ForMember(pe => pe.ExternalCV, m => m.MapFrom(p => p.ExternalCV));
+
             CreateMap<FolioFile, FolioFileEntity>().ForMember(pe => pe.IsInternal, m => m.MapFrom(p => p.IsInternal))
                                 .ForMember(pe => pe.Path, m => m.MapFrom(p => p.Path));
 
