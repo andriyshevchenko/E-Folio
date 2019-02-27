@@ -26,9 +26,11 @@ namespace eFolio.BL
         {
             ProjectEntity project = db.Projects.Find(id);
 
-            db.Projects.Remove(project);
-
-            db.SaveChanges();
+            if (project != null)
+            {
+                db.Projects.Remove(project);
+                db.SaveChanges();
+            }
         }
 
         public ProjectEntity GetItem(int id)
@@ -38,6 +40,13 @@ namespace eFolio.BL
                 .Include(item => item.Context)
                 .ThenInclude(context => context.ScreenLinks)
                 .SingleOrDefault(item => item.Id == id);
+
+            var developers = db.Set<ProjectDeveloperEntity>()
+                .Include(pde => pde.DeveloperEntity)
+                .Where(pde => pde.ProjectId == id)
+                .ToList();
+
+            projectEntity.Developers = developers;
 
             return projectEntity;
         }
