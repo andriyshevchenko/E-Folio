@@ -221,26 +221,19 @@ namespace e_Folio.Seeds
                 };
             }
 
-            var Elastic = new List<ElasticProjectData>
+            var ElasticProj = new List<ElasticProjectData>
             {
-                new ElasticProjectData {Id = projectEntity1.Id, Name = "WebApp", InternalDescr= "1st int descr", ExternalDescr = "1st ext descr" },
-                new ElasticProjectData {Id = projectEntity2.Id, Name ="AnyApp", InternalDescr = "2nd int descr", ExternalDescr = "2nd ext descr"},
-                new ElasticProjectData
-                {
-                    Id = 0,
-                    Name = "WebApp",
-                    InternalDescr = "1st int descr",
-                    ExternalDescr = "1st ext descr"
-                },
-                new ElasticProjectData
-                {
-                    Id = 0,
-                    Name = "AnyApp",
-                    InternalDescr = "2nd int descr",
-                    ExternalDescr = "2nd ext descr"
-                }  
+                new ElasticProjectData {Id = projectEntity1.Id, Name = "WebAppProj", InternalDescr= "1st int descr", ExternalDescr = "1st ext descr" },
+                new ElasticProjectData {Id = projectEntity2.Id, Name ="AnyAppProj", InternalDescr = "2nd int descr", ExternalDescr = "2nd ext descr"},
+                
             };
 
+            var ElasticDev = new List<ElasticDeveloperData>
+            {
+                new ElasticDeveloperData {Id = projectEntity1.Id, Name = "WebAppDev", InternalDescr= "1st int descr", ExternalDescr = "1st ext descr" },
+                new ElasticDeveloperData {Id = projectEntity2.Id, Name ="AnyAppDev", InternalDescr = "2nd int descr", ExternalDescr = "2nd ext descr"},
+               
+            };
             context.SaveChanges();
         }
 
