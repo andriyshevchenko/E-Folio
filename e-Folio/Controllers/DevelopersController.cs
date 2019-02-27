@@ -92,7 +92,7 @@ namespace eFolio
         [Route("/api/projects/{projectId}/d/{id}")]
         public ActionResult AssignToProject(int projectId, int id)
         {
-            var project = projectService. GetItem(projectId);
+            var project = projectService.GetItem(projectId);
             if (project == null)
             {
                 return NotFound("Project not found: " + projectId);
