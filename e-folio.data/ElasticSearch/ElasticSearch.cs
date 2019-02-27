@@ -125,7 +125,7 @@ namespace eFolio.Elastic
                       ),
 
                       m => m.Match(mp => mp
-                      .Field(fg => fg.InternalDescr)
+                      .Field(fg => fg.InternalCV)
                       .Query(tstring)
                       .Fuzziness(Fuzziness.Auto)
                       )
@@ -150,7 +150,7 @@ namespace eFolio.Elastic
 
         public void DeleteDeveloperItem(int _Id) //works!
         {
-            clientProject.Delete<ElasticDeveloperData>(_Id);
+            clientDeveloper.Delete<ElasticDeveloperData>(_Id);
         }
 
 
@@ -190,8 +190,8 @@ namespace eFolio.Elastic
             {
                 temp.Name = hit.Source.Name;
                 temp.Id = hit.Source.Id;
-                temp.InternalDescr = hit.Source.InternalDescr;
-                temp.ExternalDescr = hit.Source.ExternalDescr;
+                temp.InternalCV = hit.Source.InternalCV;
+                temp.ExternalCV = hit.Source.ExternalCV;
             }
             return temp;
         }
@@ -223,8 +223,8 @@ namespace eFolio.Elastic
                 var temp = new ElasticDeveloperData();
                 temp.Name = hit.Source.Name;
                 temp.Id = hit.Source.Id;
-                temp.InternalDescr = hit.Source.InternalDescr;
-                temp.ExternalDescr = hit.Source.ExternalDescr;
+                temp.InternalCV = hit.Source.InternalCV;
+                temp.ExternalCV = hit.Source.ExternalCV;
                 resultList.Add(temp);
             }
             return resultList;

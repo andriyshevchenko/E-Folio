@@ -25,9 +25,11 @@ namespace eFolio.BL
         {
             DeveloperEntity developer = db.Developers.Find(id);
 
-            db.Developers.Remove(developer);
-
-            db.SaveChanges();
+            if (developer != null)
+            {
+                db.Developers.Remove(developer);
+                db.SaveChanges();
+            }
         }
 
         public IEnumerable<DeveloperEntity> GetItemsList()

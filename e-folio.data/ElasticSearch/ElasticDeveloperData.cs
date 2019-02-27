@@ -9,8 +9,8 @@ namespace eFolio.Elastic
         public int Id { get; set; }
         public string Name { get; set; }
     
-        public string InternalDescr { get; set; }
-        public string ExternalDescr { get; set; }
+        public string InternalCV { get; set; }
+        public string ExternalCV { get; set; }
     }
 }
 
