@@ -230,8 +230,8 @@ namespace e_Folio.Seeds
 
             var ElasticDev = new List<ElasticDeveloperData>
             {
-                new ElasticDeveloperData {Id = projectEntity1.Id, Name = "WebAppDev", InternalDescr= "1st int descr", ExternalDescr = "1st ext descr" },
-                new ElasticDeveloperData {Id = projectEntity2.Id, Name ="AnyAppDev", InternalDescr = "2nd int descr", ExternalDescr = "2nd ext descr"},
+                new ElasticDeveloperData {Id = projectEntity1.Id, Name = "WebAppDev", InternalCV= "1st int descr", ExternalCV = "1st ext descr" },
+                new ElasticDeveloperData {Id = projectEntity2.Id, Name ="AnyAppDev", InternalCV = "2nd int descr", ExternalCV = "2nd ext descr"},
                
             };
             context.SaveChanges();
