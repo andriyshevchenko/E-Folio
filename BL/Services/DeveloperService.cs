@@ -22,9 +22,12 @@ namespace eFolio.BL
 
         public void Add(Developer item)
         {
-            developerRepository.Add(mapper.Map<DeveloperEntity>(item));
+            DeveloperEntity de = mapper.Map<DeveloperEntity>(item);
+            developerRepository.Add(de);
 
-            elastic.AddItem(mapper.Map<ElasticDeveloperData>(item));
+            item.Update(de.Id);
+            ElasticDeveloperData eld = mapper.Map<ElasticDeveloperData>(item);
+            elastic.AddItem(eld);
         }
 
         public void Delete(int id)

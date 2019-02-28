@@ -5,6 +5,15 @@ namespace eFolio.DTO
     public class Project 
     {
         public int Id { get; set; }
+
+        public void Update(int id)
+        {
+            if (id > 0)
+            {
+                Id = id;
+            }
+        }
+
         public string Name { get; set; }
         public Context Context { get; set; }
 

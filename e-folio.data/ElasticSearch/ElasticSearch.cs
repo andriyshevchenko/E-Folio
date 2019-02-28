@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Xml.Serialization;
-using Nest;
-using eFolio.DTO;
-namespace eFolio.Elastic
+﻿namespace eFolio.Elastic
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Xml.Serialization;
+    using Nest;
+    using eFolio.DTO;
+
     public class ElasticSearch : IEfolioElastic
     {
         public ElasticClient clientProject;
@@ -20,22 +21,19 @@ namespace eFolio.Elastic
             clientDeveloper = new ElasticClient(settingsDeveloper);
         }
 
-
-
         public void AddItem(ElasticProjectData item) //works
         {
-             clientProject.IndexDocument(item);
+            clientProject.IndexDocument(item);
         }
+
         public void AddItem(ElasticDeveloperData item) //works
         {
             clientDeveloper.IndexDocument(item);
         }
 
-
-
-        public  void AddItemProject(string path) //works
+        public void AddItemProject(string path) //works
         {
-            List <ElasticProjectData> items;
+            List<ElasticProjectData> items;
             if (File.Exists(path))
             {
                 XmlSerializer formatter = new XmlSerializer(typeof(ElasticProjectData[]));
@@ -46,14 +44,15 @@ namespace eFolio.Elastic
             }
             else
             {
-                  items = new List<ElasticProjectData>();
+                items = new List<ElasticProjectData>();
             }
 
-            for (int i=0; i<items.Count; i++)
+            for (int i = 0; i < items.Count; i++)
             {
                 clientProject.IndexDocument(items[i]);
             }
         }
+
         public void AddItemDeveloper(string path) //works
         {
             List<ElasticDeveloperData> items;
@@ -72,11 +71,9 @@ namespace eFolio.Elastic
 
             for (int i = 0; i < items.Count; i++)
             {
-                clientProject.IndexDocument(items[i]);
+                clientDeveloper.IndexDocument(items[i]);
             }
         }
-
-
 
         public List<ElasticProjectData> SearchItemsProject(string tstring, Paging paging)
         {
@@ -87,12 +84,12 @@ namespace eFolio.Elastic
                 .Size(size).
                 Query(q => q
                     .Bool(b => b.
-                       Should( m => m.
-                         Match(mp => mp
-                            .Field(fg => fg.Name)
-                            .Query(tstring)
-                            .Fuzziness(Fuzziness.Auto)
-                      ),
+                       Should(m => m.
+                        Match(mp => mp
+                           .Field(fg => fg.Name)
+                           .Query(tstring)
+                           .Fuzziness(Fuzziness.Auto)
+                     ),
 
                         m => m.Match(mp => mp
                             .Field(fg => fg.InternalDescr)
@@ -108,40 +105,37 @@ namespace eFolio.Elastic
             returnlist = HitToDataConvertProject(sr);
             return returnlist;
         }
-        public  List<ElasticDeveloperData> SearchItemsDeveloper(string tstring, Paging paging)
+
+        public List<ElasticDeveloperData> SearchItemsDeveloper(string query, Paging paging)
         {
             int from = paging.From;
             int size = paging.Size;
-            var sr = clientDeveloper.Search<ElasticDeveloperData>(s => s.
-            From(from)
-            .Size(size).
-            Query(q => q.
-                Bool(b => b.
-                    Should(
-                      m => m.Match(mp => mp
-                    .Field(fg => fg.Name)
-                    .Query(tstring)
-                      .Fuzziness(Fuzziness.Auto)
-                      ),
-
-                      m => m.Match(mp => mp
-                      .Field(fg => fg.InternalDescr)
-                      .Query(tstring)
-                      .Fuzziness(Fuzziness.Auto)
+            var sr = clientDeveloper.Search<ElasticDeveloperData>(
+                s => s.From(from)
+                      .Size(size)
+                      .Query(
+                          q => q.Bool(
+                              b => b.Should(
+                                  m => m.Match(
+                                      mp => mp.Field(fg => fg.Name)
+                                       .Query(query)
+                                       .Fuzziness(Fuzziness.Auto)
+                                  ),
+                                  m => m.Match(
+                                      mp => mp.Field(fg => fg.InternalCV)
+                                       .Query(query)
+                                       .Fuzziness(Fuzziness.Auto)
+                                  )
+                              )
+                          )
                       )
-
-                      ))));
+                  );
             var returnlist = new List<ElasticProjectData>();
 
             List<ElasticDeveloperData> resultList = new List<ElasticDeveloperData>();
             resultList = HitToDataConvertDeveloper(sr);
             return resultList;
         }
-
-
-
-
-
 
         public void DeleteProjectItem(int _Id) //works!
         {
@@ -150,11 +144,8 @@ namespace eFolio.Elastic
 
         public void DeleteDeveloperItem(int _Id) //works!
         {
-            clientProject.Delete<ElasticDeveloperData>(_Id);
+            clientDeveloper.Delete<ElasticDeveloperData>(_Id);
         }
-
-
-
 
         public ElasticProjectData GetProjectById(int _Id) //works!
         {
@@ -178,7 +169,7 @@ namespace eFolio.Elastic
 
         public ElasticDeveloperData GetDeveloperById(int _Id) //works!
         {
-            var searchResponse1 = clientProject.Search<ElasticDeveloperData>(s => s
+            var searchResponse1 = clientDeveloper.Search<ElasticDeveloperData>(s => s
                       .Query(q => q
                              .Match(m => m
                                  .Field(f => f.Id).Query(_Id.ToString())
@@ -190,20 +181,16 @@ namespace eFolio.Elastic
             {
                 temp.Name = hit.Source.Name;
                 temp.Id = hit.Source.Id;
-                temp.InternalDescr = hit.Source.InternalDescr;
-                temp.ExternalDescr = hit.Source.ExternalDescr;
+                temp.InternalCV = hit.Source.InternalCV;
+                temp.ExternalCV = hit.Source.ExternalCV;
             }
             return temp;
         }
 
-
-
-
-
         private List<ElasticProjectData> HitToDataConvertProject(ISearchResponse<ElasticProjectData> searchResponse)
         {
             List<ElasticProjectData> resultList = new List<ElasticProjectData>();
-            
+
             foreach (var hit in searchResponse.Hits)
             {
                 var temp = new ElasticProjectData();
@@ -215,6 +202,7 @@ namespace eFolio.Elastic
             }
             return resultList;
         }
+
         private List<ElasticDeveloperData> HitToDataConvertDeveloper(ISearchResponse<ElasticDeveloperData> searchResponse)
         {
             List<ElasticDeveloperData> resultList = new List<ElasticDeveloperData>();
@@ -223,29 +211,33 @@ namespace eFolio.Elastic
                 var temp = new ElasticDeveloperData();
                 temp.Name = hit.Source.Name;
                 temp.Id = hit.Source.Id;
-                temp.InternalDescr = hit.Source.InternalDescr;
-                temp.ExternalDescr = hit.Source.ExternalDescr;
+                temp.InternalCV = hit.Source.InternalCV;
+                temp.ExternalCV = hit.Source.ExternalCV;
                 resultList.Add(temp);
             }
             return resultList;
         }
 
-
-
-
-
         public void UpdateProjectData(ElasticProjectData InsertData) //wokrs!
         {
             int InsertId = InsertData.Id;
             var updateResponse = clientProject.Update<ElasticProjectData, object>(InsertId, u => u.Doc(InsertData).RetryOnConflict(1));
+            if (!updateResponse.IsValid && updateResponse.ApiCall.HttpStatusCode == 404)
+            {
+                //insert document
+                var insertResponse = clientProject.IndexDocument(InsertData);
+            }
+
         }
         public void UpdateDeveloperData(ElasticDeveloperData InsertData) //wokrs!
         {
             int InsertId = InsertData.Id;
             var updateResponse = clientDeveloper.Update<ElasticDeveloperData, object>(InsertId, u => u.Doc(InsertData).RetryOnConflict(1));
+            if (!updateResponse.IsValid && updateResponse.ApiCall.HttpStatusCode == 404)
+            {
+                //insert document
+                clientDeveloper.IndexDocument(InsertData);
+            }
         }
-        
-
-
     }
 }

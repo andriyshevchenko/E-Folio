@@ -18,11 +18,20 @@ namespace eFolio.API
                                 .ForMember(p => p.Developers,
                                            m => m.MapFrom(
                                                pe => pe.Item2.Developers.Select(
-                                                   pd => new Developer(pd.DeveloperId, pd.DeveloperEntity.FullName, pd.DeveloperEntity.CVLink)).ToList()
+                                                   pd => new Developer(pd.DeveloperId,
+                                                                       pd.DeveloperEntity.FullName, 
+                                                                       pd.DeveloperEntity.CVLink)).ToList()
                                                )
                                            )
                                 .ForMember(p => p.InternalDescription, m => m.MapFrom(epd => epd.Item1.InternalDescr))
                                 .ForMember(p => p.ExternalDescription, m => m.MapFrom(epd => epd.Item1.ExternalDescr));
+
+            CreateMap<Tuple<ElasticDeveloperData, DeveloperEntity>, Developer>().ForMember(p => p.Id, m => m.MapFrom(pe => pe.Item2.Id))
+                                .ForMember(p => p.FullName, m => m.MapFrom(pe => pe.Item2.FullName))
+                                .ForMember(p => p.CVLink, m => m.MapFrom(pe => pe.Item2.CVLink))
+                                .ForMember(p => p.Projects, m => m.Ignore())
+                                .ForMember(p => p.InternalCV, m => m.MapFrom(pe => pe.Item1.InternalCV))
+                                .ForMember(p => p.ExternalCV, m => m.MapFrom(pe => pe.Item1.ExternalCV));
 
             CreateMap<ClientEntity, Client>().ForMember(p => p.FullNameClient, m => m.MapFrom(pe => pe.FullNameClient))
                                 .ForMember(p => p.ContactPersons, m => m.MapFrom(pe => pe.ContactPersons))
@@ -61,12 +70,18 @@ namespace eFolio.API
                                 .ForMember(pe => pe.CVLink, m => m.MapFrom(p => p.CVLink))
                                 .ForMember(pe => pe.Projects, m => m.MapFrom(p => p.Projects));
 
+            CreateMap<Developer, ElasticDeveloperData>().ForMember(pe => pe.Name, m => m.MapFrom(p => p.FullName))
+                                .ForMember(pe => pe.Id, m => m.MapFrom(p => p.Id))
+                                .ForMember(pe => pe.InternalCV, m => m.MapFrom(p => p.InternalCV))
+                                .ForMember(pe => pe.ExternalCV, m => m.MapFrom(p => p.ExternalCV));
+
             CreateMap<FolioFile, FolioFileEntity>().ForMember(pe => pe.IsInternal, m => m.MapFrom(p => p.IsInternal))
                                 .ForMember(pe => pe.Path, m => m.MapFrom(p => p.Path));
 
             CreateMap<Project, ProjectEntity>().ForMember(pe => pe.Id, m => m.MapFrom(p => p.Id))
                                 .ForMember(pe => pe.Name, m => m.MapFrom(p => p.Context))
                                 .ForMember(pe => pe.Context, m => m.MapFrom(p => p.Context))
+                                .ForMember(pe => pe.ContextId, m => m.Ignore())
                                 .ForMember(pe => pe.Developers,
                                            m => m.MapFrom(
                                                p => p.Developers.Select(

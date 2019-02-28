@@ -22,9 +22,12 @@ namespace eFolio.BL
 
         public void Add(Project item)
         {
-            projectRepository.Add(mapper.Map<ProjectEntity>(item));
+            ProjectEntity pe = mapper.Map<ProjectEntity>(item);
+            projectRepository.Add(pe);
 
-            elastic.AddItem(mapper.Map<ElasticProjectData>(item));
+            item.Update(pe.Id);
+            ElasticProjectData epd = mapper.Map<ElasticProjectData>(item);
+            elastic.AddItem(epd);
         }
 
         public void Delete(int id)
