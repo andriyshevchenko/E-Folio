@@ -30,32 +30,35 @@ namespace eFolio
         [HttpGet]
         public ActionResult<IEnumerable<Project>> GetProjects()
         {
-            _logger.LogWarning(new Exception(), string.Empty);
-  
-            return Ok(_projectService.GetItemsList());
+            try
+            {
+                return Ok(_projectService.GetItemsList());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+            }
         }
 
         [HttpGet]
         [Route("{id}")]
         public ActionResult<IEnumerable<Project>> GetProject(int id)
         {
-            Project project;
             try
             {
-                project = _projectService.GetItem(id);
+                var project = _projectService.GetItem(id);
                 if (project == null)
                 {
                     return NotFound(id);
                 }
+                return Ok(project);
             }
             catch (Exception ex)
             {
+                _logger.LogWarning(ex, string.Empty);
                 return StatusCode((int) HttpStatusCode.BadRequest, new ErrorResponse(ex));
             }
-
-            _logger.LogWarning(new Exception(), string.Empty);
-
-            return Ok(project);
         }
 
         [HttpDelete]
@@ -65,15 +68,13 @@ namespace eFolio
             try
             {
                 _projectService.Delete(id);
+                return Ok();
             }
             catch (Exception ex)
             {
+                _logger.LogWarning(ex, string.Empty);
                 return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
             }
-
-            _logger.LogWarning(new Exception(), string.Empty);
-
-            return Ok();
         }
 
         [HttpPost]
@@ -82,15 +83,16 @@ namespace eFolio
             try
             {
                 _projectService.Add(project);
+                return Ok();
             }
             catch (Exception ex)
             {
+                _logger.LogWarning(ex, string.Empty);
+
                 return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
             }
 
-            _logger.LogWarning(new Exception(), string.Empty);
 
-            return Ok();
         }
          
         [HttpPut]
@@ -99,15 +101,13 @@ namespace eFolio
             try
             {
                 _projectService.Update(project);
+                return Ok();
             }
             catch (Exception ex)
             {
+                _logger.LogWarning(ex, string.Empty);
                 return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
             }
-
-            _logger.LogWarning(new Exception(), string.Empty);
-
-            return Ok();
         }
     }
 }
