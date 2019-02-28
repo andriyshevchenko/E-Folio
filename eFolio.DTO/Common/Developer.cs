@@ -16,7 +16,7 @@ namespace eFolio.DTO
             Projects = new List<Project>();
         }
 
-        public void Update(int id)
+        public void UpdateId(int id)
         {
             if (id > 0)
             {

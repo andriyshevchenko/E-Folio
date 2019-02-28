@@ -6,7 +6,7 @@ namespace eFolio.DTO
     {
         public int Id { get; set; }
 
-        public void Update(int id)
+        public void UpdateId(int id)
         {
             if (id > 0)
             {
