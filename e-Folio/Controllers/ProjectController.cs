@@ -1,9 +1,14 @@
-﻿using System.Collections.Generic;
-
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Reflection.Metadata.Ecma335;
 using eFolio.DTO;
 using eFolio.BL;
 using Microsoft.AspNetCore.Http; 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Nest;
+using eFolio.API.Models;
 
 namespace eFolio
 {
@@ -12,28 +17,44 @@ namespace eFolio
     [ApiController]
     public class ProjectController : ControllerBase
     {
-        private IProjectService projectService;
+        private IProjectService _projectService;
+        private ILogger _logger;
 
-        public ProjectController(IProjectService projectService)
+        public ProjectController(IProjectService projectService,
+            ILogger<ProjectController> logger)
         {
-            this.projectService = projectService;
+            _projectService = projectService;
+            _logger = logger;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Project>> GetProjects()
         {
-            return Ok(projectService.GetItemsList());
+            _logger.LogWarning(new Exception(), string.Empty);
+  
+            return Ok(_projectService.GetItemsList());
         }
 
         [HttpGet]
         [Route("{id}")]
         public ActionResult<IEnumerable<Project>> GetProject(int id)
         {
-            Project project = projectService.GetItem(id);
-            if (project == null)
+            Project project;
+            try
             {
-                return NotFound(id);
+                project = _projectService.GetItem(id);
+                if (project == null)
+                {
+                    return NotFound(id);
+                }
             }
+            catch (Exception ex)
+            {
+                return StatusCode((int) HttpStatusCode.BadRequest, new ErrorResponse(ex));
+            }
+
+            _logger.LogWarning(new Exception(), string.Empty);
+
             return Ok(project);
         }
 
@@ -41,21 +62,51 @@ namespace eFolio
         [Route("{id}")]
         public ActionResult DeleteProject(int id)
         {
-            projectService.Delete(id);
+            try
+            {
+                _projectService.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+            }
+
+            _logger.LogWarning(new Exception(), string.Empty);
+
             return Ok();
         }
 
         [HttpPost]
         public ActionResult MakeNewProject([FromBody] Project project)
         {
-            projectService.Add(project);
+            try
+            {
+                _projectService.Add(project);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+            }
+
+            _logger.LogWarning(new Exception(), string.Empty);
+
             return Ok();
         }
          
         [HttpPut]
         public ActionResult Edit([FromBody] Project project)
         {
-            projectService.Update(project);
+            try
+            {
+                _projectService.Update(project);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+            }
+
+            _logger.LogWarning(new Exception(), string.Empty);
+
             return Ok();
         }
     }

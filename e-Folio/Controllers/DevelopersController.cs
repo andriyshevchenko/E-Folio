@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using eFolio.DTO;
 using eFolio.BL;
 using eFolio.EF;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Net;
+using eFolio.API.Models;
 
 namespace eFolio
 {
@@ -13,38 +17,62 @@ namespace eFolio
     [ApiController]
     public class DevelopersController : ControllerBase
     { 
-        private IProjectService projectService;
-        private IDeveloperService developerService;
+        private IProjectService _projectService;
+        private IDeveloperService _developerService;
+        private ILogger _logger;
 
         public DevelopersController(IProjectService projectService,
-                                    IDeveloperService developerService)
+                                    IDeveloperService developerService,
+                                    ILogger<ProjectController> logger)
         { 
-            this.projectService = projectService;
-            this.developerService = developerService;
+            this._projectService = projectService;
+            this._developerService = developerService;
+            this._logger = logger;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Developer>> GetDevelopers()
         {
-            return Ok(developerService.GetItemsList());
+            return Ok(_developerService.GetItemsList());
         }
 
         [HttpGet]
         [Route("{id}")]
         public ActionResult<IEnumerable<Developer>> GetDeveloper(int id)
         {
-            var project = developerService.GetItem(id);
-            if (project == null)
+            Developer project; // тип змінной був спочатку var, компілятор сварився, я змінив на Developer
+            try
             {
-                return NotFound(id);
+                project = _developerService.GetItem(id);
+                if (project == null)
+                {
+                    return NotFound(id);
+                }
             }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+            }
+
+            _logger.LogWarning(new Exception(), string.Empty);
+
             return Ok(project);
         }
 
         [HttpPost]
         public ActionResult NewDeveloper([FromBody] Developer developer)
         {
-            developerService.Add(developer);
+            try
+            {
+                _developerService.Add(developer);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+            }
+
+            _logger.LogWarning(new Exception(), string.Empty);
+
             return Ok();
         }
 
@@ -52,14 +80,34 @@ namespace eFolio
         [Route("{id}")]
         public ActionResult DeleteDeveloper(int id)
         {
-            developerService.Delete(id);
+            try
+            {
+                _developerService.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+            }
+
+            _logger.LogWarning(new Exception(), string.Empty);
+
             return Ok();
         }
 
         [HttpPut]
         public ActionResult Edit(Developer developer)
         {
-            developerService.Update(developer);
+            try
+            {
+                _developerService.Update(developer);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+            }
+
+            _logger.LogWarning(new Exception(), string.Empty);
+
             return Ok();
         }
 
@@ -67,23 +115,32 @@ namespace eFolio
         [Route("/api/projects/{projectId}/d/{id}")]
         public ActionResult QuitProject(int projectId, int id)
         {
-            var project = projectService.GetItem(projectId);
-            if (project == null)
+            try
             {
-                return NotFound("Project not found: " + projectId);
+                var project = _projectService.GetItem(projectId);
+                if (project == null)
+                {
+                    return NotFound("Project not found: " + projectId);
+                }
+
+                var developer = _developerService.GetItem(id);
+                if (developer == null)
+                {
+                    return NotFound("Developer does not exist: " + id);
+                }
+
+                project.Developers.Remove(
+                    project.Developers.FirstOrDefault(item => item.Id == id)
+                );
+
+                _projectService.Update(project);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
             }
 
-            var developer = developerService.GetItem(id);
-            if (developer == null)
-            {
-                return NotFound("Developer does not exist: " + id);
-            }
-             
-            project.Developers.Remove(
-                project.Developers.FirstOrDefault(item => item.Id == id)
-            );
-
-            projectService.Update(project);
+            _logger.LogWarning(new Exception(), string.Empty);
 
             return Ok();
         }
@@ -92,28 +149,37 @@ namespace eFolio
         [Route("/api/projects/{projectId}/d/{id}")]
         public ActionResult AssignToProject(int projectId, int id)
         {
-            var project = projectService. GetItem(projectId);
-            if (project == null)
+            try
             {
-                return NotFound("Project not found: " + projectId);
+                var project = _projectService.GetItem(projectId);
+                if (project == null)
+                {
+                    return NotFound("Project not found: " + projectId);
+                }
+
+                var developer = _developerService.GetItem(id);
+                if (developer == null)
+                {
+                    return NotFound("Developer does not exist: " + id);
+                }
+
+                if (project.Developers == null)
+                {
+                    project.Developers = new List<Developer>();
+                }
+
+                if (!project.Developers.Any(item => item.Id == id))
+                {
+                    project.Developers.Add(developer);
+                    _projectService.Update(project);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
             }
 
-            var developer = developerService.GetItem(id);
-            if (developer == null)
-            {
-                return NotFound("Developer does not exist: " + id);
-            } 
-
-            if (project.Developers == null)
-            {
-                project.Developers = new List<Developer>();
-            }
-    
-            if (!project.Developers.Any(item => item.Id == id))
-            {
-                project.Developers.Add(developer);
-                projectService.Update(project);
-            }
+            _logger.LogWarning(new Exception(), string.Empty);
 
             return Ok();
         }
