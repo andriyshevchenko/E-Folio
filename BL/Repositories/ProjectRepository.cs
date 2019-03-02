@@ -33,22 +33,42 @@ namespace eFolio.BL
             }
         }
 
-        public ProjectEntity GetItem(int id)
+        public ProjectEntity GetItem(int id, params string[] extendWith)
         {
-            var projectEntity = db.Projects
-                .Include(item => item.Developers)
-                .Include(item => item.Context)
-                .ThenInclude(context => context.ScreenLinks)
-                .SingleOrDefault(item => item.Id == id);
+            IQueryable<ProjectEntity> query = db.Projects;
 
-            var developers = db.Set<ProjectDeveloperEntity>()
-                .Include(pde => pde.DeveloperEntity)
-                .Where(pde => pde.ProjectId == id)
-                .ToList();
+            bool addDevelopers = false;
+            foreach (var item in extendWith)
+            {
+                switch (item.ToLower())
+                {
+                    case "details":
+                        query = query.Include(proj => proj.Context);
+                        break;
+                    case "screenshots":
+                        query = query.Include(proj => proj.Context)
+                                     .ThenInclude(context => context.ScreenLinks);
+                        break;
+                    case "developers": addDevelopers = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
 
-            projectEntity.Developers = developers;
+            var project = query.SingleOrDefault(item => item.Id == id);
 
-            return projectEntity;
+            if (addDevelopers)
+            {
+                var developers = db.Set<ProjectDeveloperEntity>()
+                      .Include(pde => pde.DeveloperEntity)
+                      .Where(pde => pde.ProjectId == id)
+                      .ToList();
+
+                project.Developers = developers; 
+            }
+
+            return project;
         }
 
         public IEnumerable<ProjectEntity> GetItemsList()
@@ -56,13 +76,13 @@ namespace eFolio.BL
             List<ProjectEntity> list = db.Projects
                 .Include(project => project.Context)
                 .ThenInclude(context => context.ScreenLinks)
-                .ToList(); 
+                .ToList();
 
             var developers = db.Set<ProjectDeveloperEntity>()
                 .Include(pde => pde.DeveloperEntity)
                 .GroupBy(pde => pde.ProjectId)
                 .ToDictionary(pde => pde.Key);
-             
+
             foreach (var item in list)
             {
                 if (developers.ContainsKey(item.Id))

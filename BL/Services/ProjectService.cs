@@ -4,6 +4,7 @@ using eFolio.EF;
 using eFolio.Elastic;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace eFolio.BL
 {
@@ -25,7 +26,7 @@ namespace eFolio.BL
             ProjectEntity pe = mapper.Map<ProjectEntity>(item);
             projectRepository.Add(pe);
 
-            item.Update(pe.Id);
+            item.UpdateId(pe.Id);
             ElasticProjectData epd = mapper.Map<ElasticProjectData>(item);
             elastic.AddItem(epd);
         }
@@ -37,9 +38,9 @@ namespace eFolio.BL
             elastic.DeleteProjectItem(id);
         }
 
-        public Project GetItem(int id)
+        public Project GetItem(int id, params string[] extended)
         {
-            var projectEntity = projectRepository.GetItem(id);
+            var projectEntity = projectRepository.GetItem(id, extended);
             var elasticProject = elastic.GetProjectById(id);
 
             return GetMergeProject(projectEntity, elasticProject);
@@ -49,7 +50,7 @@ namespace eFolio.BL
         {
             var projectEntities = projectRepository.GetItemsList();
             var elasticProjects = GetElasticProjects(projectEntities);
-            
+
             var e1 = projectEntities.GetEnumerator();
             var e2 = elasticProjects.GetEnumerator();
             while (e1.MoveNext() && e2.MoveNext())
@@ -74,10 +75,87 @@ namespace eFolio.BL
         public void Update(Project item)
         {
             ProjectEntity oldProjectEntity = projectRepository.GetItem(item.Id);
-            ProjectEntity projectEntity = mapper.Map<Project, ProjectEntity>(item, oldProjectEntity);
+
+            if (oldProjectEntity == null)
+            {
+                return;
+            }
+
+            ProjectEntity projectEntity = mapper.Map<Project, ProjectEntity>(
+                item, oldProjectEntity, options => options
+                .ConfigureMap()
+                .ForMember(proj => proj.Context, mo => mo.Ignore())
+            );
+
             projectRepository.Update(projectEntity);
 
             elastic.UpdateProjectData(mapper.Map<ElasticProjectData>(item));
+        }
+
+        public void UpdateDetails(int project, Context context)
+        {
+            ProjectEntity oldProjectEntity = projectRepository.GetItem(project);
+            if (oldProjectEntity == null)
+            {
+                return;
+            }
+
+            oldProjectEntity.Context.Update(context);
+            
+            projectRepository.Update(oldProjectEntity);
+        }
+
+        /// <summary>
+        /// Updates existing screenshots, or adds new.
+        /// </summary>
+        /// <param name="project"></param>
+        /// <param name="files"></param>
+        public void UpdateScreenshots(int project, Dictionary<int, FolioFile> files)
+        {
+            ProjectEntity oldProjectEntity = projectRepository.GetItem(project);
+            if (oldProjectEntity == null)
+            {
+                return;
+            }
+
+            List<int> ids = oldProjectEntity.Context.ScreenLinkIds();
+            foreach (var item in files)
+            {
+                var where = ids.BinarySearch(item.Key);
+
+                if (where > -1)
+                {
+                    oldProjectEntity.Context.ScreenLinks[where].Update(item.Value);
+                }
+                else
+                {
+                    oldProjectEntity.Context.ScreenLinks.Add(
+                        new FolioFileEntity(item.Value, oldProjectEntity.ContextId)
+                    );
+                }
+            }
+
+            projectRepository.Update(oldProjectEntity);
+        }
+
+        public void DeleteScreeenshots(int project, int[] deleted)
+        {
+            ProjectEntity oldProjectEntity = projectRepository.GetItem(project);
+            if (oldProjectEntity == null)
+            {
+                return;
+            }
+
+            List<int> ids = oldProjectEntity.Context.ScreenLinkIds();
+            foreach (var id in deleted)
+            {
+                var where = ids.BinarySearch(id);
+                if (where > -1)
+                {
+                    oldProjectEntity.Context.ScreenLinks.RemoveAt(where);
+                }
+            }
+            projectRepository.Update(oldProjectEntity);
         }
 
         private IEnumerable<ElasticProjectData> GetElasticProjects(IEnumerable<ProjectEntity> projects)

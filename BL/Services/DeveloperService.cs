@@ -25,7 +25,7 @@ namespace eFolio.BL
             DeveloperEntity de = mapper.Map<DeveloperEntity>(item);
             developerRepository.Add(de);
 
-            item.Update(de.Id);
+            item.UpdateId(de.Id);
             ElasticDeveloperData eld = mapper.Map<ElasticDeveloperData>(item);
             elastic.AddItem(eld);
         }

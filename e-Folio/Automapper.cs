@@ -7,7 +7,7 @@ using eFolio.Elastic;
 
 namespace eFolio.API
 {
-    public class Automapper: Profile
+    public class Automapper : Profile
     {
         public Automapper()
         {
@@ -19,7 +19,7 @@ namespace eFolio.API
                                            m => m.MapFrom(
                                                pe => pe.Item2.Developers.Select(
                                                    pd => new Developer(pd.DeveloperId,
-                                                                       pd.DeveloperEntity.FullName, 
+                                                                       pd.DeveloperEntity.FullName,
                                                                        pd.DeveloperEntity.CVLink)).ToList()
                                                )
                                            )
@@ -43,7 +43,8 @@ namespace eFolio.API
                                 .ForMember(p => p.Comment, m => m.MapFrom(pe => pe.Comment));
 
             CreateMap<ContextEntity, Context>().ForMember(p => p.SourceCodeLink, m => m.MapFrom(pe => pe.SourceCodeLink))
-                                .ForMember(p => p.ScreenLinks, m => m.MapFrom(pe => pe.ScreenLinks));
+                                .ForMember(p => p.ScreenLinks, m => m.MapFrom(pe => pe.ScreenLinks))
+                                .ForMember(pe => pe.Id, m => m.MapFrom(p => p.Id));
 
             CreateMap<DeveloperEntity, Developer>().ForMember(p => p.Id, m => m.MapFrom(pe => pe.Id))
                                 .ForMember(p => p.FullName, m => m.MapFrom(pe => pe.FullName))
@@ -51,7 +52,8 @@ namespace eFolio.API
                                 .ForMember(p => p.Projects, m => m.Ignore());
 
             CreateMap<FolioFileEntity, FolioFile>().ForMember(p => p.IsInternal, m => m.MapFrom(pe => pe.IsInternal))
-                                 .ForMember(p => p.Path, m => m.MapFrom(pe => pe.Path));
+                                 .ForMember(p => p.Path, m => m.MapFrom(pe => pe.Path))
+                                 .ForMember(pe => pe.Id, m => m.MapFrom(p => p.Id));
 
             //Mapping from DTO
             CreateMap<Client, ClientEntity>().ForMember(pe => pe.FullNameClient, m => m.MapFrom(p => p.FullNameClient))
@@ -63,8 +65,8 @@ namespace eFolio.API
                                 .ForMember(pe => pe.Phone, m => m.MapFrom(p => p.Phone))
                                 .ForMember(pe => pe.Comment, m => m.MapFrom(p => p.Comment));
 
-            CreateMap<Context, ContextEntity>().ForMember(pe => pe.SourceCodeLink, m => m.MapFrom(p => p.SourceCodeLink))
-                                .ForMember(pe => pe.ScreenLinks, m => m.MapFrom(p => p.ScreenLinks));
+            CreateMap<Context, ContextEntity>()
+                                .ForMember(pe => pe.SourceCodeLink, m => m.MapFrom(p => p.SourceCodeLink));
 
             CreateMap<Developer, DeveloperEntity>().ForMember(pe => pe.FullName, m => m.MapFrom(p => p.FullName))
                                 .ForMember(pe => pe.CVLink, m => m.MapFrom(p => p.CVLink))
@@ -76,12 +78,13 @@ namespace eFolio.API
                                 .ForMember(pe => pe.ExternalCV, m => m.MapFrom(p => p.ExternalCV));
 
             CreateMap<FolioFile, FolioFileEntity>().ForMember(pe => pe.IsInternal, m => m.MapFrom(p => p.IsInternal))
-                                .ForMember(pe => pe.Path, m => m.MapFrom(p => p.Path));
+                                .ForMember(pe => pe.Path, m => m.MapFrom(p => p.Path))
+                                .ForMember(pe => pe.Id, m => m.MapFrom(p => p.Id));
 
             CreateMap<Project, ProjectEntity>().ForMember(pe => pe.Id, m => m.MapFrom(p => p.Id))
-                                .ForMember(pe => pe.Name, m => m.MapFrom(p => p.Context))
+                                .ForMember(pe => pe.Name, m => m.MapFrom(p => p.Name))
                                 .ForMember(pe => pe.Context, m => m.MapFrom(p => p.Context))
-                                .ForMember(pe => pe.ContextId, m => m.Ignore())
+                                .ForMember(pe => pe.ContextId, m => m.MapFrom(p => p.Context.Id))
                                 .ForMember(pe => pe.Developers,
                                            m => m.MapFrom(
                                                p => p.Developers.Select(

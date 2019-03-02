@@ -23,7 +23,7 @@ namespace eFolio
 
         public DevelopersController(IProjectService projectService,
                                     IDeveloperService developerService,
-                                    ILogger<ProjectController> logger)
+                                    ILogger<DevelopersController> logger)
         { 
             this._projectService = projectService;
             this._developerService = developerService;
@@ -31,7 +31,7 @@ namespace eFolio
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Developer>> GetDevelopers()
+        public IActionResult GetDevelopers()
         {
             try
             {
@@ -40,13 +40,13 @@ namespace eFolio
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<IEnumerable<Developer>> GetDeveloper(int id)
+        public IActionResult GetDeveloper(int id)
         {
             try
             {
@@ -60,12 +60,12 @@ namespace eFolio
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
 
         [HttpPost]
-        public ActionResult NewDeveloper([FromBody] Developer developer)
+        public IActionResult NewDeveloper([FromBody] Developer developer)
         {
             try
             {
@@ -75,13 +75,13 @@ namespace eFolio
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public ActionResult DeleteDeveloper(int id)
+        public IActionResult DeleteDeveloper(int id)
         {
             try
             {
@@ -91,12 +91,12 @@ namespace eFolio
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
 
         [HttpPut]
-        public ActionResult Edit(Developer developer)
+        public IActionResult Edit(Developer developer)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace eFolio
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
 
 
@@ -115,7 +115,7 @@ namespace eFolio
 
         [HttpDelete]
         [Route("/api/projects/{projectId}/d/{id}")]
-        public ActionResult QuitProject(int projectId, int id)
+        public IActionResult QuitProject(int projectId, int id)
         {
             try
             {
@@ -142,13 +142,13 @@ namespace eFolio
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }  
         }
 
         [HttpPut]
         [Route("/api/projects/{projectId}/d/{id}")]
-        public ActionResult AssignToProject(int projectId, int id)
+        public IActionResult AssignToProject(int projectId, int id)
         {
             try
             {
@@ -179,7 +179,7 @@ namespace eFolio
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
     }

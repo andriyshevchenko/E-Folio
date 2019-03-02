@@ -23,6 +23,7 @@ namespace eFolio.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<FolioFileEntity>().HasOne(ff => ff.Context).WithMany(ct => ct.ScreenLinks).HasForeignKey(ff => ff.ContextEntityId);
             modelBuilder.Entity<ContextEntity>().HasOne(ct => ct.Project).WithOne(ct => ct.Context).HasForeignKey(typeof(ProjectEntity), nameof(ProjectEntity.ContextId));
             modelBuilder.Entity<ProjectDeveloperEntity>().HasKey(pd => new { pd.ProjectId, pd.DeveloperId });
             modelBuilder.Entity<ProjectDeveloperEntity>().HasOne(pd => pd.ProjectEntity).WithMany(p => p.Developers).HasForeignKey(pd => pd.ProjectId);

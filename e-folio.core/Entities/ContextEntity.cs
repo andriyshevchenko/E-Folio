@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using eFolio.DTO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace eFolio.EF
 {
@@ -8,5 +10,15 @@ namespace eFolio.EF
         public string SourceCodeLink { get; set; }
         public List<FolioFileEntity> ScreenLinks { get; set; }
         public ProjectEntity Project { get; set; }
+
+        public void Update(Context context)
+        {
+            SourceCodeLink = context.SourceCodeLink;
+        }
+
+        public List<int> ScreenLinkIds()
+        {
+            return ScreenLinks.Select(link => link.Id).ToList();
+        }
     }
 }

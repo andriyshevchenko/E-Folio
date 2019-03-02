@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using System.Net;
 using System.Reflection.Metadata.Ecma335;
 using eFolio.DTO;
-using eFolio.BL;
-using Microsoft.AspNetCore.Http; 
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Nest;
 using eFolio.API.Models;
+using eFolio.BL;
 
 namespace eFolio
 {
+    public class RequestBody<T>
+    {
+        public T Item { get; set; }
+    }
+
     [Route("api/projects")]
     [Produces("application/json")]
     [ApiController]
     public class ProjectController : ControllerBase
     {
+        private static string default_options = "screenshots,developers";
         private IProjectService _projectService;
         private ILogger _logger;
 
@@ -28,7 +34,7 @@ namespace eFolio
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Project>> GetProjects()
+        public IActionResult GetProjects()
         {
             try
             {
@@ -37,17 +43,17 @@ namespace eFolio
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<IEnumerable<Project>> GetProject(int id)
+        public IActionResult GetProject(int id, string options)
         {
             try
             {
-                var project = _projectService.GetItem(id);
+                var project = _projectService.GetItem(id, (options ?? default_options).Split(','));
                 if (project == null)
                 {
                     return NotFound(id);
@@ -57,7 +63,7 @@ namespace eFolio
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int) HttpStatusCode.BadRequest, new ErrorResponse(ex));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
 
@@ -73,12 +79,12 @@ namespace eFolio
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
 
         [HttpPost]
-        public ActionResult MakeNewProject([FromBody] Project project)
+        public IActionResult MakeNewProject([FromBody] Project project)
         {
             try
             {
@@ -89,14 +95,60 @@ namespace eFolio
             {
                 _logger.LogWarning(ex, string.Empty);
 
-                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
-            }
-
-
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }     
         }
-         
+
         [HttpPut]
-        public ActionResult Edit([FromBody] Project project)
+        [Route("/api/projects/{project}/details")]
+        public IActionResult EditDetails(int project, [FromBody] DTO.Context details)
+        {
+            try
+            {
+                _projectService.UpdateDetails(project, details);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpDelete]
+        [Route("/api/projects/{project}/screenshots")]
+        public IActionResult DeleteScreenshots(int project, [FromBody] RequestBody<int[]> deleted)
+        {
+            try
+            {
+                _projectService.DeleteScreeenshots(project, deleted.Item);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpPut]
+        [Route("/api/projects/{project}/screenshots")]
+        public IActionResult UpdateScreenshots(int project, [FromBody] Dictionary<int, FolioFile> files)
+        {
+            try
+            {
+                _projectService.UpdateScreenshots(project, files);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpPut]
+        public IActionResult Edit([FromBody] Project project)
         {
             try
             {
@@ -106,7 +158,7 @@ namespace eFolio
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
     }

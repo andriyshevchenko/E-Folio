@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using eFolio.DTO;
+using System.Collections.Generic;
 
 namespace eFolio.EF
 {

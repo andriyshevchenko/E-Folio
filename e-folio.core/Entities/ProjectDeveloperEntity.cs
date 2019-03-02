@@ -1,6 +1,9 @@
-﻿namespace eFolio.EF
+﻿using System;
+using System.Collections.Generic;
+
+namespace eFolio.EF
 {
-    public class ProjectDeveloperEntity
+    public class ProjectDeveloperEntity 
     {
         public ProjectDeveloperEntity(int projectId, int developerId)
         {

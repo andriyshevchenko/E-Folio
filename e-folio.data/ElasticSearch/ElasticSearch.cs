@@ -23,7 +23,7 @@
 
         public void AddItem(ElasticProjectData item) //works
         {
-            clientProject.IndexDocument(item);
+            var resp = clientProject.IndexDocument(item);
         }
 
         public void AddItem(ElasticDeveloperData item) //works
@@ -233,11 +233,6 @@
         {
             int InsertId = InsertData.Id;
             var updateResponse = clientDeveloper.Update<ElasticDeveloperData, object>(InsertId, u => u.Doc(InsertData).RetryOnConflict(1));
-            if (!updateResponse.IsValid && updateResponse.ApiCall.HttpStatusCode == 404)
-            {
-                //insert document
-                clientDeveloper.IndexDocument(InsertData);
-            }
         }
     }
 }
