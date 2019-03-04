@@ -58,7 +58,7 @@ namespace eFolio.BL
 
             var project = query.SingleOrDefault(item => item.Id == id);
 
-            if (addDevelopers)
+            if (addDevelopers && project != null)
             {
                 var developers = db.Set<ProjectDeveloperEntity>()
                       .Include(pde => pde.DeveloperEntity)
