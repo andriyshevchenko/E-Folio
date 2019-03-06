@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
 using eFolio.API;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace e_Folio
 {
@@ -39,6 +40,15 @@ namespace e_Folio
             services.AddSingleton(mapper);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "eFolio",
+                    Description = "eFolio ASP.NET Core Web API"
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,7 +58,16 @@ namespace e_Folio
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "eFolio Test API V1");
+            });
             using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var context = scope.ServiceProvider.GetService<eFolioDBContext>();
