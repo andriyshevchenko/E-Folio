@@ -48,6 +48,21 @@ namespace eFolio
         }
 
         [HttpGet]
+        [Route("/api/projects/search/{request}")]
+        public IActionResult SearchProjects(string request, [FromQuery] int from, [FromQuery] int size)
+        {
+            try
+            {
+                return Ok(_projectService.Search(request, new Paging(from, size)));
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpGet]
         [Route("{id}")]
         public IActionResult GetProject(int id, string options)
         {

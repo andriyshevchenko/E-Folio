@@ -1,6 +1,4 @@
-
 using eFolio.DTO;
-using e_Folio.Seeds;
 using eFolio.BL;
 using eFolio.EF;
 using Microsoft.AspNetCore.Builder;
@@ -54,10 +52,6 @@ namespace e_Folio
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
