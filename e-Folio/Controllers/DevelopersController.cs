@@ -12,7 +12,7 @@ using eFolio.API.Models;
 
 namespace eFolio
 {
-    [Route("api/developers")]
+    [Route("api/[controller]")]
     [Produces("application/json")]
     [ApiController]
     public class DevelopersController : ControllerBase
@@ -36,6 +36,20 @@ namespace eFolio
             try
             {
                 return Ok(_developerService.GetItemsList());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpGet("search/{request}")]
+        public IActionResult SearchDevelopers(string request, [FromQuery] int from, [FromQuery] int size)
+        {
+            try
+            {
+                return Ok(_developerService.Search(request, new Paging(from, size)));
             }
             catch (Exception ex)
             {
@@ -79,8 +93,7 @@ namespace eFolio
             }
         }
 
-        [HttpDelete]
-        [Route("{id}")]
+        [HttpDelete("{id}")]
         public IActionResult DeleteDeveloper(int id)
         {
             try
@@ -113,8 +126,7 @@ namespace eFolio
 
         }
 
-        [HttpDelete]
-        [Route("/api/projects/{projectId}/d/{id}")]
+        [HttpDelete("{projectId}/d/{id}")]
         public IActionResult QuitProject(int projectId, int id)
         {
             try
@@ -146,8 +158,7 @@ namespace eFolio
             }  
         }
 
-        [HttpPut]
-        [Route("/api/projects/{projectId}/d/{id}")]
+        [HttpPut("{projectId}/d/{id}")]
         public IActionResult AssignToProject(int projectId, int id)
         {
             try

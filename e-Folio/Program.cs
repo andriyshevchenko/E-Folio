@@ -21,7 +21,7 @@ namespace e_Folio
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.File(
-                   $"D:\\LogFiles\\EFolio\\{now.Date.Year}\\{month}\\{now.Date.Day}.txt",
+                   $"D:\\LogFiles\\EFolio\\{now.Date.Year}\\{month}\\{now.Date.ToShortDateString()}.txt",
                    fileSizeLimitBytes: 1_000_000,
                    rollOnFileSizeLimit: true,
                    shared: true,
