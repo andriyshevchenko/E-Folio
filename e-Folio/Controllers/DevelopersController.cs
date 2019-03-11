@@ -57,22 +57,7 @@ namespace eFolio
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
-
-        [HttpGet]
-        [Route("/api/developers/search/{request}")]
-        public IActionResult SearchDevelopers(string request, [FromQuery] int from, [FromQuery] int size)
-        {
-            try
-            {
-                return Ok(_developerService.Search(request, new Paging(from, size)));
-            }
-            catch (Exception ex)
-            {
-                _logger.LogWarning(ex, string.Empty);
-                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
-            }
-        }
-
+ 
         [HttpGet]
         [Route("{id}")]
         public IActionResult GetDeveloper(int id)
