@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.navigate(['signup']);
+    this.router.navigate(['signin']);
   }
 
   title = 'efolio';

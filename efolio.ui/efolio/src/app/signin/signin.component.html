@@ -1,3 +1,26 @@
-<p>
-  signin works!
-</p>
+<mat-card>
+  <mat-card-title>Sign in</mat-card-title>
+  <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+     
+    <mat-form-field>
+      <input matInput 
+             type="email" 
+             id="email"
+             formControlName="email"
+             placeholder="Email" >
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput 
+             type="password" 
+             formControlName="password"
+             placeholder="Password" >
+    </mat-form-field>
+ 
+    <button mat-raised-button 
+            [disabled]="signinForm.invalid"
+            color="primary"
+            type="submit">Sign in
+    </button>
+  </form>
+</mat-card>
