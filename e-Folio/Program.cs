@@ -16,12 +16,14 @@ namespace e_Folio
             DateTime now = DateTime.Now;
             string month = now.ToString("MMMM", System.Globalization.CultureInfo.InvariantCulture);
 
+            string path = $"{Environment.CurrentDirectory}\\EFolio\\LogFiles\\" +
+                          $"{now.Date.Year}\\{month}\\{now.Date.ToShortDateString()}.txt";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Warning()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .Enrich.FromLogContext()
                 .WriteTo.File(
-                   $"D:\\LogFiles\\EFolio\\{now.Date.Year}\\{month}\\{now.Date.Day}.txt",
+                   path,
                    fileSizeLimitBytes: 1_000_000,
                    rollOnFileSizeLimit: true,
                    shared: true,

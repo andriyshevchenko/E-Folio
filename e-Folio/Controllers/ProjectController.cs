@@ -17,7 +17,7 @@ namespace eFolio
         public T Item { get; set; }
     }
 
-    [Route("api/projects")]
+    [Route("api/[controller]")]
     [Produces("application/json")]
     [ApiController]
     public class ProjectController : ControllerBase
@@ -47,8 +47,21 @@ namespace eFolio
             }
         }
 
-        [HttpGet]
-        [Route("{id}")]
+        [HttpGet("search/{request}")]
+        public IActionResult SearchProjects(string request, [FromQuery] int from, [FromQuery] int size)
+        {
+            try
+            {
+                return Ok(_projectService.Search(request, new Paging(from, size)));
+            }
+            catch (System.Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpGet("{id}")]
         public IActionResult GetProject(int id, string options)
         {
             try
@@ -67,8 +80,7 @@ namespace eFolio
             }
         }
 
-        [HttpDelete]
-        [Route("{id}")]
+        [HttpDelete("{id}")]
         public ActionResult DeleteProject(int id)
         {
             try
@@ -99,8 +111,7 @@ namespace eFolio
             }     
         }
 
-        [HttpPut]
-        [Route("/api/projects/{project}/details")]
+        [HttpPut("{project}/details")]
         public IActionResult EditDetails(int project, [FromBody] DTO.Context details)
         {
             try
@@ -115,8 +126,7 @@ namespace eFolio
             }
         }
 
-        [HttpDelete]
-        [Route("/api/projects/{project}/screenshots")]
+        [HttpDelete("{project}/screenshots")]
         public IActionResult DeleteScreenshots(int project, [FromBody] RequestBody<int[]> deleted)
         {
             try
@@ -131,8 +141,7 @@ namespace eFolio
             }
         }
 
-        [HttpPut]
-        [Route("/api/projects/{project}/screenshots")]
+        [HttpPut("{project}/screenshots")]
         public IActionResult UpdateScreenshots(int project, [FromBody] Dictionary<int, FolioFile> files)
         {
             try

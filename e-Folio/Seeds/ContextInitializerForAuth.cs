@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using eFolio.DTO.Common;
 using eFolio.EF;
 using Microsoft.AspNetCore.Identity;
 
