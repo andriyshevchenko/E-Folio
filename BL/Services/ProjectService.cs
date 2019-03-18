@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using eFolio.DTO;
+using eFolio.DTO.Common;
 using eFolio.EF;
 using eFolio.Elastic;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace eFolio.BL
 {

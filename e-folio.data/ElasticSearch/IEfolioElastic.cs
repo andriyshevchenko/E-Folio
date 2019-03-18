@@ -1,7 +1,5 @@
-﻿using System;
+﻿using eFolio.DTO;
 using System.Collections.Generic;
-using System.Text;
-using eFolio.DTO;
 namespace eFolio.Elastic
 {
     public interface IEfolioElastic

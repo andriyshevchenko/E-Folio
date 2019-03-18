@@ -3,15 +3,15 @@ using Microsoft.EntityFrameworkCore.Internal;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace eFolio.API
+namespace eFolio.API.Seeds
+
 {
     public class ContextInitializer
     {
         public static void Initialize(eFolioDBContext context)
         {
             context.Database.EnsureCreated();
-            
-            
+
             if (!context.Projects.Any())
             {
                 context.Projects.Add(new ProjectEntity()
@@ -61,7 +61,7 @@ namespace eFolio.API
                 context.SaveChanges();
             }
 
-            if(!context.Clients.Any())
+            if (!context.Clients.Any())
             {
                 context.Clients.Add(new ClientEntity()
                 {
@@ -109,7 +109,7 @@ namespace eFolio.API
                 });
                 context.SaveChanges();
             }
-            
+
             if (!context.Developers.Any())
             {
                 context.Developers.Add(new DeveloperEntity() { FullName = "Yurii Levko", CVLink = "asfasf" });

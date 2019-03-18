@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using eFolio.DTO;
+using eFolio.DTO.Common;
 
 namespace eFolio.BL
 {

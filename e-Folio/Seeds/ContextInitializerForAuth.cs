@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using eFolio.EF;
+using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
-using eFolio.EF;
-using Microsoft.AspNetCore.Identity;
 
 namespace eFolio.API.Seeds
 {

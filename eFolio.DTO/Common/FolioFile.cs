@@ -1,4 +1,4 @@
-﻿namespace eFolio.DTO
+﻿namespace eFolio.DTO.Common
 {
     public class FolioFile
     {

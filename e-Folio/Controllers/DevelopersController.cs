@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using eFolio.DTO;
+using eFolio.DTO.Common;
 using eFolio.BL;
 using eFolio.EF;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Net;
 using eFolio.API.Models;
+using eFolio.DTO;
 
-namespace eFolio
+namespace eFolio.Api.Controllers
 {
     [Route("api/[controller]")]
     [Produces("application/json")]

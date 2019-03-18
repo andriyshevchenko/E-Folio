@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
-using AutoMapper;
-using eFolio.DTO;
+﻿using AutoMapper;
+using eFolio.DTO.Common;
 using eFolio.EF;
 using eFolio.Elastic;
+using System;
+using System.Linq;
 
 namespace eFolio.API
 {
