@@ -1,45 +1,43 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule,ReactiveFormsModule  } from '@angular/forms'
-import { RouterModule, Routes} from '@angular/router'
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
-import { SigninComponent } from './signin/signin.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import { MatFormFieldModule, MatCardModule, MatButtonModule, MatInputModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
-import { LayoutModule } from '@angular/cdk/layout'
+import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { DevelopersComponent } from './components/developers/developers.component';
+import { SupportComponent } from './components/support/support.component';
+import { AdministrationComponent } from './components/administration/administration.component';
+import { AccountComponent } from './components/account/account.component';
+import { ProjectFilterComponent } from './components/projects/project-filter/project-filter.component';
+import { FormsModule } from '@angular/forms'
 
-const appRoutes: Routes = [
-  { path: 'signin', component: SigninComponent },
-  { path: 'signup', component: SignupComponent }
-]
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
-    SigninComponent 
+    MainNavComponent,
+    ProjectsComponent,
+    DevelopersComponent,
+    SupportComponent,
+    AdministrationComponent,
+    AccountComponent,
+    ProjectFilterComponent
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
-    FormsModule,
-    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
     LayoutModule,
     MatToolbarModule,
+    MatButtonModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatCardModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
