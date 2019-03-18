@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using AutoMapper;
+using eFolio.DTO.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace eFolio.BL

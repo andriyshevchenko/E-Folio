@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace eFolio.DTO
+namespace eFolio.DTO.Common
 {
     public class Developer
     {

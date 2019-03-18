@@ -1,4 +1,4 @@
-﻿using eFolio.DTO;
+﻿using eFolio.DTO.Common;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace eFolio.EF
+﻿namespace eFolio.EF
 {
     public class ProjectDeveloperEntity 
     {

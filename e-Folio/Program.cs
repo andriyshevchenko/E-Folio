@@ -1,13 +1,10 @@
-﻿
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Serilog;
 using Serilog.Events;
 using System;
-using System.Collections.Generic;
-using System.Xml;
 
-namespace e_Folio
+namespace eFolio.API
 {
     public class Program
     {

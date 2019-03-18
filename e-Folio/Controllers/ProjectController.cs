@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Reflection.Metadata.Ecma335;
+﻿using eFolio.API.Models;
+using eFolio.BL;
 using eFolio.DTO;
-using Microsoft.AspNetCore.Http;
+using eFolio.DTO.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Nest;
-using eFolio.API.Models;
-using eFolio.BL;
+using System;
+using System.Collections.Generic;
+using System.Net;
 
-namespace eFolio
+namespace eFolio.Api.Controllers
 {
     public class RequestBody<T>
     {
@@ -112,7 +110,7 @@ namespace eFolio
         }
 
         [HttpPut("{project}/details")]
-        public IActionResult EditDetails(int project, [FromBody] DTO.Context details)
+        public IActionResult EditDetails(int project, [FromBody] DTO.Common.Context details)
         {
             try
             {

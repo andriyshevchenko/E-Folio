@@ -1,0 +1,674 @@
+2019-03-18 13:47:14.047 +02:00 [INF] User profile is available. Using 'C:\Users\Alex\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-18 13:47:18.123 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-18 13:47:18.694 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-18 13:47:20.196 +02:00 [INF] Executed DbCommand (112ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:47:20.364 +02:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:47:20.367 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:47:20.383 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 13:47:20.393 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 13:47:20.483 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 13:47:20.486 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:47:20.488 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:47:20.491 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 13:47:20.492 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 13:47:20.499 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:47:21.166 +02:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:47:21.237 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:47:21.246 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:47:21.303 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:47:21.347 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:47:21.355 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-18 13:47:21.361 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:47:21.375 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:47:21.378 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:47:21.381 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 13:47:21.382 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 13:47:21.388 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:47:21.391 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:47:21.393 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:47:21.395 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:48:10.742 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2019-03-18 13:48:11.272 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:48:23.682 +02:00 [INF] Request finished in 12941.872ms 500 text/html; charset=utf-8
+2019-03-18 13:48:33.720 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-03-18 13:48:33.721 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:48:33.727 +02:00 [INF] Request finished in 7.2662ms 500 text/html; charset=utf-8
+2019-03-18 13:48:47.578 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/projects  
+2019-03-18 13:48:47.579 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:48:47.584 +02:00 [INF] Request finished in 6.9999ms 500 text/html; charset=utf-8
+2019-03-18 13:48:48.420 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-03-18 13:48:48.801 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:48:48.808 +02:00 [INF] Request finished in 387.8684ms 500 text/html; charset=utf-8
+2019-03-18 13:48:54.023 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/developers  
+2019-03-18 13:48:54.027 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:48:54.032 +02:00 [INF] Request finished in 8.226ms 500 text/html; charset=utf-8
+2019-03-18 13:48:54.137 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-03-18 13:48:54.138 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:48:54.143 +02:00 [INF] Request finished in 5.2816ms 500 text/html; charset=utf-8
+2019-03-18 13:51:09.563 +02:00 [INF] User profile is available. Using 'C:\Users\Alex\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-18 13:51:10.514 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-18 13:51:10.681 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-18 13:51:10.994 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:51:11.026 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:51:11.099 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:51:11.106 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 13:51:11.112 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 13:51:11.190 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 13:51:11.193 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:51:11.198 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:51:11.203 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 13:51:11.204 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 13:51:11.212 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:51:11.371 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:51:11.392 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:51:11.401 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:51:11.410 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:51:11.424 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:51:11.430 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-18 13:51:11.439 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:51:11.441 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:51:11.445 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:51:11.455 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 13:51:11.465 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 13:51:11.474 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:51:11.477 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:51:11.479 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:51:11.482 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:51:19.036 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2019-03-18 13:51:19.317 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:51:21.961 +02:00 [INF] Request finished in 2928.8128ms 500 text/html; charset=utf-8
+2019-03-18 13:51:22.744 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/register application/json 135
+2019-03-18 13:51:22.744 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:51:22.750 +02:00 [INF] Request finished in 6.3375ms 500 text/html; charset=utf-8
+2019-03-18 13:51:23.025 +02:00 [INF] Connection id "0HLLBJ02FBUQF", Request id "0HLLBJ02FBUQF:00000001": the application completed without reading the entire request body.
+2019-03-18 13:51:27.554 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-03-18 13:51:27.554 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:51:27.558 +02:00 [INF] Request finished in 4.1347ms 500 text/html; charset=utf-8
+2019-03-18 13:51:28.675 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/register application/json 135
+2019-03-18 13:51:28.687 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:51:28.709 +02:00 [INF] Request finished in 34.042ms 500 text/html; charset=utf-8
+2019-03-18 13:51:28.731 +02:00 [INF] Connection id "0HLLBJ02FBUQF", Request id "0HLLBJ02FBUQF:00000002": the application completed without reading the entire request body.
+2019-03-18 13:53:57.016 +02:00 [INF] User profile is available. Using 'C:\Users\Alex\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-18 13:53:58.089 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-18 13:53:58.216 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-18 13:53:58.585 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:53:58.615 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:53:58.618 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:53:58.624 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 13:53:58.630 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 13:53:58.695 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 13:53:58.702 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:53:58.705 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:53:58.708 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 13:53:58.709 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 13:53:58.715 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:53:58.869 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:53:58.890 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:53:58.897 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:53:58.904 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:53:58.910 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:53:58.917 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-18 13:53:58.923 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:53:58.926 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:53:58.928 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 13:53:58.932 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 13:53:58.932 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 13:53:58.939 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 13:53:58.942 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:53:58.946 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:53:58.948 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 13:54:07.634 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2019-03-18 13:54:07.669 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:54:09.706 +02:00 [INF] Request finished in 2075.1592ms 500 text/html; charset=utf-8
+2019-03-18 13:54:13.086 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-03-18 13:54:13.087 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 13:54:13.093 +02:00 [INF] Request finished in 6.5942ms 500 text/html; charset=utf-8
+2019-03-18 14:09:05.024 +02:00 [INF] User profile is available. Using 'C:\Users\Alex\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-18 14:09:08.836 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-18 14:09:09.364 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-18 14:09:10.320 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 14:09:10.437 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 14:09:10.439 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 14:09:10.498 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 14:09:10.506 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 14:09:10.643 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 14:09:10.646 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 14:09:10.648 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 14:09:10.652 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 14:09:10.653 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 14:09:10.661 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 14:09:11.040 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 14:09:11.150 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 14:09:11.156 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 14:09:11.190 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 14:09:11.197 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 14:09:11.207 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-18 14:09:11.223 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 14:09:11.231 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 14:09:11.235 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 14:09:11.238 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 14:09:11.239 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 14:09:11.245 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 14:09:11.247 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 14:09:11.249 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 14:09:11.251 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 14:09:54.299 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2019-03-18 14:09:56.875 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 14:10:07.528 +02:00 [INF] Request finished in 13230.9332ms 500 text/html; charset=utf-8
+2019-03-18 14:10:11.297 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-03-18 14:10:11.298 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 14:10:11.306 +02:00 [INF] Request finished in 8.6607ms 500 text/html; charset=utf-8
+2019-03-18 14:10:16.389 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/projects  
+2019-03-18 14:10:16.390 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 14:10:16.416 +02:00 [INF] Request finished in 26.0406ms 500 text/html; charset=utf-8
+2019-03-18 14:10:17.926 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-03-18 14:10:17.926 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Swashbuckle.AspNetCore.Swagger.ISwaggerProvider' while attempting to Invoke middleware 'Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware'.
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.GetService(IServiceProvider sp, Type type, Type middleware)
+   at lambda_method(Closure , Object , HttpContext , IServiceProvider )
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.<>c__DisplayClass4_1.<UseMiddleware>b__2(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-03-18 14:10:17.930 +02:00 [INF] Request finished in 4.3473ms 500 text/html; charset=utf-8
+2019-03-18 14:17:49.194 +02:00 [INF] User profile is available. Using 'C:\Users\Alex\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-18 14:17:50.430 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-18 14:17:50.566 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-18 14:17:50.947 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 14:17:50.978 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 14:17:50.981 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 14:17:50.987 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 14:17:50.995 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 14:17:51.075 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 14:17:51.078 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 14:17:51.081 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-18 14:17:51.084 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-18 14:17:51.085 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-18 14:17:51.093 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 14:17:51.224 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 14:17:51.243 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 14:17:51.252 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 14:17:51.262 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 14:17:51.271 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-18 14:18:06.963 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2019-03-18 14:18:09.318 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/projects  
+2019-03-18 14:18:09.996 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/projects  
+2019-03-18 14:18:20.663 +02:00 [INF] Request finished in 13676.5999ms 0 
+2019-03-18 14:18:20.664 +02:00 [INF] Request finished in 11318.7479ms 0 
+2019-03-18 14:18:21.651 +02:00 [INF] Request finished in 11655.1279ms 404 
+2019-03-18 14:18:29.939 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/developers  
+2019-03-18 14:18:30.169 +02:00 [INF] Route matched with {action = "GetDevelopers", controller = "Developers"}. Executing action eFolio.DevelopersController.GetDevelopers (eFolio.API)
+2019-03-18 14:18:30.179 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-18 14:18:30.187 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-18 14:18:35.321 +02:00 [INF] Executing action method eFolio.DevelopersController.GetDevelopers (eFolio.API) - Validation state: "Valid"
+2019-03-18 14:18:35.327 +02:00 [INF] Executed action method eFolio.DevelopersController.GetDevelopers (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.2655ms.
+2019-03-18 14:18:35.369 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.DeveloperService+<GetItemsList>d__7'.
+2019-03-18 14:18:36.489 +02:00 [INF] Executed DbCommand (118ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[CVLink], [d].[FullName]
+FROM [Developers] AS [d]
+2019-03-18 14:18:47.666 +02:00 [INF] Executed action eFolio.DevelopersController.GetDevelopers (eFolio.API) in 17491.478600000002ms
+2019-03-18 14:18:47.668 +02:00 [INF] Request finished in 17728.6106ms 200 application/json; charset=utf-8
+2019-03-18 14:18:49.128 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-03-18 14:18:49.129 +02:00 [INF] Request finished in 0.4861ms 404 
+2019-03-18 14:19:16.830 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/register application/json 135
+2019-03-18 14:19:17.236 +02:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Register (eFolio.API)
+2019-03-18 14:19:17.645 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Register (eFolio.API) with arguments (["eFolio.DTO.Common.UserRegister"]) - Validation state: "Valid"
+2019-03-18 14:19:17.816 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 14:19:18.012 +02:00 [INF] Executed DbCommand (27ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-18 14:19:18.454 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [FirstName], [LastName], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AspNetUsers]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2019-03-18 14:19:18.783 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-18 14:19:18.804 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Register (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1157.9869ms.
+2019-03-18 14:19:18.815 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Boolean'.
+2019-03-18 14:19:18.820 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Register (eFolio.API) in 1583.1949000000002ms
+2019-03-18 14:19:18.827 +02:00 [INF] Request finished in 1997.3594ms 200 application/json; charset=utf-8
+2019-03-18 14:19:32.295 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/login application/json 65
+2019-03-18 14:19:32.301 +02:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Login (eFolio.API)
+2019-03-18 14:19:32.307 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Login (eFolio.API) with arguments (["eFolio.DTO.Common.UserLogin"]) - Validation state: "Valid"
+2019-03-18 14:19:32.310 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 14:19:32.315 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-18 14:19:32.493 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration  
+2019-03-18 14:19:32.637 +02:00 [INF] Request finished in 144.2765ms 200 application/json; charset=UTF-8
+2019-03-18 14:19:32.816 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks  
+2019-03-18 14:19:32.868 +02:00 [INF] Request finished in 51.9784ms 200 application/json; charset=UTF-8
+2019-03-18 14:19:32.942 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/token application/x-www-form-urlencoded 74
+2019-03-18 14:19:33.158 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 14:19:33.288 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-18 14:19:33.370 +02:00 [WRN] User 4002 cannot sign in without a confirmed email.
+2019-03-18 14:19:33.411 +02:00 [INF] Request finished in 469.248ms 400 application/json; charset=UTF-8
+2019-03-18 14:19:33.946 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Login (eFolio.API), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 1638.2031000000002ms.
+2019-03-18 14:19:33.946 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.API.Models.ErrorResponse'.
+2019-03-18 14:19:33.950 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Login (eFolio.API) in 1647.9962ms
+2019-03-18 14:19:33.950 +02:00 [INF] Request finished in 1655.1022ms 400 application/json; charset=utf-8
+2019-03-18 14:19:40.011 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/login application/json 65
+2019-03-18 14:19:40.013 +02:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Login (eFolio.API)
+2019-03-18 14:19:40.017 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Login (eFolio.API) with arguments (["eFolio.DTO.Common.UserLogin"]) - Validation state: "Valid"
+2019-03-18 14:19:40.018 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 14:19:40.024 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-18 14:19:40.040 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration  
+2019-03-18 14:19:40.041 +02:00 [INF] Request finished in 1.6442ms 200 application/json; charset=UTF-8
+2019-03-18 14:19:40.044 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks  
+2019-03-18 14:19:40.045 +02:00 [INF] Request finished in 1.1703ms 200 application/json; charset=UTF-8
+2019-03-18 14:19:40.062 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/token application/x-www-form-urlencoded 74
+2019-03-18 14:19:40.065 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 14:19:40.091 +02:00 [INF] Executed DbCommand (25ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-18 14:19:40.092 +02:00 [WRN] User 3008 cannot sign in without a confirmed email.
+2019-03-18 14:19:40.093 +02:00 [INF] Request finished in 30.7216ms 400 application/json; charset=UTF-8
+2019-03-18 14:19:40.188 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Login (eFolio.API), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 170.8348ms.
+2019-03-18 14:19:40.272 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.API.Models.ErrorResponse'.
+2019-03-18 14:19:40.272 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Login (eFolio.API) in 258.7385ms
+2019-03-18 14:19:40.272 +02:00 [INF] Request finished in 261.7587ms 400 application/json; charset=utf-8
+2019-03-18 14:20:15.719 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/login application/json 66
+2019-03-18 14:20:15.720 +02:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Login (eFolio.API)
+2019-03-18 14:20:15.721 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Login (eFolio.API) with arguments (["eFolio.DTO.Common.UserLogin"]) - Validation state: "Valid"
+2019-03-18 14:20:15.721 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 14:20:15.732 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-18 14:20:15.765 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration  
+2019-03-18 14:20:15.766 +02:00 [INF] Request finished in 0.9908ms 200 application/json; charset=UTF-8
+2019-03-18 14:20:15.778 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks  
+2019-03-18 14:20:15.779 +02:00 [INF] Request finished in 0.7431ms 200 application/json; charset=UTF-8
+2019-03-18 14:20:15.786 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/token application/x-www-form-urlencoded 75
+2019-03-18 14:20:15.788 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-18 14:20:15.793 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-18 14:20:18.884 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0
+2019-03-18 14:20:18.984 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0
+2019-03-18 14:20:19.509 +02:00 [INF] Request finished in 3722.2672ms 200 application/json; charset=UTF-8
+2019-03-18 14:20:19.524 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Login (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3803.3038ms.
+2019-03-18 14:20:19.525 +02:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`4[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-03-18 14:20:19.533 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Login (eFolio.API) in 3813.3311000000003ms
+2019-03-18 14:20:19.533 +02:00 [INF] Request finished in 3814.4974ms 200 application/json; charset=utf-8

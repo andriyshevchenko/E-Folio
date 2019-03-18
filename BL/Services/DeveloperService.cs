@@ -4,6 +4,7 @@ using eFolio.EF;
 using eFolio.Elastic;
 using System;
 using System.Collections.Generic;
+using eFolio.DTO.Common;
 
 namespace eFolio.BL
 {
