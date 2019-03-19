@@ -1,0 +1,16 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [(opened)]="opened">
+      <button mat-icon-button (click)="opened=!opened" *ngIf="opened===true">
+        <mat-icon aria-label="Side nav toggle icon" style="margin-left: 7px;">arrow_back_ios</mat-icon>
+      </button>
+      <app-project-filter></app-project-filter>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <button mat-icon-button (click)="opened=!opened" *ngIf="opened===false">
+        <mat-icon aria-label="Side nav toggle icon">arrow_forward_ios</mat-icon>
+      </button>
+      <p>projects work!</p>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
