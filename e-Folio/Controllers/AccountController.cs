@@ -78,7 +78,7 @@ namespace eFolio.API.Controllers
                     LastName = model.LastName,
                     UserName = model.Email,
                     Email = model.Email,
-                    EmailConfirmed = model.ConfirmedEmail
+                    EmailConfirmed = model.ConfirmedEmail = true
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);

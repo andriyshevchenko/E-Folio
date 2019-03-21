@@ -33,7 +33,16 @@ namespace eFolio.API
         {
             string connection = Configuration.GetConnectionString("EFolioConnection");
 
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IPrincipal>(
@@ -106,7 +115,8 @@ namespace eFolio.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
-            app.UseCors(options => options.WithOrigins("http://localhost:5000/").AllowAnyMethod().AllowAnyHeader());
+           // app.UseCors(options => options.WithOrigins("http://localhost:5000/").AllowAnyMethod().AllowAnyHeader());
+            app.UseCors("AllowAllHeaders");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
