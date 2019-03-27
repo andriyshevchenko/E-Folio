@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eFolio.EF;
 
 namespace e_folio.core.Migrations
 {
     [DbContext(typeof(eFolioDBContext))]
-    partial class eFolioDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190327134713_rename_contexts")]
+    partial class rename_contexts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
