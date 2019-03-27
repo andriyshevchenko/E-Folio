@@ -1,0 +1,1457 @@
+2019-03-26 11:41:25.776 +02:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-26 11:41:26.655 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-26 11:41:26.774 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 11:41:27.142 +02:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-26 11:41:27.157 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-26 11:41:27.168 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-26 11:41:27.183 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-26 11:41:27.366 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-26 11:41:27.371 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-26 11:41:27.374 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-26 11:41:27.384 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-26 11:41:27.385 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-26 11:41:27.436 +02:00 [INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-26 11:41:27.801 +02:00 [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-26 11:41:27.900 +02:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-26 11:41:27.918 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-26 11:41:27.930 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-26 11:41:27.949 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-26 11:41:28.746 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2019-03-26 11:41:29.305 +02:00 [INF] Request finished in 562.0589ms 404 
+2019-03-26 11:41:31.967 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 11:41:31.970 +02:00 [INF] Policy execution successful.
+2019-03-26 11:41:32.057 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 11:41:32.286 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 11:41:32.300 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.6071ms.
+2019-03-26 11:41:32.322 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 11:41:32.347 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 11:41:32.737 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 11:41:32.922 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 11:41:33.034 +02:00 [WRN] The LINQ expression 'GroupBy([pde].ProjectId, _Include(queryContext, [pde], new [] {[pde.DeveloperEntity]}, (queryContext, entity, included) => { ... }))' could not be translated and will be evaluated locally.
+2019-03-26 11:41:33.061 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 11:41:38.396 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 6324.5716ms
+2019-03-26 11:41:38.400 +02:00 [INF] Request finished in 6433.119ms 200 application/json; charset=utf-8
+2019-03-26 11:45:57.416 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 11:45:57.416 +02:00 [INF] Policy execution successful.
+2019-03-26 11:45:57.417 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 11:45:57.423 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 11:45:57.423 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.051300000000000005ms.
+2019-03-26 11:45:57.424 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 11:45:57.425 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 11:45:57.432 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 11:45:57.433 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 11:45:57.436 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 11:46:01.625 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4207.4246ms
+2019-03-26 11:46:01.625 +02:00 [INF] Request finished in 4209.6978ms 200 application/json; charset=utf-8
+2019-03-26 11:48:43.502 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 11:48:43.502 +02:00 [INF] Policy execution successful.
+2019-03-26 11:48:43.503 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 11:48:43.504 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 11:48:43.504 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 11:48:43.504 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 11:48:43.506 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 11:48:43.508 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 11:48:43.509 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 11:48:43.511 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 11:48:47.677 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4174.0187000000005ms
+2019-03-26 11:48:47.677 +02:00 [INF] Request finished in 4176.065ms 200 application/json; charset=utf-8
+2019-03-26 11:51:23.479 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 11:51:23.479 +02:00 [INF] Policy execution successful.
+2019-03-26 11:51:23.480 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 11:51:23.480 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 11:51:23.481 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0114ms.
+2019-03-26 11:51:23.481 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 11:51:23.482 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 11:51:23.484 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 11:51:23.486 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 11:51:23.488 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 11:51:27.751 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4270.3205ms
+2019-03-26 11:51:27.752 +02:00 [INF] Request finished in 4271.7947ms 200 application/json; charset=utf-8
+2019-03-26 11:52:31.857 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 11:52:31.857 +02:00 [INF] Policy execution successful.
+2019-03-26 11:52:31.858 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 11:52:31.858 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 11:52:31.859 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 11:52:31.859 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 11:52:31.860 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 11:52:31.863 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 11:52:31.865 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 11:52:31.867 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 11:52:36.069 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4211.1065ms
+2019-03-26 11:52:36.069 +02:00 [INF] Request finished in 4212.6332ms 200 application/json; charset=utf-8
+2019-03-26 11:53:01.873 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 11:53:01.873 +02:00 [INF] Policy execution successful.
+2019-03-26 11:53:01.873 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 11:53:01.874 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 11:53:01.874 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0091ms.
+2019-03-26 11:53:01.874 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 11:53:01.875 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 11:53:01.877 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 11:53:01.878 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 11:53:01.880 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 11:53:06.083 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4209.7087ms
+2019-03-26 11:53:06.084 +02:00 [INF] Request finished in 4211.2565ms 200 application/json; charset=utf-8
+2019-03-26 11:53:28.601 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 11:53:28.601 +02:00 [INF] Policy execution successful.
+2019-03-26 11:53:28.602 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 11:53:28.602 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 11:53:28.602 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 11:53:28.603 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 11:53:28.603 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 11:53:28.607 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 11:53:28.611 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 11:53:28.613 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 11:53:32.845 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4243.4698ms
+2019-03-26 11:53:32.846 +02:00 [INF] Request finished in 4244.9663ms 200 application/json; charset=utf-8
+2019-03-26 11:54:08.034 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 11:54:08.035 +02:00 [INF] Policy execution successful.
+2019-03-26 11:54:08.035 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 11:54:08.036 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 11:54:08.036 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0108ms.
+2019-03-26 11:54:08.036 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 11:54:08.038 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 11:54:08.043 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 11:54:08.045 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 11:54:08.047 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 11:54:12.187 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4151.8184ms
+2019-03-26 11:54:12.188 +02:00 [INF] Request finished in 4153.3719ms 200 application/json; charset=utf-8
+2019-03-26 11:54:34.327 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 11:54:34.327 +02:00 [INF] Policy execution successful.
+2019-03-26 11:54:34.328 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 11:54:34.330 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 11:54:34.330 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0131ms.
+2019-03-26 11:54:34.330 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 11:54:34.331 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 11:54:34.336 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 11:54:34.337 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 11:54:34.339 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 11:54:38.552 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4223.404ms
+2019-03-26 11:54:38.553 +02:00 [INF] Request finished in 4224.9359ms 200 application/json; charset=utf-8
+2019-03-26 12:09:08.509 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:09:08.510 +02:00 [INF] Policy execution successful.
+2019-03-26 12:09:08.510 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:09:08.511 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:09:08.511 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0091ms.
+2019-03-26 12:09:08.511 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:09:08.512 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:09:08.994 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:09:09.018 +02:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:09:09.029 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:09:13.137 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4626.4091ms
+2019-03-26 12:09:13.138 +02:00 [INF] Request finished in 4627.751ms 200 application/json; charset=utf-8
+2019-03-26 12:13:05.610 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:13:05.616 +02:00 [INF] Policy execution successful.
+2019-03-26 12:13:05.618 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:13:05.618 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:13:05.618 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0091ms.
+2019-03-26 12:13:05.619 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:13:05.620 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:13:05.622 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:13:05.624 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:13:05.626 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:13:09.804 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4186.2758ms
+2019-03-26 12:13:09.805 +02:00 [INF] Request finished in 4194.5499ms 200 application/json; charset=utf-8
+2019-03-26 12:13:15.403 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:13:15.403 +02:00 [INF] Policy execution successful.
+2019-03-26 12:13:15.403 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:13:15.404 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:13:15.404 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0085ms.
+2019-03-26 12:13:15.404 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:13:15.405 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:13:15.407 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:13:15.408 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:13:15.411 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:13:19.571 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4167.0707ms
+2019-03-26 12:13:19.572 +02:00 [INF] Request finished in 4168.6527ms 200 application/json; charset=utf-8
+2019-03-26 12:13:44.106 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:13:44.106 +02:00 [INF] Policy execution successful.
+2019-03-26 12:13:44.107 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:13:44.108 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:13:44.108 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0114ms.
+2019-03-26 12:13:44.108 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:13:44.109 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:13:44.119 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:13:44.193 +02:00 [INF] Executed DbCommand (66ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:13:44.195 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:13:48.306 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4199.3912ms
+2019-03-26 12:13:48.307 +02:00 [INF] Request finished in 4200.72ms 200 application/json; charset=utf-8
+2019-03-26 12:13:50.929 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:13:50.929 +02:00 [INF] Policy execution successful.
+2019-03-26 12:13:50.930 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:13:50.930 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:13:50.932 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0091ms.
+2019-03-26 12:13:50.932 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:13:50.933 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:13:50.936 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:13:50.937 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:13:50.939 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:13:55.115 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4184.0607ms
+2019-03-26 12:13:55.115 +02:00 [INF] Request finished in 4185.8663ms 200 application/json; charset=utf-8
+2019-03-26 12:13:57.129 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:13:57.129 +02:00 [INF] Policy execution successful.
+2019-03-26 12:13:57.130 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:13:57.130 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:13:57.131 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0102ms.
+2019-03-26 12:13:57.131 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:13:57.132 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:13:57.134 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:13:57.135 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:13:57.137 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:14:01.350 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4220.3221ms
+2019-03-26 12:14:01.351 +02:00 [INF] Request finished in 4222.2212ms 200 application/json; charset=utf-8
+2019-03-26 12:14:15.055 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:14:15.055 +02:00 [INF] Policy execution successful.
+2019-03-26 12:14:15.055 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:14:15.056 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:14:15.056 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0091ms.
+2019-03-26 12:14:15.056 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:14:15.058 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:14:15.061 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:14:15.062 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:14:15.067 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:14:19.258 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4202.8826ms
+2019-03-26 12:14:19.259 +02:00 [INF] Request finished in 4204.2519ms 200 application/json; charset=utf-8
+2019-03-26 12:16:01.358 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:16:01.358 +02:00 [INF] Policy execution successful.
+2019-03-26 12:16:01.358 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:16:01.359 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:16:01.359 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 12:16:01.359 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:16:01.388 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:16:01.411 +02:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:16:01.413 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:16:01.415 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:16:05.656 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4297.6782ms
+2019-03-26 12:16:05.657 +02:00 [INF] Request finished in 4299.7547ms 200 application/json; charset=utf-8
+2019-03-26 12:16:16.395 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:16:16.396 +02:00 [INF] Policy execution successful.
+2019-03-26 12:16:16.396 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:16:16.397 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:16:16.397 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0085ms.
+2019-03-26 12:16:16.397 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:16:16.398 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:16:16.401 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:16:16.403 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:16:16.406 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:16:20.570 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4173.7245ms
+2019-03-26 12:16:20.571 +02:00 [INF] Request finished in 4175.2786ms 200 application/json; charset=utf-8
+2019-03-26 12:16:40.999 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:16:40.999 +02:00 [INF] Policy execution successful.
+2019-03-26 12:16:41.001 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:16:41.002 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:16:41.002 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0125ms.
+2019-03-26 12:16:41.003 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:16:41.004 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:16:41.012 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:16:41.014 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:16:41.016 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:16:45.149 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4147.8422ms
+2019-03-26 12:16:45.150 +02:00 [INF] Request finished in 4150.7638ms 200 application/json; charset=utf-8
+2019-03-26 12:17:02.418 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:17:02.418 +02:00 [INF] Policy execution successful.
+2019-03-26 12:17:02.419 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:17:02.419 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:17:02.420 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0102ms.
+2019-03-26 12:17:02.420 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:17:02.421 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:17:02.423 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:17:02.424 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:17:02.426 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:17:06.604 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4184.1075ms
+2019-03-26 12:17:06.605 +02:00 [INF] Request finished in 4185.689ms 200 application/json; charset=utf-8
+2019-03-26 12:17:19.870 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:17:19.871 +02:00 [INF] Policy execution successful.
+2019-03-26 12:17:19.871 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:17:19.871 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:17:19.872 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0114ms.
+2019-03-26 12:17:19.872 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:17:19.873 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:17:19.875 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:17:19.876 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:17:19.878 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:17:24.061 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4189.3281000000006ms
+2019-03-26 12:17:24.062 +02:00 [INF] Request finished in 4190.7955ms 200 application/json; charset=utf-8
+2019-03-26 12:17:28.217 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:17:28.217 +02:00 [INF] Policy execution successful.
+2019-03-26 12:17:28.218 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:17:28.219 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:17:28.219 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0108ms.
+2019-03-26 12:17:28.219 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:17:28.220 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:17:28.222 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:17:28.223 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:17:28.225 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:17:32.421 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4203.0788ms
+2019-03-26 12:17:32.421 +02:00 [INF] Request finished in 4204.8057ms 200 application/json; charset=utf-8
+2019-03-26 12:23:26.875 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:23:26.876 +02:00 [INF] Policy execution successful.
+2019-03-26 12:23:26.877 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:23:26.878 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:23:26.878 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0102ms.
+2019-03-26 12:23:26.878 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:23:26.879 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:23:26.882 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:23:26.883 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:23:26.887 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:23:31.072 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4194.1592ms
+2019-03-26 12:23:31.073 +02:00 [INF] Request finished in 4196.5705ms 200 application/json; charset=utf-8
+2019-03-26 12:25:53.298 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:25:53.298 +02:00 [INF] Policy execution successful.
+2019-03-26 12:25:53.298 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:25:53.299 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:25:53.299 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 12:25:53.299 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:25:53.301 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:25:53.305 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:25:53.308 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:25:53.322 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:25:57.704 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4406.0003000000006ms
+2019-03-26 12:25:57.705 +02:00 [INF] Request finished in 4407.3405ms 200 application/json; charset=utf-8
+2019-03-26 12:26:18.941 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:26:18.941 +02:00 [INF] Policy execution successful.
+2019-03-26 12:26:18.942 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:26:18.942 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:26:18.943 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0114ms.
+2019-03-26 12:26:18.943 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:26:18.945 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:26:18.954 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:26:18.956 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:26:18.958 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:26:23.189 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4246.7439ms
+2019-03-26 12:26:23.189 +02:00 [INF] Request finished in 4248.3328ms 200 application/json; charset=utf-8
+2019-03-26 12:26:42.945 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:26:42.945 +02:00 [INF] Policy execution successful.
+2019-03-26 12:26:42.946 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:26:42.946 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:26:42.946 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0085ms.
+2019-03-26 12:26:42.947 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:26:42.948 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:26:42.952 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:26:42.956 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:26:42.958 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:26:47.128 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4182.566ms
+2019-03-26 12:26:47.129 +02:00 [INF] Request finished in 4183.8742ms 200 application/json; charset=utf-8
+2019-03-26 12:27:16.231 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:27:16.231 +02:00 [INF] Policy execution successful.
+2019-03-26 12:27:16.232 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:27:16.233 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:27:16.233 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0102ms.
+2019-03-26 12:27:16.233 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:27:16.234 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:27:16.243 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:27:16.246 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:27:16.318 +02:00 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:27:20.591 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4357.3495ms
+2019-03-26 12:27:20.591 +02:00 [INF] Request finished in 4359.0548ms 200 application/json; charset=utf-8
+2019-03-26 12:27:23.423 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:27:23.423 +02:00 [INF] Policy execution successful.
+2019-03-26 12:27:23.423 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:27:23.426 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:27:23.426 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0108ms.
+2019-03-26 12:27:23.426 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:27:23.428 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:27:23.431 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:27:23.432 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:27:23.434 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:27:27.604 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4180.5779ms
+2019-03-26 12:27:27.605 +02:00 [INF] Request finished in 4182.1742ms 200 application/json; charset=utf-8
+2019-03-26 12:30:04.614 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:30:04.614 +02:00 [INF] Policy execution successful.
+2019-03-26 12:30:04.615 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:30:04.616 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:30:04.617 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.013600000000000001ms.
+2019-03-26 12:30:04.618 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:30:04.619 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:30:04.621 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:30:04.622 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:30:04.626 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:30:09.020 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4405.1038ms
+2019-03-26 12:30:09.020 +02:00 [INF] Request finished in 4406.671ms 200 application/json; charset=utf-8
+2019-03-26 12:34:58.505 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:34:58.505 +02:00 [INF] Policy execution successful.
+2019-03-26 12:34:58.506 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:34:58.507 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:34:58.507 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0131ms.
+2019-03-26 12:34:58.508 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:34:58.509 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:34:58.723 +02:00 [INF] Executed DbCommand (53ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:34:58.783 +02:00 [INF] Executed DbCommand (44ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:34:58.801 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:35:02.941 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4434.741ms
+2019-03-26 12:35:02.941 +02:00 [INF] Request finished in 4436.7182ms 200 application/json; charset=utf-8
+2019-03-26 12:35:09.587 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:35:09.587 +02:00 [INF] Policy execution successful.
+2019-03-26 12:35:09.588 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:35:09.588 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:35:09.588 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 12:35:09.588 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:35:09.589 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:35:09.591 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:35:09.593 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:35:09.595 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:35:13.862 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4274.2864ms
+2019-03-26 12:35:13.862 +02:00 [INF] Request finished in 4275.8559ms 200 application/json; charset=utf-8
+2019-03-26 12:35:25.597 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:35:25.597 +02:00 [INF] Policy execution successful.
+2019-03-26 12:35:25.598 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:35:25.598 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:35:25.599 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0102ms.
+2019-03-26 12:35:25.599 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:35:25.600 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:35:25.603 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:35:25.604 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:35:25.606 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:35:29.906 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4307.0586ms
+2019-03-26 12:35:29.906 +02:00 [INF] Request finished in 4308.5448ms 200 application/json; charset=utf-8
+2019-03-26 12:36:27.674 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:36:27.674 +02:00 [INF] Policy execution successful.
+2019-03-26 12:36:27.675 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:36:27.675 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:36:27.675 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0131ms.
+2019-03-26 12:36:27.675 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:36:27.677 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:36:27.678 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:36:27.680 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:36:27.682 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:36:31.874 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4199.3519000000006ms
+2019-03-26 12:36:31.875 +02:00 [INF] Request finished in 4200.9995ms 200 application/json; charset=utf-8
+2019-03-26 12:36:49.023 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:36:49.023 +02:00 [INF] Policy execution successful.
+2019-03-26 12:36:49.023 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:36:49.024 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:36:49.024 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0108ms.
+2019-03-26 12:36:49.024 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:36:49.025 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:36:49.027 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:36:49.028 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:36:49.031 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:36:53.187 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4163.8986ms
+2019-03-26 12:36:53.188 +02:00 [INF] Request finished in 4165.1738ms 200 application/json; charset=utf-8
+2019-03-26 12:37:12.361 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:37:12.361 +02:00 [INF] Policy execution successful.
+2019-03-26 12:37:12.361 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:37:12.362 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:37:12.362 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 12:37:12.362 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:37:12.364 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:37:12.367 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:37:12.368 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:37:12.370 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:37:16.511 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4149.5827ms
+2019-03-26 12:37:16.511 +02:00 [INF] Request finished in 4151.2326ms 200 application/json; charset=utf-8
+2019-03-26 12:38:14.799 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:38:14.799 +02:00 [INF] Policy execution successful.
+2019-03-26 12:38:14.800 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:38:14.800 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:38:14.801 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0114ms.
+2019-03-26 12:38:14.801 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:38:14.803 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:38:14.807 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:38:14.809 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:38:14.812 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:38:19.048 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4248.4098ms
+2019-03-26 12:38:19.049 +02:00 [INF] Request finished in 4249.7802ms 200 application/json; charset=utf-8
+2019-03-26 12:38:37.473 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:38:37.473 +02:00 [INF] Policy execution successful.
+2019-03-26 12:38:37.473 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:38:37.474 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:38:37.474 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 12:38:37.474 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:38:37.475 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:38:37.477 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:38:37.480 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:38:37.484 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:38:41.695 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4220.5382ms
+2019-03-26 12:38:41.696 +02:00 [INF] Request finished in 4222.3376ms 200 application/json; charset=utf-8
+2019-03-26 12:38:52.778 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:38:52.780 +02:00 [INF] Policy execution successful.
+2019-03-26 12:38:52.781 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:38:52.782 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:38:52.782 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0114ms.
+2019-03-26 12:38:52.782 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:38:52.783 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:38:52.787 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:38:52.789 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:38:52.792 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:38:56.952 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4170.3072ms
+2019-03-26 12:38:56.953 +02:00 [INF] Request finished in 4173.7747ms 200 application/json; charset=utf-8
+2019-03-26 12:39:11.526 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:39:11.527 +02:00 [INF] Policy execution successful.
+2019-03-26 12:39:11.527 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:39:11.528 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:39:11.528 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0085ms.
+2019-03-26 12:39:11.528 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:39:11.529 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:39:11.531 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:39:11.533 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:39:11.536 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:39:15.700 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4172.0392ms
+2019-03-26 12:39:15.701 +02:00 [INF] Request finished in 4173.5642ms 200 application/json; charset=utf-8
+2019-03-26 12:39:25.607 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:39:25.607 +02:00 [INF] Policy execution successful.
+2019-03-26 12:39:25.608 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:39:25.608 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:39:25.608 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0108ms.
+2019-03-26 12:39:25.608 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:39:25.609 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:39:25.611 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:39:25.612 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:39:25.616 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:39:29.820 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4212.3754ms
+2019-03-26 12:39:29.820 +02:00 [INF] Request finished in 4213.7807ms 200 application/json; charset=utf-8
+2019-03-26 12:43:30.681 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:43:30.683 +02:00 [INF] Policy execution successful.
+2019-03-26 12:43:30.683 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:43:30.684 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:43:30.684 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0108ms.
+2019-03-26 12:43:30.684 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:43:30.685 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:43:31.156 +02:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:43:31.165 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:43:31.170 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:43:35.330 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4646.545ms
+2019-03-26 12:43:35.331 +02:00 [INF] Request finished in 4650.2104ms 200 application/json; charset=utf-8
+2019-03-26 12:43:54.224 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:43:54.224 +02:00 [INF] Policy execution successful.
+2019-03-26 12:43:54.224 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:43:54.225 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:43:54.225 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 12:43:54.226 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:43:54.226 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:43:54.229 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:43:54.230 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:43:54.232 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:43:58.541 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4316.0193ms
+2019-03-26 12:43:58.541 +02:00 [INF] Request finished in 4317.7103ms 200 application/json; charset=utf-8
+2019-03-26 12:44:09.104 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:44:09.105 +02:00 [INF] Policy execution successful.
+2019-03-26 12:44:09.105 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:44:09.106 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:44:09.106 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 12:44:09.106 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:44:09.107 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:44:09.110 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:44:09.112 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:44:09.114 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:44:13.336 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4230.189ms
+2019-03-26 12:44:13.337 +02:00 [INF] Request finished in 4231.8229ms 200 application/json; charset=utf-8
+2019-03-26 12:44:30.234 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:44:30.235 +02:00 [INF] Policy execution successful.
+2019-03-26 12:44:30.236 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:44:30.237 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:44:30.237 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0119ms.
+2019-03-26 12:44:30.238 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:44:30.239 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:44:30.240 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:44:30.252 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:44:30.254 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:44:34.440 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4204.0210000000006ms
+2019-03-26 12:44:34.441 +02:00 [INF] Request finished in 4206.4242ms 200 application/json; charset=utf-8
+2019-03-26 12:46:12.365 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:46:12.365 +02:00 [INF] Policy execution successful.
+2019-03-26 12:46:12.365 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:46:12.366 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:46:12.366 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 12:46:12.366 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:46:12.367 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:46:12.370 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:46:12.371 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:46:12.382 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:46:16.560 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4193.4685ms
+2019-03-26 12:46:16.560 +02:00 [INF] Request finished in 4194.9742ms 200 application/json; charset=utf-8
+2019-03-26 12:46:25.018 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:46:25.018 +02:00 [INF] Policy execution successful.
+2019-03-26 12:46:25.019 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:46:25.020 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:46:25.020 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0091ms.
+2019-03-26 12:46:25.020 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:46:25.021 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:46:25.022 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:46:25.032 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:46:25.035 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:46:29.194 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4175.0037ms
+2019-03-26 12:46:29.195 +02:00 [INF] Request finished in 4177.221ms 200 application/json; charset=utf-8
+2019-03-26 12:46:31.879 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:46:31.879 +02:00 [INF] Policy execution successful.
+2019-03-26 12:46:31.879 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:46:31.880 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:46:31.880 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0108ms.
+2019-03-26 12:46:31.881 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:46:31.884 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:46:31.887 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:46:31.888 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:46:31.890 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:46:36.025 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4145.9031ms
+2019-03-26 12:46:36.026 +02:00 [INF] Request finished in 4147.2536ms 200 application/json; charset=utf-8
+2019-03-26 12:47:31.945 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:47:31.946 +02:00 [INF] Policy execution successful.
+2019-03-26 12:47:31.946 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:47:31.947 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:47:31.947 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0091ms.
+2019-03-26 12:47:31.947 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:47:31.948 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:47:31.950 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:47:31.951 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:47:31.953 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:47:36.134 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4188.1784ms
+2019-03-26 12:47:36.135 +02:00 [INF] Request finished in 4189.4502ms 200 application/json; charset=utf-8
+2019-03-26 12:47:39.282 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:47:39.282 +02:00 [INF] Policy execution successful.
+2019-03-26 12:47:39.282 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:47:39.283 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:47:39.283 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0096000000000000009ms.
+2019-03-26 12:47:39.283 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:47:39.284 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:47:39.286 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:47:39.288 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:47:39.290 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:47:43.427 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4143.6145000000006ms
+2019-03-26 12:47:43.428 +02:00 [INF] Request finished in 4145.0807ms 200 application/json; charset=utf-8
+2019-03-26 12:51:41.676 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-26 12:51:41.676 +02:00 [INF] Policy execution successful.
+2019-03-26 12:51:41.677 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-26 12:51:41.677 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-26 12:51:41.678 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0102ms.
+2019-03-26 12:51:41.678 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-26 12:51:41.680 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-26 12:51:41.681 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-26 12:51:41.683 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-26 12:51:41.686 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-26 12:51:45.973 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4295.0816ms
+2019-03-26 12:51:45.974 +02:00 [INF] Request finished in 4296.5261ms 200 application/json; charset=utf-8
