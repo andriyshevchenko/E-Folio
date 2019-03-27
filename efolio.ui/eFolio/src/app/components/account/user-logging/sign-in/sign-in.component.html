@@ -1,5 +1,5 @@
 <form class="form-container" [formGroup]="loginForm">  
-  <div>Sign in</div>
+  <div class="title">Sign in</div>
 
     <mat-form-field >
       <input matInput placeholder="E-mail" formControlName="email">
@@ -19,7 +19,5 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-raised-button (click)="onSignIn()">Sign in</button>
-
-    <button (click)="test()">test</button>
+    <button class="designedButton" mat-raised-button (click)="onSignIn()">Sign in</button>
   </form>

@@ -26,7 +26,7 @@
 }
 
 .mat-sidenav{
-  width: 200px;
+  width: 200px !important;
 }
 
 .menuItem{
@@ -45,4 +45,32 @@
 .logo{
   color: white; 
   text-decoration: none;
+}
+
+@media screen and (min-width: 700px){
+  .sidenav{
+      display: none;
+  }
+  .header{
+      display: flex;
+  }
+  ::ng-deep.mat-drawer-backdrop.ng-star-inserted{
+    display: flex;
+  }
+  ::ng-deep.mat-drawer-backdrop.ng-star-inserted.mat-drawer-shown{
+    display: none;
+  }
+}
+
+@media (max-width: 699px){
+  .header{
+      display: none;
+  }
+  .sidenav{
+      display: flex;
+  }
+
+  .sidenav[_ngcontent-c1] {
+    width: 40px;
+  }
 }

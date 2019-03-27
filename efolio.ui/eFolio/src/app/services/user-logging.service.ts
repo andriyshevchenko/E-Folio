@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class UserLoggingService {
-    constructor(private http: Http) { }
+    constructor(private httpClient: HttpClient) { }
 
     signIn(loginData) {
-        return this.http.post('http://localhost:5000/api/account/login/', loginData);
+        return this.httpClient.post('http://localhost:5000/api/account/login/', loginData);
     }
 
     signUp(registerData) {
-        return this.http.post('http://localhost:5000/api/account/register/', registerData);
+        return this.httpClient.post('http://localhost:5000/api/account/register/', registerData);
     }
 }

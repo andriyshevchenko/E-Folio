@@ -5,7 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatFormFieldModule } from '@angular/material';
+import {
+  MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule,
+  MatInputModule, MatFormFieldModule
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { DevelopersComponent } from './components/developers/developers.component';
@@ -14,12 +17,13 @@ import { AdministrationComponent } from './components/administration/administrat
 import { AccountComponent } from './components/account/account.component';
 import { ProjectFilterComponent } from './components/projects/project-filter/project-filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserLoggingComponent } from './components/account/user-logging/user-logging.component'
+import { UserLoggingComponent } from './components/account/user-logging/user-logging.component';
 import { UserLoggingService } from './services/user-logging.service';
 // import { UserSignInInfo } from './models/user-signin-info.model';
-import { HttpModule } from '@angular/http';
 import { SignUpComponent } from './components/account/user-logging/sign-up/sign-up.component';
-import { SignInComponent } from './components/account/user-logging/sign-in/sign-in.component'
+import { SignInComponent } from './components/account/user-logging/sign-in/sign-in.component';
+import { ValidationService } from './services/validation.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,7 @@ import { SignInComponent } from './components/account/user-logging/sign-in/sign-
     ProjectFilterComponent,
     UserLoggingComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,10 +52,10 @@ import { SignInComponent } from './components/account/user-logging/sign-in/sign-
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
-    HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [UserLoggingService],
+  providers: [UserLoggingService, ValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,599 @@
+2019-03-27 13:17:57.701 +02:00 [INF] User profile is available. Using 'C:\Users\Администратор\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-27 13:18:04.226 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-27 13:18:05.381 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-27 13:18:23.186 +02:00 [INF] Executed DbCommand (2,820ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+CREATE DATABASE [eFolio];
+2019-03-27 13:18:23.809 +02:00 [INF] Executed DbCommand (620ms) [Parameters=[], CommandType='"Text"', CommandTimeout='60']
+IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [eFolio] SET READ_COMMITTED_SNAPSHOT ON;
+END;
+2019-03-27 13:18:23.957 +02:00 [INF] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [__EFMigrationsHistory] (
+    [MigrationId] nvarchar(150) NOT NULL,
+    [ProductVersion] nvarchar(32) NOT NULL,
+    CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+);
+2019-03-27 13:18:23.972 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 13:18:23.975 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-27 13:18:23.981 +02:00 [INF] Applying migration '20190221124323_InitialMigration'.
+2019-03-27 13:18:24.030 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Clients] (
+    [Id] int NOT NULL IDENTITY,
+    [FullNameClient] nvarchar(max) NULL,
+    [Comment] nvarchar(max) NULL,
+    CONSTRAINT [PK_Clients] PRIMARY KEY ([Id])
+);
+2019-03-27 13:18:24.034 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Contexsts] (
+    [Id] int NOT NULL IDENTITY,
+    [SourceCodeLink] nvarchar(max) NULL,
+    CONSTRAINT [PK_Contexsts] PRIMARY KEY ([Id])
+);
+2019-03-27 13:18:24.037 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Developers] (
+    [Id] int NOT NULL IDENTITY,
+    [FullName] nvarchar(max) NULL,
+    [CVLink] nvarchar(max) NULL,
+    CONSTRAINT [PK_Developers] PRIMARY KEY ([Id])
+);
+2019-03-27 13:18:24.042 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ContactPersons] (
+    [Id] int NOT NULL IDENTITY,
+    [FullName] nvarchar(max) NULL,
+    [eMail] nvarchar(max) NULL,
+    [Phone] int NOT NULL,
+    [Comment] nvarchar(max) NULL,
+    [ClientEntityId] int NULL,
+    CONSTRAINT [PK_ContactPersons] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ContactPersons_Clients_ClientEntityId] FOREIGN KEY ([ClientEntityId]) REFERENCES [Clients] ([Id]) ON DELETE NO ACTION
+);
+2019-03-27 13:18:24.046 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [FolioFiles] (
+    [Id] int NOT NULL IDENTITY,
+    [IsInternal] bit NOT NULL,
+    [Path] nvarchar(max) NULL,
+    [ContextEntityId] int NULL,
+    CONSTRAINT [PK_FolioFiles] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_FolioFiles_Contexsts_ContextEntityId] FOREIGN KEY ([ContextEntityId]) REFERENCES [Contexsts] ([Id]) ON DELETE NO ACTION
+);
+2019-03-27 13:18:24.050 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Projects] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NULL,
+    [ContextId] int NULL,
+    CONSTRAINT [PK_Projects] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Projects_Contexsts_ContextId] FOREIGN KEY ([ContextId]) REFERENCES [Contexsts] ([Id]) ON DELETE NO ACTION
+);
+2019-03-27 13:18:24.059 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [ProjectDeveloperEntity] (
+    [ProjectId] int NOT NULL,
+    [DeveloperId] int NOT NULL,
+    CONSTRAINT [PK_ProjectDeveloperEntity] PRIMARY KEY ([ProjectId], [DeveloperId]),
+    CONSTRAINT [FK_ProjectDeveloperEntity_Developers_DeveloperId] FOREIGN KEY ([DeveloperId]) REFERENCES [Developers] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_ProjectDeveloperEntity_Projects_ProjectId] FOREIGN KEY ([ProjectId]) REFERENCES [Projects] ([Id]) ON DELETE CASCADE
+);
+2019-03-27 13:18:24.062 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ContactPersons_ClientEntityId] ON [ContactPersons] ([ClientEntityId]);
+2019-03-27 13:18:24.064 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_FolioFiles_ContextEntityId] ON [FolioFiles] ([ContextEntityId]);
+2019-03-27 13:18:24.066 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_ProjectDeveloperEntity_DeveloperId] ON [ProjectDeveloperEntity] ([DeveloperId]);
+2019-03-27 13:18:24.070 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_Projects_ContextId] ON [Projects] ([ContextId]);
+2019-03-27 13:18:24.074 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20190221124323_InitialMigration', N'2.1.8-servicing-32085');
+2019-03-27 13:18:24.243 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:18:24.245 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 13:18:24.247 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 13:18:24.252 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-27 13:18:24.253 +02:00 [INF] Applying migration '20190305100123_InitialAuthMigrations'.
+2019-03-27 13:18:24.287 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoles] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);
+2019-03-27 13:18:24.292 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUsers] (
+    [Id] int NOT NULL IDENTITY,
+    [UserName] nvarchar(256) NULL,
+    [NormalizedUserName] nvarchar(256) NULL,
+    [Email] nvarchar(256) NULL,
+    [NormalizedEmail] nvarchar(256) NULL,
+    [EmailConfirmed] bit NOT NULL,
+    [PasswordHash] nvarchar(max) NULL,
+    [SecurityStamp] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [PhoneNumber] nvarchar(max) NULL,
+    [PhoneNumberConfirmed] bit NOT NULL,
+    [TwoFactorEnabled] bit NOT NULL,
+    [LockoutEnd] datetimeoffset NULL,
+    [LockoutEnabled] bit NOT NULL,
+    [AccessFailedCount] int NOT NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUsers] PRIMARY KEY ([Id])
+);
+2019-03-27 13:18:24.297 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetRoleClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [RoleId] int NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE
+);
+2019-03-27 13:18:24.302 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserClaims] (
+    [Id] int NOT NULL IDENTITY,
+    [UserId] int NOT NULL,
+    [ClaimType] nvarchar(max) NULL,
+    [ClaimValue] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2019-03-27 13:18:24.308 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserLogins] (
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [ProviderKey] nvarchar(450) NOT NULL,
+    [ProviderDisplayName] nvarchar(max) NULL,
+    [UserId] int NOT NULL,
+    CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY ([LoginProvider], [ProviderKey]),
+    CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2019-03-27 13:18:24.313 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserRoles] (
+    [UserId] int NOT NULL,
+    [RoleId] int NOT NULL,
+    CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY ([UserId], [RoleId]),
+    CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AspNetRoles] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2019-03-27 13:18:24.323 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [AspNetUserTokens] (
+    [UserId] int NOT NULL,
+    [LoginProvider] nvarchar(450) NOT NULL,
+    [Name] nvarchar(450) NOT NULL,
+    [Value] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY ([UserId], [LoginProvider], [Name]),
+    CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2019-03-27 13:18:24.326 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetRoleClaims_RoleId] ON [AspNetRoleClaims] ([RoleId]);
+2019-03-27 13:18:24.328 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [RoleNameIndex] ON [AspNetRoles] ([NormalizedName]) WHERE [NormalizedName] IS NOT NULL;
+2019-03-27 13:18:24.331 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserClaims_UserId] ON [AspNetUserClaims] ([UserId]);
+2019-03-27 13:18:24.334 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserLogins_UserId] ON [AspNetUserLogins] ([UserId]);
+2019-03-27 13:18:24.338 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_AspNetUserRoles_RoleId] ON [AspNetUserRoles] ([RoleId]);
+2019-03-27 13:18:24.340 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [EmailIndex] ON [AspNetUsers] ([NormalizedEmail]);
+2019-03-27 13:18:24.343 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE UNIQUE INDEX [UserNameIndex] ON [AspNetUsers] ([NormalizedUserName]) WHERE [NormalizedUserName] IS NOT NULL;
+2019-03-27 13:18:24.345 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20190305100123_InitialAuthMigrations', N'2.1.8-servicing-32085');
+2019-03-27 13:18:24.350 +02:00 [INF] Applying migration '20190305101004_InitialAuthMigrations2'.
+2019-03-27 13:18:24.363 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20190305101004_InitialAuthMigrations2', N'2.1.8-servicing-32085');
+2019-03-27 13:18:24.366 +02:00 [INF] Applying migration '20190305101251_InitialAuthMigrations3'.
+2019-03-27 13:18:24.378 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20190305101251_InitialAuthMigrations3', N'2.1.8-servicing-32085');
+2019-03-27 13:18:24.382 +02:00 [INF] Applying migration '20190305111732_InitialAuthMigrations4'.
+2019-03-27 13:18:24.393 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20190305111732_InitialAuthMigrations4', N'2.1.8-servicing-32085');
+2019-03-27 13:18:24.396 +02:00 [INF] Applying migration '20190306083614_InitialAuthMigrations5'.
+2019-03-27 13:18:24.407 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20190306083614_InitialAuthMigrations5', N'2.1.8-servicing-32085');
+2019-03-27 13:18:24.478 +02:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 13:18:24.622 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 13:18:24.792 +02:00 [ERR] Failed executing DbCommand (5ms) [Parameters=[@p0='bbb' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [Contexts] ([SourceCodeLink])
+VALUES (@p0);
+SELECT [Id]
+FROM [Contexts]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Contexts'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:fa41bc7b-b298-4100-a9e6-2d2f39c03250
+Error Number:208,State:1,Class:16
+2019-03-27 13:18:25.275 +02:00 [ERR] An exception occurred in the database while saving changes for context type 'eFolio.EF.eFolioDBContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'Contexts'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'Contexts'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2019-03-27 13:18:25.570 +02:00 [ERR] An error occured while seeding the database.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Invalid object name 'Contexts'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at eFolio.API.Seeds.ContextInitializer.Initialize(eFolioDBContext context) in D:\exoft\e-Folio\Seeds\ContextInitializer.cs:line 61
+   at eFolio.API.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider) in D:\exoft\e-Folio\Startup.cs:line 135
+2019-03-27 13:18:26.949 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2019-03-27 13:18:26.949 +02:00 [INF] Request starting HTTP/1.1 DEBUG http://localhost:5000/  0
+2019-03-27 13:18:27.134 +02:00 [INF] Request finished in 185.1681ms 200 
+2019-03-27 13:18:29.162 +02:00 [INF] Request finished in 2214.7416ms 404 
+2019-03-27 13:23:29.511 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/account/login/  
+2019-03-27 13:23:29.512 +02:00 [INF] Policy execution successful.
+2019-03-27 13:23:29.533 +02:00 [INF] Request finished in 22.6718ms 204 
+2019-03-27 13:23:29.575 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/login/ application/json 48
+2019-03-27 13:23:29.575 +02:00 [INF] Policy execution successful.
+2019-03-27 13:23:30.451 +02:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Login (eFolio.API)
+2019-03-27 13:23:31.421 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Login (eFolio.API) with arguments (["eFolio.DTO.Common.UserLogin"]) - Validation state: "Valid"
+2019-03-27 13:23:31.511 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:23:32.489 +02:00 [INF] Executed DbCommand (231ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-27 13:23:32.626 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Login (eFolio.API), returned result Microsoft.AspNetCore.Mvc.StatusCodeResult in 1202.4482ms.
+2019-03-27 13:23:32.640 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 403
+2019-03-27 13:23:32.647 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Login (eFolio.API) in 2192.4985ms
+2019-03-27 13:23:32.683 +02:00 [INF] Request finished in 3109.491ms 403 
+2019-03-27 13:25:34.747 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/account/register/  
+2019-03-27 13:25:34.747 +02:00 [INF] Policy execution successful.
+2019-03-27 13:25:34.750 +02:00 [INF] Request finished in 3.1961ms 204 
+2019-03-27 13:25:34.802 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/register/ application/json 99
+2019-03-27 13:25:34.803 +02:00 [INF] Policy execution successful.
+2019-03-27 13:25:34.812 +02:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Register (eFolio.API)
+2019-03-27 13:25:34.885 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Register (eFolio.API) with arguments (["eFolio.DTO.Common.UserRegister"]) - Validation state: "Valid"
+2019-03-27 13:25:35.018 +02:00 [WRN] User null password validation failed: PasswordRequiresUpper.
+2019-03-27 13:25:35.019 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Register (eFolio.API), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 133.9621ms.
+2019-03-27 13:25:35.023 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.API.Models.ErrorResponse'.
+2019-03-27 13:25:35.529 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Register (eFolio.API) in 716.6656ms
+2019-03-27 13:25:35.530 +02:00 [INF] Request finished in 728.1466ms 400 application/json; charset=utf-8
+2019-03-27 13:25:57.375 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/account/register/  
+2019-03-27 13:25:57.375 +02:00 [INF] Policy execution successful.
+2019-03-27 13:25:57.375 +02:00 [INF] Request finished in 0.253ms 204 
+2019-03-27 13:25:57.472 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/register/ application/json 98
+2019-03-27 13:25:57.472 +02:00 [INF] Policy execution successful.
+2019-03-27 13:25:57.472 +02:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Register (eFolio.API)
+2019-03-27 13:25:57.476 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Register (eFolio.API) with arguments (["eFolio.DTO.Common.UserRegister"]) - Validation state: "Valid"
+2019-03-27 13:25:57.637 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:25:57.657 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-27 13:25:57.861 +02:00 [INF] Executed DbCommand (34ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [FirstName], [LastName], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AspNetUsers]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2019-03-27 13:25:57.919 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-27 13:25:57.940 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Register (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 463.4184ms.
+2019-03-27 13:25:57.940 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Boolean'.
+2019-03-27 13:25:57.941 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Register (eFolio.API) in 468.45000000000005ms
+2019-03-27 13:25:57.941 +02:00 [INF] Request finished in 469.6301ms 200 application/json; charset=utf-8
+2019-03-27 13:26:49.613 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/account/register/  
+2019-03-27 13:26:49.712 +02:00 [INF] Policy execution successful.
+2019-03-27 13:26:49.712 +02:00 [INF] Request finished in 98.8519ms 204 
+2019-03-27 13:26:49.727 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/register/ application/json 68
+2019-03-27 13:26:49.752 +02:00 [INF] Policy execution successful.
+2019-03-27 13:26:49.752 +02:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Register (eFolio.API)
+2019-03-27 13:26:49.753 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Register (eFolio.API) with arguments (["eFolio.DTO.Common.UserRegister"]) - Validation state: "Valid"
+2019-03-27 13:26:49.795 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:26:49.839 +02:00 [INF] Executed DbCommand (43ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-27 13:26:49.889 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [FirstName], [LastName], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AspNetUsers]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2019-03-27 13:26:49.926 +02:00 [INF] Executed DbCommand (14ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-27 13:26:49.927 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Register (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 173.6244ms.
+2019-03-27 13:26:49.927 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Boolean'.
+2019-03-27 13:26:49.927 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Register (eFolio.API) in 174.8476ms
+2019-03-27 13:26:49.927 +02:00 [INF] Request finished in 200.5325ms 200 application/json; charset=utf-8
+2019-03-27 13:26:57.835 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/account/login/  
+2019-03-27 13:26:57.836 +02:00 [INF] Policy execution successful.
+2019-03-27 13:26:57.836 +02:00 [INF] Request finished in 0.2709ms 204 
+2019-03-27 13:26:57.954 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/login/ application/json 37
+2019-03-27 13:26:57.954 +02:00 [INF] Policy execution successful.
+2019-03-27 13:26:57.954 +02:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Login (eFolio.API)
+2019-03-27 13:26:57.954 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Login (eFolio.API) with arguments (["eFolio.DTO.Common.UserLogin"]) - Validation state: "Valid"
+2019-03-27 13:26:57.955 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:26:57.957 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-27 13:26:58.828 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration  
+2019-03-27 13:26:59.078 +02:00 [INF] Request finished in 249.5715ms 200 application/json; charset=UTF-8
+2019-03-27 13:26:59.401 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks  
+2019-03-27 13:26:59.492 +02:00 [INF] Request finished in 90.846ms 200 application/json; charset=UTF-8
+2019-03-27 13:26:59.687 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/token application/x-www-form-urlencoded 54
+2019-03-27 13:26:59.961 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:26:59.964 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-27 13:27:00.262 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0
+2019-03-27 13:27:00.356 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0
+2019-03-27 13:27:00.685 +02:00 [INF] Request finished in 998.2391ms 200 application/json; charset=UTF-8
+2019-03-27 13:27:00.725 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Login (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2770.0108ms.
+2019-03-27 13:27:00.729 +02:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`4[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-03-27 13:27:00.732 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Login (eFolio.API) in 2778.3047ms
+2019-03-27 13:27:00.733 +02:00 [INF] Request finished in 2779.0718ms 200 application/json; charset=utf-8
+2019-03-27 13:33:34.876 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/account/register/  
+2019-03-27 13:33:34.876 +02:00 [INF] Policy execution successful.
+2019-03-27 13:33:34.876 +02:00 [INF] Request finished in 0.4825ms 204 
+2019-03-27 13:33:34.927 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/register/ application/json 71
+2019-03-27 13:33:34.927 +02:00 [INF] Policy execution successful.
+2019-03-27 13:33:34.927 +02:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Register (eFolio.API)
+2019-03-27 13:33:34.928 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Register (eFolio.API) with arguments (["eFolio.DTO.Common.UserRegister"]) - Validation state: "Valid"
+2019-03-27 13:33:34.950 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:33:35.132 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-27 13:33:35.165 +02:00 [WRN] User null validation failed: DuplicateUserName.
+2019-03-27 13:33:35.166 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Register (eFolio.API), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 237.6527ms.
+2019-03-27 13:33:35.166 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.API.Models.ErrorResponse'.
+2019-03-27 13:33:35.166 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Register (eFolio.API) in 238.81070000000003ms
+2019-03-27 13:33:35.168 +02:00 [INF] Request finished in 241.5588ms 400 application/json; charset=utf-8
+2019-03-27 13:34:29.241 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/account/register/  
+2019-03-27 13:34:29.242 +02:00 [INF] Policy execution successful.
+2019-03-27 13:34:29.242 +02:00 [INF] Request finished in 0.5619ms 204 
+2019-03-27 13:34:29.274 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/register/ application/json 71
+2019-03-27 13:34:29.275 +02:00 [INF] Policy execution successful.
+2019-03-27 13:34:29.275 +02:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Register (eFolio.API)
+2019-03-27 13:34:29.276 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Register (eFolio.API) with arguments (["eFolio.DTO.Common.UserRegister"]) - Validation state: "Valid"
+2019-03-27 13:34:29.301 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:34:29.304 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-27 13:34:29.307 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [FirstName], [LastName], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AspNetUsers]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2019-03-27 13:34:29.313 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-27 13:34:29.313 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Register (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 36.732800000000005ms.
+2019-03-27 13:34:29.313 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Boolean'.
+2019-03-27 13:34:29.313 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Register (eFolio.API) in 38.4433ms
+2019-03-27 13:34:29.318 +02:00 [INF] Request finished in 40.5211ms 200 application/json; charset=utf-8
+2019-03-27 13:34:51.945 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/account/login/  
+2019-03-27 13:34:51.945 +02:00 [INF] Policy execution successful.
+2019-03-27 13:34:51.945 +02:00 [INF] Request finished in 0.3643ms 204 
+2019-03-27 13:34:51.987 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/login/ application/json 40
+2019-03-27 13:34:51.987 +02:00 [INF] Policy execution successful.
+2019-03-27 13:34:52.004 +02:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Login (eFolio.API)
+2019-03-27 13:34:52.006 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Login (eFolio.API) with arguments (["eFolio.DTO.Common.UserLogin"]) - Validation state: "Valid"
+2019-03-27 13:34:52.007 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:34:52.018 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-27 13:34:52.064 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration  
+2019-03-27 13:34:52.065 +02:00 [INF] Request finished in 1.745ms 200 application/json; charset=UTF-8
+2019-03-27 13:34:52.080 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks  
+2019-03-27 13:34:52.081 +02:00 [INF] Request finished in 1.1699ms 200 application/json; charset=UTF-8
+2019-03-27 13:34:52.140 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/token application/x-www-form-urlencoded 57
+2019-03-27 13:34:52.161 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:34:52.163 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-27 13:34:52.189 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0
+2019-03-27 13:34:52.193 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0
+2019-03-27 13:34:52.210 +02:00 [INF] Request finished in 69.7955ms 200 application/json; charset=UTF-8
+2019-03-27 13:34:52.213 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Login (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 207.0301ms.
+2019-03-27 13:34:52.214 +02:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`4[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-03-27 13:34:52.214 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Login (eFolio.API) in 209.7838ms
+2019-03-27 13:34:52.215 +02:00 [INF] Request finished in 229.2889ms 200 application/json; charset=utf-8
+2019-03-27 13:38:36.195 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/account/register/  
+2019-03-27 13:38:36.196 +02:00 [INF] Policy execution successful.
+2019-03-27 13:38:36.200 +02:00 [INF] Request finished in 5.1305ms 204 
+2019-03-27 13:38:36.256 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/register/ application/json 71
+2019-03-27 13:38:36.260 +02:00 [INF] Policy execution successful.
+2019-03-27 13:38:36.260 +02:00 [INF] Route matched with {action = "Register", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Register (eFolio.API)
+2019-03-27 13:38:36.261 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Register (eFolio.API) with arguments (["eFolio.DTO.Common.UserRegister"]) - Validation state: "Valid"
+2019-03-27 13:38:36.287 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:38:36.293 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-27 13:38:36.301 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [FirstName], [LastName], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15);
+SELECT [Id]
+FROM [AspNetUsers]
+WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
+2019-03-27 13:38:36.308 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-27 13:38:36.309 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Register (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 47.710300000000004ms.
+2019-03-27 13:38:36.309 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Boolean'.
+2019-03-27 13:38:36.309 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Register (eFolio.API) in 48.8478ms
+2019-03-27 13:38:36.309 +02:00 [INF] Request finished in 54.6589ms 200 application/json; charset=utf-8
+2019-03-27 13:38:58.901 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/account/login/  
+2019-03-27 13:38:58.901 +02:00 [INF] Policy execution successful.
+2019-03-27 13:38:58.901 +02:00 [INF] Request finished in 0.3366ms 204 
+2019-03-27 13:38:58.931 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/login/ application/json 40
+2019-03-27 13:38:58.931 +02:00 [INF] Policy execution successful.
+2019-03-27 13:38:58.932 +02:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Login (eFolio.API)
+2019-03-27 13:38:58.933 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Login (eFolio.API) with arguments (["eFolio.DTO.Common.UserLogin"]) - Validation state: "Valid"
+2019-03-27 13:38:58.933 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:38:58.952 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-27 13:38:59.043 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration  
+2019-03-27 13:38:59.044 +02:00 [INF] Request finished in 0.9049ms 200 application/json; charset=UTF-8
+2019-03-27 13:38:59.055 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/.well-known/openid-configuration/jwks  
+2019-03-27 13:38:59.056 +02:00 [INF] Request finished in 0.7696ms 200 application/json; charset=UTF-8
+2019-03-27 13:38:59.107 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/connect/token application/x-www-form-urlencoded 57
+2019-03-27 13:38:59.109 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:38:59.114 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2019-03-27 13:38:59.159 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AspNetUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0
+2019-03-27 13:38:59.161 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [role].[Name]
+FROM [AspNetUserRoles] AS [userRole]
+INNER JOIN [AspNetRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0
+2019-03-27 13:38:59.179 +02:00 [INF] Request finished in 72.1519ms 200 application/json; charset=UTF-8
+2019-03-27 13:38:59.180 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Login (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 247.44840000000002ms.
+2019-03-27 13:38:59.180 +02:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`4[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2019-03-27 13:38:59.181 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Login (eFolio.API) in 248.70790000000002ms
+2019-03-27 13:38:59.181 +02:00 [INF] Request finished in 249.8966ms 200 application/json; charset=utf-8
+2019-03-27 13:51:51.849 +02:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5000/api/account/login/  
+2019-03-27 13:51:51.879 +02:00 [INF] Policy execution successful.
+2019-03-27 13:51:51.880 +02:00 [INF] Request finished in 31.1653ms 204 
+2019-03-27 13:51:51.928 +02:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/api/account/login/ application/json 32
+2019-03-27 13:51:51.928 +02:00 [INF] Policy execution successful.
+2019-03-27 13:51:51.928 +02:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action eFolio.API.Controllers.AccountController.Login (eFolio.API)
+2019-03-27 13:51:51.931 +02:00 [INF] Executing action method eFolio.API.Controllers.AccountController.Login (eFolio.API) with arguments (["eFolio.DTO.Common.UserLogin"]) - Validation state: "Valid"
+2019-03-27 13:51:51.931 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 13:51:52.044 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[FirstName], [u].[LastName], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedEmail] = @__normalizedEmail_0
+2019-03-27 13:51:52.048 +02:00 [INF] Executed action method eFolio.API.Controllers.AccountController.Login (eFolio.API), returned result Microsoft.AspNetCore.Mvc.StatusCodeResult in 116.8112ms.
+2019-03-27 13:51:52.048 +02:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 403
+2019-03-27 13:51:52.048 +02:00 [INF] Executed action eFolio.API.Controllers.AccountController.Login (eFolio.API) in 119.9907ms
+2019-03-27 13:51:52.048 +02:00 [INF] Request finished in 120.7331ms 403 

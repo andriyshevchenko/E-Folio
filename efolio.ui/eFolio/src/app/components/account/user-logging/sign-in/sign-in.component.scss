@@ -4,28 +4,28 @@ $elementsSecondaryColor: rgb(66, 66, 66);
 
 ::ng-deep .mat-focused .mat-form-field-label {
     /*change color of label*/
-    color: $elementsSecondaryColor !important;
+    color: $elementsSecondaryColor ;
 }
 
 ::ng-deep .mat-form-field-label {
     /*change color of label*/
-    color: $elementsSecondaryColor !important;
+    color: $elementsSecondaryColor ;
 }
 
 ::ng-deep.mat-form-field-underline {
     /*change color of underline*/
-    background-color: $elementsSecondaryColor !important;
-    color: $elementsSecondaryColor !important;
+    background-color: $elementsSecondaryColor ;
+    color: $elementsSecondaryColor ;
 } 
   
 ::ng-deep.mat-form-field-ripple {
     /*change color of underline when focused*/
-    background-color: $elementsMainColor !important;
-    color: $elementsMainColor !important;
+    background-color: $elementsMainColor ;
+    color: $elementsMainColor ;
 }
 
 ::ng-deep.mat-form-field-empty.mat-form-field-label {
-    color: $elementsSecondaryColor !important;
+    color: $elementsSecondaryColor ;
 }
 
 .form-container{
@@ -36,5 +36,23 @@ $elementsSecondaryColor: rgb(66, 66, 66);
 
 .mat-raised-button
 {
+    margin-top: 15px;
+    padding: 7px;
+    background-color: white;
+    border: 2px solid $elementsMainColor;
+    color: $elementsMainColor;
+    border-radius: 12px;
+    font-size: 115%;
+}
+
+.designedButton:hover{
     background-color: $elementsMainColor;
+    color: white;
+}
+
+.title{
+    color: rgb(75, 74, 74);
+    font-size: 150%;
+    font-weight: 100;
+    padding-bottom: 15px;
 }

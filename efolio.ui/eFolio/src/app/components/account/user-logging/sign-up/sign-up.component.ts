@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLoggingService } from 'src/app/services/user-logging.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidationService } from 'src/app/services/validation.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,19 +9,22 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  hide = true;
+  hidePassword = true;
+  hideConfirmPassword = true;
   public registerForm: any;
 
-  constructor(private userLoggingService: UserLoggingService) {
+  constructor(private userLoggingService: UserLoggingService,
+              public validationService: ValidationService) {
     this.registerForm = new FormGroup({
-      "firstName": new FormControl('', [Validators.required]),
-      "lastName": new FormControl('', [Validators.required]),
-      "email": new FormControl('', [Validators.required, Validators.email,]),
-      "password": new FormControl('', [Validators.required])
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required])
     });
   }
 
-  onSignUp(){
+  onSignUp() {
     if (this.registerForm.valid) {
       const formData = {
         firstName: this.registerForm.value.firstName,
@@ -30,10 +34,9 @@ export class SignUpComponent implements OnInit {
       };
       this.userLoggingService.signUp(formData)
         .subscribe(
-          response => console.log(response),
-          error => console.log(error)
         );
     }
+    this.registerForm.reset();
   }
 
   ngOnInit() {

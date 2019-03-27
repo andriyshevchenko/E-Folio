@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { UserLoggingService } from 'src/app/services/user-logging.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 
 @Component({
@@ -9,9 +8,12 @@ import { UserLoggingService } from 'src/app/services/user-logging.service';
   styleUrls: ['./user-logging.component.scss']
 })
 export class UserLoggingComponent implements OnInit {
-  constructor(private userLoggingService: UserLoggingService) { }
+  signUp = true;
+
+  constructor(private breakpointObserver: BreakpointObserver) {
+
+  }
 
   ngOnInit() {
   }
-
 }

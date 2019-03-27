@@ -1,2 +1,29 @@
-<app-sign-up></app-sign-up>
-<app-sign-in></app-sign-in>
+<div class="allComponentContainerDesktop">
+    <h1 class="pageTitleDesktop">Welcome to eFolio</h1>
+    <div class="pageInfo">Want to see more information? Create new account or sign in</div>
+    <div class="authContainer" style="width: 70%">
+        <p class="separator" style="width: 60%">
+            <app-sign-up></app-sign-up>
+        </p>
+        <p style="width: 40%">
+            <app-sign-in></app-sign-in>
+        </p>
+    </div>
+</div>
+
+<div class="allComponentContainerMobile">
+    <h1 class="pageTitleMobile">Welcome to eFolio</h1>
+    <div class="pageInfo">Want to see more information? Create new account or sign in</div>
+    <div class="registerContainer" *ngIf="signUp" style="width: 100%">
+        <app-sign-up></app-sign-up>
+        <div class="linkContainer">
+            Already have an account? Go to&nbsp;<a class="navigateLink" (click)="signUp=false">Sign In</a>!
+        </div>
+    </div>
+    <div class="loginContainer" *ngIf="!signUp" style="width: 100%">
+        <app-sign-in></app-sign-in>
+        <div class="linkContainer">
+            Don't have an account? Go to&nbsp;<a class="navigateLink" (click)="signUp=true">Sign Up</a>!
+        </div>
+    </div>
+</div>

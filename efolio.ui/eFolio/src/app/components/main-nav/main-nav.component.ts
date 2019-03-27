@@ -1,7 +1,4 @@
-import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-main-nav',
@@ -9,12 +6,16 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./main-nav.component.scss']
 })
 export class MainNavComponent {
+  showSidenav = true;
+  @ViewChild('drawer') drawer;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches)
-    );
+  constructor() { }
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
-
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    if (window.innerWidth > 700) {
+      this.drawer.close();
+      this.showSidenav = false;
+    }
+  }
 }

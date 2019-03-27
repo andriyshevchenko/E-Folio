@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { UserLoggingService } from 'src/app/services/user-logging.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -9,12 +10,13 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 })
 export class SignInComponent implements OnInit {
   hide = true;
+  public token: string;
   public loginForm: any;
 
   constructor(private userLoggingService: UserLoggingService) {
     this.loginForm = new FormGroup({
-      "email": new FormControl('', [Validators.required, Validators.email,]),
-      "password": new FormControl('', [Validators.required])
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required])
     });
   }
 
@@ -24,19 +26,17 @@ export class SignInComponent implements OnInit {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password
       };
+      const key = 'accessToken';
       this.userLoggingService.signIn(formData)
         .subscribe(
-          response => { localStorage.setItem('accessToken', response['accessToken']); console.log(response);},
-          error => console.log(error)
+          response => {
+            localStorage.setItem('accessToken', response[key]);
+          }
         );
     }
+    this.loginForm.reset();
   }
 
-  test(){
-    //var currentUser = JSON.parse(localStorage.getItem('access_token'));
-    //var token = currentUser.token;
-    console.log(localStorage.getItem('accessToken'));
-  }
   ngOnInit() {
   }
 
