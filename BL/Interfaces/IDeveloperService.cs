@@ -9,8 +9,8 @@ namespace eFolio.BL
         void Add(Developer item);
         void Update(Developer item);
         void Delete(int id);
-        Developer GetItem(int id);
-        IEnumerable<Developer> GetItemsList();
-        IEnumerable<Developer> Search(string request, Paging paging);
+        Developer GetItem(int id, CVKind isExtended);
+        IEnumerable<Developer> GetItemsList(CVKind isExtended);
+        IEnumerable<Developer> Search(string request, Paging paging, CVKind isExtended);
     }
 }

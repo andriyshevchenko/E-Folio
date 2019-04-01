@@ -6,6 +6,8 @@
     using System.Xml.Serialization;
     using Nest;
     using eFolio.DTO;
+    using System.Linq;
+    using eFolio.DTO.Common;
 
     public class ElasticSearch : IEfolioElastic
     {
@@ -75,7 +77,7 @@
             }
         }
 
-        public List<ElasticProjectData> SearchItemsProject(string tstring, Paging paging)
+        public List<ElasticProjectData> SearchItemsProject(string tstring, Paging paging, DescriptionKind isExtended)
         {
             int from = paging.From;
             int size = paging.Size;
@@ -89,7 +91,7 @@
                            .Field(fg => fg.Name)
                            .Query(tstring)
                            .Fuzziness(Fuzziness.Auto)
-                     ),
+                       ),
 
                         m => m.Match(mp => mp
                             .Field(fg => fg.InternalDescr)
@@ -102,11 +104,11 @@
 
             List<ElasticProjectData> resultList = new List<ElasticProjectData>();
             var temp = new ElasticProjectData();
-            returnlist = HitToDataConvertProject(sr);
+            returnlist = HitToDataConvertProject(sr, isExtended);
             return returnlist;
         }
 
-        public List<ElasticDeveloperData> SearchItemsDeveloper(string query, Paging paging)
+        public List<ElasticDeveloperData> SearchItemsDeveloper(string query, Paging paging, CVKind isExtended)
         {
             int from = paging.From;
             int size = paging.Size;
@@ -133,7 +135,7 @@
             var returnlist = new List<ElasticProjectData>();
 
             List<ElasticDeveloperData> resultList = new List<ElasticDeveloperData>();
-            resultList = HitToDataConvertDeveloper(sr);
+            resultList = HitToDataConvertDeveloper(sr, isExtended);
             return resultList;
         }
 
@@ -147,7 +149,7 @@
             clientDeveloper.Delete<ElasticDeveloperData>(_Id);
         }
 
-        public ElasticProjectData GetProjectById(int _Id) //works!
+        public ElasticProjectData GetProjectById(int _Id, DescriptionKind isExtended) //works!
         {
             var searchResponse1 = clientProject.Search<ElasticProjectData>(s => s
                       .Query(q => q
@@ -156,64 +158,54 @@
                          )
                                 )
                                         );
-            var temp = new ElasticProjectData();
-            foreach (var hit in searchResponse1.Hits)
+            if (searchResponse1.Hits.Count > 1)
             {
-                temp.Name = hit.Source.Name;
-                temp.Id = hit.Source.Id;
-                temp.InternalDescr = hit.Source.InternalDescr;
-                temp.ExternalDescr = hit.Source.ExternalDescr;
+                throw new Exception("ElasticSearch: Many projects with same id found: " + _Id);
             }
-            return temp;
+            else if (searchResponse1.Hits.Count == 0)
+            {
+                return ElasticProjectData.NotFound;
+            }
+            return new ElasticProjectData(searchResponse1.Hits.First().Source, isExtended);
         }
 
-        public ElasticDeveloperData GetDeveloperById(int _Id) //works!
+        public ElasticDeveloperData GetDeveloperById(int id, CVKind isExtended) //works!
         {
             var searchResponse1 = clientDeveloper.Search<ElasticDeveloperData>(s => s
                       .Query(q => q
                              .Match(m => m
-                                 .Field(f => f.Id).Query(_Id.ToString())
+                                 .Field(f => f.Id).Query(id.ToString())
                          )
                                 )
-                                        );
-            var temp = new ElasticDeveloperData();
-            foreach (var hit in searchResponse1.Hits)
+                                        ); 
+            if (searchResponse1.Hits.Count > 1)
             {
-                temp.Name = hit.Source.Name;
-                temp.Id = hit.Source.Id;
-                temp.InternalCV = hit.Source.InternalCV;
-                temp.ExternalCV = hit.Source.ExternalCV;
+                throw new Exception("ElasticSearch: Many developers with same id found: " + id);
             }
-            return temp;
+            else if (searchResponse1.Hits.Count == 0)
+            {
+                return ElasticDeveloperData.NotFound;
+            }
+            return new ElasticDeveloperData(searchResponse1.Hits.First().Source, isExtended);
         }
 
-        private List<ElasticProjectData> HitToDataConvertProject(ISearchResponse<ElasticProjectData> searchResponse)
+        private List<ElasticProjectData> HitToDataConvertProject(ISearchResponse<ElasticProjectData> searchResponse, DescriptionKind isExtended)
         {
             List<ElasticProjectData> resultList = new List<ElasticProjectData>();
 
             foreach (var hit in searchResponse.Hits)
             {
-                var temp = new ElasticProjectData();
-                temp.Name = hit.Source.Name;
-                temp.Id = hit.Source.Id;
-                temp.InternalDescr = hit.Source.InternalDescr;
-                temp.ExternalDescr = hit.Source.ExternalDescr;
-                resultList.Add(temp);
+                resultList.Add(new ElasticProjectData(hit.Source, isExtended));
             }
             return resultList;
         }
 
-        private List<ElasticDeveloperData> HitToDataConvertDeveloper(ISearchResponse<ElasticDeveloperData> searchResponse)
+        private List<ElasticDeveloperData> HitToDataConvertDeveloper(ISearchResponse<ElasticDeveloperData> searchResponse, CVKind isExtended)
         {
             List<ElasticDeveloperData> resultList = new List<ElasticDeveloperData>();
             foreach (var hit in searchResponse.Hits)
             {
-                var temp = new ElasticDeveloperData();
-                temp.Name = hit.Source.Name;
-                temp.Id = hit.Source.Id;
-                temp.InternalCV = hit.Source.InternalCV;
-                temp.ExternalCV = hit.Source.ExternalCV;
-                resultList.Add(temp);
+                resultList.Add(new ElasticDeveloperData(hit.Source, isExtended));
             }
             return resultList;
         }

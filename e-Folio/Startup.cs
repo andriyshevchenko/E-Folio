@@ -127,13 +127,14 @@ namespace eFolio.API
                     var context = scope.ServiceProvider.GetService<eFolioDBContext>();
 
                     var userManager = serviceProvider.GetRequiredService<UserManager<UserEntity>>();
+                    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole<int>>>();
                     var contextForAuth = serviceProvider.GetRequiredService<AuthDBContext>();
 
                     context.Database.Migrate();
                     contextForAuth.Database.Migrate();
 
                     ContextInitializer.Initialize(context);
-                    ContextInitializerForAuth.Initialize(contextForAuth, userManager).Wait();
+                    ContextInitializerForAuth.Initialize(contextForAuth, userManager, roleManager).Wait();
                 }
                 catch (Exception ex)
                 {

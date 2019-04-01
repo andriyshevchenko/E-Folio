@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using eFolio.Attibutes;
 
 namespace eFolio.Api.Controllers
 {
@@ -24,7 +25,8 @@ namespace eFolio.Api.Controllers
         private IProjectService _projectService;
         private ILogger _logger;
 
-        public ProjectController(IProjectService projectService,
+        public ProjectController(
+            IProjectService projectService,
             ILogger<ProjectController> logger)
         {
             _projectService = projectService;
@@ -32,11 +34,12 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpGet]
+        [AnonymousOrHasClaim("role", "admin", "sale", "user")]
         public IActionResult GetProjects()
         {
             try
             {
-                return Ok(_projectService.GetItemsList());
+                return Ok(_projectService.GetItemsList(DescriptionKind.External));
             }
             catch (Exception ex)
             {
@@ -46,25 +49,27 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpGet("search/{request}")]
+        [AnonymousOrHasClaim("role", "admin", "sale", "user")]
         public IActionResult SearchProjects(string request, [FromQuery] int from, [FromQuery] int size)
         {
             try
             {
-                return Ok(_projectService.Search(request, new Paging(from, size)));
+                return Ok(_projectService.Search(request, new Paging(from, size), DescriptionKind.External));
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}")]  
+        [AnonymousOrHasClaim("role", "admin", "sale", "user")]
         public IActionResult GetProject(int id, string options)
         {
             try
             {
-                var project = _projectService.GetItem(id, (options ?? default_options).Split(','));
+                var project = _projectService.GetItem(id, DescriptionKind.None, (options ?? default_options).Split(','));
                 if (project == null)
                 {
                     return NotFound(id);
@@ -78,7 +83,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}")]  
+        [HasClaim("role", "admin", "sale")]
         public ActionResult DeleteProject(int id)
         {
             try
@@ -93,7 +99,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost] 
+        [HasClaim("role", "admin", "sale")]
         public IActionResult MakeNewProject([FromBody] Project project)
         {
             try
@@ -109,8 +116,9 @@ namespace eFolio.Api.Controllers
             }     
         }
 
-        [HttpPut("{project}/details")]
-        public IActionResult EditDetails(int project, [FromBody] DTO.Common.Context details)
+        [HttpPut("{project}/details")] 
+        [HasClaim("role", "admin", "sale")]
+        public IActionResult EditDetails(int project, [FromBody] Context details)
         {
             try
             {
@@ -124,7 +132,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpDelete("{project}/screenshots")]
+        [HttpDelete("{project}/screenshots")]  
+        [HasClaim("role", "admin", "sale") ]
         public IActionResult DeleteScreenshots(int project, [FromBody] RequestBody<int[]> deleted)
         {
             try
@@ -139,7 +148,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpPut("{project}/screenshots")]
+        [HttpPut("{project}/screenshots")] 
+        [HasClaim("role", "admin", "sale")]
         public IActionResult UpdateScreenshots(int project, [FromBody] Dictionary<int, FolioFile> files)
         {
             try
@@ -154,7 +164,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut] 
+        [HasClaim("role", "admin", "sale")]
         public IActionResult Edit([FromBody] Project project)
         {
             try

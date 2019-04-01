@@ -12,8 +12,8 @@ namespace eFolio.BL
         void DeleteScreeenshots(int project, int[] deleted); 
         void UpdateScreenshots(int project, Dictionary<int, FolioFile> files);
         void Delete(int id);
-        Project GetItem(int id, params string[] extended);
-        IEnumerable<Project> GetItemsList();
-        IEnumerable<Project> Search(string request, Paging paging);
+        Project GetItem(int id, DescriptionKind isExtended, params string[] includedProperties);
+        IEnumerable<Project> GetItemsList(DescriptionKind isExtended);
+        IEnumerable<Project> Search(string request, Paging paging, DescriptionKind isExtended);
     }
 }

@@ -10,33 +10,42 @@ using Microsoft.Extensions.Logging;
 using System.Net;
 using eFolio.API.Models;
 using eFolio.DTO;
+using Microsoft.AspNetCore.Identity;
+using eFolio.Attibutes;
 
 namespace eFolio.Api.Controllers
 {
     [Route("api/[controller]")]
     [Produces("application/json")]
-    [ApiController]
+    [ApiController] 
     public class DevelopersController : ControllerBase
-    { 
+    {
+        private static readonly string[] haveExtraPermissions = new string[] { "admin", "sale" };
+
         private IProjectService _projectService;
         private IDeveloperService _developerService;
+        private UserManager<UserEntity> userManager;
         private ILogger _logger;
 
         public DevelopersController(IProjectService projectService,
                                     IDeveloperService developerService,
+                                    UserManager<UserEntity> userManager,
                                     ILogger<DevelopersController> logger)
-        { 
+        {
             this._projectService = projectService;
             this._developerService = developerService;
+            this.userManager = userManager;
             this._logger = logger;
         }
 
+
         [HttpGet]
+        [AnonymousOrHasClaim("role", "sale", "admin", "user")]
         public IActionResult GetDevelopers()
         {
             try
             {
-                return Ok(_developerService.GetItemsList());
+                return base.Ok(_developerService.GetItemsList(GetCVKindForRequest()));
             }
             catch (Exception ex)
             {
@@ -45,12 +54,20 @@ namespace eFolio.Api.Controllers
             }
         }
 
+        private CVKind GetCVKindForRequest()
+        { 
+            return User != null && User.Claims.Any() && haveExtraPermissions.Contains(User.Claims.First().Value) ? 
+                CVKind.Internal: 
+                CVKind.External;
+        }
+
         [HttpGet("search/{request}")]
+        [AnonymousOrHasClaim("role", "sale", "admin", "user")]
         public IActionResult SearchDevelopers(string request, [FromQuery] int from, [FromQuery] int size)
         {
             try
             {
-                return Ok(_developerService.Search(request, new Paging(from, size)));
+                return Ok(_developerService.Search(request, new Paging(from, size), GetCVKindForRequest()));
             }
             catch (Exception ex)
             {
@@ -58,14 +75,15 @@ namespace eFolio.Api.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
- 
+
         [HttpGet]
         [Route("{id}")]
+        [AnonymousOrHasClaim("role", "sale", "admin", "user")]
         public IActionResult GetDeveloper(int id)
         {
             try
             {
-                var project = _developerService.GetItem(id);
+                var project = _developerService.GetItem(id, GetCVKindForRequest());
                 if (project == null)
                 {
                     return NotFound(id);
@@ -79,7 +97,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost] 
+        [HasClaim("role", "admin")]
         public IActionResult NewDeveloper([FromBody] Developer developer)
         {
             try
@@ -94,7 +113,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}")] 
+        [HasClaim("role", "admin")]
         public IActionResult DeleteDeveloper(int id)
         {
             try
@@ -110,6 +130,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpPut]
+        [HasClaim("role", "admin")]
         public IActionResult Edit(Developer developer)
         {
             try
@@ -122,23 +143,22 @@ namespace eFolio.Api.Controllers
             {
                 _logger.LogWarning(ex, string.Empty);
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
-            }
-
-
+            } 
         }
 
         [HttpDelete("{projectId}/d/{id}")]
+        [HasClaim("role", "admin", "sale")]
         public IActionResult QuitProject(int projectId, int id)
         {
             try
             {
-                var project = _projectService.GetItem(projectId);
+                var project = _projectService.GetItem(projectId, DescriptionKind.External);
                 if (project == null)
                 {
                     return NotFound("Project not found: " + projectId);
                 }
 
-                var developer = _developerService.GetItem(id);
+                var developer = _developerService.GetItem(id, CVKind.External);
                 if (developer == null)
                 {
                     return NotFound("Developer does not exist: " + id);
@@ -156,21 +176,22 @@ namespace eFolio.Api.Controllers
             {
                 _logger.LogWarning(ex, string.Empty);
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
-            }  
+            }
         }
 
-        [HttpPut("{projectId}/d/{id}")]
+        [HttpPut("{projectId}/d/{id}")] 
+        [HasClaim("role", "admin", "sale")]
         public IActionResult AssignToProject(int projectId, int id)
         {
             try
             {
-                var project = _projectService.GetItem(projectId);
+                var project = _projectService.GetItem(projectId, DescriptionKind.External);
                 if (project == null)
                 {
                     return NotFound("Project not found: " + projectId);
                 }
 
-                var developer = _developerService.GetItem(id);
+                var developer = _developerService.GetItem(id, CVKind.External);
                 if (developer == null)
                 {
                     return NotFound("Developer does not exist: " + id);

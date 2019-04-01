@@ -7,10 +7,10 @@ namespace eFolio.API.Seeds
 {
     public class ContextInitializerForAuth
     {
-        public static async Task Initialize(AuthDBContext context, UserManager<UserEntity> userManager)
+        public static async Task Initialize(AuthDBContext context, UserManager<UserEntity> userManager, RoleManager<IdentityRole<int>> roleManager)
         {
             context.Database.EnsureCreated();
-
+ 
             if (!context.Users.Any())
             {
                 var user1 = new UserEntity
@@ -20,7 +20,7 @@ namespace eFolio.API.Seeds
                     EmailConfirmed = true,
                     UserName = "sashaburko",
                     FirstName = "Oleksandr",
-                    LastName = "Burko"
+                    LastName = "Burko",
                 };
                 await userManager.CreateAsync(user1, "Pass1234@");
 
@@ -44,8 +44,12 @@ namespace eFolio.API.Seeds
                     FirstName = "Yura",
                     LastName = "Levko"
                 };
-              var res =  await userManager.CreateAsync(user3, "Pass1234@");
-                 
+
+                var res = await userManager.CreateAsync(user3, "Pass1234@");
+
+                await userManager.AddClaimAsync(user1, new System.Security.Claims.Claim("role", "user"));
+                await userManager.AddClaimAsync(user2, new System.Security.Claims.Claim("role", "user"));
+                await userManager.AddClaimAsync(user3, new System.Security.Claims.Claim("role", "user"));
             }
         }
     }
