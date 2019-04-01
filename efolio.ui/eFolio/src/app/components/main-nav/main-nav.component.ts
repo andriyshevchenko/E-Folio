@@ -6,13 +6,12 @@ import { Component, HostListener, ViewChild } from '@angular/core';
   styleUrls: ['./main-nav.component.scss']
 })
 export class MainNavComponent {
-  showSidenav = true;
-  @ViewChild('drawer') drawer;
+  public showSidenav = true;
+  @ViewChild('drawer') public drawer;
 
   constructor() { }
 
-  @HostListener('window:resize', ['$event'])
-  onResize() {
+  @HostListener('window:resize', ['$event']) onResize() {
     if (window.innerWidth > 700) {
       this.drawer.close();
       this.showSidenav = false;

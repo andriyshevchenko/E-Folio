@@ -8,7 +8,7 @@ import { ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./project-list.component.scss']
 })
 export class ProjectListComponent implements OnInit {
-  projects: Project[] = [];
+  public projects: Project[] = [];
 
   constructor(private projectService: ProjectService) { }
 
@@ -20,6 +20,5 @@ export class ProjectListComponent implements OnInit {
         });
       }
     );
-    console.log(this.projects);
   }
 }

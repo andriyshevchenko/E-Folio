@@ -1,85 +1,97 @@
 $elementsMainColor: rgb(115, 1, 180);
 
-.allComponentContainerDesktop{
-    width: 100%;
+.allComponentContainerDesktop {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.allComponentContainerMobile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.authContainer {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+}
+
+.registerContainer, .loginContainer {
+  width: 100%;
+}
+
+.separator {
+  border-right: 1px solid #ccc;
+  margin-right: 40px;
+  padding-right: 40px;
+  padding-top: 0;
+  width: 60%;
+}
+
+div.authContainer {
+  p {
+    width: 40%;
+  }
+}
+
+.pageTitleDesktop {
+  color: rgb(22, 13, 31);
+  font-size: 250%;
+  font-weight: 1;
+  padding-top: 10pt;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+
+.pageTitleMobile {
+  color: rgb(22, 13, 31);
+  font-size: 180%;
+  font-weight: 120;
+  padding-top: 10pt;
+}
+
+.navigateLink {
+  color: $elementsMainColor;
+}
+
+.linkContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.linkContainer :hover {
+  cursor: pointer;
+}
+
+.pageInfo {
+  color: $elementsMainColor;
+  padding: 15px;
+  font-size: 110%;
+  margin-bottom: 10px;
+  display: flex;
+  text-align: center;
+}
+
+@media screen and (min-width: 700px) {
+  .allComponentContainerMobile {
+    display: none;
+  }
+  .allComponentContainerDesktop {
     display: flex;
-    flex-direction: column;
-    justify-content: center;  
-    align-items: center;  
+  }
 }
 
-.allComponentContainerMobile{
-    width: 100%;
+@media (max-width: 699px) {
+  .allComponentContainerDesktop {
+    display: none;
+  }
+  .allComponentContainerMobile {
     display: flex;
-    flex-direction: column;
-    justify-content: center;  
-    align-items: center;  
-}
-
-.authContainer{
-    display: flex;
-    flex-direction: row;
-}
-
-.separator{
-    border-right: 1px solid #ccc; 
-    margin-right: 40px; 
-    padding-right: 40px;
-    padding-top: 0;
-}
-
-.pageTitleDesktop{
-    color: rgb(22, 13, 31);
-    font-size: 250%;
-    font-weight: 1;
-    padding-top: 10pt;
-    margin-top: 10px;
-    margin-bottom: 8px;
-}
-
-.pageTitleMobile{
-    color: rgb(22, 13, 31);
-    font-size: 180%;
-    font-weight: 120;
-    padding-top: 10pt;
-}
-
-.navigateLink{
-    color: $elementsMainColor;
-}
-
-.linkContainer{
-    display: flex;
-    justify-content: center;
-}
-
-.linkContainer :hover{
-    cursor: pointer;
-}
-
-.pageInfo{
-    color: $elementsMainColor;
-    padding: 15px;
-    font-size: 110%;
-    margin-bottom: 10px;
-    display: flex;
-    text-align: center;
-}
-
-@media screen and (min-width: 700px){
-    .allComponentContainerMobile{
-        display: none;
-    }
-    .allComponentContainerDesktop{
-        display: flex;
-    }
-}
-
-@media (max-width: 699px){
-    .allComponentContainerDesktop{
-        display: none;
-    }
-    .allComponentContainerMobile{
-        display: flex;
-    }
+  }
 }

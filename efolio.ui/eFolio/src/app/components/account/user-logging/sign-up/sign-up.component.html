@@ -8,7 +8,7 @@
         First name is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field  class="inputContainer">
+    <mat-form-field class="inputContainer">
       <input matInput placeholder="Last name" formControlName="lastName">
       <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')">
         Last name is <strong>required</strong>

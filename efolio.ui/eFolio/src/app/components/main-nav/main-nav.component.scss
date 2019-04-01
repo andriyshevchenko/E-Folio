@@ -21,15 +21,15 @@
   color: black;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
-.mat-sidenav{
+.mat-sidenav {
   width: 200px !important;
 }
 
-.menuItem{
+.menuItem {
   display: inline-block;
   margin: 0 10px;
   color: white;
@@ -38,38 +38,53 @@
   font-weight: 100;
 }
 
-.spacer{
+.spacer {
   flex: 1 1 auto;
 }
 
-.logo{
-  color: white; 
+a.logo {
+  color: white;
   text-decoration: none;
 }
 
-@media screen and (min-width: 700px){
-  .sidenav{
-      display: none;
+span.logo {
+  font-size: 40px;
+  margin-right: 20px;
+}
+
+a.account {
+  position: absolute;
+  bottom: 0;
+}
+
+.menu-icon {
+  margin-right: 30px;
+}
+
+@media screen and (min-width: 700px) {
+  .sidenav {
+    display: none;
   }
-  .header{
-      display: flex;
-  }
-  ::ng-deep.mat-drawer-backdrop.ng-star-inserted{
+  .header {
     display: flex;
   }
-  ::ng-deep.mat-drawer-backdrop.ng-star-inserted.mat-drawer-shown{
+  ::ng-deep.mat-drawer-backdrop.ng-star-inserted {
+    display: flex;
+  }
+  ::ng-deep.mat-drawer-backdrop.ng-star-inserted.mat-drawer-shown {
     display: none;
   }
 }
 
-@media (max-width: 699px){
-  .header{
-      display: none;
+@media (max-width: 699px) {
+  .header {
+    display: none;
   }
-  .sidenav{
-      display: flex;
+  .sidenav {
+    display: flex;
   }
 
+  // goto fix
   .sidenav[_ngcontent-c1] {
     width: 40px;
   }

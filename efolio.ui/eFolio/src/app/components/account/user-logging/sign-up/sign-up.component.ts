@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserLoggingService } from 'src/app/services/user-logging.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from 'src/app/services/validation.service';
@@ -8,9 +8,9 @@ import { ValidationService } from 'src/app/services/validation.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit {
-  hidePassword = true;
-  hideConfirmPassword = true;
+export class SignUpComponent {
+  public hidePassword = true;
+  public hideConfirmPassword = true;
   public registerForm: any;
 
   constructor(private userLoggingService: UserLoggingService,
@@ -38,8 +38,4 @@ export class SignUpComponent implements OnInit {
     }
     this.registerForm.reset();
   }
-
-  ngOnInit() {
-  }
-
 }

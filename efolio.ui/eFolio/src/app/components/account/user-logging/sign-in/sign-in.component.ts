@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { UserLoggingService } from 'src/app/services/user-logging.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
@@ -8,8 +8,8 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent implements OnInit {
-  hide = true;
+export class SignInComponent {
+  public hide = true;
   public token: string;
   public loginForm: any;
 
@@ -36,8 +36,4 @@ export class SignInComponent implements OnInit {
     }
     this.loginForm.reset();
   }
-
-  ngOnInit() {
-  }
-
 }

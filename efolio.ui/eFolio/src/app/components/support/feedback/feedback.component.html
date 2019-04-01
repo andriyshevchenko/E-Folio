@@ -1,26 +1,27 @@
 <form class="form-container" [formGroup]="feedbackForm">
-  <div> <h1 class="title"> Get in touch with us!</h1>
-  <p>Please, write us your problem and we'll answer you as soon as possible </p>
+  <div>
+    <h1 class="title"> Get in touch with us!</h1>
+    <p>Please, write us your problem and we'll answer you as soon as possible </p>
   </div>
   <mat-form-field>
     <input matInput placeholder="Name" formControlName="name">
   </mat-form-field>
-<mat-form-field >
-  <input matInput placeholder="E-mail" formControlName="email">
-  <mat-error *ngIf="feedbackForm.controls['email'].errors?.email && !feedbackForm.controls['email'].errors?.required">
-    Please enter a valid e-mail address!
-  </mat-error>
-  <mat-error *ngIf="feedbackForm.controls['email'].errors?.required">
-    E-mail is <strong>required</strong>.
-  </mat-error>
-</mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="E-mail" formControlName="email">
+    <mat-error *ngIf="feedbackForm.controls['email'].errors?.email && !feedbackForm.controls['email'].errors?.required">
+      Please enter a valid e-mail address!
+    </mat-error>
+    <mat-error *ngIf="feedbackForm.controls['email'].errors?.required">
+      E-mail is <strong>required</strong>.
+    </mat-error>
+  </mat-form-field>
 
-<mat-form-field>
-  <textarea matInput placeholder="Message" formControlName="message" class="message"></textarea>
-  <mat-error *ngIf="feedbackForm.controls['message'].errors?.required">
-    Message is <strong>required</strong>
-  </mat-error>
-</mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Message" formControlName="message" class="message"></textarea>
+    <mat-error *ngIf="feedbackForm.controls['message'].errors?.required">
+      Message is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
 
   <button mat-raised-button class="sendButton">Send</button>
 
