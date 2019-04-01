@@ -7,7 +7,7 @@ import { Project } from 'src/app/models/project.model';
   styleUrls: ['./project-item.component.scss']
 })
 export class ProjectItemComponent implements OnInit {
-  @Input() projectInput: Project;
+  @Input() project: Project;
 
   constructor() { }
 

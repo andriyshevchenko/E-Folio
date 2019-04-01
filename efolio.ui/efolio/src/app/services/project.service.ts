@@ -7,16 +7,10 @@ export class ProjectService {
     
     constructor(private http: HttpClient) { }
 
-    GetAll() {
-        let headers = new HttpHeaders();
-        this.addHeaders(headers);
+    getAll() {
+        let headers = new HttpHeaders(); 
         return this.http.get<any>('http://localhost:5000/api/Project', {
             headers: headers
         });
-    }
-
-    addHeaders(headers: HttpHeaders) {
-        headers.append('Authorization', 'kbasdlkgjbasalskfhalkdg');
-        headers.append('Own-header', 'Ostap');
-    }
+    } 
 }

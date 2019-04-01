@@ -9,32 +9,37 @@ namespace eFolio.Attibutes
     public class HasClaimFilter : IAuthorizationFilter
     {
         readonly Claim[] allowedClaims;
+        private bool allowAnonymous; 
 
-        public HasClaimFilter(object[] claims)
+        public HasClaimFilter(object[] claims, bool allowAnonymous)
         {
             this.allowedClaims = claims.Cast<Claim>().ToArray();
+            this.allowAnonymous = allowAnonymous; 
         }
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            bool hasClaim = false;
-
-            List<Claim> userClaims = context.HttpContext.User.Claims.ToList();
-            foreach (Claim userClaim in userClaims)
+            if (!allowAnonymous)
             {
-                foreach (Claim allowed in allowedClaims)
+                bool hasClaim = false;
+
+                List<Claim> userClaims = context.HttpContext.User.Claims.ToList();
+                foreach (Claim userClaim in userClaims)
                 {
-                    if (userClaim.Type == allowed.Type && userClaim.Value == allowed.Value)
+                    foreach (Claim allowed in allowedClaims)
                     {
-                        hasClaim = true;
-                        break;
+                        if (userClaim.Type == allowed.Type && userClaim.Value == allowed.Value)
+                        {
+                            hasClaim = true;
+                            break;
+                        }
                     }
                 }
-            }
 
-            if (!hasClaim)
-            {
-                context.Result = new ForbidResult();
+                if (!hasClaim)
+                { 
+                    context.Result = new ForbidResult();
+                } 
             }
         }
     }

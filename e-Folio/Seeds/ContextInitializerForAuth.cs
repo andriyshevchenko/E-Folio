@@ -1,13 +1,14 @@
 ﻿using eFolio.EF;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace eFolio.API.Seeds
 {
     public class ContextInitializerForAuth
     {
-        public static async Task Initialize(AuthDBContext context, UserManager<UserEntity> userManager, RoleManager<IdentityRole<int>> roleManager)
+        public static async Task Initialize(AuthDBContext context, UserManager<UserEntity> userManager)
         {
             context.Database.EnsureCreated();
  
@@ -22,6 +23,7 @@ namespace eFolio.API.Seeds
                     FirstName = "Oleksandr",
                     LastName = "Burko",
                 };
+
                 await userManager.CreateAsync(user1, "Pass1234@");
 
                 var user2 = new UserEntity
@@ -33,6 +35,7 @@ namespace eFolio.API.Seeds
                     FirstName = "Ostap",
                     LastName = "Roik"
                 };
+
                 await userManager.CreateAsync(user2, "Pass1234@");
 
                 var user3 = new UserEntity
@@ -45,11 +48,12 @@ namespace eFolio.API.Seeds
                     LastName = "Levko"
                 };
 
-                var res = await userManager.CreateAsync(user3, "Pass1234@");
+                await userManager.CreateAsync(user3, "Pass1234@");
 
-                await userManager.AddClaimAsync(user1, new System.Security.Claims.Claim("role", "user"));
-                await userManager.AddClaimAsync(user2, new System.Security.Claims.Claim("role", "user"));
-                await userManager.AddClaimAsync(user3, new System.Security.Claims.Claim("role", "user"));
+                foreach (var userEntity in new UserEntity[] { user1, user2, user3 })
+                {
+                    await userManager.AddClaimAsync(userEntity, new Claim("role", "user"));
+                }
             }
         }
     }

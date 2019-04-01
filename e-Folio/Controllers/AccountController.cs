@@ -45,8 +45,7 @@ namespace eFolio.API.Controllers
 
                 if (user != null)
                 {
-                    var claims = await _userManager.GetClaimsAsync(user);
-                    var tokenResponse = await RequestTokenAsync(model.Email, model.Password, claims.First());
+                    var tokenResponse = await RequestTokenAsync(model.Email, model.Password);
 
                     if (tokenResponse.HttpStatusCode == HttpStatusCode.OK)
                         return Ok(new
@@ -110,7 +109,7 @@ namespace eFolio.API.Controllers
             }
         }
 
-        public async Task<TokenResponse> RequestTokenAsync(string username, string password, Claim claim)
+        public async Task<TokenResponse> RequestTokenAsync(string username, string password)
         {         
             var discoveryClient = new DiscoveryClient(_configuration["ApiBaseUrl"]);
             var doc = await discoveryClient.GetAsync();
@@ -120,8 +119,7 @@ namespace eFolio.API.Controllers
             {
                 {"grant_type", "password"},
                 {"username", username},
-                {"password", password},
-                {claim.Type, claim.Value}
+                {"password", password}, 
             });
 
             return tokenResponse;

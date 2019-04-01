@@ -20,11 +20,11 @@ namespace eFolio.Api.Controllers
     [ApiController] 
     public class DevelopersController : ControllerBase
     {
-        private static readonly string[] haveExtraPermissions = new string[] { "admin", "sale" };
+        private static readonly string[] haveExtraPermissions = new string[] { "admin", "sales" };
 
         private IProjectService _projectService;
         private IDeveloperService _developerService;
-        private UserManager<UserEntity> userManager;
+        private UserManager<UserEntity> _userManager;
         private ILogger _logger;
 
         public DevelopersController(IProjectService projectService,
@@ -34,13 +34,12 @@ namespace eFolio.Api.Controllers
         {
             this._projectService = projectService;
             this._developerService = developerService;
-            this.userManager = userManager;
+            this._userManager = userManager;
             this._logger = logger;
         }
 
 
-        [HttpGet]
-        [AnonymousOrHasClaim("role", "sale", "admin", "user")]
+        [HttpGet] 
         public IActionResult GetDevelopers()
         {
             try
@@ -61,8 +60,7 @@ namespace eFolio.Api.Controllers
                 CVKind.External;
         }
 
-        [HttpGet("search/{request}")]
-        [AnonymousOrHasClaim("role", "sale", "admin", "user")]
+        [HttpGet("search/{request}")] 
         public IActionResult SearchDevelopers(string request, [FromQuery] int from, [FromQuery] int size)
         {
             try
@@ -77,8 +75,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpGet]
-        [Route("{id}")]
-        [AnonymousOrHasClaim("role", "sale", "admin", "user")]
+        [Route("{id}")] 
         public IActionResult GetDeveloper(int id)
         {
             try
@@ -147,7 +144,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpDelete("{projectId}/d/{id}")]
-        [HasClaim("role", "admin", "sale")]
+        [HasClaim("role", "admin", "sales")]
         public IActionResult QuitProject(int projectId, int id)
         {
             try
@@ -180,7 +177,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpPut("{projectId}/d/{id}")] 
-        [HasClaim("role", "admin", "sale")]
+        [HasClaim("role", "admin", "sales")]
         public IActionResult AssignToProject(int projectId, int id)
         {
             try

@@ -22,7 +22,7 @@ namespace eFolio.Api.Controllers
     [ApiController]
     public class ProjectController : ControllerBase
     {
-        private static readonly string[] haveExtraPermissions = new string[] { "admin", "sale" };
+        private static readonly string[] haveExtraPermissions = new string[] { "admin", "sales" };
         private static string default_options = "screenshots,developers";
         private IProjectService _projectService;
         private ILogger _logger;
@@ -42,8 +42,7 @@ namespace eFolio.Api.Controllers
                 DescriptionKind.External;
         }
 
-        [HttpGet]
-        [AnonymousOrHasClaim("role", "admin", "sale", "user")]
+        [HttpGet] 
         public IActionResult GetProjects()
         {
             try
@@ -57,8 +56,7 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpGet("search/{request}")]
-        [AnonymousOrHasClaim("role", "admin", "sale", "user")]
+        [HttpGet("search/{request}")] 
         public IActionResult SearchProjects(string request, [FromQuery] int from, [FromQuery] int size)
         {
             try
@@ -72,8 +70,7 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpGet("{id}")]  
-        [AnonymousOrHasClaim("role", "admin", "sale", "user")]
+        [HttpGet("{id}")]   
         public IActionResult GetProject(int id, string options)
         {
             try
@@ -95,7 +92,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpDelete("{id}")]  
-        [HasClaim("role", "admin", "sale")]
+        [HasClaim("role", "admin", "sales")]
         public ActionResult DeleteProject(int id)
         {
             try
@@ -111,7 +108,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpPost] 
-        [HasClaim("role", "admin", "sale")]
+        [HasClaim("role", "admin", "sales")]
         public IActionResult MakeNewProject([FromBody] Project project)
         {
             try
@@ -128,7 +125,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpPut("{project}/details")] 
-        [HasClaim("role", "admin", "sale")]
+        [HasClaim("role", "admin", "sales")]
         public IActionResult EditDetails(int project, [FromBody] Context details)
         {
             try
@@ -144,7 +141,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpDelete("{project}/screenshots")]  
-        [HasClaim("role", "admin", "sale") ]
+        [HasClaim("role", "admin", "sales") ]
         public IActionResult DeleteScreenshots(int project, [FromBody] RequestBody<int[]> deleted)
         {
             try
@@ -160,7 +157,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpPut("{project}/screenshots")] 
-        [HasClaim("role", "admin", "sale")]
+        [HasClaim("role", "admin", "sales")]
         public IActionResult UpdateScreenshots(int project, [FromBody] Dictionary<int, FolioFile> files)
         {
             try
@@ -176,7 +173,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpPut] 
-        [HasClaim("role", "admin", "sale")]
+        [HasClaim("role", "admin", "sales")]
         public IActionResult Edit([FromBody] Project project)
         {
             try

@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Security.Principal;
@@ -56,7 +57,7 @@ namespace eFolio.API
 
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IDeveloperService, DeveloperService>();
-
+              
             //Automapping
             var mappingConfig = new MapperConfiguration(mc => { mc.AddProfile(new Automapper()); });
             IMapper mapper = mappingConfig.CreateMapper();
@@ -126,27 +127,20 @@ namespace eFolio.API
                     var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
                     var context = scope.ServiceProvider.GetService<eFolioDBContext>();
 
-                    var userManager = serviceProvider.GetRequiredService<UserManager<UserEntity>>();
-                    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole<int>>>();
+                    var userManager = serviceProvider.GetRequiredService<UserManager<UserEntity>>(); 
                     var contextForAuth = serviceProvider.GetRequiredService<AuthDBContext>();
 
                     context.Database.Migrate();
                     contextForAuth.Database.Migrate();
 
                     ContextInitializer.Initialize(context);
-                    ContextInitializerForAuth.Initialize(contextForAuth, userManager, roleManager).Wait();
+                    ContextInitializerForAuth.Initialize(contextForAuth, userManager).Wait();
                 }
                 catch (Exception ex)
                 {
                     var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occured while seeding the database.");
-                }
-                //using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-                //{
-                //    var context = scope.ServiceProvider.GetService<eFolioDBContext>();
-                //    context.Database.Migrate();
-                //    ContextInitializer.Initialize(context);
-                //}
+                } 
             }
 
             app.UseIdentityServer();

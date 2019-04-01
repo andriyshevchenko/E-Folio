@@ -24,12 +24,7 @@ import { AdministrationComponent } from './components/administration/administrat
 import { AccountComponent } from './components/account/account.component';
 import { ProjectFilterComponent } from './components/projects/project-filter/project-filter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-//import { UserLoggingComponent } from './components/account/user-logging/user-logging.component'
-//import { UserLoggingService } from './services/user-logging.service';
-// import { UserSignInInfo } from './models/user-signin-info.model';
 import { HttpClientModule } from '@angular/common/http';
-//import { SignUpComponent } from './components/account/user-logging/sign-up/sign-up.component';
-//import { SignInComponent } from './components/account/user-logging/sign-in/sign-in.component';
 import { ProjectListComponent } from './components/projects/project-list/project-list.component'
 import { ProjectItemComponent } from './components/projects/project-list/project-item/project-item.component';
 import { ProjectService } from './services/project.service';
@@ -45,9 +40,6 @@ import { CardDirective } from './components/directives/card.directive';
     AdministrationComponent,
     AccountComponent,
     ProjectFilterComponent,
-    // UserLoggingComponent,
-    // SignUpComponent,
-    // SignInComponent,
     ProjectListComponent,
     ProjectItemComponent,
     CardDirective
@@ -70,7 +62,6 @@ import { CardDirective } from './components/directives/card.directive';
     MatCardModule,
     MatGridListModule
   ],
-  //providers: [UserLoggingService, ProjectService],
   providers: [ProjectService],
   bootstrap: [AppComponent]
 })
