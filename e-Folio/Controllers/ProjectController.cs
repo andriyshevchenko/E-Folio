@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using eFolio.Attibutes;
+using System.Linq;
 
 namespace eFolio.Api.Controllers
 {
@@ -21,6 +22,7 @@ namespace eFolio.Api.Controllers
     [ApiController]
     public class ProjectController : ControllerBase
     {
+        private static readonly string[] haveExtraPermissions = new string[] { "admin", "sale" };
         private static string default_options = "screenshots,developers";
         private IProjectService _projectService;
         private ILogger _logger;
@@ -33,13 +35,20 @@ namespace eFolio.Api.Controllers
             _logger = logger;
         }
 
+        private DescriptionKind GetDescriptionKindForRequest()
+        {
+            return User != null && User.Claims.Any() && haveExtraPermissions.Contains(User.Claims.First().Value) ?
+                DescriptionKind.Internal :
+                DescriptionKind.External;
+        }
+
         [HttpGet]
         [AnonymousOrHasClaim("role", "admin", "sale", "user")]
         public IActionResult GetProjects()
         {
             try
             {
-                return Ok(_projectService.GetItemsList(DescriptionKind.External));
+                return Ok(_projectService.GetItemsList(GetDescriptionKindForRequest()));
             }
             catch (Exception ex)
             {
@@ -54,7 +63,7 @@ namespace eFolio.Api.Controllers
         {
             try
             {
-                return Ok(_projectService.Search(request, new Paging(from, size), DescriptionKind.External));
+                return Ok(_projectService.Search(request, new Paging(from, size), GetDescriptionKindForRequest()));
             }
             catch (Exception ex)
             {
@@ -69,7 +78,9 @@ namespace eFolio.Api.Controllers
         {
             try
             {
-                var project = _projectService.GetItem(id, DescriptionKind.None, (options ?? default_options).Split(','));
+                var project = _projectService.GetItem(
+                    id, GetDescriptionKindForRequest(), (options ?? default_options).Split(',')
+                );
                 if (project == null)
                 {
                     return NotFound(id);
