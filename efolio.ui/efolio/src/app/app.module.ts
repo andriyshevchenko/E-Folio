@@ -35,6 +35,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { FeedbackComponent } from './components/support/feedback/feedback.component';
 import { ContactInfoComponent } from './components/support/contact-info/contact-info.component';
 import { AdministrationListComponent } from './components/administration/administration-list/administration-list.component';
+import { ProjectPageComponent } from './components/projects/project-page/project-page.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { AdministrationListComponent } from './components/administration/adminis
     DevelopersItemComponent,
     SpinnerComponent,
     DevelopersFilterComponent,
-    AdministrationListComponent
+    AdministrationListComponent,
+    ProjectPageComponent
   ],
   imports: [
     BrowserModule,
