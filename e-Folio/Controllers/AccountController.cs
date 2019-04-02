@@ -83,6 +83,7 @@ namespace eFolio.API.Controllers
 
                 var result = await _userManager.CreateAsync(user, model.Password);
 
+
                 if (result.Succeeded)
                 {
                     var createUser = await _userManager.FindByEmailAsync(model.Email);

@@ -5,6 +5,8 @@ using eFolio.Elastic;
 using System;
 using System.Collections.Generic;
 using eFolio.DTO.Common;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace eFolio.BL
 {
@@ -38,38 +40,47 @@ namespace eFolio.BL
             elastic.DeleteDeveloperItem(id);
         }
 
-        public Developer GetItem(int id)
+        public async Task<Developer> GetItemAsync(int id)
         {
             var developerEntity = developerRepository.GetItem(id);
             var elasticDeveloper = elastic.GetDeveloperById(id);
 
-            return GetMergeDeveloper(developerEntity, elasticDeveloper);
+            return await GetMergeDeveloperAsync(developerEntity, elasticDeveloper);
         }
 
-        public IEnumerable<Developer> GetItemsList()
+        public async Task<IEnumerable<Developer>> GetItemsListAsync()
         {
             var developerEntities = developerRepository.GetItemsList();
+
+
+
             var elasticDevelopers = GetElasticDevelopers(developerEntities);
 
             var e1 = developerEntities.GetEnumerator();
             var e2 = elasticDevelopers.GetEnumerator();
+
+            List<Developer> ret = new List<Developer>();
             while (e1.MoveNext() && e2.MoveNext())
             {
-                yield return GetMergeDeveloper(e1.Current, e2.Current);
+                ret.Add(await GetMergeDeveloperAsync(e1.Current, e2.Current));
             }
+            return ret;
         }
 
-        public IEnumerable<Developer> Search(string request, Paging paging)
+        public async Task<IEnumerable<Developer>> SearchAsync(string request, Paging paging)
         {
             var elasticDevelopers = elastic.SearchItemsDeveloper(request, paging);
             var developerEntities = GetEntityDevelopers(elasticDevelopers);
 
             var e1 = developerEntities.GetEnumerator();
             var e2 = elasticDevelopers.GetEnumerator();
+
+            List<Developer> ret = new List<Developer>();
             while (e1.MoveNext() && e2.MoveNext())
             {
-                yield return GetMergeDeveloper(e1.Current, e2.Current);
+                ret.Add(await GetMergeDeveloperAsync(e1.Current, e2.Current));
             }
+            return ret;
         }
 
         public void Update(Developer item)
@@ -95,9 +106,11 @@ namespace eFolio.BL
             }
         }
 
-        private Developer GetMergeDeveloper(DeveloperEntity developerEntity, ElasticDeveloperData elasticDeveloperData)
+        private async Task<Developer> GetMergeDeveloperAsync(DeveloperEntity developerEntity, ElasticDeveloperData elasticDeveloperData)
         {
             var developer = mapper.Map<Developer>(Tuple.Create(elasticDeveloperData, developerEntity));
+
+            developer.HasPhoto(await File.ReadAllBytesAsync(developerEntity.PhotoLink));
 
             return developer;
         }

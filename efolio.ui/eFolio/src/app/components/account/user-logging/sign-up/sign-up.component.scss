@@ -58,9 +58,14 @@ $elementsSecondaryColor: rgb(66, 66, 66);
   justify-content: space-between;
 }
 
-.title {
-  color: rgb(75, 74, 74);
-  font-size: 150%;
-  font-weight: 100;
-  padding-bottom: 15px;
+.title{
+    color: rgb(75, 74, 74);
+    font-size: 150%;
+    font-weight: 100;
+    padding-bottom: 15px;
+}
+::ng-deep snack-bar-container.snackBar {
+    background: rgb(115, 1, 180);
+    color: white;
+    font-family: Roboto;
 }

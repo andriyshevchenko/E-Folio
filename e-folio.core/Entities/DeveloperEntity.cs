@@ -8,6 +8,7 @@ namespace eFolio.EF
         public string FullName { get; set; }
         public string CVLink { get; set; }
 
+        public string PhotoLink { get; set; }
         public ICollection<ProjectDeveloperEntity> Projects { get; set; }
     }
 }

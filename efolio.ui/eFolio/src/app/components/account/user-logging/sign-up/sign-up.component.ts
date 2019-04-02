@@ -2,6 +2,14 @@ import { Component } from '@angular/core';
 import { UserLoggingService } from 'src/app/services/user-logging.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from 'src/app/services/validation.service';
+import {
+  MatSnackBar,
+  MatSnackBarConfig,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material';
+import { Router } from '@angular/router';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +22,10 @@ export class SignUpComponent {
   public registerForm: any;
 
   constructor(private userLoggingService: UserLoggingService,
-              public validationService: ValidationService) {
+    public validationService: ValidationService,
+    private router: Router,
+    public loginValidatorBar: MatSnackBar,
+    private loaderService: LoaderService) {
     this.registerForm = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
@@ -25,6 +36,7 @@ export class SignUpComponent {
   }
 
   onSignUp() {
+    this.loaderService.startLoading();
     if (this.registerForm.valid) {
       const formData = {
         firstName: this.registerForm.value.firstName,
@@ -35,6 +47,11 @@ export class SignUpComponent {
       this.userLoggingService.signUp(formData)
         .subscribe(
         );
+      this.loginValidatorBar.open("You are registered in eFolio", "OK", {
+        duration: 5000,
+        panelClass: ['snackBar'],
+      });
+      this.loaderService.stopLoading();
     }
     this.registerForm.reset();
   }

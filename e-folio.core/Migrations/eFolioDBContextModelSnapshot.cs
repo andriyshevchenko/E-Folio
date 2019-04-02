@@ -80,6 +80,8 @@ namespace e_folio.core.Migrations
 
                     b.Property<string>("FullName");
 
+                    b.Property<string>("PhotoLink");
+
                     b.HasKey("Id");
 
                     b.ToTable("Developers");

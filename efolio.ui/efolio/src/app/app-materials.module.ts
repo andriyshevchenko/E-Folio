@@ -7,11 +7,16 @@ import {
     MatListModule,
     MatInputModule,
     MatFormFieldModule,
-    MatGridListModule
-  } from '@angular/material';
+    MatGridListModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatSnackBarModule
+} from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 
-@NgModule ({
+@NgModule({
     exports: [
         MatToolbarModule,
         MatButtonModule,
@@ -21,7 +26,12 @@ import { MatCardModule } from '@angular/material/card';
         MatInputModule,
         MatFormFieldModule,
         MatCardModule,
-        MatGridListModule
+        MatGridListModule,
+        MatSnackBarModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatProgressSpinnerModule,
+        MatTableModule
     ]
 })
 export class AppMaterialsModule { }

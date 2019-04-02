@@ -20,7 +20,8 @@ namespace eFolio.API
                                                pe => pe.Item2.Developers.Select(
                                                    pd => new Developer(pd.DeveloperId,
                                                                        pd.DeveloperEntity.FullName,
-                                                                       pd.DeveloperEntity.CVLink)).ToList()
+                                                                       pd.DeveloperEntity.CVLink,
+                                                                       pd.DeveloperEntity.PhotoLink)).ToList()
                                                )
                                            )
                                 .ForMember(p => p.InternalDescription, m => m.MapFrom(epd => epd.Item1.InternalDescr))
@@ -29,6 +30,7 @@ namespace eFolio.API
             CreateMap<Tuple<ElasticDeveloperData, DeveloperEntity>, Developer>().ForMember(p => p.Id, m => m.MapFrom(pe => pe.Item2.Id))
                                 .ForMember(p => p.FullName, m => m.MapFrom(pe => pe.Item2.FullName))
                                 .ForMember(p => p.CVLink, m => m.MapFrom(pe => pe.Item2.CVLink))
+                                .ForMember(p => p.PhotoBase64, m => m.MapFrom(pe => pe.Item2.PhotoLink))
                                 .ForMember(p => p.Projects, m => m.Ignore())
                                 .ForMember(p => p.InternalCV, m => m.MapFrom(pe => pe.Item1.InternalCV))
                                 .ForMember(p => p.ExternalCV, m => m.MapFrom(pe => pe.Item1.ExternalCV));
@@ -48,7 +50,8 @@ namespace eFolio.API
 
             CreateMap<DeveloperEntity, Developer>().ForMember(p => p.Id, m => m.MapFrom(pe => pe.Id))
                                 .ForMember(p => p.FullName, m => m.MapFrom(pe => pe.FullName))
-                                .ForMember(p => p.CVLink, m => m.MapFrom(pe => pe.CVLink))
+                                .ForMember(p => p.CVLink, m => m.MapFrom(pe => pe.CVLink)) 
+                                .ForMember(p => p.PhotoBase64, m => m.MapFrom(pe => pe.PhotoLink))
                                 .ForMember(p => p.Projects, m => m.Ignore());
 
             CreateMap<FolioFileEntity, FolioFile>().ForMember(p => p.IsInternal, m => m.MapFrom(pe => pe.IsInternal))
@@ -70,6 +73,7 @@ namespace eFolio.API
 
             CreateMap<Developer, DeveloperEntity>().ForMember(pe => pe.FullName, m => m.MapFrom(p => p.FullName))
                                 .ForMember(pe => pe.CVLink, m => m.MapFrom(p => p.CVLink))
+                                .ForMember(p => p.PhotoLink, m => m.MapFrom(pe => pe.PhotoBase64))
                                 .ForMember(pe => pe.Projects, m => m.MapFrom(p => p.Projects));
 
             CreateMap<Developer, ElasticDeveloperData>().ForMember(pe => pe.Name, m => m.MapFrom(p => p.FullName))

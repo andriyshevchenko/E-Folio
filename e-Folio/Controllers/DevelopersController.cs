@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using System.Net;
 using eFolio.API.Models;
 using eFolio.DTO;
+using System.Threading.Tasks;
 
 namespace eFolio.Api.Controllers
 {
@@ -32,11 +33,11 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetDevelopers()
+        public async Task<IActionResult> GetDevelopers()
         {
             try
             {
-                return Ok(_developerService.GetItemsList());
+                return Ok(await _developerService.GetItemsListAsync());
             }
             catch (Exception ex)
             {
@@ -46,11 +47,11 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpGet("search/{request}")]
-        public IActionResult SearchDevelopers(string request, [FromQuery] int from, [FromQuery] int size)
+        public async Task<IActionResult> SearchDevelopers(string request, [FromQuery] int from, [FromQuery] int size)
         {
             try
             {
-                return Ok(_developerService.Search(request, new Paging(from, size)));
+                return Ok(await _developerService.SearchAsync(request, new Paging(from, size)));
             }
             catch (Exception ex)
             {
@@ -61,16 +62,16 @@ namespace eFolio.Api.Controllers
  
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetDeveloper(int id)
+        public async Task<IActionResult> GetDeveloper(int id)
         {
             try
             {
-                var project = _developerService.GetItem(id);
-                if (project == null)
+                var developer = await _developerService.GetItemAsync(id);
+                if (developer == null)
                 {
                     return NotFound(id);
                 }
-                return Ok(project);
+                return Ok(developer);
             }
             catch (Exception ex)
             {
@@ -138,7 +139,7 @@ namespace eFolio.Api.Controllers
                     return NotFound("Project not found: " + projectId);
                 }
 
-                var developer = _developerService.GetItem(id);
+                var developer = _developerService.GetItemAsync(id);
                 if (developer == null)
                 {
                     return NotFound("Developer does not exist: " + id);
@@ -160,7 +161,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpPut("{projectId}/d/{id}")]
-        public IActionResult AssignToProject(int projectId, int id)
+        public async Task<IActionResult> AssignToProject(int projectId, int id)
         {
             try
             {
@@ -170,7 +171,7 @@ namespace eFolio.Api.Controllers
                     return NotFound("Project not found: " + projectId);
                 }
 
-                var developer = _developerService.GetItem(id);
+                var developer = await _developerService.GetItemAsync(id);
                 if (developer == null)
                 {
                     return NotFound("Developer does not exist: " + id);

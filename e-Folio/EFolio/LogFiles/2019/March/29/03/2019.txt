@@ -1,0 +1,280 @@
+2019-03-29 16:35:56.922 +02:00 [INF] User profile is available. Using 'C:\Users\sasha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-29 16:36:01.328 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-29 16:36:01.561 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-29 16:36:03.260 +02:00 [INF] Executed DbCommand (588ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-29 16:36:03.337 +02:00 [INF] Executed DbCommand (66ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-29 16:36:03.482 +02:00 [INF] Executed DbCommand (126ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-29 16:36:03.537 +02:00 [INF] Applying migration '20190327134713_rename_contexts'.
+2019-03-29 16:36:03.964 +02:00 [ERR] Failed executing DbCommand (180ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [FolioFiles] DROP CONSTRAINT [FK_FolioFiles_Contexsts_ContextEntityId];
+System.Data.SqlClient.SqlException (0x80131904): 'FK_FolioFiles_Contexsts_ContextEntityId' is not a constraint.
+Could not drop constraint. See previous errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:21acfe03-b4a4-4f8a-9afd-2f9f9ee67060
+Error Number:3728,State:1,Class:16
+2019-03-29 16:36:05.182 +02:00 [ERR] An error occured while seeding the database.
+System.Data.SqlClient.SqlException (0x80131904): 'FK_FolioFiles_Contexsts_ContextEntityId' is not a constraint.
+Could not drop constraint. See previous errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at eFolio.API.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider) in E:\E-Folio\e-Folio\Startup.cs:line 132
+ClientConnectionId:21acfe03-b4a4-4f8a-9afd-2f9f9ee67060
+Error Number:3728,State:1,Class:16
+2019-03-29 16:36:23.134 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/developers  
+2019-03-29 16:36:24.650 +02:00 [INF] Route matched with {action = "GetDevelopers", controller = "Developers"}. Executing action eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API)
+2019-03-29 16:36:27.502 +02:00 [INF] Executing action method eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API) - Validation state: "Valid"
+2019-03-29 16:36:27.583 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-29 16:36:29.023 +02:00 [INF] Executed DbCommand (337ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[CVLink], [d].[FullName], [d].[PhotoLink]
+FROM [Developers] AS [d]
+2019-03-29 16:36:36.334 +02:00 [INF] Executed action method eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 8824.3865ms.
+2019-03-29 16:36:36.390 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[eFolio.DTO.Common.Developer, eFolio.DTO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-29 16:36:36.715 +02:00 [INF] Executed action eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API) in 12056.446300000001ms
+2019-03-29 16:36:36.740 +02:00 [INF] Request finished in 13608.1123ms 200 application/json; charset=utf-8
+2019-03-29 16:36:37.683 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2019-03-29 16:36:37.725 +02:00 [INF] Request finished in 42.1288ms 404 
+2019-03-29 16:36:43.255 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/users  
+2019-03-29 16:36:43.256 +02:00 [INF] Request finished in 0.6992ms 404 
+2019-03-29 16:36:53.073 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/developers  
+2019-03-29 16:36:53.074 +02:00 [INF] Route matched with {action = "GetDevelopers", controller = "Developers"}. Executing action eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API)
+2019-03-29 16:36:53.126 +02:00 [INF] Executing action method eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API) - Validation state: "Valid"
+2019-03-29 16:36:53.130 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-29 16:36:53.273 +02:00 [INF] Executed DbCommand (99ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[CVLink], [d].[FullName], [d].[PhotoLink]
+FROM [Developers] AS [d]
+2019-03-29 16:36:57.839 +02:00 [INF] Executed action method eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4710.9397ms.
+2019-03-29 16:36:57.840 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[eFolio.DTO.Common.Developer, eFolio.DTO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-29 16:36:57.842 +02:00 [INF] Executed action eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API) in 4767.3648ms
+2019-03-29 16:36:57.842 +02:00 [INF] Request finished in 4769.0804ms 200 application/json; charset=utf-8
+2019-03-29 16:51:10.244 +02:00 [INF] User profile is available. Using 'C:\Users\sasha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-29 16:51:12.753 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-29 16:51:13.094 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-29 16:51:14.822 +02:00 [INF] Executed DbCommand (456ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-29 16:51:14.902 +02:00 [INF] Executed DbCommand (53ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-29 16:51:15.021 +02:00 [INF] Executed DbCommand (101ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-29 16:51:15.097 +02:00 [INF] Applying migration '20190327134713_rename_contexts'.
+2019-03-29 16:51:15.318 +02:00 [ERR] Failed executing DbCommand (130ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [FolioFiles] DROP CONSTRAINT [FK_FolioFiles_Contexsts_ContextEntityId];
+System.Data.SqlClient.SqlException (0x80131904): 'FK_FolioFiles_Contexsts_ContextEntityId' is not a constraint.
+Could not drop constraint. See previous errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:23dbd3b8-fec2-4ff8-811e-d9e320f398b0
+Error Number:3728,State:1,Class:16
+2019-03-29 16:51:15.971 +02:00 [ERR] An error occured while seeding the database.
+System.Data.SqlClient.SqlException (0x80131904): 'FK_FolioFiles_Contexsts_ContextEntityId' is not a constraint.
+Could not drop constraint. See previous errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at eFolio.API.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider) in E:\E-Folio\e-Folio\Startup.cs:line 132
+ClientConnectionId:23dbd3b8-fec2-4ff8-811e-d9e320f398b0
+Error Number:3728,State:1,Class:16
+2019-03-29 16:51:20.215 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/admin  
+2019-03-29 16:51:21.417 +02:00 [INF] Route matched with {action = "GetUsers", controller = "Admin"}. Executing action eFolio.API.Controllers.AdminController.GetUsers (eFolio.API)
+2019-03-29 16:51:21.851 +02:00 [INF] Executing action method eFolio.API.Controllers.AdminController.GetUsers (eFolio.API) - Validation state: "Valid"
+2019-03-29 16:51:21.991 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-29 16:51:22.528 +02:00 [INF] Executed DbCommand (162ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+2019-03-29 16:51:22.796 +02:00 [INF] Executed action method eFolio.API.Controllers.AdminController.GetUsers (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 939.50290000000007ms.
+2019-03-29 16:51:22.814 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[eFolio.EF.UserEntity, eFolio.EF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-29 16:51:23.002 +02:00 [INF] Executed action eFolio.API.Controllers.AdminController.GetUsers (eFolio.API) in 1561.5327ms
+2019-03-29 16:51:23.045 +02:00 [INF] Request finished in 2830.9766ms 200 application/json; charset=utf-8
+2019-03-29 17:04:16.926 +02:00 [INF] User profile is available. Using 'C:\Users\sasha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-29 17:04:17.635 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-29 17:04:17.703 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-29 17:04:18.312 +02:00 [INF] Executed DbCommand (356ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-29 17:04:18.359 +02:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-29 17:04:18.405 +02:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-29 17:04:18.418 +02:00 [INF] Applying migration '20190327134713_rename_contexts'.
+2019-03-29 17:04:18.506 +02:00 [ERR] Failed executing DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [FolioFiles] DROP CONSTRAINT [FK_FolioFiles_Contexsts_ContextEntityId];
+System.Data.SqlClient.SqlException (0x80131904): 'FK_FolioFiles_Contexsts_ContextEntityId' is not a constraint.
+Could not drop constraint. See previous errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:f30aa74e-a8b8-4d91-a16b-abe7fa9cfd8d
+Error Number:3728,State:1,Class:16
+2019-03-29 17:04:18.677 +02:00 [ERR] An error occured while seeding the database.
+System.Data.SqlClient.SqlException (0x80131904): 'FK_FolioFiles_Contexsts_ContextEntityId' is not a constraint.
+Could not drop constraint. See previous errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.MigrationCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.Migrate(String targetMigration)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.Migrate(DatabaseFacade databaseFacade)
+   at eFolio.API.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider) in E:\E-Folio\e-Folio\Startup.cs:line 132
+ClientConnectionId:f30aa74e-a8b8-4d91-a16b-abe7fa9cfd8d
+Error Number:3728,State:1,Class:16
+2019-03-29 17:05:33.757 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/admin  
+2019-03-29 17:05:37.154 +02:00 [INF] Route matched with {action = "GetUsers", controller = "Admin"}. Executing action eFolio.API.Controllers.AdminController.GetUsers (eFolio.API)
+2019-03-29 17:05:38.293 +02:00 [INF] Executing action method eFolio.API.Controllers.AdminController.GetUsers (eFolio.API) - Validation state: "Valid"
+2019-03-29 17:05:38.705 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-29 17:05:41.258 +02:00 [INF] Executed DbCommand (479ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+2019-03-29 17:05:42.006 +02:00 [INF] Executed action method eFolio.API.Controllers.AdminController.GetUsers (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3615.4928ms.
+2019-03-29 17:05:42.164 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[eFolio.EF.UserEntity, eFolio.EF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-29 17:05:42.646 +02:00 [INF] Executed action eFolio.API.Controllers.AdminController.GetUsers (eFolio.API) in 5482.6595000000007ms
+2019-03-29 17:05:42.658 +02:00 [INF] Request finished in 8903.1069ms 200 application/json; charset=utf-8
+2019-03-29 17:08:24.905 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-29 17:08:24.912 +02:00 [INF] Policy execution successful.
+2019-03-29 17:08:24.986 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-29 17:08:33.843 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-29 17:08:33.844 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.1506ms.
+2019-03-29 17:08:33.845 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-29 17:08:33.935 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-29 17:08:35.520 +02:00 [INF] Executed DbCommand (368ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-29 17:08:35.907 +02:00 [INF] Executed DbCommand (181ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-29 17:08:36.316 +02:00 [WRN] The LINQ expression 'GroupBy([pde].ProjectId, _Include(queryContext, [pde], new [] {[pde.DeveloperEntity]}, (queryContext, entity, included) => { ... }))' could not be translated and will be evaluated locally.
+2019-03-29 17:08:36.464 +02:00 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName], [pde.DeveloperEntity].[PhotoLink]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-29 17:08:44.389 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 19402.0656ms
+2019-03-29 17:08:44.389 +02:00 [INF] Request finished in 19484.5658ms 200 application/json; charset=utf-8
+2019-03-29 17:08:53.497 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/developers  
+2019-03-29 17:08:53.498 +02:00 [INF] Policy execution successful.
+2019-03-29 17:08:53.521 +02:00 [INF] Route matched with {action = "GetDevelopers", controller = "Developers"}. Executing action eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API)
+2019-03-29 17:08:53.602 +02:00 [INF] Executing action method eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API) - Validation state: "Valid"
+2019-03-29 17:08:53.638 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-29 17:08:54.505 +02:00 [INF] Executed DbCommand (596ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[CVLink], [d].[FullName], [d].[PhotoLink]
+FROM [Developers] AS [d]
+2019-03-29 17:08:59.665 +02:00 [INF] Executed action method eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 6062.7615000000005ms.
+2019-03-29 17:08:59.669 +02:00 [INF] Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[eFolio.DTO.Common.Developer, eFolio.DTO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2019-03-29 17:08:59.726 +02:00 [INF] Executed action eFolio.Api.Controllers.DevelopersController.GetDevelopers (eFolio.API) in 6203.9635000000007ms
+2019-03-29 17:08:59.741 +02:00 [INF] Request finished in 6244.2009ms 200 application/json; charset=utf-8
+2019-03-29 17:09:39.734 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-29 17:09:39.734 +02:00 [INF] Policy execution successful.
+2019-03-29 17:09:39.734 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-29 17:09:39.824 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-29 17:09:39.824 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.035300000000000005ms.
+2019-03-29 17:09:39.824 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-29 17:09:39.825 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-29 17:09:39.900 +02:00 [INF] Executed DbCommand (69ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-29 17:09:39.975 +02:00 [INF] Executed DbCommand (74ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-29 17:09:40.117 +02:00 [INF] Executed DbCommand (99ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName], [pde.DeveloperEntity].[PhotoLink]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-29 17:09:44.815 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 5080.1121ms
+2019-03-29 17:09:44.815 +02:00 [INF] Request finished in 5081.5394ms 200 application/json; charset=utf-8
+2019-03-29 17:10:14.810 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-29 17:10:14.811 +02:00 [INF] Policy execution successful.
+2019-03-29 17:10:14.815 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-29 17:10:14.869 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-29 17:10:14.869 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.0211ms.
+2019-03-29 17:10:14.870 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-29 17:10:14.871 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-29 17:10:14.950 +02:00 [INF] Executed DbCommand (76ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-29 17:10:15.020 +02:00 [INF] Executed DbCommand (69ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-29 17:10:15.205 +02:00 [INF] Executed DbCommand (150ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName], [pde.DeveloperEntity].[PhotoLink]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-29 17:10:19.593 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 4778.626ms
+2019-03-29 17:10:19.594 +02:00 [INF] Request finished in 4783.7786ms 200 application/json; charset=utf-8

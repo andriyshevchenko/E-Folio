@@ -1,5 +1,6 @@
 ﻿using eFolio.EF;
 using Microsoft.EntityFrameworkCore.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -112,8 +113,18 @@ namespace eFolio.API.Seeds
 
             if (!context.Developers.Any())
             {
-                context.Developers.Add(new DeveloperEntity() { FullName = "Yurii Levko", CVLink = "asfasf" });
-                context.Developers.Add(new DeveloperEntity() { FullName = "Ostap Roik", CVLink = "swrherh" });
+                context.Developers.Add(
+                    new DeveloperEntity() {
+                        FullName = "Yurii Levko",
+                        CVLink = "asfasf",
+                        PhotoLink = Environment.CurrentDirectory + "\\Seeds\\PhotoDeveloper\\Levko.jpg"
+                    });
+                context.Developers.Add(
+                    new DeveloperEntity() {
+                        FullName = "Ostap Roik",
+                        CVLink = "swrherh",
+                        PhotoLink = Environment.CurrentDirectory + "\\Seeds\\PhotoDeveloper\\Roik.jpg"
+                    });
                 context.SaveChanges();
             }
         }

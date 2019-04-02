@@ -17,7 +17,6 @@ import { ValidationService } from './services/validation.service';
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { ProjectsComponent } from './components/projects/projects.component';
-import { DevelopersComponent } from './components/developers/developers.component';
 import { SupportComponent } from './components/support/support.component';
 import { AdministrationComponent } from './components/administration/administration.component';
 import { AccountComponent } from './components/account/account.component';
@@ -26,12 +25,21 @@ import { ProjectListComponent } from './components/projects/project-list/project
 import { ProjectItemComponent } from './components/projects/project-list/project-item/project-item.component';
 import { UserLoggingComponent } from './components/account/user-logging/user-logging.component';
 import { SignUpComponent } from './components/account/user-logging/sign-up/sign-up.component';
-import { SignInComponent } from './components/account/user-logging/sign-in/sign-in.component';
+import { SignInComponent } from './components/account/user-logging/sign-in/sign-in.component'
+import { DevelopersComponent } from './components/developers/developers.component';
+import { DevelopersListComponent } from './components/developers/developers-list/developers-list.component';
+import { DevelopersItemComponent } from './components/developers/developers-list/developers-item/developers-item.component';
+import { DeveloperServiceService } from './services/developer-service.service';
+import { DevelopersFilterComponent } from './components/developers/developers-filter/developers-filter.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 import { FeedbackComponent } from './components/support/feedback/feedback.component';
 import { ContactInfoComponent } from './components/support/contact-info/contact-info.component';
+import { AdministrationListComponent } from './components/administration/administration-list/administration-list.component';
 
 @NgModule({
   declarations: [
+    ContactInfoComponent,
+    FeedbackComponent,
     AppComponent,
     MainNavComponent,
     ProjectsComponent,
@@ -46,7 +54,12 @@ import { ContactInfoComponent } from './components/support/contact-info/contact-
     SignUpComponent,
     SignInComponent,
     FeedbackComponent,
-    ContactInfoComponent
+    ContactInfoComponent,
+    DevelopersListComponent,
+    DevelopersItemComponent,
+    SpinnerComponent,
+    DevelopersFilterComponent,
+    AdministrationListComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +74,8 @@ import { ContactInfoComponent } from './components/support/contact-info/contact-
   providers: [
     ProjectService,
     UserLoggingService,
-    ValidationService
+    ValidationService,
+    DeveloperServiceService
   ],
   bootstrap: [
     AppComponent

@@ -12,6 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Seeds\PhotoDeveloper\Levko.jpg" />
+    <None Remove="Seeds\PhotoDeveloper\Roik.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -43,6 +48,18 @@
     <ProjectReference Include="..\BL\eFolio.BL.csproj" />
     <ProjectReference Include="..\e-folio.core\eFolio.EF.csproj" />
     <ProjectReference Include="..\e-folio.data\eFolio.Elastic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Seeds\PhotoDeveloper\Levko.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Seeds\PhotoDeveloper\Roik.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
-.mat-sidenav-container {
-  height: 100%;
+.mat-sidenav-container{
+    position: relative;
+    // height: 100%;
 }
 
 .mat-sidenav,
@@ -7,12 +8,12 @@
   padding: 16px;
 }
 
-.mat-sidenav {
-  border-right-color: rgb(53, 53, 53);
-  background-color: white;
-  width: 200px;
-  color: black;
-  display: block;
+.mat-sidenav{
+    border-right-color: rgb(53, 53, 53);
+    background-color: white;
+    width: 200px;
+    color: black;
+    // display: block;
 }
 
 .mat-sidenav-content {
