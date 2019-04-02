@@ -10,10 +10,10 @@ import { LoaderService } from 'src/app/services/loader.service';
 })
 
 export class UserLoggingComponent implements OnInit {
-  signUp = true;
+  public showSignUpWindowForMobileDevices = true;
 
   constructor(private breakpointObserver: BreakpointObserver,
-    private loaderService: LoaderService) { }
+              private loaderService: LoaderService) { }
 
   ngOnInit() {
     this.loaderService.stopLoading();

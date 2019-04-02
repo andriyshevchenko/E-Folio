@@ -25,7 +25,7 @@ import { ProjectListComponent } from './components/projects/project-list/project
 import { ProjectItemComponent } from './components/projects/project-list/project-item/project-item.component';
 import { UserLoggingComponent } from './components/account/user-logging/user-logging.component';
 import { SignUpComponent } from './components/account/user-logging/sign-up/sign-up.component';
-import { SignInComponent } from './components/account/user-logging/sign-in/sign-in.component'
+import { SignInComponent } from './components/account/user-logging/sign-in/sign-in.component';
 import { DevelopersComponent } from './components/developers/developers.component';
 import { DevelopersListComponent } from './components/developers/developers-list/developers-list.component';
 import { DevelopersItemComponent } from './components/developers/developers-list/developers-item/developers-item.component';
@@ -35,6 +35,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 import { FeedbackComponent } from './components/support/feedback/feedback.component';
 import { ContactInfoComponent } from './components/support/contact-info/contact-info.component';
 import { AdministrationListComponent } from './components/administration/administration-list/administration-list.component';
+import { ProjectPageComponent } from './components/projects/project-page/project-page.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { AdministrationListComponent } from './components/administration/adminis
     DevelopersItemComponent,
     SpinnerComponent,
     DevelopersFilterComponent,
-    AdministrationListComponent
+    AdministrationListComponent,
+    ProjectPageComponent
   ],
   imports: [
     BrowserModule,

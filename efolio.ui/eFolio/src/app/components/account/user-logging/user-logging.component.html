@@ -1,7 +1,7 @@
-<div class="allComponentContainerDesktop">
-    <h1 class="pageTitleDesktop">Welcome to eFolio</h1>
-    <div class="pageInfo">Want to see more information? Create new account or sign in</div>
-    <div class="authContainer">
+<div class="all-component-container-desktop">
+    <h1 class="page-title-desktop">Welcome to eFolio</h1>
+    <div class="page-info">Want to see more information? Create new account or sign in</div>
+    <div class="auth-container">
         <p class="separator">
             <app-sign-up></app-sign-up>
         </p>
@@ -11,19 +11,19 @@
     </div>
 </div>
 
-<div class="allComponentContainerMobile">
-    <h1 class="pageTitleMobile">Welcome to eFolio</h1>
-    <div class="pageInfo">Want to see more information? Create new account or sign in</div>
-    <div class="registerContainer" *ngIf="signUp">
+<div class="all-component-container-mobile">
+    <h1 class="page-title-mobile">Welcome to eFolio</h1>
+    <div class="page-info">Want to see more information? Create new account or sign in</div>
+    <div class="register-container" *ngIf="showSignUpWindowForMobileDevices">
         <app-sign-up></app-sign-up>
-        <div class="linkContainer">
-            Already have an account? Go to&nbsp;<a class="navigateLink" (click)="signUp=false">Sign In</a>!
+        <div class="link-container">
+            Already have an account? Go to&nbsp;<a class="navigate-link" (click)="showSignUpWindowForMobileDevices=false">Sign In</a>!
         </div>
     </div>
-    <div class="loginContainer" *ngIf="!signUp">
+    <div class="login-container" *ngIf="!showSignUpWindowForMobileDevices">
         <app-sign-in></app-sign-in>
-        <div class="linkContainer">
-            Don't have an account? Go to&nbsp;<a class="navigateLink" (click)="signUp=true">Sign Up</a>!
+        <div class="link-container">
+            Don't have an account? Go to&nbsp;<a class="navigate-link" (click)="showSignUpWindowForMobileDevices=true">Sign Up</a>!
         </div>
     </div>
 </div>

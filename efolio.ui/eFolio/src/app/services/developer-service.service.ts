@@ -7,10 +7,10 @@ export class DeveloperServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getAllDevelopers(){
+  getAllDevelopers() {
     let headers = new HttpHeaders();
     this.addHeaders(headers);
-    return this.http.get<Developer>('http://localhost:5000/api/developers',{
+    return this.http.get<Developer>('http://localhost:5000/api/developers', {
       headers: headers
     })
   }
@@ -21,7 +21,7 @@ export class DeveloperServiceService {
   //   return this.http.get<Developer>('');
   // }
 
-  addHeaders(headers: HttpHeaders){
+  addHeaders(headers: HttpHeaders) {
     headers.append('Authorization', 'qwertyasdfgzxvc');
     headers.append('Own-header', 'Name');
   }

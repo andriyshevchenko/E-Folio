@@ -12,18 +12,17 @@ import { LoaderService } from 'src/app/services/loader.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent {
-  public hide = true;
+  public passwordVisibility = true;
   public token: string;
-  public loginForm: any;
+  public loginForm = new FormGroup({
+    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+    password: new FormControl('', [Validators.required])
+  });
 
   constructor(public loginValidatorBar: MatSnackBar,
-    private userLoggingService: UserLoggingService,
-    private router: Router,
-    private loaderService: LoaderService) {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
-    });
+              private userLoggingService: UserLoggingService,
+              private router: Router,
+              private loaderService: LoaderService) {
   }
 
   onSignIn() {
@@ -38,22 +37,22 @@ export class SignInComponent {
         .subscribe(
           response => {
             localStorage.setItem('accessToken', response[key]);
-              this.loginValidatorBar.open("You are logged in eFolio", "Ok", {
-                duration: 5000,
-                panelClass: ['snackBar'],
-              });
+            this.loginValidatorBar.open('You are logged in eFolio', 'Ok', {
+              duration: 5000,
+              panelClass: ['snackBar'],
+            });
 
           },
           error => {
-              this.loginValidatorBar.open("Invalid Email or Password", "Ok", {
-                duration: 5000,
-                panelClass: ['snackBar'],
-              });
+            this.loginValidatorBar.open('Invalid Email or Password', 'Ok', {
+              duration: 5000,
+              panelClass: ['snackBar'],
+            });
           }
         );
     }
-    else{
-      this.loginValidatorBar.open("Invalid Email or Password", "Ok", {
+    else {
+      this.loginValidatorBar.open('Invalid Email or Password', 'Ok', {
         duration: 5000,
         panelClass: ['snackBar'],
       });

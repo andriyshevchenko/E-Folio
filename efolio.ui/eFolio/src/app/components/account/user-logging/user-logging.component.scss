@@ -1,6 +1,6 @@
 $elementsMainColor: rgb(115, 1, 180);
 
-.allComponentContainerDesktop {
+.all-component-container-desktop {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@ $elementsMainColor: rgb(115, 1, 180);
   align-items: center;
 }
 
-.allComponentContainerMobile {
+.all-component-container-mobile {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -16,13 +16,7 @@ $elementsMainColor: rgb(115, 1, 180);
   align-items: center;
 }
 
-.authContainer {
-  display: flex;
-  flex-direction: row;
-  width: 70%;
-}
-
-.registerContainer, .loginContainer {
+.register-container, .login-container {
   width: 100%;
 }
 
@@ -34,13 +28,16 @@ $elementsMainColor: rgb(115, 1, 180);
   width: 60%;
 }
 
-div.authContainer {
+div.auth-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   p {
     width: 40%;
   }
 }
 
-.pageTitleDesktop {
+.page-title-desktop {
   color: rgb(22, 13, 31);
   font-size: 250%;
   font-weight: 1;
@@ -49,27 +46,27 @@ div.authContainer {
   margin-bottom: 8px;
 }
 
-.pageTitleMobile {
+.page-title-mobile {
   color: rgb(22, 13, 31);
   font-size: 180%;
   font-weight: 120;
   padding-top: 10pt;
 }
 
-.navigateLink {
+.navigate-link {
   color: $elementsMainColor;
 }
 
-.linkContainer {
+.link-container {
   display: flex;
   justify-content: center;
 }
 
-.linkContainer :hover {
+.link-container :hover {
   cursor: pointer;
 }
 
-.pageInfo {
+.page-info {
   color: $elementsMainColor;
   padding: 15px;
   font-size: 110%;
@@ -78,20 +75,44 @@ div.authContainer {
   text-align: center;
 }
 
-@media screen and (min-width: 700px) {
-  .allComponentContainerMobile {
+@media screen and (min-width: 1000px) {
+  .all-component-container-mobile {
     display: none;
   }
-  .allComponentContainerDesktop {
+
+  .auth-container {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+  }
+
+  .all-component-container-desktop {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 999px){
+  .all-component-container-mobile {
+    display: none;
+  }
+
+  .auth-container {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+  }
+
+  .all-component-container-desktop {
     display: flex;
   }
 }
 
 @media (max-width: 699px) {
-  .allComponentContainerDesktop {
+  .all-component-container-desktop {
     display: none;
   }
-  .allComponentContainerMobile {
+  
+  .all-component-container-mobile {
     display: flex;
   }
 }
