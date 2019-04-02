@@ -26,7 +26,7 @@ namespace eFolio.BL.Services
         public UserEntity GetUser(int id)
         {
             var userEntity = adminRepository.GetUser(id);
-            return userEntity;
+            return userEntity; 
         }
         public IEnumerable<UserEntity> GetUsersList()
         {

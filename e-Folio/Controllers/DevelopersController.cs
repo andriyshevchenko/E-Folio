@@ -124,8 +124,6 @@ namespace eFolio.Api.Controllers
                 _logger.LogWarning(ex, string.Empty);
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
-
-
         }
 
         [HttpDelete("{projectId}/d/{id}")]

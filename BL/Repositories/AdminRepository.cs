@@ -6,7 +6,7 @@ using System.Text;
 
 namespace eFolio.BL.Repositories
 {
-    class AdminRepository :IRepository <UserEntity>
+    class AdminRepository : IRepository<UserEntity>
     {
         private AuthDBContext authDB;
         public AdminRepository(AuthDBContext db)
@@ -16,6 +16,11 @@ namespace eFolio.BL.Repositories
         public IEnumerable<UserEntity> GetUsersList()
         {
             return authDB.Users.ToList();
+        }
+        public UserEntity GetUser(int id)
+        {
+            UserEntity user = authDB.Users.Find(id);
+            return user;
         }
 
         public void Add(UserEntity user)
