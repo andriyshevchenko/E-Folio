@@ -10,12 +10,12 @@ import { LoaderService } from './services/loader.service';
 export class AppComponent implements OnInit {
   title = 'App';
 
-  //LoaderService is for the spinner
+  // LoaderService is for the spinner
   constructor() {
 
   }
 
-  //for the spinner
+  // for the spinner
   ngOnInit() {
 
   }

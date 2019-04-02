@@ -1,31 +1,6 @@
 $elementsMainColor: rgb(115, 1, 180);
 $elementsSecondaryColor: rgb(66, 66, 66);
 
-::ng-deep .mat-focused .mat-form-field-label {
-  /*change color of label*/
-  color: $elementsSecondaryColor;
-}
-
-::ng-deep .mat-form-field-label {
-  /*change color of label*/
-  color: $elementsSecondaryColor;
-}
-
-::ng-deep.mat-form-field-underline {
-  /*change color of underline*/
-  background-color: $elementsSecondaryColor;
-  color: $elementsSecondaryColor;
-}
-
-::ng-deep.mat-form-field-ripple {
-  /*change color of underline when focused*/
-  background-color: $elementsMainColor;
-  color: $elementsMainColor;
-}
-
-::ng-deep.mat-form-field-empty.mat-form-field-label {
-  color: $elementsSecondaryColor;
-}
 
 .form-container {
   display: flex;
@@ -43,7 +18,7 @@ $elementsSecondaryColor: rgb(66, 66, 66);
   font-size: 115%;
 }
 
-.designedButton:hover {
+.designed-button:hover {
   background-color: $elementsMainColor;
   color: white;
 }
@@ -55,8 +30,9 @@ $elementsSecondaryColor: rgb(66, 66, 66);
     padding-bottom: 15px;
 }
 
-::ng-deep snack-bar-container.snackBar {
-    background: rgb(115, 1, 180);
-    color: white;
-    font-family: Roboto;
+.designed-button:disabled{
+  color:$elementsSecondaryColor;
+  border: 2px solid $elementsSecondaryColor;
+  background-color: white;
 }
+

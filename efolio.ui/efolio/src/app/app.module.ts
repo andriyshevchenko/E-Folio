@@ -25,7 +25,7 @@ import { ProjectListComponent } from './components/projects/project-list/project
 import { ProjectItemComponent } from './components/projects/project-list/project-item/project-item.component';
 import { UserLoggingComponent } from './components/account/user-logging/user-logging.component';
 import { SignUpComponent } from './components/account/user-logging/sign-up/sign-up.component';
-import { SignInComponent } from './components/account/user-logging/sign-in/sign-in.component'
+import { SignInComponent } from './components/account/user-logging/sign-in/sign-in.component';
 import { DevelopersComponent } from './components/developers/developers.component';
 import { DevelopersListComponent } from './components/developers/developers-list/developers-list.component';
 import { DevelopersItemComponent } from './components/developers/developers-list/developers-item/developers-item.component';

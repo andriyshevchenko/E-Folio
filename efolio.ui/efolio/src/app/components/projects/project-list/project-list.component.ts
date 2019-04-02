@@ -13,9 +13,9 @@ export class ProjectListComponent implements OnInit {
   constructor(private projectService: ProjectService, private loaderService: LoaderService) { }
 
   ngOnInit() {
-    this.loaderService.startLoading(); 
+    this.loaderService.startLoading();
     this.projectService.GetAll().subscribe(
-      (res) => { 
+      (res) => {
         res.forEach(element => {
           this.projects.push(new Project(element.name, element.internalDescription));
         });

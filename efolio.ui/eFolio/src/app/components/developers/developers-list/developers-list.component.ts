@@ -15,8 +15,8 @@ import { LoaderService } from 'src/app/services/loader.service';
 export class DevelopersListComponent implements OnInit {
   developers: Developer[] = [];
 
-  constructor(private developerService: DeveloperService, 
-    private loaderService: LoaderService) { }
+  constructor(private developerService: DeveloperService,
+              private loaderService: LoaderService) { }
 
   ngOnInit() {
     this.loaderService.startLoading();
@@ -30,9 +30,9 @@ export class DevelopersListComponent implements OnInit {
   }
   private getData(response) {
     response.forEach(element => {
-      this.developers.push(new Developer(element.id, 
-        element.fullName, 
-        element.internalCV, 
+      this.developers.push(new Developer(element.id,
+        element.fullName,
+        element.internalCV,
         element.photoBase64));
     });
   }

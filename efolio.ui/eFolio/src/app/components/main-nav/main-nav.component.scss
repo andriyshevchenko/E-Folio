@@ -25,11 +25,11 @@
   display: none;
 }
 
-.mat-sidenav {
-  width: 200px !important;
+.sidenav.mat-sidenav {
+  width: 200px;
 }
 
-.menuItem {
+.menu-item {
   display: inline-block;
   margin: 0 10px;
   color: white;
@@ -65,13 +65,16 @@ a.account {
   .sidenav {
     display: none;
   }
+
   .header {
     display: flex;
   }
-  ::ng-deep.mat-drawer-backdrop.ng-star-inserted {
+
+  .mat-drawer-backdrop.ng-star-inserted {
     display: flex;
   }
-  ::ng-deep.mat-drawer-backdrop.ng-star-inserted.mat-drawer-shown {
+
+  .mat-drawer-backdrop.ng-star-inserted.mat-drawer-shown {
     display: none;
   }
 }
@@ -80,12 +83,12 @@ a.account {
   .header {
     display: none;
   }
+
   .sidenav {
     display: flex;
   }
 
-  // goto fix
-  .sidenav[_ngcontent-c1] {
+  .sidenav{
     width: 40px;
   }
 }

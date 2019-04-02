@@ -17,22 +17,21 @@ import { LoaderService } from 'src/app/services/loader.service';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent {
-  public hidePassword = true;
-  public hideConfirmPassword = true;
-  public registerForm: any;
+  public passwordVisibility = true;
+  public confirmPasswordVisibility = true;
+  public registerForm = new FormGroup({
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+    password: new FormControl('', [Validators.required]),
+    confirmPassword: new FormControl('', [Validators.required])
+  });
 
   constructor(private userLoggingService: UserLoggingService,
-    public validationService: ValidationService,
-    private router: Router,
-    public loginValidatorBar: MatSnackBar,
-    private loaderService: LoaderService) {
-    this.registerForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
-      confirmPassword: new FormControl('', [Validators.required])
-    });
+              public validationService: ValidationService,
+              private router: Router,
+              public loginValidatorBar: MatSnackBar,
+              private loaderService: LoaderService) {
   }
 
   onSignUp() {
@@ -46,8 +45,9 @@ export class SignUpComponent {
       };
       this.userLoggingService.signUp(formData)
         .subscribe(
+          /*add code in future*/
         );
-      this.loginValidatorBar.open("You are registered in eFolio", "OK", {
+      this.loginValidatorBar.open('You are registered in eFolio', 'OK', {
         duration: 5000,
         panelClass: ['snackBar'],
       });

@@ -1,46 +1,58 @@
-<form class="form-container" [formGroup]="registerForm">
+<form class="form-container" [formGroup]="registerForm" (ngSubmit)="onSignUp()"> 
   <div class="title">Sign up</div>
 
-  <div class="nameContainer">
-    <mat-form-field class="inputContainer">
+  <div class="name-container">
+    <mat-form-field class="input-container">
       <input matInput placeholder="First name" formControlName="firstName">
+
       <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">
         First name is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="inputContainer">
+
+    <mat-form-field  class="input-container">
       <input matInput placeholder="Last name" formControlName="lastName">
+
       <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')">
         Last name is <strong>required</strong>
       </mat-error>
     </mat-form-field>
   </div>
+
   <mat-form-field>
     <input matInput placeholder="E-mail" formControlName="email">
+    
     <mat-error
       *ngIf="registerForm.controls['email'].hasError('email') && !registerForm.controls['email'].hasError('required')">
       Please enter a valid e-mail address
     </mat-error>
+    
     <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
       E-mail is <strong>required</strong>
     </mat-error>
   </mat-form-field>
+
   <mat-form-field>
-    <input matInput placeholder="Password" [type]="hidePassword ? 'password' : 'text'" formControlName="password">
-    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{hidePassword ? 'visibility_off' : 'visibility'}}
+    <input matInput placeholder="Password" [type]="passwordVisibility ? 'password' : 'text'" formControlName="password">
+    
+    <mat-icon matSuffix (click)="passwordVisibility = !passwordVisibility">{{passwordVisibility ? 'visibility_off' : 'visibility'}}
     </mat-icon>
+    
     <mat-error *ngIf="registerForm.controls['password'].hasError('required')">
       Password is <strong>required</strong>
     </mat-error>
   </mat-form-field>
+
   <mat-form-field>
-    <input matInput placeholder="Confirm password" [type]="hideConfirmPassword ? 'password' : 'text'"
+    <input matInput placeholder="Confirm password" [type]="confirmPasswordVisibility ? 'password' : 'text'"
       formControlName="confirmPassword">
-    <mat-icon matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">
-      {{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <mat-icon matSuffix (click)="confirmPasswordVisibility = !confirmPasswordVisibility">
+      {{confirmPasswordVisibility ? 'visibility_off' : 'visibility'}}</mat-icon>
+      
     <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
       Password confirmation is <strong>required</strong>
     </mat-error>
   </mat-form-field>
-  <button class="designedButton" mat-raised-button (click)="onSignUp()">Sign up</button>
+
+  <button class="designed-button" mat-raised-button type="submit" [disabled]="registerForm.invalid">Sign up</button>
 </form>

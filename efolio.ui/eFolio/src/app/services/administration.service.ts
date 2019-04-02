@@ -11,7 +11,7 @@ export class AdministrationService {
   getAllUsers() {
     let headers = new HttpHeaders();
     this.addHeaders(headers);
-    return this.http.get('http://localhost:5000/api/admin',{
+    return this.http.get('http://localhost:5000/api/admin', {
       headers: headers
     })
   }

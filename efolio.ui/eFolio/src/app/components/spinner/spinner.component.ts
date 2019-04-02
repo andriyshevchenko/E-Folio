@@ -9,8 +9,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./spinner.component.scss']
 })
 export class SpinnerComponent implements OnInit, OnDestroy {
-  loading: boolean = true;
-  loadingSubscription: any;
+  public loading = true;
+  public loadingSubscription: any;
 
   constructor(private loaderService: LoaderService) { }
   ngOnInit() {
