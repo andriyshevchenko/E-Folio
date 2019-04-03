@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-info',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
 
 export class ContactInfoComponent {
 
-  constructor() { }
+  public contactinfoForm: FormGroup;
+
+  constructor() { 
+    this.contactinfoForm = new FormGroup({});
+  }
 }

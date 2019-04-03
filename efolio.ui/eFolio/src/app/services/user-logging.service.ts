@@ -5,17 +5,12 @@ import { Observable } from 'rxjs';
 import { map, catchError, retry } from 'rxjs/operators';
 
 @Injectable()
-export class UserLoggingService {
-    private role: String;
-    private validUntil: number; 
+export class UserLoggingService { 
 
     constructor(private httpClient: HttpClient) { }
 
     signIn(loginData) {
-        return this.httpClient.post('http://localhost:5000/api/account/login/', loginData)
-       // .subscribe(es => {
-        //     localStorage.setItem('accessToken', es["accessToken"])
-        // }) 
+        return this.httpClient.post('http://localhost:5000/api/account/login/', loginData) 
     }
 
     signUp(registerData) {
@@ -28,31 +23,7 @@ export class UserLoggingService {
     }
 
     userRole(): String { 
-        let date = new Date();
-        let now = date.getTime();
-        let userRole: String;
-        
-        if (!this.validUntil && !this.role) {
-            let token = localStorage.getItem('accessToken');
-            if (token) {
-                let decoded = jwt_decode(token);
-                this.role = decoded.role;
-                this.validUntil = decoded.expiresIn + now;
-            }
-            else {
-                userRole = 'unauthorized';
-            }
-        }
-        else if (this.validUntil <= now) {
-            // refresh token;
-            userRole = 'unauthorized';
-            localStorage.removeItem('accessToken');
-            this.validUntil = null;
-            this.role = null;
-        }
-        else{
-            userRole = this.role;
-        }
-        return userRole;
+        let role = localStorage.getItem("userRole") || "unauthorized";
+        return role;
     }
 }

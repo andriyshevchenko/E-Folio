@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-
 import { UserLoggingService } from 'src/app/services/user-logging.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/services/loader.service';
+import * as jwt_decode from "jwt-decode"; 
 
 @Component({
   selector: 'app-sign-in',
@@ -26,7 +26,7 @@ export class SignInComponent {
   }
 
   onSignIn() {
-    this.loaderService.startLoading();
+    this.loaderService.startLoading(); 
     if (this.loginForm.valid) {
       const formData = {
         email: this.loginForm.value.email,
@@ -36,12 +36,17 @@ export class SignInComponent {
       this.userLoggingService.signIn(formData)
         .subscribe(
           response => {
-            localStorage.setItem('accessToken', response[key]);
+            let token = response[key];
+            let decodedToken = jwt_decode(token);
+            localStorage.setItem('accessToken', token);
+            localStorage.setItem('validUntil', decodedToken.exp);
+            localStorage.setItem('userRole', decodedToken.role);
+
             this.loginValidatorBar.open('You are logged in eFolio', 'Ok', {
               duration: 5000,
               panelClass: ['snackBar'],
             });
-
+            this.router.navigate(['projects']);
           },
           error => {
             this.loginValidatorBar.open('Invalid Email or Password', 'Ok', {
