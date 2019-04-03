@@ -5,7 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { 
+  MatToolbarModule, 
+  MatButtonModule, 
+  MatSidenavModule, 
+  MatIconModule, 
+  MatListModule, 
+  MatInputModule, 
+  MatFormFieldModule, 
+  MatGridListModule
+} from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { DevelopersComponent } from './components/developers/developers.component';
@@ -13,8 +23,12 @@ import { SupportComponent } from './components/support/support.component';
 import { AdministrationComponent } from './components/administration/administration.component';
 import { AccountComponent } from './components/account/account.component';
 import { ProjectFilterComponent } from './components/projects/project-filter/project-filter.component';
-import { FormsModule } from '@angular/forms'
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ProjectListComponent } from './components/projects/project-list/project-list.component'
+import { ProjectItemComponent } from './components/projects/project-list/project-item/project-item.component';
+import { ProjectService } from './services/project.service';
+import { CardDirective } from './components/directives/card.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +39,10 @@ import { FormsModule } from '@angular/forms'
     SupportComponent,
     AdministrationComponent,
     AccountComponent,
-    ProjectFilterComponent
+    ProjectFilterComponent,
+    ProjectListComponent,
+    ProjectItemComponent,
+    CardDirective
   ],
   imports: [
     BrowserModule,
@@ -37,9 +54,15 @@ import { FormsModule } from '@angular/forms'
     MatIconModule,
     MatListModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatGridListModule
   ],
-  providers: [],
+  providers: [ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

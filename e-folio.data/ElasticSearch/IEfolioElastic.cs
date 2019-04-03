@@ -1,4 +1,5 @@
 ﻿using eFolio.DTO;
+using eFolio.DTO.Common;
 using System.Collections.Generic;
 namespace eFolio.Elastic
 {
@@ -12,15 +13,15 @@ namespace eFolio.Elastic
         void AddItemProject(string path);
         void AddItemDeveloper(string path);
 
-        List<ElasticProjectData> SearchItemsProject(string searchString, Paging paging);
-        List<ElasticDeveloperData> SearchItemsDeveloper(string tstring, Paging paging);
+        List<ElasticProjectData> SearchItemsProject(string searchString, Paging paging, DescriptionKind isExtended);
+        List<ElasticDeveloperData> SearchItemsDeveloper(string tstring, Paging paging, CVKind isExtended);
 
 
         void DeleteProjectItem(int _Id);
         void DeleteDeveloperItem(int _Id);
 
-        ElasticProjectData GetProjectById(int _Id);
-        ElasticDeveloperData GetDeveloperById(int _Id);
+        ElasticProjectData GetProjectById(int _Id, DescriptionKind isExtended);
+        ElasticDeveloperData GetDeveloperById(int _Id, CVKind isExtended);
 
         void UpdateProjectData(ElasticProjectData InsertData);
         void UpdateDeveloperData(ElasticDeveloperData InsertData);

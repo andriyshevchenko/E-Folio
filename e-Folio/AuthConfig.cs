@@ -26,8 +26,9 @@ namespace eFolio.API
                         new Secret("secret".Sha256())
                     },
                     UserClaims =
-                    {
+                    { 
                         JwtClaimTypes.Email,
+                        JwtClaimTypes.Role,
                         JwtClaimTypes.Name,
                         JwtClaimTypes.Id
                     }

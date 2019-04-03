@@ -7,6 +7,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using eFolio.Attibutes;
+using System.Linq;
 
 namespace eFolio.Api.Controllers
 {
@@ -20,23 +22,32 @@ namespace eFolio.Api.Controllers
     [ApiController]
     public class ProjectController : ControllerBase
     {
+        private static readonly string[] haveExtraPermissions = new string[] { "admin", "sales" };
         private static string default_options = "screenshots,developers";
         private IProjectService _projectService;
         private ILogger _logger;
 
-        public ProjectController(IProjectService projectService,
+        public ProjectController(
+            IProjectService projectService,
             ILogger<ProjectController> logger)
         {
             _projectService = projectService;
             _logger = logger;
         }
 
-        [HttpGet]
+        private DescriptionKind GetDescriptionKindForRequest()
+        {
+            return User != null && User.Claims.Any() && haveExtraPermissions.Contains(User.Claims.First().Value) ?
+                DescriptionKind.Internal :
+                DescriptionKind.External;
+        }
+
+        [HttpGet] 
         public IActionResult GetProjects()
         {
             try
             {
-                return Ok(_projectService.GetItemsList());
+                return Ok(_projectService.GetItemsList(GetDescriptionKindForRequest()));
             }
             catch (Exception ex)
             {
@@ -45,26 +56,28 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpGet("search/{request}")]
+        [HttpGet("search/{request}")] 
         public IActionResult SearchProjects(string request, [FromQuery] int from, [FromQuery] int size)
         {
             try
             {
-                return Ok(_projectService.Search(request, new Paging(from, size)));
+                return Ok(_projectService.Search(request, new Paging(from, size), GetDescriptionKindForRequest()));
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogWarning(ex, string.Empty);
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}")]   
         public IActionResult GetProject(int id, string options)
         {
             try
             {
-                var project = _projectService.GetItem(id, (options ?? default_options).Split(','));
+                var project = _projectService.GetItem(
+                    id, GetDescriptionKindForRequest(), (options ?? default_options).Split(',')
+                );
                 if (project == null)
                 {
                     return NotFound(id);
@@ -78,7 +91,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}")]  
+        [HasClaim("role", "admin", "sales")]
         public ActionResult DeleteProject(int id)
         {
             try
@@ -93,7 +107,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost] 
+        [HasClaim("role", "admin", "sales")]
         public IActionResult MakeNewProject([FromBody] Project project)
         {
             try
@@ -109,8 +124,9 @@ namespace eFolio.Api.Controllers
             }     
         }
 
-        [HttpPut("{project}/details")]
-        public IActionResult EditDetails(int project, [FromBody] DTO.Common.Context details)
+        [HttpPut("{project}/details")] 
+        [HasClaim("role", "admin", "sales")]
+        public IActionResult EditDetails(int project, [FromBody] Context details)
         {
             try
             {
@@ -124,7 +140,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpDelete("{project}/screenshots")]
+        [HttpDelete("{project}/screenshots")]  
+        [HasClaim("role", "admin", "sales") ]
         public IActionResult DeleteScreenshots(int project, [FromBody] RequestBody<int[]> deleted)
         {
             try
@@ -139,7 +156,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpPut("{project}/screenshots")]
+        [HttpPut("{project}/screenshots")] 
+        [HasClaim("role", "admin", "sales")]
         public IActionResult UpdateScreenshots(int project, [FromBody] Dictionary<int, FolioFile> files)
         {
             try
@@ -154,7 +172,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpPut]
+        [HttpPut] 
+        [HasClaim("role", "admin", "sales")]
         public IActionResult Edit([FromBody] Project project)
         {
             try

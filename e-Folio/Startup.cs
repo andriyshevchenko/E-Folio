@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Security.Principal;
@@ -33,7 +34,16 @@ namespace eFolio.API
         {
             string connection = Configuration.GetConnectionString("EFolioConnection");
 
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IPrincipal>(
@@ -47,7 +57,7 @@ namespace eFolio.API
 
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IDeveloperService, DeveloperService>();
-
+              
             //Automapping
             var mappingConfig = new MapperConfiguration(mc => { mc.AddProfile(new Automapper()); });
             IMapper mapper = mappingConfig.CreateMapper();
@@ -56,9 +66,9 @@ namespace eFolio.API
             // For auth
             //services.AddTransient<IEmailSender, EmailSender>();
             services.AddIdentity<UserEntity, IdentityRole<int>>(conf =>
-                {
-                    conf.SignIn.RequireConfirmedEmail = true;
-                })
+            {
+                conf.SignIn.RequireConfirmedEmail = true;
+            })
                 .AddEntityFrameworkStores<AuthDBContext>()
                 .AddDefaultTokenProviders();
 
@@ -86,11 +96,11 @@ namespace eFolio.API
                 .AddJsonFormatters();
 
             services.AddAuthentication(options =>
-                {
-                    options.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultAuthenticateScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
+            {
+                options.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
                 .AddIdentityServerAuthentication(options =>
                 {
                     options.Authority = "http://localhost:5000/";
@@ -106,7 +116,8 @@ namespace eFolio.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
-            app.UseCors(options => options.WithOrigins("http://localhost:5000/").AllowAnyMethod().AllowAnyHeader());
+            // app.UseCors(options => options.WithOrigins("http://localhost:5000/").AllowAnyMethod().AllowAnyHeader());
+            app.UseCors("AllowAllHeaders");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -116,7 +127,7 @@ namespace eFolio.API
                     var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
                     var context = scope.ServiceProvider.GetService<eFolioDBContext>();
 
-                    var userManager = serviceProvider.GetRequiredService<UserManager<UserEntity>>();
+                    var userManager = serviceProvider.GetRequiredService<UserManager<UserEntity>>(); 
                     var contextForAuth = serviceProvider.GetRequiredService<AuthDBContext>();
 
                     context.Database.Migrate();
@@ -129,13 +140,7 @@ namespace eFolio.API
                 {
                     var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occured while seeding the database.");
-                }
-                //using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-                //{
-                //    var context = scope.ServiceProvider.GetService<eFolioDBContext>();
-                //    context.Database.Migrate();
-                //    ContextInitializer.Initialize(context);
-                //}
+                } 
             }
 
             app.UseIdentityServer();

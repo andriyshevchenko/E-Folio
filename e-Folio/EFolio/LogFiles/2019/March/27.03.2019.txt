@@ -1,0 +1,537 @@
+2019-03-27 12:25:16.269 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:25:21.855 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:25:34.945 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:25:40.201 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:26:04.299 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:26:09.643 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:26:21.770 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:26:31.235 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:26:36.714 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:26:41.788 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:26:46.370 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:27:02.397 +02:00 [FTL] Host terminated unexpectedly
+System.FormatException: Could not parse the JSON file. Error on line number '3': '"ConnectionStrings": {
+<<<<<<< Updated upstream'. ---> Newtonsoft.Json.JsonReaderException: Invalid property identifier character: <. Path 'ConnectionStrings', line 3, position 0.
+   at Newtonsoft.Json.JsonTextReader.ParseProperty()
+   at Newtonsoft.Json.JsonTextReader.ParseObject()
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Linq.JContainer.ReadContentFrom(JsonReader r, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JContainer.ReadTokenFrom(JsonReader reader, JsonLoadSettings options)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationFileParser.ParseStream(Stream input)
+   at Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider.Load(Stream stream)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load(Boolean reload)
+   at Microsoft.Extensions.Configuration.FileConfigurationProvider.Load()
+   at Microsoft.Extensions.Configuration.ConfigurationRoot..ctor(IList`1 providers)
+   at Microsoft.Extensions.Configuration.ConfigurationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.BuildCommonServices(AggregateException& hostingStartupErrors)
+   at Microsoft.AspNetCore.Hosting.WebHostBuilder.Build()
+   at eFolio.API.Program.Main(String[] args) in D:\Exoft\e-Folio\e-Folio\Program.cs:line 32
+2019-03-27 12:27:39.594 +02:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-27 12:27:40.846 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-27 12:27:41.029 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-27 12:27:42.288 +02:00 [INF] Executed DbCommand (170ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:27:42.352 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:27:42.354 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:27:42.383 +02:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-27 12:27:42.398 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-27 12:27:42.588 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 12:27:42.605 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:27:42.607 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:27:42.610 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-27 12:27:42.611 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-27 12:27:42.619 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:27:42.969 +02:00 [INF] Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:27:43.010 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:27:43.025 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:27:43.035 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:27:43.059 +02:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:27:45.424 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2019-03-27 12:27:46.101 +02:00 [INF] Request finished in 679.1427ms 404 
+2019-03-27 12:28:10.986 +02:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-27 12:28:11.725 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-27 12:28:11.834 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-27 12:28:12.293 +02:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:28:12.348 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:28:12.350 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:28:12.360 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-27 12:28:12.374 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-27 12:28:12.519 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 12:28:12.520 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:28:12.521 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:28:12.525 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-27 12:28:12.526 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-27 12:28:12.535 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:28:12.770 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:28:12.807 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:28:12.821 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:28:12.830 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:28:12.843 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:28:13.367 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2019-03-27 12:28:13.781 +02:00 [INF] Request finished in 415.9641ms 404 
+2019-03-27 12:34:15.733 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2019-03-27 12:34:15.735 +02:00 [INF] Request finished in 2.3508ms 404 
+2019-03-27 12:35:29.921 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-27 12:35:29.922 +02:00 [INF] Policy execution failed.
+2019-03-27 12:35:29.923 +02:00 [INF] Request origin http://localhost:4200 does not have permission to access the resource.
+2019-03-27 12:35:30.004 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-27 12:35:30.016 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-27 12:35:30.256 +02:00 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:35:30.452 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-27 12:35:30.462 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.5044000000000002ms.
+2019-03-27 12:35:30.484 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-27 12:35:30.819 +02:00 [INF] Executed DbCommand (66ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-27 12:35:30.996 +02:00 [INF] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-27 12:35:31.130 +02:00 [WRN] The LINQ expression 'GroupBy([pde].ProjectId, _Include(queryContext, [pde], new [] {[pde.DeveloperEntity]}, (queryContext, entity, included) => { ... }))' could not be translated and will be evaluated locally.
+2019-03-27 12:35:31.161 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-27 12:35:36.576 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 6561.1008ms
+2019-03-27 12:35:36.581 +02:00 [INF] Request finished in 6659.7744ms 200 application/json; charset=utf-8
+2019-03-27 12:38:08.817 +02:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-27 12:38:09.978 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-27 12:38:10.162 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-27 12:38:10.620 +02:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:38:10.700 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:38:10.723 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:38:10.736 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-27 12:38:10.752 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-27 12:38:10.925 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 12:38:10.928 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:38:10.930 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:38:10.933 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-27 12:38:10.934 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-27 12:38:10.945 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:38:11.221 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:38:11.265 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:38:11.282 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:38:11.295 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:38:11.326 +02:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:38:12.110 +02:00 [INF] Request starting HTTP/1.1 DEBUG http://localhost:5000/  0
+2019-03-27 12:38:12.110 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/values  
+2019-03-27 12:38:12.345 +02:00 [INF] Request finished in 230.5181ms 200 
+2019-03-27 12:38:12.894 +02:00 [INF] Request finished in 789.1426ms 404 
+2019-03-27 12:39:41.722 +02:00 [INF] User profile is available. Using 'C:\Users\Admin\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2019-03-27 12:39:42.506 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2019-03-27 12:39:42.612 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-27 12:39:42.959 +02:00 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:39:43.012 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:39:43.013 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:39:43.023 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-27 12:39:43.037 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-27 12:39:43.180 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'AuthDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2019-03-27 12:39:43.181 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:39:43.183 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2019-03-27 12:39:43.186 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2019-03-27 12:39:43.187 +02:00 [INF] No migrations were applied. The database is already up to date.
+2019-03-27 12:39:43.196 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:39:43.428 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Projects] AS [p])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:39:43.466 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Clients] AS [c])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:39:43.479 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Developers] AS [d])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:39:43.488 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:39:43.502 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [AspNetUsers] AS [a])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END
+2019-03-27 12:39:44.101 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/Project  
+2019-03-27 12:39:44.137 +02:00 [INF] Policy execution successful.
+2019-03-27 12:39:44.549 +02:00 [INF] Route matched with {action = "GetProjects", controller = "Project"}. Executing action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API)
+2019-03-27 12:39:44.560 +02:00 [INF] Entity Framework Core 2.1.8-servicing-32085 initialized 'eFolioDBContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: SensitiveDataLoggingEnabled 
+2019-03-27 12:39:44.585 +02:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0
+2019-03-27 12:39:44.755 +02:00 [INF] Executing action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) - Validation state: "Valid"
+2019-03-27 12:39:44.765 +02:00 [INF] Executed action method eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.4879ms.
+2019-03-27 12:39:44.789 +02:00 [INF] Executing ObjectResult, writing value of type 'eFolio.BL.ProjectService+<GetItemsList>d__7'.
+2019-03-27 12:39:45.096 +02:00 [INF] Executed DbCommand (59ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project].[Id], [project].[ContextId], [project].[Name], [project.Context].[Id], [project.Context].[SourceCodeLink]
+FROM [Projects] AS [project]
+INNER JOIN [Contexts] AS [project.Context] ON [project].[ContextId] = [project.Context].[Id]
+ORDER BY [project.Context].[Id]
+2019-03-27 12:39:45.260 +02:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [project.Context.ScreenLinks].[Id], [project.Context.ScreenLinks].[ContextEntityId], [project.Context.ScreenLinks].[IsInternal], [project.Context.ScreenLinks].[Path]
+FROM [FolioFiles] AS [project.Context.ScreenLinks]
+INNER JOIN (
+    SELECT DISTINCT [project.Context0].[Id]
+    FROM [Projects] AS [project0]
+    INNER JOIN [Contexts] AS [project.Context0] ON [project0].[ContextId] = [project.Context0].[Id]
+) AS [t] ON [project.Context.ScreenLinks].[ContextEntityId] = [t].[Id]
+ORDER BY [t].[Id]
+2019-03-27 12:39:45.356 +02:00 [WRN] The LINQ expression 'GroupBy([pde].ProjectId, _Include(queryContext, [pde], new [] {[pde.DeveloperEntity]}, (queryContext, entity, included) => { ... }))' could not be translated and will be evaluated locally.
+2019-03-27 12:39:45.379 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [pde].[ProjectId], [pde].[DeveloperId], [pde.DeveloperEntity].[Id], [pde.DeveloperEntity].[CVLink], [pde.DeveloperEntity].[FullName]
+FROM [ProjectDeveloperEntity] AS [pde]
+INNER JOIN [Developers] AS [pde.DeveloperEntity] ON [pde].[DeveloperId] = [pde.DeveloperEntity].[Id]
+ORDER BY [pde].[ProjectId]
+2019-03-27 12:39:50.704 +02:00 [INF] Executed action eFolio.Api.Controllers.ProjectController.GetProjects (eFolio.API) in 6143.1611ms
+2019-03-27 12:39:50.724 +02:00 [INF] Request finished in 6624.9748ms 200 application/json; charset=utf-8
