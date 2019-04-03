@@ -10,7 +10,7 @@
             <mat-icon aria-label="Side nav toggle icon">arrow_forward_ios</mat-icon>
         </button>
         <div>
-            <app-project-item *ngFor="let item of projects" [projectInput]="item"></app-project-item>
+            <app-project-item *ngFor="let item of projects" [project]="item"></app-project-item>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

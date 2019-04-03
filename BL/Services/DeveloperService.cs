@@ -47,14 +47,8 @@ namespace eFolio.BL
 
             return await GetMergeDeveloperAsync(developerEntity, elasticDeveloper);
         }
-
-        public async Task<IEnumerable<Developer>> GetItemsListAsync()
-        {
-            var developerEntities = developerRepository.GetItemsList();
-            var elasticDevelopers = GetElasticDevelopers(developerEntities);
-        }
-
-        public IEnumerable<Developer> GetItemsList(CVKind isExtended)
+         
+        public async Task<IEnumerable<Developer>> GetItemsListAsync(CVKind isExtended)
         {
             var developerEntities = developerRepository.GetItemsList();
             var elasticDevelopers = GetElasticDevelopers(developerEntities, isExtended);

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using eFolio.API.Models;
+using eFolio.Attibutes;
 using eFolio.BL.Interfaces;
 using eFolio.EF;
 using Microsoft.AspNetCore.Identity;
@@ -16,6 +14,7 @@ namespace eFolio.API.Controllers
 {
     [Route("api/[controller]")]
     [Produces("application/json")]
+    [HasClaim("role", "admin")]
     [ApiController]
     public class AdminController : ControllerBase
     {

@@ -1,9 +1,9 @@
-<a href="#" routerLink="./{{ projectInput.id }}">
+<a href="#" routerLink="./{{ project.id }}">
   <mat-card class="example-card">
-    <img mat-card-image [src]="projectInput.photoBase64" alt="{{ projectInput.name }}">
+    <img mat-card-image [src]="project.photoBase64" alt="{{ project.name }}">
     <mat-card-header>
-      <mat-card-title>{{ projectInput.name }}</mat-card-title>
-      <mat-card-subtitle>{{ projectInput.description }}</mat-card-subtitle>
+      <mat-card-title>{{ project.name }}</mat-card-title>
+      <mat-card-subtitle>{{ project.description }}</mat-card-subtitle>
     </mat-card-header>
   </mat-card>
 </a>

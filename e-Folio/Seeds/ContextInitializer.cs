@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace eFolio.API.Seeds
-
 {
     public class ContextInitializer
     {

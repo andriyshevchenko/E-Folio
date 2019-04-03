@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace eFolio.DTO.Common
+﻿namespace eFolio.DTO.Common
 {
     public class UserRegister
     {
