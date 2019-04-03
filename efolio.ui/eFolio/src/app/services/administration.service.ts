@@ -9,11 +9,11 @@ export class AdministrationService {
   constructor(private http: HttpClient) { }
 
   getAllUsers() {
-    let headers = new HttpHeaders();
-    this.addHeaders(headers);
+    const httpHeaders = new HttpHeaders();
+    this.addHeaders(httpHeaders);
     return this.http.get('http://localhost:5000/api/admin', {
-      headers: headers
-    })
+      headers: httpHeaders
+    });
   }
   addHeaders(headers: HttpHeaders) {
     headers.append('Authorization', 'qwertyasdfgzxvc');

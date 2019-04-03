@@ -50,8 +50,7 @@ export class SignInComponent {
             });
           }
         );
-    }
-    else {
+    } else {
       this.loginValidatorBar.open('Invalid Email or Password', 'Ok', {
         duration: 5000,
         panelClass: ['snackBar'],

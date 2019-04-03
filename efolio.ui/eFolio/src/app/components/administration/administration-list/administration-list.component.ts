@@ -37,7 +37,7 @@ export class AdministrationListComponent implements OnInit {
         element.lastName,
         element.userName,
         element.email,
-        element.emailConfirmed))
+        element.emailConfirmed));
     });
   }
 }

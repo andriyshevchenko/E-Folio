@@ -8,11 +8,11 @@ export class DeveloperServiceService {
   constructor(private http: HttpClient) { }
 
   getAllDevelopers() {
-    let headers = new HttpHeaders();
-    this.addHeaders(headers);
+    const httpHeaders = new HttpHeaders();
+    this.addHeaders(httpHeaders);
     return this.http.get<Developer>('http://localhost:5000/api/developers', {
-      headers: headers
-    })
+      headers: httpHeaders
+    });
   }
 
   // getOneDeveloper(){
