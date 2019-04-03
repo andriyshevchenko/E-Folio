@@ -10,34 +10,41 @@ using Microsoft.Extensions.Logging;
 using System.Net;
 using eFolio.API.Models;
 using eFolio.DTO;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using eFolio.Attibutes;
 
 namespace eFolio.Api.Controllers
 {
     [Route("api/[controller]")]
     [Produces("application/json")]
-    [ApiController]
+    [ApiController] 
     public class DevelopersController : ControllerBase
-    { 
+    {
+        private static readonly string[] haveExtraPermissions = new string[] { "admin", "sales" };
+
         private IProjectService _projectService;
         private IDeveloperService _developerService;
+        private UserManager<UserEntity> _userManager;
         private ILogger _logger;
 
         public DevelopersController(IProjectService projectService,
                                     IDeveloperService developerService,
+                                    UserManager<UserEntity> userManager,
                                     ILogger<DevelopersController> logger)
-        { 
+        {
             this._projectService = projectService;
             this._developerService = developerService;
+            this._userManager = userManager;
             this._logger = logger;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetDevelopers()
+
+        [HttpGet] 
+        public IActionResult GetDevelopers()
         {
             try
             {
-                return Ok(await _developerService.GetItemsListAsync());
+                return base.Ok(_developerService.GetItemsList(GetCVKindForRequest()));
             }
             catch (Exception ex)
             {
@@ -46,12 +53,19 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpGet("search/{request}")]
-        public async Task<IActionResult> SearchDevelopers(string request, [FromQuery] int from, [FromQuery] int size)
+        private CVKind GetCVKindForRequest()
+        { 
+            return User != null && User.Claims.Any() && haveExtraPermissions.Contains(User.Claims.First().Value) ? 
+                CVKind.Internal: 
+                CVKind.External;
+        }
+
+        [HttpGet("search/{request}")] 
+        public IActionResult SearchDevelopers(string request, [FromQuery] int from, [FromQuery] int size)
         {
             try
             {
-                return Ok(await _developerService.SearchAsync(request, new Paging(from, size)));
+                return Ok(_developerService.Search(request, new Paging(from, size), GetCVKindForRequest()));
             }
             catch (Exception ex)
             {
@@ -59,19 +73,19 @@ namespace eFolio.Api.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
             }
         }
- 
+
         [HttpGet]
-        [Route("{id}")]
-        public async Task<IActionResult> GetDeveloper(int id)
+        [Route("{id}")] 
+        public IActionResult GetDeveloper(int id)
         {
             try
             {
-                var developer = await _developerService.GetItemAsync(id);
-                if (developer == null)
+                var project = _developerService.GetItem(id, GetCVKindForRequest());
+                if (project == null)
                 {
                     return NotFound(id);
                 }
-                return Ok(developer);
+                return Ok(project);
             }
             catch (Exception ex)
             {
@@ -80,7 +94,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost] 
+        [HasClaim("role", "admin")]
         public IActionResult NewDeveloper([FromBody] Developer developer)
         {
             try
@@ -95,7 +110,8 @@ namespace eFolio.Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}")] 
+        [HasClaim("role", "admin")]
         public IActionResult DeleteDeveloper(int id)
         {
             try
@@ -111,6 +127,7 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpPut]
+        [HasClaim("role", "admin")]
         public IActionResult Edit(Developer developer)
         {
             try
@@ -123,21 +140,22 @@ namespace eFolio.Api.Controllers
             {
                 _logger.LogWarning(ex, string.Empty);
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
-            }
+            } 
         }
 
         [HttpDelete("{projectId}/d/{id}")]
+        [HasClaim("role", "admin", "sales")]
         public IActionResult QuitProject(int projectId, int id)
         {
             try
             {
-                var project = _projectService.GetItem(projectId);
+                var project = _projectService.GetItem(projectId, DescriptionKind.External);
                 if (project == null)
                 {
                     return NotFound("Project not found: " + projectId);
                 }
 
-                var developer = _developerService.GetItemAsync(id);
+                var developer = _developerService.GetItem(id, CVKind.External);
                 if (developer == null)
                 {
                     return NotFound("Developer does not exist: " + id);
@@ -155,21 +173,22 @@ namespace eFolio.Api.Controllers
             {
                 _logger.LogWarning(ex, string.Empty);
                 return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
-            }  
+            }
         }
 
-        [HttpPut("{projectId}/d/{id}")]
-        public async Task<IActionResult> AssignToProject(int projectId, int id)
+        [HttpPut("{projectId}/d/{id}")] 
+        [HasClaim("role", "admin", "sales")]
+        public IActionResult AssignToProject(int projectId, int id)
         {
             try
             {
-                var project = _projectService.GetItem(projectId);
+                var project = _projectService.GetItem(projectId, DescriptionKind.External);
                 if (project == null)
                 {
                     return NotFound("Project not found: " + projectId);
                 }
 
-                var developer = await _developerService.GetItemAsync(id);
+                var developer = _developerService.GetItem(id, CVKind.External);
                 if (developer == null)
                 {
                     return NotFound("Developer does not exist: " + id);

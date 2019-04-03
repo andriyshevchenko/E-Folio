@@ -39,18 +39,18 @@ namespace eFolio.BL
             elastic.DeleteProjectItem(id);
         }
 
-        public Project GetItem(int id, params string[] extended)
+        public Project GetItem(int id, DescriptionKind isExtended, params string[] includedProperties)
         {
-            var projectEntity = projectRepository.GetItem(id, extended);
-            var elasticProject = elastic.GetProjectById(id);
+            var projectEntity = projectRepository.GetItem(id, includedProperties);
+            var elasticProject = elastic.GetProjectById(id, isExtended);
 
             return GetMergeProject(projectEntity, elasticProject);
         }
 
-        public IEnumerable<Project> GetItemsList()
+        public IEnumerable<Project> GetItemsList(DescriptionKind isExtended)
         {
             var projectEntities = projectRepository.GetItemsList();
-            var elasticProjects = GetElasticProjects(projectEntities);
+            var elasticProjects = GetElasticProjects(projectEntities, isExtended);
 
             var e1 = projectEntities.GetEnumerator();
             var e2 = elasticProjects.GetEnumerator();
@@ -60,9 +60,9 @@ namespace eFolio.BL
             }
         }
 
-        public IEnumerable<Project> Search(string request, Paging paging)
+        public IEnumerable<Project> Search(string request, Paging paging, DescriptionKind isExtended)
         {
-            var elasticProjects = elastic.SearchItemsProject(request, paging);
+            var elasticProjects = elastic.SearchItemsProject(request, paging, isExtended);
             var projectEntities = GetEntityProjects(elasticProjects);
 
             var e1 = projectEntities.GetEnumerator();
@@ -159,11 +159,11 @@ namespace eFolio.BL
             projectRepository.Update(oldProjectEntity);
         }
 
-        private IEnumerable<ElasticProjectData> GetElasticProjects(IEnumerable<ProjectEntity> projects)
+        private IEnumerable<ElasticProjectData> GetElasticProjects(IEnumerable<ProjectEntity> projects, DescriptionKind isExtended)
         {
             foreach (var item in projects)
             {
-                yield return elastic.GetProjectById(item.Id);
+                yield return elastic.GetProjectById(item.Id, isExtended);
             }
         }
 
@@ -184,5 +184,5 @@ namespace eFolio.BL
             );
             return project;
         }
-    }
+    } 
 }

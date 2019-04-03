@@ -10,8 +10,8 @@ namespace eFolio.BL
         void Add(Developer item);
         void Update(Developer item);
         void Delete(int id);
-        Task<Developer> GetItemAsync(int id);
-        Task<IEnumerable<Developer>> GetItemsListAsync();
-        Task<IEnumerable<Developer>> SearchAsync(string request, Paging paging);
+        Task<Developer> GetItemAsync(int id, CVKind isExtended);
+        Task<IEnumerable<Developer>> GetItemsListAsync(CVKind isExtended);
+        Task<IEnumerable<Developer>> SearchAsync(string request, Paging paging, CVKind isExtended);
     }
 }

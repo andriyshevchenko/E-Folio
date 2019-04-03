@@ -378,5 +378,4 @@ yarn-error.log
 # User specific bazel settings
 .bazelrc.user
 
-e-Folio/appsettings.json
-e-Folio/appsettings.Development.json
+/e-Folio/EFolio/LogFiles/

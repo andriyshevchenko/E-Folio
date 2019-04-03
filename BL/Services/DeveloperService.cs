@@ -39,19 +39,25 @@ namespace eFolio.BL
 
             elastic.DeleteDeveloperItem(id);
         }
-
-        public async Task<Developer> GetItemAsync(int id)
+        
+        public async Task<Developer> GetItemAsync(int id, CVKind isExtended)
         {
             var developerEntity = developerRepository.GetItem(id);
-            var elasticDeveloper = elastic.GetDeveloperById(id);
+            var elasticDeveloper = elastic.GetDeveloperById(id, isExtended);
 
             return await GetMergeDeveloperAsync(developerEntity, elasticDeveloper);
         }
 
         public async Task<IEnumerable<Developer>> GetItemsListAsync()
         {
-            var developerEntities = developerRepository.GetItemsList(); 
+            var developerEntities = developerRepository.GetItemsList();
             var elasticDevelopers = GetElasticDevelopers(developerEntities);
+        }
+
+        public IEnumerable<Developer> GetItemsList(CVKind isExtended)
+        {
+            var developerEntities = developerRepository.GetItemsList();
+            var elasticDevelopers = GetElasticDevelopers(developerEntities, isExtended);
 
             var e1 = developerEntities.GetEnumerator();
             var e2 = elasticDevelopers.GetEnumerator();
@@ -63,10 +69,10 @@ namespace eFolio.BL
             }
             return ret;
         }
-
-        public async Task<IEnumerable<Developer>> SearchAsync(string request, Paging paging)
+        
+        public async Task<IEnumerable<Developer>> SearchAsync(string request, Paging paging, CVKind cvKind)
         {
-            var elasticDevelopers = elastic.SearchItemsDeveloper(request, paging);
+            var elasticDevelopers = elastic.SearchItemsDeveloper(request, paging, cvKind);
             var developerEntities = GetEntityDevelopers(elasticDevelopers);
 
             var e1 = developerEntities.GetEnumerator();
@@ -87,11 +93,11 @@ namespace eFolio.BL
             elastic.UpdateDeveloperData(mapper.Map<ElasticDeveloperData>(item));
         }
 
-        private IEnumerable<ElasticDeveloperData> GetElasticDevelopers(IEnumerable<DeveloperEntity> developers)
+        private IEnumerable<ElasticDeveloperData> GetElasticDevelopers(IEnumerable<DeveloperEntity> developers, CVKind cvKind)
         {
             foreach (var item in developers)
             {
-                yield return elastic.GetDeveloperById(item.Id);
+                yield return elastic.GetDeveloperById(item.Id, cvKind);
             }
         }
 

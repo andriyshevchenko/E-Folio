@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace eFolio.API.Controllers
@@ -51,7 +53,7 @@ namespace eFolio.API.Controllers
                             tokenResponse.AccessToken,
                             tokenResponse.ExpiresIn,
                             tokenResponse.TokenType,
-                            tokenResponse.RefreshToken                 
+                            tokenResponse.RefreshToken,
                         });
                     else
                         throw new Exception($"{tokenResponse.Error}{Environment.NewLine}{tokenResponse.ErrorDescription}");
@@ -63,9 +65,7 @@ namespace eFolio.API.Controllers
             {
                 return StatusCode((int)HttpStatusCode.BadRequest, new ErrorResponse(ex));
             }
-        }
-
-
+        } 
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserRegister model)
@@ -86,6 +86,7 @@ namespace eFolio.API.Controllers
 
                 if (result.Succeeded)
                 {
+                    await _userManager.AddClaimAsync(user, new Claim("role", "user"));
                     var createUser = await _userManager.FindByEmailAsync(model.Email);
 
                     //string confirmationToken = _userManager.GenerateEmailConfirmationTokenAsync(createUser).Result;
@@ -119,7 +120,7 @@ namespace eFolio.API.Controllers
             {
                 {"grant_type", "password"},
                 {"username", username},
-                {"password", password}
+                {"password", password}, 
             });
 
             return tokenResponse;
