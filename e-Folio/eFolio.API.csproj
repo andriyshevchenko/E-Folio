@@ -14,6 +14,20 @@
   <ItemGroup>
     <None Remove="Seeds\PhotoDeveloper\Levko.jpg" />
     <None Remove="Seeds\PhotoDeveloper\Roik.jpg" />
+    <None Remove="Seeds\PhotoProject\efolio.png" />
+    <None Remove="Seeds\PhotoProject\google.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Seeds\PhotoProject\google.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Seeds\PhotoProject\efolio.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

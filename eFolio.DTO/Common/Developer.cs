@@ -9,25 +9,27 @@ namespace eFolio.DTO.Common
         {
 
         }
-        public Developer(int id, string fullName, string cVLink, string photoBase64)
+        public Developer(int id, string fullName, string cVLink)
         {
             Id = id;
             FullName = fullName;
             CVLink = cVLink;
-            PhotoBase64 = photoBase64;
             Projects = new List<Project>();
         }
 
-        public void HasPhoto(byte[] content)
+        public void HasPhoto(byte[] content, string fileFormat)
         {
-            PhotoBase64 = "data:image/jpg;base64," + Convert.ToBase64String(content);
+            PhotoBase64 = string.Format("data:image/{0};base64,{1}", 
+                fileFormat.Substring(1,fileFormat.Length-1), 
+                Convert.ToBase64String(content)
+            );
         }
 
         public void UpdateId(int id)
         {
             if (id > 0)
             {
-                Id = id; 
+                Id = id;
             }
         }
 

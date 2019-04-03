@@ -5,6 +5,7 @@ using eFolio.EF;
 using eFolio.Elastic;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace eFolio.BL
 {
@@ -177,7 +178,10 @@ namespace eFolio.BL
         private Project GetMergeProject(ProjectEntity projectEntity, ElasticProjectData elasticProjectData)
         {
             var project = mapper.Map<Project>(Tuple.Create(elasticProjectData, projectEntity));
-
+            project.HasPhoto(
+                File.ReadAllBytes(projectEntity.PhotoLink), 
+                Path.GetExtension(projectEntity.PhotoLink)
+            );
             return project;
         }
     }

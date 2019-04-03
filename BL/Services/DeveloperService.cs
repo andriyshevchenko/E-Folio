@@ -50,10 +50,7 @@ namespace eFolio.BL
 
         public async Task<IEnumerable<Developer>> GetItemsListAsync()
         {
-            var developerEntities = developerRepository.GetItemsList();
-
-
-
+            var developerEntities = developerRepository.GetItemsList(); 
             var elasticDevelopers = GetElasticDevelopers(developerEntities);
 
             var e1 = developerEntities.GetEnumerator();
@@ -110,7 +107,10 @@ namespace eFolio.BL
         {
             var developer = mapper.Map<Developer>(Tuple.Create(elasticDeveloperData, developerEntity));
 
-            developer.HasPhoto(await File.ReadAllBytesAsync(developerEntity.PhotoLink));
+            developer.HasPhoto(
+                await File.ReadAllBytesAsync(developerEntity.PhotoLink),
+                Path.GetExtension(developerEntity.PhotoLink)
+            );
 
             return developer;
         }

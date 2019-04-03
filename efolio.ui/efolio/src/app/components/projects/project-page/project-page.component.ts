@@ -10,7 +10,7 @@ import { LoaderService } from 'src/app/services/loader.service';
   styleUrls: ['./project-page.component.scss']
 })
 export class ProjectPageComponent implements OnInit {
-  public projectInput: Project = new Project(0, '', '');
+  public projectInput: Project = new Project(0, '', '', null);
 
   constructor(
     private projectService: ProjectService,
@@ -23,7 +23,7 @@ export class ProjectPageComponent implements OnInit {
 
     this.projectService.GetProject(id).subscribe(
       (res) => {
-        this.projectInput = new Project(res.id, res.name, res.internalDescription);
+        this.projectInput = new Project(res.id, res.name, res.internalDescription, res.photoBase64);
         this.loaderService.stopLoading();
       }
     );
