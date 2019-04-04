@@ -1,4 +1,5 @@
 ﻿using eFolio.EF;
+using eFolio.Elastic;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace eFolio.API.Seeds
 {
     public class ContextInitializer
     {
-        public static void Initialize(eFolioDBContext context)
+        public static void Initialize(eFolioDBContext context, IEfolioElastic elastic)
         {
             context.Database.EnsureCreated();
 
@@ -59,7 +60,18 @@ namespace eFolio.API.Seeds
                     }
                 });
                 context.SaveChanges();
-            }
+
+                foreach (var project in context.Projects.ToList())
+                {
+                    elastic.AddItem(new ElasticProjectData()
+                    {
+                        Id = project.Id,
+                        Name = project.Name,
+                        ExternalDescr = "You are gay",
+                        InternalDescr = "This is internal description"
+                    });
+                }
+            } 
 
             if (!context.Clients.Any())
             {

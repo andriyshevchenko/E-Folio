@@ -22,11 +22,11 @@ namespace eFolio.Elastic
 
             if (isExtended == DescriptionKind.Internal)
             {
-                InternalDescr = data.InternalDescr  ;
+                InternalDescr = data.InternalDescr;
             }
             else
             {
-                InternalDescr = "Internal CV is not available";
+                InternalDescr = "Internal description is not available";
             }
         }
 

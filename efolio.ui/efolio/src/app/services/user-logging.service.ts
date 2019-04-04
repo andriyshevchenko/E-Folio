@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import * as jwt_decode from "jwt-decode";
-import { Observable } from 'rxjs';
-import { map, catchError, retry } from 'rxjs/operators';
 
 @Injectable()
 export class UserLoggingService { 

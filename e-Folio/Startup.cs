@@ -2,6 +2,7 @@ using AutoMapper;
 using eFolio.API.Seeds;
 using eFolio.BL;
 using eFolio.EF;
+using eFolio.Elastic;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -132,7 +133,7 @@ namespace eFolio.API
                     context.Database.Migrate();
                     contextForAuth.Database.Migrate();
 
-                    ContextInitializer.Initialize(context);
+                    ContextInitializer.Initialize(context, new ElasticSearch());
                     ContextInitializerForAuth.Initialize(contextForAuth, userManager).Wait();
                 }
                 catch (Exception ex)
