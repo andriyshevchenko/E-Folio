@@ -4,7 +4,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/app/services/loader.service';
-import * as jwt_decode from "jwt-decode"; 
+import * as jwt_decode from 'jwt-decode'; 
 
 @Component({
   selector: 'app-sign-in',

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using eFolio.EF;
-namespace eFolio.BL.Interfaces
+namespace eFolio.BL
 {
     public interface IAdminService
     {

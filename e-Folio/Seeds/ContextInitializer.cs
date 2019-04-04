@@ -35,7 +35,8 @@ namespace eFolio.API.Seeds
                                 Path = "djnk"
                             }
                         }
-                    }
+                    },
+                    PhotoLink = Environment.CurrentDirectory + "\\Seeds\\PhotoProject\\google.png"
                 });
                 context.Projects.Add(new ProjectEntity()
                 {
@@ -57,7 +58,8 @@ namespace eFolio.API.Seeds
                                 Path = "hyrrr"
                             }
                         }
-                    }
+                    },
+                    PhotoLink = Environment.CurrentDirectory + "\\Seeds\\PhotoProject\\efolio.png"
                 });
                 context.SaveChanges();
 

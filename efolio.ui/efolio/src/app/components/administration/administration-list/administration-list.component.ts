@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdministrationService } from 'src/app/services/administration.service';
 import { User } from 'src/app/components/models/user.model';
 import { MatTableDataSource } from '@angular/material';
@@ -8,20 +8,14 @@ import { MatTableDataSource } from '@angular/material';
   templateUrl: './administration-list.component.html',
   styleUrls: ['./administration-list.component.scss']
 })
-export class AdministrationListComponent {
-  public showUsersTable: boolean = false;
-  public showProjectsTable: boolean = false;
-  public showDevelopersTable: boolean = false;
-  public users: User[] = [];
+export class AdministrationListComponent implements OnInit {
   public displayedColumns: string[] = ['id', 'firstName', 'lastName', 'userName', 'email', 'emailConfirmed'];
   public dataSource = new MatTableDataSource();
+  public users: User[] = [];
 
   constructor(private administrationService: AdministrationService) { }
 
-  showAllUsers() {
-    this.showUsersTable = true;
-    this.showProjectsTable = false;
-    this.showDevelopersTable = false;
+  ngOnInit() {
     this.users = [];
     this.administrationService.getAllUsers()
       .subscribe(responce => {
@@ -30,18 +24,6 @@ export class AdministrationListComponent {
       },
         (error) => console.log(error)
       );
-  }
-
-  showAllProjects() {
-    this.showUsersTable = false;
-    this.showProjectsTable = true;
-    this.showDevelopersTable = false;
-  }
-
-  showAllDevelopers() {
-    this.showUsersTable = false;
-    this.showProjectsTable = false;
-    this.showDevelopersTable = true;
   }
 
   getData(responce) {
@@ -54,4 +36,4 @@ export class AdministrationListComponent {
         element.emailConfirmed));
     });
   }
-}
+} 

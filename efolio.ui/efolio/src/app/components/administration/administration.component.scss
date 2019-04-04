@@ -1,3 +1,5 @@
+$elementsMainColor: #212121;
+
 .mat-sidenav-container{
     height: 100%;  
     position: relative;
@@ -23,6 +25,24 @@
     background-color: rgb(216, 216, 216);
     border-color: black;
 }
-// ::ng-deep.mat-drawer-content{
-//     overflow: hidden;
-// }
+
+.designedButton {
+  margin: 15px;
+  padding: 7px;
+  background-color: white;
+  border: 2px solid $elementsMainColor;
+  color: $elementsMainColor;
+  border-radius: 12px;
+  font-size: 115%;
+}
+
+.designedButton:hover {
+  background-color: $elementsMainColor;
+  color: white;
+}
+
+.controll {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

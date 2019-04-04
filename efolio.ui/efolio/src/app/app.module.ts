@@ -37,6 +37,7 @@ import { ContactInfoComponent } from './components/support/contact-info/contact-
 import { AdministrationListComponent } from './components/administration/administration-list/administration-list.component';
 import { ProjectPageComponent } from './components/projects/project-page/project-page.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminProjectListComponent } from './components/administration/admin-project-list/admin-project-list.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { AuthGuard } from './guards/auth.guard';
     SpinnerComponent,
     DevelopersFilterComponent,
     AdministrationListComponent,
-    ProjectPageComponent
+    ProjectPageComponent,
+    AdminProjectListComponent
   ],
   imports: [
     BrowserModule,

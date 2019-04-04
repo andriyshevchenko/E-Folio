@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="header" style="height: 100%; width: 100%;">
+<div class="container" [ngStyle]="{'background-image':returnImgUrl(projectInput?.photoBase64)}">
+  <div class="header">
     <span class="header">
       {{ projectInput.name }}
     </span>
@@ -8,6 +8,7 @@
 
 <div>
   <p style="text-align: center;">
+    {{ projectInput.Description }}
     // Description
   </p>
 </div>

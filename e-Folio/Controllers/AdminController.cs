@@ -2,7 +2,7 @@
 using System.Net;
 using eFolio.API.Models;
 using eFolio.Attibutes;
-using eFolio.BL.Interfaces;
+using eFolio.BL;
 using eFolio.EF;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace eFolio.API.Controllers
+namespace eFolio.API
 {
     [Route("api/[controller]")]
     [Produces("application/json")]
