@@ -1,14 +1,15 @@
 ﻿using eFolio.EF;
+using eFolio.Elastic;
 using Microsoft.EntityFrameworkCore.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace eFolio.API.Seeds
-
 {
     public class ContextInitializer
     {
-        public static void Initialize(eFolioDBContext context)
+        public static void Initialize(eFolioDBContext context, IEfolioElastic elastic)
         {
             context.Database.EnsureCreated();
 
@@ -34,7 +35,8 @@ namespace eFolio.API.Seeds
                                 Path = "djnk"
                             }
                         }
-                    }
+                    },
+                    PhotoLink = Environment.CurrentDirectory + "\\Seeds\\PhotoProject\\google.png"
                 });
                 context.Projects.Add(new ProjectEntity()
                 {
@@ -56,10 +58,22 @@ namespace eFolio.API.Seeds
                                 Path = "hyrrr"
                             }
                         }
-                    }
+                    },
+                    PhotoLink = Environment.CurrentDirectory + "\\Seeds\\PhotoProject\\efolio.png"
                 });
                 context.SaveChanges();
-            }
+
+                foreach (var project in context.Projects.ToList())
+                {
+                    elastic.AddItem(new ElasticProjectData()
+                    {
+                        Id = project.Id,
+                        Name = project.Name,
+                        ExternalDescr = "You are gay",
+                        InternalDescr = "This is internal description"
+                    });
+                }
+            } 
 
             if (!context.Clients.Any())
             {
@@ -112,8 +126,18 @@ namespace eFolio.API.Seeds
 
             if (!context.Developers.Any())
             {
-                context.Developers.Add(new DeveloperEntity() { FullName = "Yurii Levko", CVLink = "asfasf" });
-                context.Developers.Add(new DeveloperEntity() { FullName = "Ostap Roik", CVLink = "swrherh" });
+                context.Developers.Add(
+                    new DeveloperEntity() {
+                        FullName = "Yurii Levko",
+                        CVLink = "asfasf",
+                        PhotoLink = Environment.CurrentDirectory + "\\Seeds\\PhotoDeveloper\\Levko.jpg"
+                    });
+                context.Developers.Add(
+                    new DeveloperEntity() {
+                        FullName = "Ostap Roik",
+                        CVLink = "swrherh",
+                        PhotoLink = Environment.CurrentDirectory + "\\Seeds\\PhotoDeveloper\\Roik.jpg"
+                    });
                 context.SaveChanges();
             }
         }

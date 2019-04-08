@@ -30,7 +30,8 @@ namespace eFolio.API
                         JwtClaimTypes.Email,
                         JwtClaimTypes.Role,
                         JwtClaimTypes.Name,
-                        JwtClaimTypes.Id
+                        JwtClaimTypes.Id,
+                        JwtClaimTypes.Role
                     }
                 }
             };

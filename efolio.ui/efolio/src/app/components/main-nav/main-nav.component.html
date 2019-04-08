@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [ngClass]="{hidden : false}" [mode]="'over'"
+    [opened]="false">
+    <mat-toolbar>Menu</mat-toolbar>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/projects">Projects</a>
+      <a mat-list-item routerLink="/developers">Developers</a>
+      <a mat-list-item routerLink="/support">Support</a>
+      <a mat-list-item *ngIf="isAdmin()" routerLink="/administration">Admin Page</a>
+      <a mat-list-item routerLink="/account" class="account">Account</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button class="sidenav" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon" class="menu-icon">menu</mat-icon>
+      </button>
+
+      <span class="logo">
+        <a routerLink="/projects" class="logo">eFolio</a>
+      </span>
+
+      <span class="header">
+        <a class="menu-item" routerLink="/projects">Projects</a>
+        <a class="menu-item" routerLink="/developers">Developers</a>
+        <a class="menu-item" routerLink="/support">Support</a>
+        <a class="menu-item" *ngIf="isAdmin()" routerLink="/administration">Admin Page</a>
+      </span>
+      <span class="spacer"> </span>
+      <span class="header">
+        <a class="menu-item" routerLink="/account">Account</a>
+      </span>
+
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

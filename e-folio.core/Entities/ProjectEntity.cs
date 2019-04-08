@@ -11,5 +11,6 @@ namespace eFolio.EF
         public ContextEntity Context { get; set; }
 
         public ICollection<ProjectDeveloperEntity> Developers { get; set; }
+        public string PhotoLink { get; set; }
     }
 }

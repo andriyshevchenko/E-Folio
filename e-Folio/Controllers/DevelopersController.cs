@@ -12,6 +12,7 @@ using eFolio.API.Models;
 using eFolio.DTO;
 using Microsoft.AspNetCore.Identity;
 using eFolio.Attibutes;
+using System.Threading.Tasks;
 
 namespace eFolio.Api.Controllers
 {
@@ -40,11 +41,11 @@ namespace eFolio.Api.Controllers
 
 
         [HttpGet] 
-        public IActionResult GetDevelopers()
+        public async Task<IActionResult> GetDevelopers()
         {
             try
             {
-                return base.Ok(_developerService.GetItemsList(GetCVKindForRequest()));
+                return base.Ok(await _developerService.GetItemsListAsync(GetCVKindForRequest()));
             }
             catch (Exception ex)
             {
@@ -61,11 +62,11 @@ namespace eFolio.Api.Controllers
         }
 
         [HttpGet("search/{request}")] 
-        public IActionResult SearchDevelopers(string request, [FromQuery] int from, [FromQuery] int size)
+        public async Task<IActionResult> SearchDevelopers(string request, [FromQuery] int from, [FromQuery] int size)
         {
             try
             {
-                return Ok(_developerService.Search(request, new Paging(from, size), GetCVKindForRequest()));
+                return Ok(await _developerService.SearchAsync(request, new Paging(from, size), GetCVKindForRequest()));
             }
             catch (Exception ex)
             {
@@ -76,11 +77,11 @@ namespace eFolio.Api.Controllers
 
         [HttpGet]
         [Route("{id}")] 
-        public IActionResult GetDeveloper(int id)
+        public async Task<IActionResult> GetDeveloper(int id)
         {
             try
             {
-                var project = _developerService.GetItem(id, GetCVKindForRequest());
+                var project = await _developerService.GetItemAsync(id, GetCVKindForRequest());
                 if (project == null)
                 {
                     return NotFound(id);
@@ -133,8 +134,7 @@ namespace eFolio.Api.Controllers
             try
             {
                 _developerService.Update(developer);
-                return Ok();
-
+                return Ok(); 
             }
             catch (Exception ex)
             {
@@ -145,7 +145,7 @@ namespace eFolio.Api.Controllers
 
         [HttpDelete("{projectId}/d/{id}")]
         [HasClaim("role", "admin", "sales")]
-        public IActionResult QuitProject(int projectId, int id)
+        public async Task<IActionResult> QuitProject(int projectId, int id)
         {
             try
             {
@@ -155,7 +155,7 @@ namespace eFolio.Api.Controllers
                     return NotFound("Project not found: " + projectId);
                 }
 
-                var developer = _developerService.GetItem(id, CVKind.External);
+                var developer = await _developerService.GetItemAsync(id, CVKind.External);
                 if (developer == null)
                 {
                     return NotFound("Developer does not exist: " + id);
@@ -178,7 +178,7 @@ namespace eFolio.Api.Controllers
 
         [HttpPut("{projectId}/d/{id}")] 
         [HasClaim("role", "admin", "sales")]
-        public IActionResult AssignToProject(int projectId, int id)
+        public async Task<IActionResult> AssignToProject(int projectId, int id)
         {
             try
             {
@@ -188,7 +188,7 @@ namespace eFolio.Api.Controllers
                     return NotFound("Project not found: " + projectId);
                 }
 
-                var developer = _developerService.GetItem(id, CVKind.External);
+                var developer = await _developerService.GetItemAsync(id, CVKind.External);
                 if (developer == null)
                 {
                     return NotFound("Developer does not exist: " + id);

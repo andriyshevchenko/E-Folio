@@ -6,7 +6,7 @@ namespace eFolio.EF
     {
         public eFolioDBContext(DbContextOptions<eFolioDBContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
          
         public DbSet<ProjectEntity> Projects { get; set; }

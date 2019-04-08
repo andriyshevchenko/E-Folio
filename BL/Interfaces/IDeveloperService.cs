@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using eFolio.DTO;
 using eFolio.DTO.Common;
 
@@ -9,8 +10,8 @@ namespace eFolio.BL
         void Add(Developer item);
         void Update(Developer item);
         void Delete(int id);
-        Developer GetItem(int id, CVKind isExtended);
-        IEnumerable<Developer> GetItemsList(CVKind isExtended);
-        IEnumerable<Developer> Search(string request, Paging paging, CVKind isExtended);
+        Task<Developer> GetItemAsync(int id, CVKind isExtended);
+        Task<IEnumerable<Developer>> GetItemsListAsync(CVKind isExtended);
+        Task<IEnumerable<Developer>> SearchAsync(string request, Paging paging, CVKind isExtended);
     }
 }

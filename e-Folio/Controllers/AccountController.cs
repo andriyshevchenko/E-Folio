@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -82,6 +81,7 @@ namespace eFolio.API.Controllers
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
+
 
                 if (result.Succeeded)
                 {

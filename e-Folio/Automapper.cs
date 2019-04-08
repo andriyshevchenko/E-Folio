@@ -28,7 +28,7 @@ namespace eFolio.API
 
             CreateMap<Tuple<ElasticDeveloperData, DeveloperEntity>, Developer>().ForMember(p => p.Id, m => m.MapFrom(pe => pe.Item2.Id))
                                 .ForMember(p => p.FullName, m => m.MapFrom(pe => pe.Item2.FullName))
-                                .ForMember(p => p.CVLink, m => m.MapFrom(pe => pe.Item2.CVLink))
+                                .ForMember(p => p.CVLink, m => m.MapFrom(pe => pe.Item2.CVLink)) 
                                 .ForMember(p => p.Projects, m => m.Ignore())
                                 .ForMember(p => p.InternalCV, m => m.MapFrom(pe => pe.Item1.InternalCV))
                                 .ForMember(p => p.ExternalCV, m => m.MapFrom(pe => pe.Item1.ExternalCV));
@@ -48,7 +48,7 @@ namespace eFolio.API
 
             CreateMap<DeveloperEntity, Developer>().ForMember(p => p.Id, m => m.MapFrom(pe => pe.Id))
                                 .ForMember(p => p.FullName, m => m.MapFrom(pe => pe.FullName))
-                                .ForMember(p => p.CVLink, m => m.MapFrom(pe => pe.CVLink))
+                                .ForMember(p => p.CVLink, m => m.MapFrom(pe => pe.CVLink))  
                                 .ForMember(p => p.Projects, m => m.Ignore());
 
             CreateMap<FolioFileEntity, FolioFile>().ForMember(p => p.IsInternal, m => m.MapFrom(pe => pe.IsInternal))
@@ -69,7 +69,7 @@ namespace eFolio.API
                                 .ForMember(pe => pe.SourceCodeLink, m => m.MapFrom(p => p.SourceCodeLink));
 
             CreateMap<Developer, DeveloperEntity>().ForMember(pe => pe.FullName, m => m.MapFrom(p => p.FullName))
-                                .ForMember(pe => pe.CVLink, m => m.MapFrom(p => p.CVLink))
+                                .ForMember(pe => pe.CVLink, m => m.MapFrom(p => p.CVLink)) 
                                 .ForMember(pe => pe.Projects, m => m.MapFrom(p => p.Projects));
 
             CreateMap<Developer, ElasticDeveloperData>().ForMember(pe => pe.Name, m => m.MapFrom(p => p.FullName))

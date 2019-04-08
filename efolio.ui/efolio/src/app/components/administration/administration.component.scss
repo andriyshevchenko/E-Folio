@@ -1,0 +1,48 @@
+$elementsMainColor: #212121;
+
+.mat-sidenav-container{
+    height: 100%;  
+    position: relative;
+}
+
+.mat-sidenav, .mat-sidenav-content{
+    padding: 16px;
+}
+
+.mat-sidenav{
+    border-right-color: rgb(53, 53, 53);
+    background-color: white;
+    width: 200px;
+    color: black;
+}
+
+.mat-sidenav-content{
+    background-color: white;
+    color: black;
+}
+
+.mat-icon-button{
+    background-color: rgb(216, 216, 216);
+    border-color: black;
+}
+
+.designedButton {
+  margin: 15px;
+  padding: 7px;
+  background-color: white;
+  border: 2px solid $elementsMainColor;
+  color: $elementsMainColor;
+  border-radius: 12px;
+  font-size: 115%;
+}
+
+.designedButton:hover {
+  background-color: $elementsMainColor;
+  color: white;
+}
+
+.controll {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

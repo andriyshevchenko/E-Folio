@@ -67,7 +67,7 @@ namespace e_folio.core.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contexsts");
+                    b.ToTable("Contexts");
                 });
 
             modelBuilder.Entity("eFolio.EF.DeveloperEntity", b =>
@@ -80,6 +80,8 @@ namespace e_folio.core.Migrations
 
                     b.Property<string>("FullName");
 
+                    b.Property<string>("PhotoLink");
+
                     b.HasKey("Id");
 
                     b.ToTable("Developers");
@@ -91,7 +93,7 @@ namespace e_folio.core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ContextEntityId");
+                    b.Property<int>("ContextEntityId");
 
                     b.Property<bool>("IsInternal");
 
@@ -123,13 +125,16 @@ namespace e_folio.core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ContextId");
+                    b.Property<int>("ContextId");
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("PhotoLink");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ContextId");
+                    b.HasIndex("ContextId")
+                        .IsUnique();
 
                     b.ToTable("Projects");
                 });
@@ -143,9 +148,10 @@ namespace e_folio.core.Migrations
 
             modelBuilder.Entity("eFolio.EF.FolioFileEntity", b =>
                 {
-                    b.HasOne("eFolio.EF.ContextEntity")
+                    b.HasOne("eFolio.EF.ContextEntity", "Context")
                         .WithMany("ScreenLinks")
-                        .HasForeignKey("ContextEntityId");
+                        .HasForeignKey("ContextEntityId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("eFolio.EF.ProjectDeveloperEntity", b =>
@@ -164,8 +170,9 @@ namespace e_folio.core.Migrations
             modelBuilder.Entity("eFolio.EF.ProjectEntity", b =>
                 {
                     b.HasOne("eFolio.EF.ContextEntity", "Context")
-                        .WithMany()
-                        .HasForeignKey("ContextId");
+                        .WithOne("Project")
+                        .HasForeignKey("eFolio.EF.ProjectEntity", "ContextId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

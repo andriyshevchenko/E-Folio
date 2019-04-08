@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace eFolio.DTO.Common
 {
@@ -16,15 +17,26 @@ namespace eFolio.DTO.Common
             Projects = new List<Project>();
         }
 
+        public void HasPhoto(byte[] content, string fileFormat)
+        {
+            PhotoBase64 = string.Format("data:image/{0};base64,{1}", 
+                fileFormat.Substring(1,fileFormat.Length-1), 
+                Convert.ToBase64String(content)
+            );
+        }
+
         public void UpdateId(int id)
         {
             if (id > 0)
             {
-                Id = id; 
+                Id = id;
             }
         }
 
         public int Id { get; set; }
+
+        public string PhotoBase64 { get; set; }
+
         public string FullName { get; set; }
         public string CVLink { get; set; }
         public string InternalCV { get; set; }

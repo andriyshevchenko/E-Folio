@@ -1,6 +1,16 @@
-<div>
-    <app-project-item 
-        *ngFor="let item of projects"
-        [project] = "item">
-    </app-project-item>
-</div>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [(opened)]="opened">
+        <button mat-icon-button (click)="opened=!opened" *ngIf="opened===true">
+            <mat-icon aria-label="Side nav toggle icon" class="project-filter-icon">arrow_back_ios</mat-icon>
+        </button>
+        <app-project-filter></app-project-filter>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <button mat-icon-button (click)="opened=!opened" *ngIf="opened===false">
+            <mat-icon aria-label="Side nav toggle icon">arrow_forward_ios</mat-icon>
+        </button>
+        <div>
+            <app-project-item *ngFor="let item of projects" [projectInput]="item"></app-project-item>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

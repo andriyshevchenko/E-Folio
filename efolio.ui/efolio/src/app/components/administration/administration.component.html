@@ -1,0 +1,7 @@
+<div class="controll">
+    <button class="designedButton" (click)="showAllUsers()">Show users</button>
+    <button class="designedButton" (click)="showAllProjects()">Show projects</button>
+    <button class="designedButton" (click)="showAllDevelopers()">Show developers</button>
+</div>
+
+<app-admin-project-list *ngIf="showProjectsTable"></app-admin-project-list>
