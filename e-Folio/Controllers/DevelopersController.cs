@@ -1,126 +1,216 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
-using e_folio.data;
+using eFolio.DTO.Common;
 using eFolio.BL;
 using eFolio.EF;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Net;
+using eFolio.API.Models;
+using eFolio.DTO;
+using Microsoft.AspNetCore.Identity;
+using eFolio.Attibutes;
+using System.Threading.Tasks;
 
-namespace eFolio
+namespace eFolio.Api.Controllers
 {
-    [Route("api/developers")]
+    [Route("api/[controller]")]
     [Produces("application/json")]
-    [ApiController]
+    [ApiController] 
     public class DevelopersController : ControllerBase
     {
-        private IRepository<Developer> developers;
-        private IRepository<Project> projects;
+        private static readonly string[] haveExtraPermissions = new string[] { "admin", "sales" };
 
-        public DevelopersController(IRepository<Developer> developers,
-                                    IRepository<Project> projects)
+        private IProjectService _projectService;
+        private IDeveloperService _developerService;
+        private UserManager<UserEntity> _userManager;
+        private ILogger _logger;
+
+        public DevelopersController(IProjectService projectService,
+                                    IDeveloperService developerService,
+                                    UserManager<UserEntity> userManager,
+                                    ILogger<DevelopersController> logger)
         {
-            this.developers = developers;
-            this.projects = projects;
+            this._projectService = projectService;
+            this._developerService = developerService;
+            this._userManager = userManager;
+            this._logger = logger;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<DeveloperEntity>> GetDevelopers()
-        {
-            return Ok(developers.GetItemsList());
-        }
 
-        [HttpGet]
-        [Route("{id}")]
-        public ActionResult<IEnumerable<DeveloperEntity>> GetDeveloper(int id)
+        [HttpGet] 
+        public async Task<IActionResult> GetDevelopers()
         {
-            var project = developers.GetItem(id);
-            if (project == null)
+            try
             {
-                return NotFound(id);
+                return base.Ok(await _developerService.GetItemsListAsync(GetCVKindForRequest()));
             }
-            return Ok(project);
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
         }
 
-        [HttpPost]
-        public ActionResult NewDeveloper([FromBody] Developer developer)
-        {
-            developers.Add(developer);
-            return Ok();
+        private CVKind GetCVKindForRequest()
+        { 
+            return User != null && User.Claims.Any() && haveExtraPermissions.Contains(User.Claims.First().Value) ? 
+                CVKind.Internal: 
+                CVKind.External;
         }
 
-        [HttpDelete]
-        [Route("{id}")]
-        public ActionResult DeleteDeveloper(int id)
+        [HttpGet("search/{request}")] 
+        public async Task<IActionResult> SearchDevelopers(string request, [FromQuery] int from, [FromQuery] int size)
         {
-            developers.Delete(id);
-            return Ok();
+            try
+            {
+                return Ok(await _developerService.SearchAsync(request, new Paging(from, size), GetCVKindForRequest()));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpGet]
+        [Route("{id}")] 
+        public async Task<IActionResult> GetDeveloper(int id)
+        {
+            try
+            {
+                var project = await _developerService.GetItemAsync(id, GetCVKindForRequest());
+                if (project == null)
+                {
+                    return NotFound(id);
+                }
+                return Ok(project);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpPost] 
+        [HasClaim("role", "admin")]
+        public IActionResult NewDeveloper([FromBody] Developer developer)
+        {
+            try
+            {
+                _developerService.Add(developer);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpDelete("{id}")] 
+        [HasClaim("role", "admin")]
+        public IActionResult DeleteDeveloper(int id)
+        {
+            try
+            {
+                _developerService.Delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
         }
 
         [HttpPut]
-        public ActionResult Edit(Developer developer)
+        [HasClaim("role", "admin")]
+        public IActionResult Edit(Developer developer)
         {
-            developers.Update(developer);
-            return Ok();
+            try
+            {
+                _developerService.Update(developer);
+                return Ok(); 
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            } 
         }
 
-        [HttpDelete]
-        [Route("/api/projects/{projectId}/d/{id}")]
-        public ActionResult QuitProject(int projectId, int id)
+        [HttpDelete("{projectId}/d/{id}")]
+        [HasClaim("role", "admin", "sales")]
+        public async Task<IActionResult> QuitProject(int projectId, int id)
         {
-            var project = projects.GetItem(projectId);
-            if (project == null)
+            try
             {
-                return NotFound("Project not found: " + projectId);
-            }
-
-            var developer = developers.GetItem(id);
-            if (developer == null)
-            {
-                return NotFound("Developer does not exist: " + id);
-            }
-             
-            project.Developers.Remove(
-                project.Developers.FirstOrDefault(item => item.Id == id)
-            );
-
-            projects.Update(project);
-
-            return Ok();
-        }
-
-        [HttpPost]
-        [Route("/api/projects/{projectId}/d/{id}")]
-        public ActionResult AssignToProject(int projectId, int id)
-        {
-            var project = projects.GetItem(projectId);
-            if (project == null)
-            {
-                return NotFound("Project not found: " + projectId);
-            }
-
-            var developer = developers.GetItem(id);
-            if (developer == null)
-            {
-                return NotFound("Developer does not exist: " + id);
-            }
-
-            /*
-            if (project.Developers == null)
-            {
-                project.Developers = new List<ProjectDeveloperEntity>();
-            }
-
-            if (!project.Developers.Any(item => item.DeveloperId == id))
-            {
-                project.Developers.Add(new ProjectDeveloperEntity()
+                var project = _projectService.GetItem(projectId, DescriptionKind.External);
+                if (project == null)
                 {
-                    DeveloperId = developer.Id,
-                    ProjectId = project.Id
-                });
-                projects.Update(project);
-            }*/
+                    return NotFound("Project not found: " + projectId);
+                }
 
-            return Ok();
+                var developer = await _developerService.GetItemAsync(id, CVKind.External);
+                if (developer == null)
+                {
+                    return NotFound("Developer does not exist: " + id);
+                }
+
+                project.Developers.Remove(
+                    project.Developers.FirstOrDefault(item => item.Id == id)
+                );
+
+                _projectService.Update(project);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpPut("{projectId}/d/{id}")] 
+        [HasClaim("role", "admin", "sales")]
+        public async Task<IActionResult> AssignToProject(int projectId, int id)
+        {
+            try
+            {
+                var project = _projectService.GetItem(projectId, DescriptionKind.External);
+                if (project == null)
+                {
+                    return NotFound("Project not found: " + projectId);
+                }
+
+                var developer = await _developerService.GetItemAsync(id, CVKind.External);
+                if (developer == null)
+                {
+                    return NotFound("Developer does not exist: " + id);
+                }
+
+                if (project.Developers == null)
+                {
+                    project.Developers = new List<Developer>();
+                }
+
+                if (!project.Developers.Any(item => item.Id == id))
+                {
+                    project.Developers.Add(developer);
+                    _projectService.Update(project);
+                }
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
         }
     }
 }

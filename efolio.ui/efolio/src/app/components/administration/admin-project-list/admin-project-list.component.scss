@@ -1,0 +1,15 @@
+$elementsMainColor: #212121;
+
+table {
+  width: 100%;
+  color: $elementsMainColor;
+}
+
+button {
+  margin: 3px;
+  padding: 5px;
+  background-color: white;
+  border: 2px solid $elementsMainColor;
+  color: $elementsMainColor;
+  border-radius: 7px;
+}

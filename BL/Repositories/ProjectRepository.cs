@@ -1,109 +1,102 @@
-﻿using e_folio.data;
-using eFolio.EF;
-using eFolio.Elastic;
+﻿using eFolio.EF;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace eFolio.BL
 {
-    public class ProjectRepository : IRepository<Project>
+    public class ProjectRepository : IRepository<ProjectEntity>
     {
         private eFolioDBContext db;
-        private ElasticSearch es;
 
         public ProjectRepository(eFolioDBContext eFolioDBContext)
         {
             this.db = eFolioDBContext;
-            this.es = new ElasticSearch();
         }
 
-        public void Add(Project item)
+        public void Add(ProjectEntity item)
         {
-            ElasticProjectData elasticProjectData = new ElasticProjectData();
-            elasticProjectData.Id = item.Id;
-            elasticProjectData.Name = item.Name;
-            elasticProjectData.InternalDescr = item.InternalDescription;
-            elasticProjectData.ExternalDescr = item.ExternalDescription;
-
-
-            //db.Projects.Add((ProjectEntity)item);
-            es.AddItem(elasticProjectData);
+            db.Projects.Add(item);
 
             db.SaveChanges();
         }
 
-        public void Delete(int id)  
+        public void Delete(int id)
         {
             ProjectEntity project = db.Projects.Find(id);
-            db.Projects.Remove(project);
-            es.DeleteItem(id);
 
-            db.SaveChanges();
+            if (project != null)
+            {
+                db.Projects.Remove(project);
+                db.SaveChanges();
+            }
         }
 
-        public Project GetItem(int id)
+        public ProjectEntity GetItem(int id, params string[] extendWith)
         {
-            ProjectEntity projectEntity = db.Projects.Find(id);
+            IQueryable<ProjectEntity> query = db.Projects;
 
-            Project project = new Project();
-            project.ExternalDescription = es.GetItemById(id).ExternalDescr;
-            project.InternalDescription = es.GetItemById(id).InternalDescr;
-            project.Id = projectEntity.Id;
-            project.Name = projectEntity.Name;
-            //project.Developers = projectEntity.Developers;
-            //project.Context = projectEntity.Context;
+            bool addDevelopers = false;
+            foreach (var item in extendWith)
+            {
+                switch (item.ToLower())
+                {
+                    case "details":
+                        query = query.Include(proj => proj.Context);
+                        break;
+                    case "screenshots":
+                        query = query.Include(proj => proj.Context)
+                                     .ThenInclude(context => context.ScreenLinks);
+                        break;
+                    case "developers": addDevelopers = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            var project = query.SingleOrDefault(item => item.Id == id);
+
+            if (addDevelopers && project != null)
+            {
+                var developers = db.Set<ProjectDeveloperEntity>()
+                      .Include(pde => pde.DeveloperEntity)
+                      .Where(pde => pde.ProjectId == id)
+                      .ToList();
+
+                project.Developers = developers; 
+            }
 
             return project;
         }
 
-        public IEnumerable<Project> GetItemsList()
+        public IEnumerable<ProjectEntity> GetItemsList()
         {
-            List<ProjectEntity> list = db.Projects.ToListAsync().Result;
+            List<ProjectEntity> list = db.Projects
+                .Include(project => project.Context)
+                .ThenInclude(context => context.ScreenLinks)
+                .ToList();
+
+            var developers = db.Set<ProjectDeveloperEntity>()
+                .Include(pde => pde.DeveloperEntity)
+                .GroupBy(pde => pde.ProjectId)
+                .ToDictionary(pde => pde.Key);
+
             foreach (var item in list)
             {
-                yield return new Project()
+                if (developers.ContainsKey(item.Id))
                 {
-                    Id = item.Id,
-                    Name = item.Name,
-                    //Context = item.Context,
-                    //Developers = item.Developers,
-                    ExternalDescription = GetItem(item.Id).ExternalDescription,
-                    InternalDescription = GetItem(item.Id).InternalDescription
-                };
-            }
-        }
-
-        public IEnumerable<ProjectEntity> Search(string request)
-        {
-            ElasticSearch elasticSearch = new ElasticSearch();
-            var response = elasticSearch.SearchItems(request);
-
-            List<Project> projects = new List<Project>();
-            for (int i = 0; i < response.Count; i++)
-            {
-                Project project = new Project();
-                var projectEntity = GetItem(response[i].Id);
-                project.Name = projectEntity.Name;
-                project.Developers = projectEntity.Developers;
-                project.Context = projectEntity.Context;
-                project.ExternalDescription = response[i].ExternalDescr;
-                project.InternalDescription = response[i].InternalDescr;
-
-                projects.Add(project);
+                    item.Developers = developers[item.Id].ToList();
+                }
             }
 
-            return null;//
+            return list;
         }
 
-        public void Update(Project item)
+        public void Update(ProjectEntity item)
         {
-            //db.Projects.Update((ProjectEntity)item);
-
-            //update in es
-
+            db.Update(item);
             db.SaveChanges();
         }
 
@@ -125,11 +118,6 @@ namespace eFolio.BL
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-        }
-
-        IEnumerable<Project> IRepository<Project>.Search(string request)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,4 @@
- <Project Sdk="Microsoft.NET.Sdk.Web"> 
+﻿ <Project Sdk="Microsoft.NET.Sdk.Web"> 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <Platforms>AnyCPU;x64</Platforms>
@@ -12,31 +12,68 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Seeds\PhotoDeveloper\Levko.jpg" />
+    <None Remove="Seeds\PhotoDeveloper\Roik.jpg" />
+    <None Remove="Seeds\PhotoProject\efolio.png" />
+    <None Remove="Seeds\PhotoProject\google.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Seeds\PhotoProject\google.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Seeds\PhotoProject\efolio.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Elasticsearch.Net" Version="6.5.0" />
+    <PackageReference Include="IdentityServer4" Version="2.4.0" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
+    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="2.4.0" />
+    <PackageReference Include="IdentityServer4.EntityFramework" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-<<<<<<< HEAD:e-Folio/e-Folio.csproj
-    </PackageReference> 
-=======
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
     <PackageReference Include="NEST" Version="6.5.0" />
->>>>>>> 2cbb08171bdb8b026c8bdb269d953709d3d9e02d:e-Folio/eFolio.API.csproj
+    <PackageReference Include="Serilog" Version="2.8.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BL\eFolio.BL.csproj" />
     <ProjectReference Include="..\e-folio.core\eFolio.EF.csproj" />
     <ProjectReference Include="..\e-folio.data\eFolio.Elastic.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Seeds\PhotoDeveloper\Levko.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Seeds\PhotoDeveloper\Roik.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

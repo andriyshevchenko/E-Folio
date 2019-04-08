@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace e_folio.data
+namespace eFolio.DTO.Common
 {
     public class Context
-    {
+    { 
+        public int Id { get; set; }
         public string SourceCodeLink { get; set; }
         public List<FolioFile> ScreenLinks { get; set; }
     }

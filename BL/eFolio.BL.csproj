@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Serilog" Version="2.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\e-folio.core\eFolio.EF.csproj" />
     <ProjectReference Include="..\e-folio.data\eFolio.Elastic.csproj" />
     <ProjectReference Include="..\eFolio.DTO\eFolio.DTO.csproj" />

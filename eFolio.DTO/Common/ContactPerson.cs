@@ -1,4 +1,4 @@
-﻿namespace e_folio.data
+﻿namespace eFolio.DTO.Common
 {
     public class ContactPerson
     {

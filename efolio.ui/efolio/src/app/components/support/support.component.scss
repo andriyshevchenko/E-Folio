@@ -1,0 +1,40 @@
+.feedback {
+  border-right: 1px solid #cccccc;
+  margin-right: 40px;
+  padding-right: 40px;
+  padding-top: 40px;
+  float: left;
+  width: 60%;
+}
+
+.contactInfo {
+  float: right;
+  width: 40%;
+  margin-right: 40px;
+  padding-right: 40px;
+  padding-top: 40px;
+}
+.support-container {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 700px) {
+  .feedback {
+    width: 80%;
+    padding-top: 15px;
+
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .contactInfo {
+    width: 80%;
+    margin-left: 20px;
+    padding-right: 40px;
+    padding-top: 30px;
+  }
+  .support-container {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,16 @@
+.spinner-wrapper {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: grey;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+::ng-deep.mat-progress-spinner circle, .mat-spinner circle {
+    stroke:black;
+}

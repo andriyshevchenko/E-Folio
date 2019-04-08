@@ -1,20 +1,23 @@
-<<<<<<< HEAD
-﻿using e_folio.data;
-using e_Folio.Seeds;
-=======
-﻿
-using e_folio.data;
+using AutoMapper;
+using eFolio.API.Seeds;
 using eFolio.BL;
 using eFolio.EF;
->>>>>>> 2cbb08171bdb8b026c8bdb269d953709d3d9e02d
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.Security.Principal;
 
-namespace e_Folio
+namespace eFolio.API
 {
     public class Startup
     {
@@ -30,34 +33,127 @@ namespace e_Folio
         {
             string connection = Configuration.GetConnectionString("EFolioConnection");
 
-            services.AddDbContext<eFolioDBContext>(options => options.UseSqlServer(connection));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
 
-            services.AddScoped<IRepository<Project>, ProjectRepository>();
-         
-            services.AddSingleton<IRepository<DeveloperEntity>>(
-                serviceCollection => new DeveloperRepository(connection)
-            );
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IPrincipal>(
+                provider => provider.GetService<IHttpContextAccessor>().HttpContext.User);
+
+            services.AddDbContext<eFolioDBContext>(options =>
+                options.UseSqlServer(connection));
+
+            services.AddDbContext<AuthDBContext>(options =>
+                options.UseSqlServer(connection));
+
+            services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IDeveloperService, DeveloperService>();
+            services.AddScoped<IAdminService, AdminService>();
+
+            //Automapping
+            var mappingConfig = new MapperConfiguration(mc => { mc.AddProfile(new Automapper()); });
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            // For auth
+            //services.AddTransient<IEmailSender, EmailSender>();
+            services.AddIdentity<UserEntity, IdentityRole<int>>(conf =>
+            {
+                conf.SignIn.RequireConfirmedEmail = true;
+            })
+                .AddEntityFrameworkStores<AuthDBContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "eFolio",
+                    Description = "eFolio ASP.NET Core Web API"
+                });
+            });
+
+            // configure identity server with in-memory stores, keys, clients and scopes
+            services.AddIdentityServer()
+                .AddDeveloperSigningCredential()
+                .AddInMemoryIdentityResources(AuthConfig.GetIdentityResources())
+                .AddInMemoryApiResources(AuthConfig.GetApiResources())
+                .AddInMemoryClients(AuthConfig.GetClients())
+                .AddAspNetIdentity<UserEntity>();
+
+
+            services.AddMvcCore()
+                .AddAuthorization()
+                .AddJsonFormatters();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = IdentityServerAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = "http://localhost:5000/";
+
+                    options.RequireHttpsMetadata = false;
+
+                    options.ApiName = "e-FolioAPI";
+                });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
+            // app.UseCors(options => options.WithOrigins("http://localhost:5000/").AllowAnyMethod().AllowAnyHeader());
+            app.UseCors("AllowAllHeaders");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                try
+                {
+                    var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
+                    var context = scope.ServiceProvider.GetService<eFolioDBContext>();
+
+                    var userManager = serviceProvider.GetRequiredService<UserManager<UserEntity>>();
+                    var contextForAuth = serviceProvider.GetRequiredService<AuthDBContext>();
+
+                    context.Database.Migrate();
+                    contextForAuth.Database.Migrate();
+
+                    ContextInitializer.Initialize(context, new Elastic.ElasticSearch());
+                    ContextInitializerForAuth.Initialize(contextForAuth, userManager).Wait();
+                }
+                catch (Exception ex)
+                {
+                    var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occured while seeding the database.");
+                }
+                //using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                //{
+                //    var context = scope.ServiceProvider.GetService<eFolioDBContext>();
+                //    context.Database.Migrate();
+                //    ContextInitializer.Initialize(context);
+                //}
             }
 
-            using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            {
-                var context = scope.ServiceProvider.GetService<eFolioDBContext>();
-                context.Database.Migrate();
-                ContextInitializer.Initialize(context);
-            }
-            app.UseMvc(/*routes=>
-                { MapRoute(name: default,  template: "{controller=Home}/{action=index}/{id?}" ); }*/
-            );
+            app.UseIdentityServer();
+
+            app.UseAuthentication();
+
+            app.UseMvc();
         }
     }
 }

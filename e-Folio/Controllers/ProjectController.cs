@@ -1,62 +1,191 @@
-﻿using System.Collections.Generic;
-
-using e_folio.data;
+﻿using eFolio.API.Models;
 using eFolio.BL;
-using Microsoft.AspNetCore.Http; 
+using eFolio.DTO;
+using eFolio.DTO.Common;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using eFolio.Attibutes;
+using System.Linq;
 
-namespace eFolio
+namespace eFolio.Api.Controllers
 {
-    [Route("api/projects")]
+    public class RequestBody<T>
+    {
+        public T Item { get; set; }
+    }
+
+    [Route("api/[controller]")]
     [Produces("application/json")]
     [ApiController]
     public class ProjectController : ControllerBase
     {
-        private IRepository<Project> projects;
+        private static readonly string[] haveExtraPermissions = new string[] { "admin", "sales" };
+        private static string default_options = "screenshots,developers";
+        private IProjectService _projectService;
+        private ILogger _logger;
 
-        public ProjectController(IRepository<Project> repository)
+        public ProjectController(
+            IProjectService projectService,
+            ILogger<ProjectController> logger)
         {
-            projects = repository;
+            _projectService = projectService;
+            _logger = logger;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Project>> GetProjects()
+        private DescriptionKind GetDescriptionKindForRequest()
         {
-            return Ok(projects.GetItemsList());
+            return User != null && User.Claims.Any() && haveExtraPermissions.Contains(User.Claims.First().Value) ?
+                DescriptionKind.Internal :
+                DescriptionKind.External;
         }
 
-        [HttpGet]
-        [Route("{id}")]
-        public ActionResult<IEnumerable<Project>> GetProject(int id)
+        [HttpGet] 
+        public IActionResult GetProjects()
         {
-            Project project = projects.GetItem(id);
-            if (project == null)
+            try
             {
-                return NotFound(id);
+                return Ok(_projectService.GetItemsList(GetDescriptionKindForRequest()));
             }
-            return Ok(project);
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
         }
 
-        [HttpDelete]
-        [Route("{id}")]
+        [HttpGet("search/{request}")] 
+        public IActionResult SearchProjects(string request, [FromQuery] int from, [FromQuery] int size)
+        {
+            try
+            {
+                return Ok(_projectService.Search(request, new Paging(from, size), GetDescriptionKindForRequest()));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpGet("{id}")]   
+        public IActionResult GetProject(int id, string options)
+        {
+            try
+            {
+                var project = _projectService.GetItem(
+                    id, GetDescriptionKindForRequest(), (options ?? default_options).Split(',')
+                );
+                if (project == null)
+                {
+                    return NotFound(id);
+                }
+                return Ok(project);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpDelete("{id}")]  
+        [HasClaim("role", "admin", "sales")]
         public ActionResult DeleteProject(int id)
         {
-            projects.Delete(id);
-            return Ok();
+            try
+            {
+                _projectService.Delete(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
         }
 
-        [HttpPost]
-        public ActionResult MakeNewProject([FromBody] Project project)
+        [HttpPost] 
+        [HasClaim("role", "admin", "sales")]
+        public IActionResult MakeNewProject([FromBody] Project project)
         {
-            projects.Add(project);
-            return Ok();
+            try
+            {
+                _projectService.Add(project);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }     
         }
-         
-        [HttpPut]
-        public ActionResult Edit([FromBody] Project project)
+
+        [HttpPut("{project}/details")] 
+        [HasClaim("role", "admin", "sales")]
+        public IActionResult EditDetails(int project, [FromBody] Context details)
         {
-            projects.Update(project);
-            return Ok();
+            try
+            {
+                _projectService.UpdateDetails(project, details);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpDelete("{project}/screenshots")]  
+        [HasClaim("role", "admin", "sales") ]
+        public IActionResult DeleteScreenshots(int project, [FromBody] RequestBody<int[]> deleted)
+        {
+            try
+            {
+                _projectService.DeleteScreeenshots(project, deleted.Item);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpPut("{project}/screenshots")] 
+        [HasClaim("role", "admin", "sales")]
+        public IActionResult UpdateScreenshots(int project, [FromBody] Dictionary<int, FolioFile> files)
+        {
+            try
+            {
+                _projectService.UpdateScreenshots(project, files);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
+        }
+
+        [HttpPut] 
+        [HasClaim("role", "admin", "sales")]
+        public IActionResult Edit([FromBody] Project project)
+        {
+            try
+            {
+                _projectService.Update(project);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, string.Empty);
+                return StatusCode((int)HttpStatusCode.InternalServerError, new ErrorResponse(ex));
+            }
         }
     }
 }

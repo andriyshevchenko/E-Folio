@@ -1,0 +1,38 @@
+$elementsMainColor: rgb(115, 1, 180);
+$elementsSecondaryColor: rgb(66, 66, 66);
+
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.mat-raised-button {
+  margin-top: 15px;
+  padding: 7px;
+  background-color: white;
+  border: 2px solid $elementsMainColor;
+  color: $elementsMainColor;
+  border-radius: 12px;
+  font-size: 115%;
+}
+
+.designed-button:hover {
+  background-color: $elementsMainColor;
+  color: white;
+}
+
+.title{
+    color: rgb(75, 74, 74);
+    font-size: 150%;
+    font-weight: 100;
+    padding-bottom: 15px;
+}
+
+.designed-button:disabled{
+  color:$elementsSecondaryColor;
+  border: 2px solid $elementsSecondaryColor;
+  background-color: white;
+}
+
